@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(4)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(4) > a {
   font-weight: 600;
   text-decoration: none;
 }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > button svg {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(4) > button svg {
   transform: rotate(-90deg);
 }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Create module | UVLHub docs</title>
+<title>Routing | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Create module" />
+<meta property="og:title" content="Routing" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/create_module" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/create_module" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/routing" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/routing" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Create module" />
+<meta property="twitter:title" content="Routing" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Create module","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/create_module"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Routing","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/routing"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -256,21 +256,22 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/extending_uvlhub">Extending uvlhub</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Create module</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Routing</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="create-module">
+            <h1 class="no_toc" id="routing">
   
   
-    <a href="#create-module" class="anchor-heading" aria-labelledby="create-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create module
+    <a href="#routing" class="anchor-heading" aria-labelledby="routing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Routing
   
   
 </h1>
     
+
+<p>The rosemary command <code class="language-plaintext highlighter-rouge">route:list</code> allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods.</p>
 <h2 class="no_toc text-delta" id="table-of-contents">
   
   
@@ -281,56 +282,53 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#about" id="markdown-toc-about">About</a></li>
-  <li><a href="#create-module-1" id="markdown-toc-create-module-1">Create module</a></li>
+  <li><a href="#list-all-routes" id="markdown-toc-list-all-routes">List all routes</a></li>
+  <li><a href="#group-routes-by-module" id="markdown-toc-group-routes-by-module">Group routes by module</a></li>
+  <li><a href="#list-routes-of-a-specific-module" id="markdown-toc-list-routes-of-a-specific-module">List routes of a specific module</a></li>
 </ol>
-<h2 id="about">
+<h2 id="list-all-routes">
   
   
-    <a href="#about" class="anchor-heading" aria-labelledby="about"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> About
-  
-  
-</h2>
-    
-
-<p>To quickly generate a new module within the project, including necessary boilerplate files 
-like <code class="language-plaintext highlighter-rouge">__init__.py</code>, <code class="language-plaintext highlighter-rouge">routes.py</code>, <code class="language-plaintext highlighter-rouge">models.py</code>, <code class="language-plaintext highlighter-rouge">repositories.py</code>, <code class="language-plaintext highlighter-rouge">services.py</code>, <code class="language-plaintext highlighter-rouge">forms.py</code>,
-and a basic <code class="language-plaintext highlighter-rouge">index.html</code> template, you can use the <code class="language-plaintext highlighter-rouge">rosemary</code> CLI tool’s <code class="language-plaintext highlighter-rouge">make:module</code> 
-command. This command will create a new blueprint structure ready for development.</p>
-<h2 id="create-module-1">
-  
-  
-    <a href="#create-module-1" class="anchor-heading" aria-labelledby="create-module-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create module
+    <a href="#list-all-routes" class="anchor-heading" aria-labelledby="list-all-routes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> List all routes
   
   
 </h2>
     
 
-<p>To create a new module, run:</p>
+<p>To list all the routes of all the modules, run:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary make:module &lt;module_name&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list
+</code></pre></div></div>
+<h2 id="group-routes-by-module">
+  
+  
+    <a href="#group-routes-by-module" class="anchor-heading" aria-labelledby="group-routes-by-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Group routes by module
+  
+  
+</h2>
+    
+
+<p>To get a grouped view of the routes by module, you can use the <code class="language-plaintext highlighter-rouge">--group</code> option. This is especially useful 
+for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list --group
+</code></pre></div></div>
+<h2 id="list-routes-of-a-specific-module">
+  
+  
+    <a href="#list-routes-of-a-specific-module" class="anchor-heading" aria-labelledby="list-routes-of-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> List routes of a specific module
+  
+  
+</h2>
+    
+
+<p>It may be useful to see the routes associated with a specific module. To do this, simply provide the module 
+name as an argument:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list &lt;module_name&gt;
 </code></pre></div></div>
 
-<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the desired name of your module.</p>
-
-<p>This command creates a new directory under <code class="language-plaintext highlighter-rouge">app/blueprints/</code> with the name of your module and sets up the initial files and directories needed to get started, including a dedicated <code class="language-plaintext highlighter-rouge">templates</code> directory for your module’s templates.</p>
-
-<p>This feature is designed to streamline the development process, making it easy to add new features to the project.</p>
-
-<blockquote class="note-title">
-  <p>Note</p>
-
-  <p>If the module with <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> already exists, <code class="language-plaintext highlighter-rouge">rosemary</code> will simply notify you and not overwrite any existing files.</p>
-</blockquote>
-
-<blockquote class="important-title">
-  <p>Reboot required!</p>
-
-  <p>It is necessary to restart the application’s Docker container for the changes to take effect:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker restart web_app_container
-</code></pre></div>  </div>
-</blockquote>
+<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the actual name of the module for which you want to see the routes.</p>
           
 
           

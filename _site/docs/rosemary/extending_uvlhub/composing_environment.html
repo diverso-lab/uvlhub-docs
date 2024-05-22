@@ -20,7 +20,7 @@
 
 .site-nav > ul.nav-list:first-child > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(2)) > a {
   background-image: none;
 }
 
@@ -29,7 +29,7 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > ul > li:nth-child(2) > a {
   font-weight: 600;
   text-decoration: none;
 }.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Create module | UVLHub docs</title>
+<title>Composing environment | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Create module" />
+<meta property="og:title" content="Composing environment" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/create_module" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/create_module" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/composing_environment" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/composing_environment" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Create module" />
+<meta property="twitter:title" content="Composing environment" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Create module","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/create_module"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Composing environment","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/extending_uvlhub/composing_environment"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -257,71 +257,27 @@
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
     <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/extending_uvlhub">Extending uvlhub</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Create module</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Composing environment</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="create-module">
+            <h1 class="no_toc" id="composing-environment">
   
   
-    <a href="#create-module" class="anchor-heading" aria-labelledby="create-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create module
+    <a href="#composing-environment" class="anchor-heading" aria-labelledby="composing-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Composing environment
   
   
 </h1>
     
-<h2 class="no_toc text-delta" id="table-of-contents">
-  
-  
-    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
-  
-  
-</h2>
-    
 
-<ol id="markdown-toc">
-  <li><a href="#about" id="markdown-toc-about">About</a></li>
-  <li><a href="#create-module-1" id="markdown-toc-create-module-1">Create module</a></li>
-</ol>
-<h2 id="about">
-  
-  
-    <a href="#about" class="anchor-heading" aria-labelledby="about"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> About
-  
-  
-</h2>
-    
+<p>It is possible to make a final composition of the <code class="language-plaintext highlighter-rouge">.env</code> file based on the individual <code class="language-plaintext highlighter-rouge">.env</code> files of each module.</p>
 
-<p>To quickly generate a new module within the project, including necessary boilerplate files 
-like <code class="language-plaintext highlighter-rouge">__init__.py</code>, <code class="language-plaintext highlighter-rouge">routes.py</code>, <code class="language-plaintext highlighter-rouge">models.py</code>, <code class="language-plaintext highlighter-rouge">repositories.py</code>, <code class="language-plaintext highlighter-rouge">services.py</code>, <code class="language-plaintext highlighter-rouge">forms.py</code>,
-and a basic <code class="language-plaintext highlighter-rouge">index.html</code> template, you can use the <code class="language-plaintext highlighter-rouge">rosemary</code> CLI tool’s <code class="language-plaintext highlighter-rouge">make:module</code> 
-command. This command will create a new blueprint structure ready for development.</p>
-<h2 id="create-module-1">
-  
-  
-    <a href="#create-module-1" class="anchor-heading" aria-labelledby="create-module-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create module
-  
-  
-</h2>
-    
+<p>To execute this command and automatically combine the environment variables:</p>
 
-<p>To create a new module, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary make:module &lt;module_name&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary compose:env
 </code></pre></div></div>
-
-<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the desired name of your module.</p>
-
-<p>This command creates a new directory under <code class="language-plaintext highlighter-rouge">app/blueprints/</code> with the name of your module and sets up the initial files and directories needed to get started, including a dedicated <code class="language-plaintext highlighter-rouge">templates</code> directory for your module’s templates.</p>
-
-<p>This feature is designed to streamline the development process, making it easy to add new features to the project.</p>
-
-<blockquote class="note-title">
-  <p>Note</p>
-
-  <p>If the module with <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> already exists, <code class="language-plaintext highlighter-rouge">rosemary</code> will simply notify you and not overwrite any existing files.</p>
-</blockquote>
 
 <blockquote class="important-title">
   <p>Reboot required!</p>

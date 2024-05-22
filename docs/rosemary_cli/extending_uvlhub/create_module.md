@@ -4,7 +4,7 @@ parent: Extending uvlhub
 grand_parent: Rosemary CLI
 title: Create module
 permalink: /docs/rosemary/extending_uvlhub/create_module
-nav_order: 4
+nav_order: 1
 ---
 
 # Create module
@@ -25,7 +25,7 @@ command. This command will create a new blueprint structure ready for developmen
 
 ## Create module
 
-To create a new module, run the following command from the root of the project:
+To create a new module, run:
 
 ```
 rosemary make:module <module_name>
@@ -42,3 +42,11 @@ This feature is designed to streamline the development process, making it easy t
 >
 > If the module with `<module_name>` already exists, `rosemary` will simply notify you and not overwrite any existing files.
 
+{: .important-title }
+> Reboot required!
+> 
+> It is necessary to restart the application's Docker container for the changes to take effect:
+>
+> ```
+> docker restart web_app_container
+> ```

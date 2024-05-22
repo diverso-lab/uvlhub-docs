@@ -1,45 +1,45 @@
 {"0": {
-    "doc": "Zenodo",
-    "title": "Zenodo",
-    "content": "To use Zenodo module, it is important to obtain a token in Zenodo first. We recommend creating the token in the Sandbox version of Zenodo, in order to generate fictitious DOIs and not make intensive use of the real Zenodo SLA. To generate the Zenodo .env file, run in root project: . cp app/blueprints/zenodo/.env.example app/blueprints/zenodo/.env . To perform the composition of all environment variables, refer to section Composing Environment Variables. ",
-    "url": "/docs/modules/zenodo",
-    
-    "relUrl": "/docs/modules/zenodo"
-  },"1": {
     "doc": "Access MariaDB",
     "title": "Access MariaDB",
     "content": " ",
     "url": "/docs/rosemary/managing_database/access_mariadb",
     
     "relUrl": "/docs/rosemary/managing_database/access_mariadb"
-  },"2": {
+  },"1": {
     "doc": "Access MariaDB",
     "title": "Table of contents",
     "content": ". | Access to console | Exit console | . ",
     "url": "/docs/rosemary/managing_database/access_mariadb#table-of-contents",
     
     "relUrl": "/docs/rosemary/managing_database/access_mariadb#table-of-contents"
-  },"3": {
+  },"2": {
     "doc": "Access MariaDB",
     "title": "Access to console",
     "content": "To directly use the MariaDB console to execute native SQL statements, use: . rosemary db:console . This command connects to the MariaDB container using the credentials defined in the .env file. ",
     "url": "/docs/rosemary/managing_database/access_mariadb#access-to-console",
     
     "relUrl": "/docs/rosemary/managing_database/access_mariadb#access-to-console"
-  },"4": {
+  },"3": {
     "doc": "Access MariaDB",
     "title": "Exit console",
     "content": "To exit the MariaDB console, type: . exit; . ",
     "url": "/docs/rosemary/managing_database/access_mariadb#exit-console",
     
     "relUrl": "/docs/rosemary/managing_database/access_mariadb#exit-console"
-  },"5": {
+  },"4": {
     "doc": "Architecture",
     "title": "Architecture",
     "content": "Coming soon… . ",
     "url": "/docs/architecture",
     
     "relUrl": "/docs/architecture"
+  },"5": {
+    "doc": "Composing environment",
+    "title": "Composing environment",
+    "content": "It is possible to make a final composition of the .env file based on the individual .env files of each module. To execute this command and automatically combine the environment variables: . rosemary compose:env . Reboot required! . It is necessary to restart the application’s Docker container for the changes to take effect: . docker restart web_app_container . ",
+    "url": "/docs/rosemary/extending_uvlhub/composing_environment",
+    
+    "relUrl": "/docs/rosemary/extending_uvlhub/composing_environment"
   },"6": {
     "doc": "Create module",
     "title": "Create module",
@@ -64,7 +64,7 @@
   },"9": {
     "doc": "Create module",
     "title": "Create module",
-    "content": "To create a new module, run the following command from the root of the project: . rosemary make:module &lt;module_name&gt; . Replace &lt;module_name&gt; with the desired name of your module. This command creates a new directory under app/blueprints/ with the name of your module and sets up the initial files and directories needed to get started, including a dedicated templates directory for your module’s templates. This feature is designed to streamline the development process, making it easy to add new features to the project. Note . If the module with &lt;module_name&gt; already exists, rosemary will simply notify you and not overwrite any existing files. ",
+    "content": "To create a new module, run: . rosemary make:module &lt;module_name&gt; . Replace &lt;module_name&gt; with the desired name of your module. This command creates a new directory under app/blueprints/ with the name of your module and sets up the initial files and directories needed to get started, including a dedicated templates directory for your module’s templates. This feature is designed to streamline the development process, making it easy to add new features to the project. Note . If the module with &lt;module_name&gt; already exists, rosemary will simply notify you and not overwrite any existing files. Reboot required! . It is necessary to restart the application’s Docker container for the changes to take effect: . docker restart web_app_container . ",
     "url": "/docs/rosemary/extending_uvlhub/create_module",
     
     "relUrl": "/docs/rosemary/extending_uvlhub/create_module"
@@ -209,40 +209,40 @@
     
     "relUrl": "/docs/rosemary"
   },"30": {
-    "doc": "Routes",
-    "title": "Routes",
+    "doc": "Routing",
+    "title": "Routing",
     "content": "The rosemary command route:list allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods. ",
-    "url": "/docs/rosemary/routes",
+    "url": "/docs/rosemary/routing",
     
-    "relUrl": "/docs/rosemary/routes"
+    "relUrl": "/docs/rosemary/routing"
   },"31": {
-    "doc": "Routes",
+    "doc": "Routing",
     "title": "Table of contents",
     "content": ". | List all routes | Group routes by module | List routes of a specific module | . ",
-    "url": "/docs/rosemary/routes#table-of-contents",
+    "url": "/docs/rosemary/routing#table-of-contents",
     
-    "relUrl": "/docs/rosemary/routes#table-of-contents"
+    "relUrl": "/docs/rosemary/routing#table-of-contents"
   },"32": {
-    "doc": "Routes",
+    "doc": "Routing",
     "title": "List all routes",
     "content": "To list all the routes of all the modules, run: . rosemary route:list . ",
-    "url": "/docs/rosemary/routes#list-all-routes",
+    "url": "/docs/rosemary/routing#list-all-routes",
     
-    "relUrl": "/docs/rosemary/routes#list-all-routes"
+    "relUrl": "/docs/rosemary/routing#list-all-routes"
   },"33": {
-    "doc": "Routes",
+    "doc": "Routing",
     "title": "Group routes by module",
     "content": "To get a grouped view of the routes by module, you can use the --group option. This is especially useful for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application. rosemary route:list --group . ",
-    "url": "/docs/rosemary/routes#group-routes-by-module",
+    "url": "/docs/rosemary/routing#group-routes-by-module",
     
-    "relUrl": "/docs/rosemary/routes#group-routes-by-module"
+    "relUrl": "/docs/rosemary/routing#group-routes-by-module"
   },"34": {
-    "doc": "Routes",
+    "doc": "Routing",
     "title": "List routes of a specific module",
     "content": "It may be useful to see the routes associated with a specific module. To do this, simply provide the module name as an argument: . rosemary route:list &lt;module_name&gt; . Replace &lt;module_name&gt; with the actual name of the module for which you want to see the routes. ",
-    "url": "/docs/rosemary/routes#list-routes-of-a-specific-module",
+    "url": "/docs/rosemary/routing#list-routes-of-a-specific-module",
     
-    "relUrl": "/docs/rosemary/routes#list-routes-of-a-specific-module"
+    "relUrl": "/docs/rosemary/routing#list-routes-of-a-specific-module"
   },"35": {
     "doc": "Seeders",
     "title": "Seeders",
@@ -341,5 +341,47 @@
     "url": "/docs/rosemary/testing/unit_tests#testing-a-specific-module",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#testing-a-specific-module"
+  },"49": {
+    "doc": "Updating dependencies",
+    "title": "Updating dependencies",
+    "content": "To update all project dependencies, run: . rosemary update . It is the responsibility of the developer to check that the update of the dependencies has not broken any functionality and each dependency maintains backwards compatibility. Use the script with care! . ",
+    "url": "/docs/rosemary/updating_dependencies",
+    
+    "relUrl": "/docs/rosemary/updating_dependencies"
+  },"50": {
+    "doc": "Zenodo",
+    "title": "Zenodo",
+    "content": "Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data. ",
+    "url": "/docs/modules/zenodo",
+    
+    "relUrl": "/docs/modules/zenodo"
+  },"51": {
+    "doc": "Zenodo",
+    "title": "Table of contents",
+    "content": ". | Obtain a token | Generate .env file | Include your access token | . ",
+    "url": "/docs/modules/zenodo#table-of-contents",
+    
+    "relUrl": "/docs/modules/zenodo#table-of-contents"
+  },"52": {
+    "doc": "Zenodo",
+    "title": "Obtain a token",
+    "content": "To use Zenodo module, it is important to obtain a token in Zenodo first. We recommend creating the token in the Sandbox version of Zenodo (https://sandbox.zenodo.org/), in order to generate fictitious DOIs and not make intensive use of the real Zenodo SLA. | Create an Account on Zenodo . | Go to Zenodo. | Click on Sign up and complete the registration. | . | Log in to Zenodo . | Go to Zenodo. | Click on Log in and log in with your account. | . | Access the Tokens Section . | Click on your username in the top right corner. | Select Applications. | . | Create a New Access Token . | Under Personal access tokens, click on New token. | Assign a name for your token. | Select all permissions to grant full access. | Read: Allows read-only access. | Write: Allows creating and modifying records. | Delete: Allows deleting records. | . | Click Create. | . | Save the Access Token . | Copy and save the generated token in a secure place. | . | . ",
+    "url": "/docs/modules/zenodo#obtain-a-token",
+    
+    "relUrl": "/docs/modules/zenodo#obtain-a-token"
+  },"53": {
+    "doc": "Zenodo",
+    "title": "Generate .env file",
+    "content": "To generate the Zenodo .env file in app/blueprints/zenodo, run in root project: . cp app/blueprints/zenodo/.env.example app/blueprints/zenodo/.env . ",
+    "url": "/docs/modules/zenodo#generate-env-file",
+    
+    "relUrl": "/docs/modules/zenodo#generate-env-file"
+  },"54": {
+    "doc": "Zenodo",
+    "title": "Include your access token",
+    "content": "In the generated .envfile, you must include the access token obtained in Zenodo: . ZENODO_ACCESS_TOKEN=&lt;GET_ACCESS_TOKEN_IN_ZENODO&gt; . A composition of variables is necessary! . To perform the composition of all environment variables, refer to section Composing environment. ",
+    "url": "/docs/modules/zenodo#include-your-access-token",
+    
+    "relUrl": "/docs/modules/zenodo#include-your-access-token"
   }
 }

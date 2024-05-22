@@ -172,6 +172,8 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
           </button><a href="/docs/rosemary/extending_uvlhub" class="nav-list-link">Extending uvlhub</a><ul class="nav-list"><li class="nav-list-item">
                 <a href="/docs/rosemary/extending_uvlhub/create_module" class="nav-list-link">Create module</a>
+              </li><li class="nav-list-item">
+                <a href="/docs/rosemary/extending_uvlhub/composing_environment" class="nav-list-link">Composing environment</a>
               </li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Managing database category" aria-pressed="false">
             <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
           </button><a href="/docs/rosemary/managing_database" class="nav-list-link">Managing database</a><ul class="nav-list"><li class="nav-list-item">
@@ -188,7 +190,7 @@
                 <a href="/docs/rosemary/testing/unit_tests" class="nav-list-link">Unit tests</a>
               </li><li class="nav-list-item">
                 <a href="/docs/rosemary/testing/test_coverage" class="nav-list-link">Test coverage</a>
-              </li></ul></li><li class="nav-list-item"><a href="/docs/rosemary/routes" class="nav-list-link">Routes</a></li></ul></li></ul>
+              </li></ul></li><li class="nav-list-item"><a href="/docs/rosemary/routing" class="nav-list-link">Routing</a></li><li class="nav-list-item"><a href="/docs/rosemary/updating_dependencies" class="nav-list-link">Updating dependencies</a></li></ul></li></ul>
 
   <ul class="nav-list"><li class="nav-list-item external">
           <a href="https://github.com/diverso-lab/uvlhub" class="nav-list-link external"
@@ -260,7 +262,7 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 id="zenodo">
+            <h1 class="no_toc" id="zenodo">
   
   
     <a href="#zenodo" class="anchor-heading" aria-labelledby="zenodo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Zenodo
@@ -269,17 +271,106 @@
 </h1>
     
 
+<p>Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#obtain-a-token" id="markdown-toc-obtain-a-token">Obtain a token</a></li>
+  <li><a href="#generate-env-file" id="markdown-toc-generate-env-file">Generate <code class="language-plaintext highlighter-rouge">.env</code> file</a></li>
+  <li><a href="#include-your-access-token" id="markdown-toc-include-your-access-token">Include your access token</a></li>
+</ol>
+<h2 id="obtain-a-token">
+  
+  
+    <a href="#obtain-a-token" class="anchor-heading" aria-labelledby="obtain-a-token"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Obtain a token
+  
+  
+</h2>
+    
+
 <p>To use Zenodo module, it is important to obtain a token in Zenodo first.</p>
 
-<p class="warning"><strong>We recommend creating the token in the Sandbox version of Zenodo, in order to generate fictitious DOIs 
+<p class="warning"><strong>We recommend creating the token in the Sandbox version of Zenodo (<a href="https://sandbox.zenodo.org/">https://sandbox.zenodo.org/</a>), in order to generate fictitious DOIs 
 and not make intensive use of the real Zenodo SLA.</strong></p>
 
-<p>To generate the Zenodo <code class="language-plaintext highlighter-rouge">.env</code> file, run in root project:</p>
+<ol>
+  <li><strong>Create an Account on Zenodo</strong>
+    <ul>
+      <li>Go to <a href="https://sandbox.zenodo.org/">Zenodo</a>.</li>
+      <li>Click on <code class="language-plaintext highlighter-rouge">Sign up</code> and complete the registration.</li>
+    </ul>
+  </li>
+  <li><strong>Log in to Zenodo</strong>
+    <ul>
+      <li>Go to <a href="https://sandbox.zenodo.org/">Zenodo</a>.</li>
+      <li>Click on <code class="language-plaintext highlighter-rouge">Log in</code> and log in with your account.</li>
+    </ul>
+  </li>
+  <li><strong>Access the Tokens Section</strong>
+    <ul>
+      <li>Click on your username in the top right corner.</li>
+      <li>Select <code class="language-plaintext highlighter-rouge">Applications</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Create a New Access Token</strong>
+    <ul>
+      <li>Under <code class="language-plaintext highlighter-rouge">Personal access tokens</code>, click on <code class="language-plaintext highlighter-rouge">New token</code>.</li>
+      <li>Assign a name for your token.</li>
+      <li><strong>Select all permissions</strong> to grant full access.
+        <ul>
+          <li>Read: Allows read-only access.</li>
+          <li>Write: Allows creating and modifying records.</li>
+          <li>Delete: Allows deleting records.</li>
+        </ul>
+      </li>
+      <li>Click <code class="language-plaintext highlighter-rouge">Create</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Save the Access Token</strong>
+    <ul>
+      <li>Copy and save the generated token in a secure place.</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="generate-env-file">
+  
+  
+    <a href="#generate-env-file" class="anchor-heading" aria-labelledby="generate-env-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generate <code class="language-plaintext highlighter-rouge">.env</code> file
+  
+  
+</h2>
+    
+
+<p>To generate the Zenodo <code class="language-plaintext highlighter-rouge">.env</code> file in <code class="language-plaintext highlighter-rouge">app/blueprints/zenodo</code>, run in root project:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp app/blueprints/zenodo/.env.example app/blueprints/zenodo/.env
 </code></pre></div></div>
+<h2 id="include-your-access-token">
+  
+  
+    <a href="#include-your-access-token" class="anchor-heading" aria-labelledby="include-your-access-token"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Include your access token
+  
+  
+</h2>
+    
 
-<p>To perform the composition of all environment variables, refer to section <a href="#composing-environment-variables">Composing Environment Variables</a>.</p>
+<p>In the generated <code class="language-plaintext highlighter-rouge">.env</code>file, you must include the access token obtained in Zenodo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ZENODO_ACCESS_TOKEN=&lt;GET_ACCESS_TOKEN_IN_ZENODO&gt;
+</code></pre></div></div>
+
+<blockquote class="important-title">
+  <p>A composition of variables is necessary!</p>
+
+  <p>To perform the composition of all environment variables, refer to section <a href="/docs/rosemary/extending_uvlhub/composing_environment">Composing environment</a>.</p>
+</blockquote>
           
 
           

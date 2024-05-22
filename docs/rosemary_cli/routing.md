@@ -1,12 +1,12 @@
 ---
 layout: default
 parent: Rosemary CLI
-title: Routes
-permalink: /docs/rosemary/routes
+title: Routing
+permalink: /docs/rosemary/routing
 nav_order: 4
 ---
 
-# Routes
+# Routing
 {: .no_toc }
 
 The rosemary command `route:list` allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods.
