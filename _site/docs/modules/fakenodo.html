@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(2) > ul > li:nth-child(2) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(2) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(2) > ul > li:nth-child(2) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(2) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Fakenodo | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Fakenodo" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/modules/fakenodo" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/modules/fakenodo" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Fakenodo" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Fakenodo","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/modules/fakenodo"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -249,33 +251,22 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/docs/modules">Modules</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Fakenodo</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 id="fakenodo">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#fakenodo" class="anchor-heading" aria-labelledby="fakenodo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Fakenodo
   
   
 </h1>
-    
-
-<p>Repository of feature models in UVL format integrated with Zenodo and FlamaPy - DiversoLab</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
-  
-  
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
-  
-  
-</h3>
-    
-
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
           
 
           

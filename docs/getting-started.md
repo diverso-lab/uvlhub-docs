@@ -13,72 +13,36 @@ nav_order: 2
 1. TOC
 {:toc}
 
-## Installation
-
-To analyze feature models, you can use the `flamapy-fm-dist` distribution. **It requires Python >= 3.9**.  
-
 {: .important }
-> It's recommended to use a **virtual environment** (venv) for installation to avoid conflicts with other packages. Here’s how you can set it up:
-> ```
-> python -m venv flamapyenv && source flamapyenv/bin/activate
-> ```   
+For development deployment, the use of [Docker](https://www.docker.com/) is recommended. 
 
-Install the distribution:
+## Clone repo
 
-```
-pip install flamapy-fm-dist
-```
-
-## Basic operations
-
-To test some basic operations, you need UVL models. Several are available at [UVLHub](https://www.uvlhub.io). If you prefer, you can download a test one:
+You can start your fantastic development with uvlhub by cloning our official repository.
 
 ```
-wget -q "https://raw.githubusercontent.com/flamapy/flamapy-fm-dist/main/resources/models/valid_model.uvl"
-wget -q "https://raw.githubusercontent.com/flamapy/flamapy-fm-dist/main/resources/configurations/valid_configuration.csvconf"
+git clone https://github.com/diverso-lab/uvlhub.git
+cd uvlhub
 ```
 
-### Validate the model
+## Environment variables
 
-To check if the model is valid, run:
-
-```
-flamapy-fm-cli --modelPath="./valid_model.uvl" valid
-```
-
-### Get all products
-
-To generate all possible products from the model, use:
+To create an `.env` file according to a basic template, run:
 
 ```
-flamapy-fm-cli --modelPath="./valid_model.uvl" products
+cp .env.example .env
 ```
 
-### Validate a configuration
+## Deploy in develop
 
-To verify if a specific configuration is valid, run:
-
+To deploy the software under development environment, run:
 
 ```
-flamapy-fm-cli --modelPath="./valid_model.uvl" valid_configuration ./valid_configuration.csvconf
+docker compose -f docker-compose.dev.yml up -d 
 ```
 
-## I want to use more feature models analysis operations
+This will apply the migrations to the database and run the Flask application. 
 
-{% include flamapy.html %} runs on a framework based on `Core / Plugins` architecture. If you are interested in more feature model operations, you have several options:
+> {: .highlight }
+  **If everything worked correctly, you should see the deployed version of UVLHub in development at `http://localhost`.**
 
-### Option 1: using the feature models distribution.
-
-We have prepared the `flamapy-fm-dist` distribution which acts as an interface and is specific to feature models.
-
-### Option 2: Without using the feature models distribution
-
-You can choose not to use the distribution. In that case, **you have to install the core and the corresponding plugin in developer mode**.
-
-To set up your environment in developer mode and work directly with the plugins, visit the section ['Setting the development environment']({{site.baseurl}}/docs/developing/setting_development_environment/)
-
-You can check the rest of [operations]({{site.baseurl}}/docs/core_and_plugins/fm/) of the plugin for feature models.
-
-## I want to use more operations other plugins.
-
-Of course, {% include flamapy.html %} incorporates more plugins. In blabla you can check the rest of plugins.

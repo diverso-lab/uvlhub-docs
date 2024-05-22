@@ -18,9 +18,9 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(2)) > a {
   background-image: none;
 }
 
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(3) > ul > li:nth-child(2) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(3) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Test coverage | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Test coverage" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing/test_coverage" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing/test_coverage" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Test coverage" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Test coverage","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing/test_coverage"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -249,33 +251,93 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/testing">Testing</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Test coverage</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="test-coverage">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#test-coverage" class="anchor-heading" aria-labelledby="test-coverage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test coverage
   
   
 </h1>
     
 
-<p>Repository of feature models in UVL format integrated with Zenodo and FlamaPy - DiversoLab</p>
+<p>The <code class="language-plaintext highlighter-rouge">rosemary coverage</code> command facilitates running code coverage analysis for your Flask project using <code class="language-plaintext highlighter-rouge">pytest-cov</code>. 
+This command simplifies the process of assessing test coverage.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<ol id="markdown-toc">
+  <li><a href="#test-coverage-of-all-modules" id="markdown-toc-test-coverage-of-all-modules">Test coverage of all modules</a></li>
+  <li><a href="#test-coverage-of-a-specific-module" id="markdown-toc-test-coverage-of-a-specific-module">Test coverage of a specific module</a></li>
+  <li><a href="#command-options" id="markdown-toc-command-options">Command Options</a>    <ol>
+      <li><a href="#--html" id="markdown-toc---html"><strong>--html</strong></a></li>
+    </ol>
+  </li>
+</ol>
+<h2 id="test-coverage-of-all-modules">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#test-coverage-of-all-modules" class="anchor-heading" aria-labelledby="test-coverage-of-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test coverage of all modules
+  
+  
+</h2>
+    
+
+<p>To run coverage analysis for all modules within the <code class="language-plaintext highlighter-rouge">app/blueprints</code> directory and generate an HTML report, use:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary coverage
+</code></pre></div></div>
+<h2 id="test-coverage-of-a-specific-module">
+  
+  
+    <a href="#test-coverage-of-a-specific-module" class="anchor-heading" aria-labelledby="test-coverage-of-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test coverage of a specific module
+  
+  
+</h2>
+    
+
+<p>If you wish to run coverage analysis for a specific module, include the 
+module name:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary coverage &lt;module_name&gt; 
+</code></pre></div></div>
+<h2 id="command-options">
+  
+  
+    <a href="#command-options" class="anchor-heading" aria-labelledby="command-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Command Options
+  
+  
+</h2>
+    
+<h3 id="--html">
+  
+  
+    <a href="#--html" class="anchor-heading" aria-labelledby="--html"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>--html</strong>
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>This option generates an HTML coverage report. The report is saved in the <code class="language-plaintext highlighter-rouge">htmlcov</code> directory
+at the root of your project.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary coverage --html
+</code></pre></div></div>
           
 
           
