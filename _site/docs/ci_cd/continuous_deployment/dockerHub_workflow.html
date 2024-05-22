@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(3)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > ul > li:nth-child(2) > ul > li:nth-child(1) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(7) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > ul > li:nth-child(2) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Testing | UVLHub docs</title>
+<title>Docker Hub workflow | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Testing" />
+<meta property="og:title" content="Docker Hub workflow" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/ci_cd/continuous_deployment/dockerHub_workflow" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/ci_cd/continuous_deployment/dockerHub_workflow" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Testing" />
+<meta property="twitter:title" content="Docker Hub workflow" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Testing","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Docker Hub workflow","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/ci_cd/continuous_deployment/dockerHub_workflow"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -268,37 +268,144 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Testing</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/ci_cd">CI/CD</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/ci_cd/continuous_deployment">Continuous deployment</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Docker Hub workflow</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="testing">
+            <h1 class="no_toc" id="docker-hub-workflow">
   
   
-    <a href="#testing" class="anchor-heading" aria-labelledby="testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing
+    <a href="#docker-hub-workflow" class="anchor-heading" aria-labelledby="docker-hub-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Docker Hub workflow
   
   
 </h1>
-          
+    
 
-          
-            <hr>
-<h2 class="text-delta">Table of contents</h2>
+<blockquote class="note-title">
 
+  <p>Path to file <a href="https://github.com/diverso-lab/uvlhub/blob/main/.github/workflows/deployment.yml">(view file on GitHub)</a></p>
+
+  <p>The original file is located at the following path:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.github / workflows / deployment.yml 
+</code></pre></div>  </div>
+</blockquote>
+
+<blockquote class="important-title">
+  <p>To register secrets in GitHub:</p>
+
+  <ol>
+    <li>Navigate to your repository on GitHub.</li>
+    <li>Click on <code class="language-plaintext highlighter-rouge">Settings</code>.</li>
+    <li>In the left sidebar, click on <code class="language-plaintext highlighter-rouge">Secrets and variables</code> and then <code class="language-plaintext highlighter-rouge">Actions</code>.</li>
+    <li>Click the <code class="language-plaintext highlighter-rouge">New repository secret</code> button.</li>
+    <li>Add a name for your secret (e.g., <code class="language-plaintext highlighter-rouge">DOCKER_USER</code>) and its value.</li>
+    <li>Click <code class="language-plaintext highlighter-rouge">Add secret</code> to save.</li>
+  </ol>
+
+  <p>Repeat these steps for  <code class="language-plaintext highlighter-rouge">DOCKER_PASSWORD</code> secret.</p>
+</blockquote>
+
+<p>This GitHub Actions workflow is designed to automate the process of building and publishing Docker images to Docker Hub whenever a new release is published. The essential elements of this workflow are as follows:</p>
+<h2 id="workflow-name">
+  
+  
+    <a href="#workflow-name" class="anchor-heading" aria-labelledby="workflow-name"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Workflow Name
+  
+  
+</h2>
+    
 <ul>
-
-  <li>
-    <a href="/docs/rosemary/testing/unit_tests">Unit tests</a>
-  </li>
-
-  <li>
-    <a href="/docs/rosemary/testing/test_coverage">Test coverage</a>
-  </li>
-
+  <li><strong>name</strong>: Publish Docker image</li>
 </ul>
+<h2 id="triggers">
+  
+  
+    <a href="#triggers" class="anchor-heading" aria-labelledby="triggers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Triggers
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>on</strong>:
+    <ul>
+      <li><strong>release</strong>: Triggers when a release is published.</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="jobs">
+  
+  
+    <a href="#jobs" class="anchor-heading" aria-labelledby="jobs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Jobs
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>push_to_registry</strong>: This job runs on the latest Ubuntu environment (<code class="language-plaintext highlighter-rouge">ubuntu-latest</code>).</li>
+</ul>
+<h3 id="steps">
+  
+  
+    <a href="#steps" class="anchor-heading" aria-labelledby="steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Steps
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Check out the Repository</strong>
+    <ul>
+      <li>Uses the <code class="language-plaintext highlighter-rouge">actions/checkout@v3</code> action to checkout the repository.</li>
+    </ul>
+  </li>
+  <li><strong>Log in to Docker Hub</strong>
+    <ul>
+      <li>Uses the <code class="language-plaintext highlighter-rouge">docker/login-action</code> pinned to a specific commit (<code class="language-plaintext highlighter-rouge">f4ef78c080cd8ba55a85445d5b36e214a81df20a</code>) to log in to Docker Hub with credentials stored in GitHub Secrets:
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">username</span><span class="pi">:</span> <span class="s">$</span>
+<span class="na">password</span><span class="pi">:</span> <span class="s">$</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Build and Push Docker Image</strong>
+    <ul>
+      <li>Builds the Docker image using the <code class="language-plaintext highlighter-rouge">Dockerfile.prod</code> file and tags it with the release tag name:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> drorganvidez/uvlhub:<span class="nv">$ </span><span class="nt">-f</span> Dockerfile.prod <span class="nb">.</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Pushes the tagged Docker image to Docker Hub:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker push drorganvidez/uvlhub:<span class="err">$</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Tag and Push Latest</strong>
+    <ul>
+      <li>Tags the built Docker image with <code class="language-plaintext highlighter-rouge">latest</code> and pushes it to Docker Hub:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker tag drorganvidez/uvlhub:<span class="nv">$ </span>drorganvidez/uvlhub:latest
+docker push drorganvidez/uvlhub:latest
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+<h3 id="notes">
+  
+  
+    <a href="#notes" class="anchor-heading" aria-labelledby="notes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Notes
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Third-Party Actions</strong>: This workflow uses third-party actions that are not certified by GitHub. They are governed by separate terms of service, privacy policy, and support documentation.</li>
+  <li><strong>Pinning Actions</strong>: GitHub recommends pinning actions to a commit SHA to ensure stability and predictability. The workflow uses a pinned commit SHA for the Docker login action.</li>
+</ul>
+          
 
           
         </main>

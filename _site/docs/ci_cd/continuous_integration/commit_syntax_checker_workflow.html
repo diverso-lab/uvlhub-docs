@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(3)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(3)) > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > ul > li:nth-child(1) > ul > li:nth-child(3) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(7) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > ul > li:nth-child(1) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Testing | UVLHub docs</title>
+<title>Commit syntax checker workflow | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Testing" />
+<meta property="og:title" content="Commit syntax checker workflow" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/ci_cd/continuous_integration/commit_syntax_checker_workflow" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/ci_cd/continuous_integration/commit_syntax_checker_workflow" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Testing" />
+<meta property="twitter:title" content="Commit syntax checker workflow" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Testing","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Commit syntax checker workflow","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/ci_cd/continuous_integration/commit_syntax_checker_workflow"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -268,37 +268,102 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Testing</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/ci_cd">CI/CD</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/ci_cd/continuous_integration">Continuous integration</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Commit syntax checker workflow</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="testing">
+            <h1 class="no_toc" id="commit-syntax-checker-workflow">
   
   
-    <a href="#testing" class="anchor-heading" aria-labelledby="testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing
+    <a href="#commit-syntax-checker-workflow" class="anchor-heading" aria-labelledby="commit-syntax-checker-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Commit syntax checker workflow
   
   
 </h1>
-          
+    
 
-          
-            <hr>
-<h2 class="text-delta">Table of contents</h2>
+<blockquote class="important-title">
 
+  <p>Path to file <a href="https://github.com/diverso-lab/uvlhub/blob/main/.github/workflows/commits.yml">(view file on GitHub)</a></p>
+
+  <p>The original file is located at the following path:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.github / workflows / commits.yml 
+</code></pre></div>  </div>
+</blockquote>
+
+<p>This GitHub Actions workflow is designed to enforce conventional commit syntax on commits and pull requests. It triggers on various pull request events and pushes to the <code class="language-plaintext highlighter-rouge">main</code> branch. The essential elements of this workflow are as follows:</p>
+<h2 id="workflow-name">
+  
+  
+    <a href="#workflow-name" class="anchor-heading" aria-labelledby="workflow-name"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Workflow Name
+  
+  
+</h2>
+    
 <ul>
-
-  <li>
-    <a href="/docs/rosemary/testing/unit_tests">Unit tests</a>
-  </li>
-
-  <li>
-    <a href="/docs/rosemary/testing/test_coverage">Test coverage</a>
-  </li>
-
+  <li><strong>name</strong>: Commits Syntax Checker</li>
 </ul>
+<h2 id="triggers">
+  
+  
+    <a href="#triggers" class="anchor-heading" aria-labelledby="triggers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Triggers
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>on</strong>:
+    <ul>
+      <li><strong>pull_request</strong>: Triggers on the following events for the <code class="language-plaintext highlighter-rouge">main</code> branch:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">opened</code></li>
+          <li><code class="language-plaintext highlighter-rouge">reopened</code></li>
+          <li><code class="language-plaintext highlighter-rouge">edited</code></li>
+          <li><code class="language-plaintext highlighter-rouge">review_requested</code></li>
+          <li><code class="language-plaintext highlighter-rouge">synchronize</code></li>
+        </ul>
+      </li>
+      <li><strong>push</strong>: Triggers on any push to the <code class="language-plaintext highlighter-rouge">main</code> branch.</li>
+      <li><strong>workflow_call</strong>: Allows the workflow to be called by other workflows.</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="jobs">
+  
+  
+    <a href="#jobs" class="anchor-heading" aria-labelledby="jobs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Jobs
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>check</strong>: This job runs on the latest Ubuntu environment (<code class="language-plaintext highlighter-rouge">ubuntu-latest</code>).</li>
+</ul>
+<h3 id="steps">
+  
+  
+    <a href="#steps" class="anchor-heading" aria-labelledby="steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Steps
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Checkout Repository</strong>
+    <ul>
+      <li>Uses the <code class="language-plaintext highlighter-rouge">actions/checkout@v2</code> action to checkout the repository.</li>
+    </ul>
+  </li>
+  <li><strong>Conventional Commits Check</strong>
+    <ul>
+      <li>Uses the <code class="language-plaintext highlighter-rouge">webiny/action-conventional-commits@v1.0.3</code> action to ensure that commit messages follow conventional commit standards.</li>
+    </ul>
+  </li>
+</ol>
+          
 
           
         </main>
