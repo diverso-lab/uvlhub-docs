@@ -1,0 +1,13 @@
+/* assets/css/custom.css */
+.flamapy {
+  color: #0C486C; 
+  font-weight: bold;
+}
+
+.flamapy .yellow {
+  color: #FECE3F;
+}
+
+.flamapy .blue {
+  color: #356C99;
+}

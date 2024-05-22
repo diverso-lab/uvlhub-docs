@@ -1,0 +1,534 @@
+{"0": {
+    "doc": "PR Acceptance criteria",
+    "title": "PR Acceptance criteria",
+    "content": " ",
+    "url": "/docs/contributing/PR_acceptance_criteria/",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/"
+  },"1": {
+    "doc": "PR Acceptance criteria",
+    "title": "Table of contents",
+    "content": ". | Mandatory conditions | Recommendations and good practices | Descriptive pull requests | Clean code | Testing | . ",
+    "url": "/docs/contributing/PR_acceptance_criteria/#table-of-contents",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/#table-of-contents"
+  },"2": {
+    "doc": "PR Acceptance criteria",
+    "title": "Mandatory conditions",
+    "content": ". | Your code must work and provide a solution to its correspondent issues. | pytest command must return no errors. | Code quality commands prospector and mypy flamapy must return no messages. | . ",
+    "url": "/docs/contributing/PR_acceptance_criteria/#mandatory-conditions",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/#mandatory-conditions"
+  },"3": {
+    "doc": "PR Acceptance criteria",
+    "title": "Recommendations and good practices",
+    "content": "These practices are not mandatory, but consider that highly messy contributions can be rejected. They also make it easier for maintainers to revise your requests, allowing them to give you feedback instead of just rejecting your contribution. ",
+    "url": "/docs/contributing/PR_acceptance_criteria/#recommendations-and-good-practices",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/#recommendations-and-good-practices"
+  },"4": {
+    "doc": "PR Acceptance criteria",
+    "title": "Descriptive pull requests",
+    "content": ". | Keep your commits atomic and descriptive. | You PR should end up looking like a history of concurrent descriptive commits that add up functionality until the issue is resolved. | . ",
+    "url": "/docs/contributing/PR_acceptance_criteria/#descriptive-pull-requests",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/#descriptive-pull-requests"
+  },"5": {
+    "doc": "PR Acceptance criteria",
+    "title": "Clean code",
+    "content": ". | Modularize your code with descriptive function names. | Comment your code, but do not overdo it. | Keep your lines short and readable. | Use descriptive variable names. | . ",
+    "url": "/docs/contributing/PR_acceptance_criteria/#clean-code",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/#clean-code"
+  },"6": {
+    "doc": "PR Acceptance criteria",
+    "title": "Testing",
+    "content": ". | You should include functional testing to newly implemented features. | . ",
+    "url": "/docs/contributing/PR_acceptance_criteria/#testing",
+    
+    "relUrl": "/docs/contributing/PR_acceptance_criteria/#testing"
+  },"7": {
+    "doc": "BDD plugin",
+    "title": "BDD plugin",
+    "content": "The BDD model plugin provides the metaclases required to work with SAT models and to transform feature models into BDD. ",
+    "url": "/docs/core_and_plugins/bdd/",
+    
+    "relUrl": "/docs/core_and_plugins/bdd/"
+  },"8": {
+    "doc": "BDD plugin",
+    "title": "Table of contents",
+    "content": ". | Description | Objectives | Operations | Transformations supported | . Official repository . https://www.github.com/flamapy/bdd_metamodel . ",
+    "url": "/docs/core_and_plugins/bdd/#table-of-contents",
+    
+    "relUrl": "/docs/core_and_plugins/bdd/#table-of-contents"
+  },"9": {
+    "doc": "BDD plugin",
+    "title": "Description",
+    "content": "This plugin supports Binary Decision Diagrams (BDDs) representations for feature models. This is the architecture followed by this plugin: . The BDD plugin relies on the dd library to manipulate BDDs. The complete documentation of such library is available here. The following is an example of feature model and its BDD using complemented arcs. ",
+    "url": "/docs/core_and_plugins/bdd/#description",
+    
+    "relUrl": "/docs/core_and_plugins/bdd/#description"
+  },"10": {
+    "doc": "BDD plugin",
+    "title": "Objectives",
+    "content": "The core plugin provides the following functionallity . | Storage and manipulation of BDD | Read and store of BDD models | Implement operations that require a complex analysis | Transform feature models into BDD models | . ",
+    "url": "/docs/core_and_plugins/bdd/#objectives",
+    
+    "relUrl": "/docs/core_and_plugins/bdd/#objectives"
+  },"11": {
+    "doc": "BDD plugin",
+    "title": "Operations",
+    "content": "Currently, this plugin enables the following operations. | Sampling | Feature Inclusion Probability | Product distribution | List products | Products number | Uniform sampling | . ",
+    "url": "/docs/core_and_plugins/bdd/#operations",
+    
+    "relUrl": "/docs/core_and_plugins/bdd/#operations"
+  },"12": {
+    "doc": "BDD plugin",
+    "title": "Transformations supported",
+    "content": "Currently this plugins enables a set of transformations for CNF and feaute models. Concretely we support: . | Format/model | Model2Model | Model2Text | Text2Model | . | Feature model | [x] |   |   | . | BDD |   |   | [x] | . ",
+    "url": "/docs/core_and_plugins/bdd/#transformations-supported",
+    
+    "relUrl": "/docs/core_and_plugins/bdd/#transformations-supported"
+  },"13": {
+    "doc": "BDD (Colosal FM) plugin",
+    "title": "BDD (Colosal FM) plugin",
+    "content": "The BDD model plugin provides the metaclases required to work with colosal feature models and transform them to BDD. However, this implementation relies on the optimizations performed in the paper by Ruben Heradio, David Fernández-Amorós, José A. Galindo, David Benavides, and Don S. Batory: “Uniform and scalable sampling of highly configurable systems” (Empirical Software Engineering, 27(2): 44, 2022), which enables better scalability of the analysis. ",
+    "url": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/",
+    
+    "relUrl": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/"
+  },"14": {
+    "doc": "BDD (Colosal FM) plugin",
+    "title": "Table of contents",
+    "content": ". | Description | Objectives | Operations | Transformations supported | . Official repository . https://www.github.com/flamapy/bdd_metamodel . ",
+    "url": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#table-of-contents",
+    
+    "relUrl": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#table-of-contents"
+  },"15": {
+    "doc": "BDD (Colosal FM) plugin",
+    "title": "Description",
+    "content": "This plugin supports Binary Decision Diagrams (BDDs) representations for feature models. ",
+    "url": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#description",
+    
+    "relUrl": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#description"
+  },"16": {
+    "doc": "BDD (Colosal FM) plugin",
+    "title": "Objectives",
+    "content": "The core plugin provides the following functionallity . | Increase scalability for colosal feature models | . ",
+    "url": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#objectives",
+    
+    "relUrl": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#objectives"
+  },"17": {
+    "doc": "BDD (Colosal FM) plugin",
+    "title": "Operations",
+    "content": "Currently, this plugin enables the following operations. | Sampling | Feature Inclusion Probability | Product distribution | . ",
+    "url": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#operations",
+    
+    "relUrl": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#operations"
+  },"18": {
+    "doc": "BDD (Colosal FM) plugin",
+    "title": "Transformations supported",
+    "content": "Currently this plugins enables a set of transformations for CNF and feaute models. Concretely we support: . | Format/model | Model2Model | Model2Text | Text2Model | . | Feature model | [x] |   |   | . | DDDMP |   | [x] | [x] | . | SPLX |   |   | [x] | . ",
+    "url": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#transformations-supported",
+    
+    "relUrl": "/docs/core_and_plugins/lab%20plugins/bdd_colosal_fm/#transformations-supported"
+  },"19": {
+    "doc": "Branch and Commit Guidelines",
+    "title": "Branch and Commit Guidelines",
+    "content": " ",
+    "url": "/docs/contributing/branch_and_commit_guidelines/",
+    
+    "relUrl": "/docs/contributing/branch_and_commit_guidelines/"
+  },"20": {
+    "doc": "Branch and Commit Guidelines",
+    "title": "Table of contents",
+    "content": ". | Branch naming conventions | Commit guidelines . | Descriptive and atomic commits | First commit requirements | . | . ",
+    "url": "/docs/contributing/branch_and_commit_guidelines/#table-of-contents",
+    
+    "relUrl": "/docs/contributing/branch_and_commit_guidelines/#table-of-contents"
+  },"21": {
+    "doc": "Branch and Commit Guidelines",
+    "title": "Branch naming conventions",
+    "content": "Branches should follow a &lt;token&gt;-&lt;short-descriptive-name&gt; structure, where tokens can be such as: . | chore: Improvement on project maintenance or administration, such as dependencies updates. | docs: Documentation creation or update. | feature: New features added to the project. | fix/hotfix/patch: Correction of bugs and errors. | refactor: Improvement of already written code, with no changes on functionality. | test: Addition or updates of tests to features. | . ",
+    "url": "/docs/contributing/branch_and_commit_guidelines/#branch-naming-conventions",
+    
+    "relUrl": "/docs/contributing/branch_and_commit_guidelines/#branch-naming-conventions"
+  },"22": {
+    "doc": "Branch and Commit Guidelines",
+    "title": "Commit guidelines",
+    "content": "Descriptive and atomic commits . Commits should be as descriptive and atomic as possible. However, commits collaborators make on their PRs will not be logged, as they will always be squashed. For this reason, you will not have to worry much about commit messages following strict guidelines. Just see your commit history as a log for both maintainers and you to know the progress of the work. First commit requirements . A first and mandatory commit has to be done, as mentioned before, to create the PR. This commit should contain a brief description of the remaining work. ",
+    "url": "/docs/contributing/branch_and_commit_guidelines/#commit-guidelines",
+    
+    "relUrl": "/docs/contributing/branch_and_commit_guidelines/#commit-guidelines"
+  },"23": {
+    "doc": "CLI",
+    "title": "CLI",
+    "content": "flamapy provides flamapy_admin, a CLI (Command Line Interface) with which to perform common development operations while the plugin is being developed. ",
+    "url": "/docs/developing/cli/",
+    
+    "relUrl": "/docs/developing/cli/"
+  },"24": {
+    "doc": "CLI",
+    "title": "Table of contents",
+    "content": ". | Get availables plugins | Get available operations of a plugin | Create new plugins | . In order to use the CLI, you need to set the development environment . ",
+    "url": "/docs/developing/cli/#table-of-contents",
+    
+    "relUrl": "/docs/developing/cli/#table-of-contents"
+  },"25": {
+    "doc": "CLI",
+    "title": "Get availables plugins",
+    "content": "To list all plugins that are available for use in the core, run: . flamapy-admin cli get_plugins . ",
+    "url": "/docs/developing/cli/#get-availables-plugins",
+    
+    "relUrl": "/docs/developing/cli/#get-availables-plugins"
+  },"26": {
+    "doc": "CLI",
+    "title": "Get available operations of a plugin",
+    "content": "To list all available operations of a specific plugin, run: . flamapy-admin cli get_operations_name_by_plugin NAME_PLUGIN . ",
+    "url": "/docs/developing/cli/#get-available-operations-of-a-plugin",
+    
+    "relUrl": "/docs/developing/cli/#get-available-operations-of-a-plugin"
+  },"27": {
+    "doc": "CLI",
+    "title": "Create new plugins",
+    "content": "You can create a new plugin with the following command structure: . flamapy_admin.py new_plugin --path PLUGIN_PATH NAME_PLUGIN EXTENSION_PLUGIN . For example, suppose we want to develop a plugin for OVM (Orthogonal Variability Model). The command would be: . flamapy_admin.py new_plugin --path /path/to/my/plugin/ovm_metamodel ovm ovm . ",
+    "url": "/docs/developing/cli/#create-new-plugins",
+    
+    "relUrl": "/docs/developing/cli/#create-new-plugins"
+  },"28": {
+    "doc": "Contributing",
+    "title": "Contributing",
+    "content": "Contributing to flamapy is an exciting opportunity to be part of a dynamic and collaborative community. Whether it’s solving problems, creating new features, improving documentation or refining existing code, every contribution counts. Our contribution process is clear and accessible, ensuring you can get started quickly and see your work reflected in the project. By following our naming and commit guidelines, you can ensure that your efforts are recognised and valued. In addition, we offer a well-structured workflow to maintain code quality and consistency, facilitating collaboration and continuous innovation. Join us and help build something amazing. ",
+    "url": "/docs/contributing/contributing/",
+    
+    "relUrl": "/docs/contributing/contributing/"
+  },"29": {
+    "doc": "Contributing process",
+    "title": "Contributing process",
+    "content": " ",
+    "url": "/docs/contributing/contributing_process/",
+    
+    "relUrl": "/docs/contributing/contributing_process/"
+  },"30": {
+    "doc": "Contributing process",
+    "title": "Table of contents",
+    "content": ". | I want to contribute to the project. What should I do? . | Find an issue | Follow Development guide | Create a new branch | Make an empty commit | Create a PR | Commit and push changes | . | What can I contribute to? | . ",
+    "url": "/docs/contributing/contributing_process/#table-of-contents",
+    
+    "relUrl": "/docs/contributing/contributing_process/#table-of-contents"
+  },"31": {
+    "doc": "Contributing process",
+    "title": "I want to contribute to the project. What should I do?",
+    "content": "Find an issue . Find one issue you want to resolve. Make sure nobody else is working on such issue. Follow Development guide . Follow the Setting development environment to set up the project. Consider you will have to fork the project you want to contribute to. Create a new branch . Create a new branch from develop in your forked project. git branch new-branch develop . Make an empty commit . Make an empty commit on this branch and push. git commit -m 'message' --allow-empty git push -u origin new-branch . Create a PR . Create a PR with this empty commit, from your new branch, to base repository’s develop branch. This PR’s name must end with a keyword such as solves or fixes followed by the issue it solves (e.g., solves #115) . Commit and push changes . From this, any change you commit and push to your branch will be added to the PR. Keep committing until you finish developing your contribution and mention a maintainer so they can revise it. Check this to know the requisites to get you request accepted. ",
+    "url": "/docs/contributing/contributing_process/#i-want-to-contribute-to-the-project-what-should-i-do",
+    
+    "relUrl": "/docs/contributing/contributing_process/#i-want-to-contribute-to-the-project-what-should-i-do"
+  },"32": {
+    "doc": "Contributing process",
+    "title": "What can I contribute to?",
+    "content": "You can contribute to any of the issues in any project. ",
+    "url": "/docs/contributing/contributing_process/#what-can-i-contribute-to",
+    
+    "relUrl": "/docs/contributing/contributing_process/#what-can-i-contribute-to"
+  },"33": {
+    "doc": "Core",
+    "title": "Core",
+    "content": "The core component is the main entry point of flamapy . ",
+    "url": "/docs/core_and_plugins/core/",
+    
+    "relUrl": "/docs/core_and_plugins/core/"
+  },"34": {
+    "doc": "Core",
+    "title": "Table of contents",
+    "content": ". | Description | Objectives | . Official repository . https://www.github.com/flamapy/core . ",
+    "url": "/docs/core_and_plugins/core/#table-of-contents",
+    
+    "relUrl": "/docs/core_and_plugins/core/#table-of-contents"
+  },"35": {
+    "doc": "Core",
+    "title": "Description",
+    "content": "The core component of flamapy has three primary purposes: . | To provide a set of interfaces that serve as communicating components between the different plugins and the core. | To orchestrate the different plugins available in a Python installation. | To help developers to create new plugins. | . To fulfill the first purpose, it provides interfaces for the different transformations we can define. These are: . | Model to Text (M2T) | Text to Model (T2M) | Model to Model (M2M) | . These transformations allow the reading and saving of model serializations as well as the implementation of translation between variability models and solvers, which are both treated as metamodels in this architecture. Additionally, it provides a set of common interfaces for operations over feature models. ",
+    "url": "/docs/core_and_plugins/core/#description",
+    
+    "relUrl": "/docs/core_and_plugins/core/#description"
+  },"36": {
+    "doc": "Core",
+    "title": "Objectives",
+    "content": "The core plugin provides the following functionality: . | Orchestrating the execution by providing a common interface with the end user. Currently, three interfaces are offered: . | As a command line utility | As a Python library to be embedded in your project | As a REST API to be consumed | . | Help with the creation of skeletons for future plugins. To increase the number of plugins and ease their creation, the core plugin offers commands to generate empty plugins to be implemented. | Offers a set of interfaces (yes, interfaces in Python) for automated analysis operations to be implemented. | . ",
+    "url": "/docs/core_and_plugins/core/#objectives",
+    
+    "relUrl": "/docs/core_and_plugins/core/#objectives"
+  },"37": {
+    "doc": "Core and plugins",
+    "title": "Core and plugins",
+    "content": "Aquí hablamos de un texto super motivante . ",
+    "url": "/docs/core_and_plugins",
+    
+    "relUrl": "/docs/core_and_plugins"
+  },"38": {
+    "doc": "Developing",
+    "title": "Developing",
+    "content": "Welcome to the Developing section of our documentation! Here you will find everything you need to take your analytics software to the next level with flamapy . Do you have your own tool and want to integrate it with flamapy ? Are you looking to get the most out of the CLI and API? Are you passionate about creating your own plugins and expanding the functionality? . ",
+    "url": "/docs/developing",
+    
+    "relUrl": "/docs/developing"
+  },"39": {
+    "doc": "Errors and issues",
+    "title": "Errors and issues",
+    "content": " ",
+    "url": "/docs/contributing/errors_and_issues/",
+    
+    "relUrl": "/docs/contributing/errors_and_issues/"
+  },"40": {
+    "doc": "Errors and issues",
+    "title": "Table of contents",
+    "content": ". | Error Handling . | Errors outside the scope of your work | Errors in your own code | . | Issue Management . | Guidelines for creating issues | . | . ",
+    "url": "/docs/contributing/errors_and_issues/#table-of-contents",
+    
+    "relUrl": "/docs/contributing/errors_and_issues/#table-of-contents"
+  },"41": {
+    "doc": "Errors and issues",
+    "title": "Error Handling",
+    "content": "Errors outside the scope of your work . | Make sure it is an actual error and not a bad interaction between your code and the rest of the project. | Open an issue to keep track of the error. | You can assign the issue yourself if you either want to fix the error or need to do so for your code to work. If you want to fix that new issue, you SHOULD do it from a different PR. If it is impossible or too hard to separately fix it, fix the error on your already open PR, but you MUST clarify which commits are part of this new issue so maintainers know it when squashing. | . Errors in your own code . Fix it as soon as possible to prevent it from scaling. ",
+    "url": "/docs/contributing/errors_and_issues/#error-handling",
+    
+    "relUrl": "/docs/contributing/errors_and_issues/#error-handling"
+  },"42": {
+    "doc": "Errors and issues",
+    "title": "Issue Management",
+    "content": "Guidelines for creating issues . You can open an issue any time you find a bug or an idea to implement in a project. Whatever the reason is, issues will keep track of the remaining and finished tasks in projects. To keep the issues environment as efficient as possible, please consider the following practices: . | Provide a descriptive short title. Use description to give more in-depth details. | Use labels to make your issues easier to filter. | For bugs, try to find and mention the author of the code which is failing. | For bugs, include as many details as possible to make them replicable and testable. | Keep your notifications on so you know about mentions or comments on your issues. | . ",
+    "url": "/docs/contributing/errors_and_issues/#issue-management",
+    
+    "relUrl": "/docs/contributing/errors_and_issues/#issue-management"
+  },"43": {
+    "doc": "Extending with your plugins",
+    "title": "Extending with your plugins",
+    "content": " ",
+    "url": "/docs/developing/extending_with_your_plugins/",
+    
+    "relUrl": "/docs/developing/extending_with_your_plugins/"
+  },"44": {
+    "doc": "Extending with your plugins",
+    "title": "Table of contents",
+    "content": ". | Create your own plugin | . In order to use the CLI, you need to set the development environment . ",
+    "url": "/docs/developing/extending_with_your_plugins/#table-of-contents",
+    
+    "relUrl": "/docs/developing/extending_with_your_plugins/#table-of-contents"
+  },"45": {
+    "doc": "Extending with your plugins",
+    "title": "Create your own plugin",
+    "content": "Let’s take as an example that we want to develop a plugin for OVM (Orthogonal Variability Model) . We go to the core repository of flamapy and create a directory for the metamodel: . cd core &amp;&amp; mkdir ./ovm_metamodel . We use the flamapy-admin CLI to generate the new plugin: . flamapy-admin new_plugin --path ./ovm_metamodel ovm ovm . ",
+    "url": "/docs/developing/extending_with_your_plugins/#create-your-own-plugin",
+    
+    "relUrl": "/docs/developing/extending_with_your_plugins/#create-your-own-plugin"
+  },"46": {
+    "doc": "Feature model plugin",
+    "title": "Feature model plugin",
+    "content": "The feature model plugin provides the metaclases required to work with feature models. ",
+    "url": "/docs/core_and_plugins/fm/",
+    
+    "relUrl": "/docs/core_and_plugins/fm/"
+  },"47": {
+    "doc": "Feature model plugin",
+    "title": "Table of contents",
+    "content": ". | Description | Objectives | Operations | Transformations supported | . Official repository . https://www.github.com/flamapy/fm_metamodel . ",
+    "url": "/docs/core_and_plugins/fm/#table-of-contents",
+    
+    "relUrl": "/docs/core_and_plugins/fm/#table-of-contents"
+  },"48": {
+    "doc": "Feature model plugin",
+    "title": "Description",
+    "content": "One of the main parts of flamapy is the feature model metamodel. This plugin provides: . | The metaclasses required to store and manipulate cardinality-based feature models. | A transformation into the PySAT metamodel. | A set of model to text (M2T) and text to model (T2M) transformations to read and save feature model serializations. | . This enables the reading and saving of feature models into XML and JSON files [22]; and, . | A set of operations to extract information from the structural properties of the model, such as counting the number of features, the number of cross-tree constraints, the branching factor, etc. | . ",
+    "url": "/docs/core_and_plugins/fm/#description",
+    
+    "relUrl": "/docs/core_and_plugins/fm/#description"
+  },"49": {
+    "doc": "Feature model plugin",
+    "title": "Objectives",
+    "content": "The core plugin provides the following functionallity . | Storage and manipulation of feature models | Read and store of feature models | Implement operations that do not rely on solvers backend | . ",
+    "url": "/docs/core_and_plugins/fm/#objectives",
+    
+    "relUrl": "/docs/core_and_plugins/fm/#objectives"
+  },"50": {
+    "doc": "Feature model plugin",
+    "title": "Operations",
+    "content": "Currently, this plugin enables the following operations. Note that these operations are executed without a backend solver which makes them scalable and fast while having some limitations: . | Atomic sets | Average Branching factor | Core Features | Count leafs | Estimated product number | Feature ancestors | Leaf features | Max depth tree | Average Branching factor | . ",
+    "url": "/docs/core_and_plugins/fm/#operations",
+    
+    "relUrl": "/docs/core_and_plugins/fm/#operations"
+  },"51": {
+    "doc": "Feature model plugin",
+    "title": "Transformations supported",
+    "content": "Currently this plugins enables a set of TextToModel transformations (a.k.a Parsers) and ModelToText transformations (a.k.a serializations) for the most common variability serializations found in the literatures. Concretely we support: . | Format | Model2Text | Text2Model | . | AFM (Fama format) | [x] | [x] | . | Feature IDE |   | [x] | . | Glencoe | [x] | [x] | . | Splot | [x] |   | . | UVL | [x] | [x] | . | Fama XML |   | [x] | . | Json | [x] |   | . ",
+    "url": "/docs/core_and_plugins/fm/#transformations-supported",
+    
+    "relUrl": "/docs/core_and_plugins/fm/#transformations-supported"
+  },"52": {
+    "doc": "Getting started",
+    "title": "Getting started",
+    "content": " ",
+    "url": "/docs/getting-started/",
+    
+    "relUrl": "/docs/getting-started/"
+  },"53": {
+    "doc": "Getting started",
+    "title": "Installation",
+    "content": "To analyze feature models, you can use the flamapy-fm-dist distribution. It requires Python &gt;= 3.9. It’s recommended to use a virtual environment (venv) for installation to avoid conflicts with other packages. Here’s how you can set it up: . python -m venv flamapyenv &amp;&amp; source flamapyenv/bin/activate . Install the distribution: . pip install flamapy-fm-dist . ",
+    "url": "/docs/getting-started/#installation",
+    
+    "relUrl": "/docs/getting-started/#installation"
+  },"54": {
+    "doc": "Getting started",
+    "title": "Basic operations",
+    "content": "To test some basic operations, you need UVL models. Several are available at UVLHub. If you prefer, you can download a test one: . wget -q \"https://raw.githubusercontent.com/flamapy/flamapy-fm-dist/main/resources/models/valid_model.uvl\" wget -q \"https://raw.githubusercontent.com/flamapy/flamapy-fm-dist/main/resources/configurations/valid_configuration.csvconf\" . Validate the model . To check if the model is valid, run: . flamapy-fm-cli --modelPath=\"./valid_model.uvl\" valid . Get all products . To generate all possible products from the model, use: . flamapy-fm-cli --modelPath=\"./valid_model.uvl\" products . Validate a configuration . To verify if a specific configuration is valid, run: . flamapy-fm-cli --modelPath=\"./valid_model.uvl\" valid_configuration ./valid_configuration.csvconf . ",
+    "url": "/docs/getting-started/#basic-operations",
+    
+    "relUrl": "/docs/getting-started/#basic-operations"
+  },"55": {
+    "doc": "Home",
+    "title": "",
+    "content": "flamapy official documentation . Introducing flamapy , the cutting-edge Python-based tool for Automatic Analysis of Feature Models (AAFM). flamapy revolutionizes feature model analysis by integrating the strengths of previous AAFM tools with advanced multi-solver and multi-metamodel capabilities. Seamlessly blending into the Python ecosystem, flamapy empowers developers with unparalleled flexibility and efficiency in feature model analysis, making it an indispensable asset for your software engineering toolkit. Experience the future of AAFM tooling with flamapy – where innovation meets functionality. Get started now View it on GitHub . Easily Extensible . | Plugin Generator: Simplifies the process of creating new plugins with a semi-automatic generator, making customization and expansion straightforward. | Variability in Models: Initially supports cardinality-based feature models, with the flexibility to easily incorporate other types like attributed feature models. | . Robust Solver Support . | PySAT Integration: Utilizes the PySAT metasolver, offering access to more than ten distinct solvers. This diversity allows for optimal solution finding across various complex scenarios. | . Comprehensive Operations . | Multi-Model Operations: Designed with capabilities for handling complex multi-model operations similar to those in Familiar. | Single-Model Focus: Also supports operations targeted at single-model scenarios, providing versatility in usage. | . Changelog . Detailed changes for each release are documented in the release notes. Contributing . When contributing to this repository, please first read contributing. ",
+    "url": "/",
+    
+    "relUrl": "/"
+  },"56": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  },"57": {
+    "doc": "Integrating with your tools",
+    "title": "Integrating with your tools",
+    "content": " ",
+    "url": "/docs/developing/integrating_with_your_tools/",
+    
+    "relUrl": "/docs/developing/integrating_with_your_tools/"
+  },"58": {
+    "doc": "Integrating with your tools",
+    "title": "Table of contents",
+    "content": ". ",
+    "url": "/docs/developing/integrating_with_your_tools/#table-of-contents",
+    
+    "relUrl": "/docs/developing/integrating_with_your_tools/#table-of-contents"
+  },"59": {
+    "doc": "Lab plugins",
+    "title": "Lab plugins",
+    "content": " ",
+    "url": "/docs/core_and_plugins/lab_plugins/",
+    
+    "relUrl": "/docs/core_and_plugins/lab_plugins/"
+  },"60": {
+    "doc": "PySAT plugin",
+    "title": "PySAT plugin",
+    "content": "The pysat model plugin provides the metaclases required to work with SAT models and to transform feature models into SAT. ",
+    "url": "/docs/core_and_plugins/pysat/",
+    
+    "relUrl": "/docs/core_and_plugins/pysat/"
+  },"61": {
+    "doc": "PySAT plugin",
+    "title": "Table of contents",
+    "content": ". | Description | Objectives | Operations | Transformations supported | . Official repository . https://www.github.com/flamapy/pysat_metamodel . ",
+    "url": "/docs/core_and_plugins/pysat/#table-of-contents",
+    
+    "relUrl": "/docs/core_and_plugins/pysat/#table-of-contents"
+  },"62": {
+    "doc": "PySAT plugin",
+    "title": "Description",
+    "content": "This plugin implements the classes to perform AAFM using the PySAT metasolver. It encompasses the set of variables and constraints objects to execute the analysis operations using PySAT as the backend. This allows us to rely on more than ten SAT solvers. This plugin offers the following functionality: . | The metaclasses required to run the SAT instance representing our feature models. | A set of operations to extract information from the models. | A set of model to text (M2T) transformations to save the CNF representation of the current SAT instance. | . ",
+    "url": "/docs/core_and_plugins/pysat/#description",
+    
+    "relUrl": "/docs/core_and_plugins/pysat/#description"
+  },"63": {
+    "doc": "PySAT plugin",
+    "title": "Objectives",
+    "content": "The core plugin provides the following functionallity: . | Storage and manipulation of SAT | Read and store of SAT models | Implement operations that require a complex analysis | Transform feature models into SAT models | . ",
+    "url": "/docs/core_and_plugins/pysat/#objectives",
+    
+    "relUrl": "/docs/core_and_plugins/pysat/#objectives"
+  },"64": {
+    "doc": "PySAT plugin",
+    "title": "Operations",
+    "content": "Currently, this plugin enables the following operations: . | Commonality | Core Features | Dead features detection | Error detection | False optional detection | Filter | List products | Products number | Valid | Valid product (full configuration) | Valid configuration (partial configuration) | . ",
+    "url": "/docs/core_and_plugins/pysat/#operations",
+    
+    "relUrl": "/docs/core_and_plugins/pysat/#operations"
+  },"65": {
+    "doc": "PySAT plugin",
+    "title": "Transformations supported",
+    "content": "Currently this plugins enables a set of transformations for CNF and feaute models. Concretely we support: . | Format/model | Model2Model | Model2Text | Text2Model | . | Feature model | [x] |   |   | . | CNF |   |   | [x] | . ",
+    "url": "/docs/core_and_plugins/pysat/#transformations-supported",
+    
+    "relUrl": "/docs/core_and_plugins/pysat/#transformations-supported"
+  },"66": {
+    "doc": "Setting development environment",
+    "title": "Setting development environment",
+    "content": "flamapy requires a specific configuration of libraries, environment variables and various artifacts to run in developer mode. ",
+    "url": "/docs/developing/setting_development_environment/",
+    
+    "relUrl": "/docs/developing/setting_development_environment/"
+  },"67": {
+    "doc": "Setting development environment",
+    "title": "Table of contents",
+    "content": ". | Setting workspace | Clone the core | Clone plugins | Setting up . | Plugin paths | Setting developer mode | . | . ",
+    "url": "/docs/developing/setting_development_environment/#table-of-contents",
+    
+    "relUrl": "/docs/developing/setting_development_environment/#table-of-contents"
+  },"68": {
+    "doc": "Setting development environment",
+    "title": "Setting workspace",
+    "content": "To make it easier, we recommend creating the flamapy folder in your home directory: . mkdir ~/flamapy cd ~/flamapy . ",
+    "url": "/docs/developing/setting_development_environment/#setting-workspace",
+    
+    "relUrl": "/docs/developing/setting_development_environment/#setting-workspace"
+  },"69": {
+    "doc": "Setting development environment",
+    "title": "Clone the core",
+    "content": "git clone https://github.com/flamapy/core.git . ",
+    "url": "/docs/developing/setting_development_environment/#clone-the-core",
+    
+    "relUrl": "/docs/developing/setting_development_environment/#clone-the-core"
+  },"70": {
+    "doc": "Setting development environment",
+    "title": "Clone plugins",
+    "content": "By itself, the flamapy core does not provide parsing functionality. We can clone existing plugins to have artefacts to work with and not start from scratch: . git clone https://github.com/flamapy/fm_metamodel.git git clone https://github.com/flamapy/pysat_metamodel.git git clone https://github.com/flamapy/bdd_metamodel.git . ",
+    "url": "/docs/developing/setting_development_environment/#clone-plugins",
+    
+    "relUrl": "/docs/developing/setting_development_environment/#clone-plugins"
+  },"71": {
+    "doc": "Setting development environment",
+    "title": "Setting up",
+    "content": "Plugin paths . First, we must set the PLUGIN_PATHS environment variable so that the core of flamapy knows where the plugins are located. Assuming both the core repo and the plugins are in the flamapy directory, run: . export PLUGIN_PATHS=~/flamapy/fm_metamodel/:~/flamapy/pysat_metamodel/:~/flamapy/bdd_metamodel/ echo $PLUGIN_PATHS . Setting developer mode . Once the variable is defined, we can start the development environment. The following command creates and activates a Python virtual environment, installs development dependencies and plugins, and configures the specified plugins: . cd core make dev . ",
+    "url": "/docs/developing/setting_development_environment/#setting-up",
+    
+    "relUrl": "/docs/developing/setting_development_environment/#setting-up"
+  },"72": {
+    "doc": "Testing plugins",
+    "title": "Testing plugins",
+    "content": " ",
+    "url": "/docs/developing/testing_plugins/",
+    
+    "relUrl": "/docs/developing/testing_plugins/"
+  },"73": {
+    "doc": "Testing plugins",
+    "title": "Table of contents",
+    "content": ". | Run tests | Run test with coverage | Review code quality and styles error | Review hint typing | . We must go to the folder of the plugin in question in order to carry out the following commands . Run tests . To run all the tests of a plugin: . pip install pytest make test . Run test with coverage . pip install pytest coverage make cov . Review code quality and styles error . pip install prospector make lint . Review hint typing . pip install mypy make mypy . ",
+    "url": "/docs/developing/testing_plugins/#table-of-contents",
+    
+    "relUrl": "/docs/developing/testing_plugins/#table-of-contents"
+  },"74": {
+    "doc": "Troubleshooting",
+    "title": "Troubleshooting",
+    "content": " ",
+    "url": "/docs/trobleshooting/",
+    
+    "relUrl": "/docs/trobleshooting/"
+  },"75": {
+    "doc": "Troubleshooting",
+    "title": "Table of contents",
+    "content": " ",
+    "url": "/docs/trobleshooting/#table-of-contents",
+    
+    "relUrl": "/docs/trobleshooting/#table-of-contents"
+  }
+}
