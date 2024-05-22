@@ -3,7 +3,7 @@ layout: default
 title: Manual installation
 parent: Installation
 permalink: /docs/installation/manual_installation
-nav_order: 3
+nav_order: 1
 ---
 
 # Manual installation

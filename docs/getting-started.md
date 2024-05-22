@@ -18,7 +18,7 @@ For development deployment, the use of [Docker](https://www.docker.com/) is reco
 
 ## Clone repo
 
-You can start your fantastic development with uvlhub by cloning our official repository.
+You can start your fantastic development with {% include uvlhub.html %} by cloning our official repository.
 
 ```
 git clone https://github.com/diverso-lab/uvlhub.git
@@ -44,5 +44,5 @@ docker compose -f docker-compose.dev.yml up -d
 This will apply the migrations to the database and run the Flask application. 
 
 > {: .highlight }
-  **If everything worked correctly, you should see the deployed version of UVLHub in development at `http://localhost`.**
+  **If everything worked correctly, you should see the deployed version of UVLHub in development at `http://localhost`**
 

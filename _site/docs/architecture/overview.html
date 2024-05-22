@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(1) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Unit tests | UVLHub docs</title>
+<title>Overview | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Unit tests" />
+<meta property="og:title" content="Overview" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/architecture/overview" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/architecture/overview" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Unit tests" />
+<meta property="twitter:title" content="Overview" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Unit tests","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing/unit_tests"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Overview","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/architecture/overview"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -260,64 +260,110 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/testing">Testing</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Unit tests</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/architecture">Architecture</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Overview</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="unit-tests">
+            <h1 class="no_toc" id="overview">
   
   
-    <a href="#unit-tests" class="anchor-heading" aria-labelledby="unit-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Unit tests
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
   
   
 </h1>
     
-<h2 class="no_toc text-delta" id="table-of-contents">
-  
-  
-    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
-  
-  
-</h2>
-    
 
-<ol id="markdown-toc">
-  <li><a href="#testing-all-modules" id="markdown-toc-testing-all-modules">Testing all modules</a></li>
-  <li><a href="#testing-a-specific-module" id="markdown-toc-testing-a-specific-module">Testing a specific module</a></li>
+<p>The architecture of uvlhub consists of five main components.</p>
+
+<ol class="no_toc text-delta" id="markdown-toc">
+  <li><a href="#web-application" id="markdown-toc-web-application">Web application</a></li>
+  <li><a href="#local-storage" id="markdown-toc-local-storage">Local Storage</a></li>
+  <li><a href="#zenodo" id="markdown-toc-zenodo">Zenodo</a></li>
+  <li><a href="#automated-analysis-of-feature-models-aafm" id="markdown-toc-automated-analysis-of-feature-models-aafm">Automated Analysis of Feature Models (AAFM)</a></li>
+  <li><a href="#rest-api" id="markdown-toc-rest-api">REST API</a></li>
 </ol>
-<h2 id="testing-all-modules">
+
+<p><img src="/assets/images/uvlhub_architecture.svg" alt="UVLHUB Architecture Overview" />
+<em>Figure 1: Overview of UVLHUB architecture.</em></p>
+<h2 id="web-application">
   
   
-    <a href="#testing-all-modules" class="anchor-heading" aria-labelledby="testing-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing all modules
+    <a href="#web-application" class="anchor-heading" aria-labelledby="web-application"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Web application
   
   
 </h2>
     
 
-<p>To run tests across all modules in the project, you can use the following command:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test
-</code></pre></div></div>
-
-<p>This command will execute all tests found within the <code class="language-plaintext highlighter-rouge">app/blueprints</code> directory, covering all the modules of the project.</p>
-<h2 id="testing-a-specific-module">
+<p>The primary access point for the web application is through a web browser. Users navigate to a domain that redirects them to the Flask-developed application<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ integrates four distinct services: (2) local storage for UVL models and pertinent information, (3) Zenodo for permanent data persistence, (4) automatic feature model analysis, and (5) a RESTful service to extend functionality to other domains.</p>
+<h2 id="local-storage">
   
   
-    <a href="#testing-a-specific-module" class="anchor-heading" aria-labelledby="testing-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing a specific module
+    <a href="#local-storage" class="anchor-heading" aria-labelledby="local-storage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Local Storage
   
   
 </h2>
     
 
-<p>If you’re focusing on a particular module and want to run tests only for that module, you can specify the module
-name as an argument:</p>
+<p>Users upload their models in the UVL format. All uploaded models must be syntactically valid, conforming to UVL grammar. However, models might still contain semantic errors such as dead features or conflicting constraints<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>. UVL files are stored locally, while related information like title, description, authors, and tags are stored in a relational database.</p>
+<h2 id="zenodo">
+  
+  
+    <a href="#zenodo" class="anchor-heading" aria-labelledby="zenodo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Zenodo
+  
+  
+</h2>
+    
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test &lt;module_name&gt;
-</code></pre></div></div>
+<p>Although some model data is stored locally, it is backed up in the Zenodo general repository. This provides the UVL datasets with a DOI, facilitating the process of obtaining the identifier. If <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ becomes unavailable, the datasets remain on Zenodo, allowing local storage to be rebuilt without data loss.</p>
+<h2 id="automated-analysis-of-feature-models-aafm">
+  
+  
+    <a href="#automated-analysis-of-feature-models-aafm" class="anchor-heading" aria-labelledby="automated-analysis-of-feature-models-aafm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automated Analysis of Feature Models (AAFM)
+  
+  
+</h2>
+    
+
+<p>Users can analyze<sup id="fnref:2:1" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup> the models within their datasets uploaded to <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+. This analysis, supported by the <!-- _includes/flamapy.html -->
+<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
+ tool suite<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>, can determine model validity, feature count, or the number of different products derivable from the model. This component ensures each model’s syntactic correctness, delegating syntax verification responsibility to <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+, thus sparing users from performing this check.</p>
+<h2 id="rest-api">
+  
+  
+    <a href="#rest-api" class="anchor-heading" aria-labelledby="rest-api"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> REST API
+  
+  
+</h2>
+    
+
+<p>Open Science advocates for open access to research data, making data generated in scientific research freely available and accessible to other researchers, practitioners, and the public. To support this, <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ offers a REST API accessible to any registered user with a developer role. This API allows free integration of validated and analyzed models (from component 4) into other domains.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Flask: <a href="https://flask.palletsprojects.com">Flask Project</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>AAFM: “Feature Models 20 Years Later: A Systematic Literature Review” <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>Galindo, J. A., et al. (2023). “FLAMA: Feature Model Analysis Tool Suite” <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
           
 
           

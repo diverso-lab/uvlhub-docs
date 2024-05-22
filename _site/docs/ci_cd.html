@@ -18,9 +18,9 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li:not(:nth-child(7)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,12 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(7) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +56,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Unit tests | UVLHub docs</title>
+<title>CI/CD | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Unit tests" />
+<meta property="og:title" content="CI/CD" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/ci_cd" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/ci_cd" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Unit tests" />
+<meta property="twitter:title" content="CI/CD" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Unit tests","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing/unit_tests"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"CI/CD","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/ci_cd"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -258,67 +256,39 @@
 </div>
 
     <div class="main-content-wrap">
-      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-  <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/testing">Testing</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Unit tests</span></li>
-  </ol>
-</nav>
+      
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="unit-tests">
+            <h1 id="cicd">
   
   
-    <a href="#unit-tests" class="anchor-heading" aria-labelledby="unit-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Unit tests
+    <a href="#cicd" class="anchor-heading" aria-labelledby="cicd"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CI/CD
   
   
 </h1>
     
-<h2 class="no_toc text-delta" id="table-of-contents">
-  
-  
-    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
-  
-  
-</h2>
-    
 
-<ol id="markdown-toc">
-  <li><a href="#testing-all-modules" id="markdown-toc-testing-all-modules">Testing all modules</a></li>
-  <li><a href="#testing-a-specific-module" id="markdown-toc-testing-a-specific-module">Testing a specific module</a></li>
-</ol>
-<h2 id="testing-all-modules">
-  
-  
-    <a href="#testing-all-modules" class="anchor-heading" aria-labelledby="testing-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing all modules
-  
-  
-</h2>
-    
-
-<p>To run tests across all modules in the project, you can use the following command:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test
-</code></pre></div></div>
-
-<p>This command will execute all tests found within the <code class="language-plaintext highlighter-rouge">app/blueprints</code> directory, covering all the modules of the project.</p>
-<h2 id="testing-a-specific-module">
-  
-  
-    <a href="#testing-a-specific-module" class="anchor-heading" aria-labelledby="testing-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing a specific module
-  
-  
-</h2>
-    
-
-<p>If you’re focusing on a particular module and want to run tests only for that module, you can specify the module
-name as an argument:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test &lt;module_name&gt;
-</code></pre></div></div>
+<p class="fs-6 fw-300">Understanding the CI/CD pipeline of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+, implemented using GitHub Actions, is essential for ensuring the seamless and efficient deployment of our application. CI/CD automates the process of testing, building, and deploying code changes, significantly reducing the risk of human error and increasing the speed of development cycles. By mastering the CI/CD setup, you can contribute to a more robust, reliable, and scalable application, ensuring that every code change is integrated smoothly and deployed swiftly.</p>
           
+
+          
+            <hr>
+<h2 class="text-delta">Table of contents</h2>
+
+<ul>
+
+  <li>
+    <a href="/docs/ci_cd/continuous_integration">Continuous integration</a>
+  </li>
+
+  <li>
+    <a href="/docs/ci_cd/continuous_deployment">Continuous deployment</a>
+  </li>
+
+</ul>
 
           
         </main>

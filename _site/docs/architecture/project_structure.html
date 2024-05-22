@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(2) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(2) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Unit tests | UVLHub docs</title>
+<title>Project structure | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Unit tests" />
+<meta property="og:title" content="Project structure" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/architecture/project_structure" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/architecture/project_structure" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Unit tests" />
+<meta property="twitter:title" content="Project structure" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Unit tests","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing/unit_tests"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Project structure","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/architecture/project_structure"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -260,22 +260,23 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/testing">Testing</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Unit tests</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/architecture">Architecture</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Project structure</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="unit-tests">
+            <h1 class="no_toc" id="project-structure">
   
   
-    <a href="#unit-tests" class="anchor-heading" aria-labelledby="unit-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Unit tests
+    <a href="#project-structure" class="anchor-heading" aria-labelledby="project-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Project structure
   
   
 </h1>
     
+
+<p>This section provides an overview of the directory and file structure of the project. Each subsection describes the purpose and contents of specific directories and files, highlighting their roles within the overall architecture. Understanding this structure is crucial for effective development, maintenance, and deployment of the application. Below is a detailed explanation of each component in the project.</p>
 <h2 class="no_toc text-delta" id="table-of-contents">
   
   
@@ -286,38 +287,197 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#testing-all-modules" id="markdown-toc-testing-all-modules">Testing all modules</a></li>
-  <li><a href="#testing-a-specific-module" id="markdown-toc-testing-a-specific-module">Testing a specific module</a></li>
+  <li><a href="#githubworkflows" id="markdown-toc-githubworkflows">.github/workflows</a></li>
+  <li><a href="#app" id="markdown-toc-app">app</a></li>
+  <li><a href="#core" id="markdown-toc-core">core</a></li>
+  <li><a href="#letsencrypt" id="markdown-toc-letsencrypt">letsencrypt</a></li>
+  <li><a href="#migrations" id="markdown-toc-migrations">migrations</a></li>
+  <li><a href="#nginx" id="markdown-toc-nginx">nginx</a></li>
+  <li><a href="#populate" id="markdown-toc-populate">populate</a></li>
+  <li><a href="#rosemary" id="markdown-toc-rosemary">rosemary</a></li>
+  <li><a href="#scripts" id="markdown-toc-scripts">scripts</a></li>
+  <li><a href="#envexample" id="markdown-toc-envexample">.env.example</a></li>
+  <li><a href="#flake8" id="markdown-toc-flake8">.flake8</a></li>
+  <li><a href="#gitignore" id="markdown-toc-gitignore">.gitignore</a></li>
+  <li><a href="#dockerfiledev" id="markdown-toc-dockerfiledev">Dockerfile.dev</a></li>
+  <li><a href="#dockerfilemariadb" id="markdown-toc-dockerfilemariadb">Dockerfile.mariadb</a></li>
+  <li><a href="#dockerfileprod" id="markdown-toc-dockerfileprod">Dockerfile.prod</a></li>
+  <li><a href="#docker-composedevyml" id="markdown-toc-docker-composedevyml">docker-compose.dev.yml</a></li>
+  <li><a href="#docker-composeprodyml" id="markdown-toc-docker-composeprodyml">docker-compose.prod.yml</a></li>
+  <li><a href="#requirementstxt" id="markdown-toc-requirementstxt">requirements.txt</a></li>
+  <li><a href="#setuppy" id="markdown-toc-setuppy">setup.py</a></li>
 </ol>
-<h2 id="testing-all-modules">
+<h2 id="githubworkflows">
   
   
-    <a href="#testing-all-modules" class="anchor-heading" aria-labelledby="testing-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing all modules
-  
-  
-</h2>
-    
-
-<p>To run tests across all modules in the project, you can use the following command:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test
-</code></pre></div></div>
-
-<p>This command will execute all tests found within the <code class="language-plaintext highlighter-rouge">app/blueprints</code> directory, covering all the modules of the project.</p>
-<h2 id="testing-a-specific-module">
-  
-  
-    <a href="#testing-a-specific-module" class="anchor-heading" aria-labelledby="testing-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing a specific module
+    <a href="#githubworkflows" class="anchor-heading" aria-labelledby="githubworkflows"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .github/workflows
   
   
 </h2>
     
-
-<p>If you’re focusing on a particular module and want to run tests only for that module, you can specify the module
-name as an argument:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test &lt;module_name&gt;
-</code></pre></div></div>
+<p>This directory contains GitHub Actions workflows. These YAML files define automated actions that run on specific repository events, such as pushes or pull requests.</p>
+<h2 id="app">
+  
+  
+    <a href="#app" class="anchor-heading" aria-labelledby="app"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> app
+  
+  
+</h2>
+    
+<p>This directory likely contains the main application code. It includes modules, views, controllers, and other fundamental components of the application’s business logic.</p>
+<h2 id="core">
+  
+  
+    <a href="#core" class="anchor-heading" aria-labelledby="core"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> core
+  
+  
+</h2>
+    
+<p>This directory usually contains core components and services used throughout the application. It can include utilities, global configurations, and base classes.</p>
+<h2 id="letsencrypt">
+  
+  
+    <a href="#letsencrypt" class="anchor-heading" aria-labelledby="letsencrypt"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> letsencrypt
+  
+  
+</h2>
+    
+<p>This directory is related to Let’s Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates.</p>
+<h2 id="migrations">
+  
+  
+    <a href="#migrations" class="anchor-heading" aria-labelledby="migrations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> migrations
+  
+  
+</h2>
+    
+<p>This directory contains database migration files, which allow incremental changes to the database schema in a controlled and reproducible manner.</p>
+<h2 id="nginx">
+  
+  
+    <a href="#nginx" class="anchor-heading" aria-labelledby="nginx"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> nginx
+  
+  
+</h2>
+    
+<p>This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks.</p>
+<h2 id="populate">
+  
+  
+    <a href="#populate" class="anchor-heading" aria-labelledby="populate"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> populate
+  
+  
+</h2>
+    
+<p>This directory contains scripts and files used to populate the database with initial or test data.</p>
+<h2 id="rosemary">
+  
+  
+    <a href="#rosemary" class="anchor-heading" aria-labelledby="rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> rosemary
+  
+  
+</h2>
+    
+<p>This directory contains the code for the Rosemary CLI package. It is a version still under development and is not available in <code class="language-plaintext highlighter-rouge">pypi</code> at the moment.</p>
+<h2 id="scripts">
+  
+  
+    <a href="#scripts" class="anchor-heading" aria-labelledby="scripts"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scripts
+  
+  
+</h2>
+    
+<p>Contains auxiliary scripts that automate various tasks such as dependency installation, deployment, maintenance, and more.</p>
+<h2 id="envexample">
+  
+  
+    <a href="#envexample" class="anchor-heading" aria-labelledby="envexample"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .env.example
+  
+  
+</h2>
+    
+<p>This file provides an example of the environment variables needed to run the application. It is used as a reference for setting up the development environment.</p>
+<h2 id="flake8">
+  
+  
+    <a href="#flake8" class="anchor-heading" aria-labelledby="flake8"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .flake8
+  
+  
+</h2>
+    
+<p>Contains configurations for Flake8, a code style and checking tool for Python. It helps maintain code consistency and find common errors.</p>
+<h2 id="gitignore">
+  
+  
+    <a href="#gitignore" class="anchor-heading" aria-labelledby="gitignore"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .gitignore
+  
+  
+</h2>
+    
+<p>A list of files and directories that Git should ignore. This prevents certain files (like local configurations and temporary files) from being included in version control.</p>
+<h2 id="dockerfiledev">
+  
+  
+    <a href="#dockerfiledev" class="anchor-heading" aria-labelledby="dockerfiledev"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.dev
+  
+  
+</h2>
+    
+<p>Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment.</p>
+<h2 id="dockerfilemariadb">
+  
+  
+    <a href="#dockerfilemariadb" class="anchor-heading" aria-labelledby="dockerfilemariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.mariadb
+  
+  
+</h2>
+    
+<p>Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment.</p>
+<h2 id="dockerfileprod">
+  
+  
+    <a href="#dockerfileprod" class="anchor-heading" aria-labelledby="dockerfileprod"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.prod
+  
+  
+</h2>
+    
+<p>Docker file for building the application’s production image. It is optimized for performance and security.</p>
+<h2 id="docker-composedevyml">
+  
+  
+    <a href="#docker-composedevyml" class="anchor-heading" aria-labelledby="docker-composedevyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.dev.yml
+  
+  
+</h2>
+    
+<p>Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated.</p>
+<h2 id="docker-composeprodyml">
+  
+  
+    <a href="#docker-composeprodyml" class="anchor-heading" aria-labelledby="docker-composeprodyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.yml
+  
+  
+</h2>
+    
+<p>Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production.</p>
+<h2 id="requirementstxt">
+  
+  
+    <a href="#requirementstxt" class="anchor-heading" aria-labelledby="requirementstxt"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> requirements.txt
+  
+  
+</h2>
+    
+<p>A list of Python dependencies needed for the project. Used by <code class="language-plaintext highlighter-rouge">pip</code> to install all required libraries.</p>
+<h2 id="setuppy">
+  
+  
+    <a href="#setuppy" class="anchor-heading" aria-labelledby="setuppy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> setup.py
+  
+  
+</h2>
+    
+<p>A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. En este caso, sirve para poder usar el paquete <code class="language-plaintext highlighter-rouge">rosemary</code></p>
           
 
           
