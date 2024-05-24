@@ -287,8 +287,116 @@
   
 </h1>
     
+<h2 id="update-the-system">
+  
+  
+    <a href="#update-the-system" class="anchor-heading" aria-labelledby="update-the-system"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Update the system
+  
+  
+</h2>
+    
 
-<p class="fs-6 fw-300">Coming soon…</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update -y
+sudo apt upgrade -y
+</code></pre></div></div>
+<h2 id="install-mariadb">
+  
+  
+    <a href="#install-mariadb" class="anchor-heading" aria-labelledby="install-mariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install MariaDB
+  
+  
+</h2>
+    
+<h3 id="install-official-package">
+  
+  
+    <a href="#install-official-package" class="anchor-heading" aria-labelledby="install-official-package"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install official package
+  
+  
+</h3>
+    
+
+<p>MariaDB is available in the official Ubuntu repositories, so you can easily install it with apt:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install mariadb-server -y
+</code></pre></div></div>
+<h3 id="start-the-mariadb-service">
+  
+  
+    <a href="#start-the-mariadb-service" class="anchor-heading" aria-labelledby="start-the-mariadb-service"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Start the MariaDB service
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl start mariadb
+</code></pre></div></div>
+<h3 id="configure-mariadb">
+  
+  
+    <a href="#configure-mariadb" class="anchor-heading" aria-labelledby="configure-mariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configure MariaDB
+  
+  
+</h3>
+    
+
+<p>After installing MariaDB, it is recommended to run the security script to perform some initial configurations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mysql_secure_installation
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Enter current password for root (enter for none): (enter)
+- Switch to unix_socket authentication [Y/n]: `y`
+- Change the root password? [Y/n]: `y`
+    - New password: `uvlhubdb_root_password`
+    - Re-enter new password: `uvlhubdb_root_password`
+- Remove anonymous users? [Y/n]: `y`
+- Disallow root login remotely? [Y/n]: `y` 
+- Remove test database and access to it? [Y/n]: `y`
+- Reload privilege tables now? [Y/n] : `y`
+</code></pre></div></div>
+<h3 id="configure-databases-and-users">
+  
+  
+    <a href="#configure-databases-and-users" class="anchor-heading" aria-labelledby="configure-databases-and-users"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configure Databases and Users
+  
+  
+</h3>
+    
+
+<p>Using <code class="language-plaintext highlighter-rouge">uvlhubdb_root_password</code> as root password:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mysql -u root -p
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE DATABASE uvlhubdb;
+CREATE DATABASE uvlhubdb_test;
+CREATE USER 'uvlhubdb_user'@'localhost' IDENTIFIED BY 'uvlhubdb_password';
+GRANT ALL PRIVILEGES ON uvlhubdb.* TO 'uvlhubdb_user'@'localhost';
+GRANT ALL PRIVILEGES ON uvlhubdb_test.* TO 'uvlhubdb_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+</code></pre></div></div>
+<h2 id="configure-app-environment">
+  
+  
+    <a href="#configure-app-environment" class="anchor-heading" aria-labelledby="configure-app-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configure app environment
+  
+  
+</h2>
+    
+<h3 id="creates-and-activate-a-virtual-environment">
+  
+  
+    <a href="#creates-and-activate-a-virtual-environment" class="anchor-heading" aria-labelledby="creates-and-activate-a-virtual-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creates and activate a virtual environment
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 -m venv venv
+source venv/bin/activate
+</code></pre></div></div>
           
 
           
