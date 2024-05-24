@@ -279,7 +279,7 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 id="manual-installation">
+            <h1 class="no_toc" id="manual-installation">
   
   
     <a href="#manual-installation" class="anchor-heading" aria-labelledby="manual-installation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Manual installation
@@ -287,6 +287,43 @@
   
 </h1>
     
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#clone-the-repo" id="markdown-toc-clone-the-repo">Clone the repo</a></li>
+  <li><a href="#update-the-system" id="markdown-toc-update-the-system">Update the system</a></li>
+  <li><a href="#install-mariadb" id="markdown-toc-install-mariadb">Install MariaDB</a>    <ol>
+      <li><a href="#install-official-package" id="markdown-toc-install-official-package">Install official package</a></li>
+      <li><a href="#start-the-mariadb-service" id="markdown-toc-start-the-mariadb-service">Start the MariaDB service</a></li>
+      <li><a href="#configure-mariadb" id="markdown-toc-configure-mariadb">Configure MariaDB</a></li>
+      <li><a href="#configure-databases-and-users" id="markdown-toc-configure-databases-and-users">Configure Databases and Users</a></li>
+    </ol>
+  </li>
+  <li><a href="#configure-app-environment" id="markdown-toc-configure-app-environment">Configure app environment</a>    <ol>
+      <li><a href="#creates-and-activate-a-virtual-environment" id="markdown-toc-creates-and-activate-a-virtual-environment">Creates and activate a virtual environment</a></li>
+      <li><a href="#install-python-dependencies" id="markdown-toc-install-python-dependencies">Install Python dependencies</a></li>
+    </ol>
+  </li>
+</ol>
+<h2 id="clone-the-repo">
+  
+  
+    <a href="#clone-the-repo" class="anchor-heading" aria-labelledby="clone-the-repo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Clone the repo
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/diverso-lab/uvlhub.git
+cd uvlhub
+</code></pre></div></div>
 <h2 id="update-the-system">
   
   
@@ -396,6 +433,18 @@ EXIT;
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 -m venv venv
 source venv/bin/activate
+</code></pre></div></div>
+<h3 id="install-python-dependencies">
+  
+  
+    <a href="#install-python-dependencies" class="anchor-heading" aria-labelledby="install-python-dependencies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Python dependencies
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install --upgrade pip
+pip install -r requirements.txt
 </code></pre></div></div>
           
 

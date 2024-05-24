@@ -7,6 +7,20 @@ nav_order: 1
 ---
 
 # Manual installation
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+## Clone the repo
+
+```
+git clone https://github.com/diverso-lab/uvlhub.git
+cd uvlhub
+```
 
 ## Update the system
 
@@ -76,4 +90,11 @@ EXIT;
 ```
 python3 -m venv venv
 source venv/bin/activate
+```
+
+### Install Python dependencies
+
+```
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
