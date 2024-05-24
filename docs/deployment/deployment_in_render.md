@@ -9,7 +9,5 @@ nav_order: 1
 # Deployment in Render
 {: .no_toc }
 
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
+Coming soon...
+{: .fs-6 .fw-300 }
