@@ -211,7 +211,7 @@
   },"30": {
     "doc": "Getting started",
     "title": "Deploy in develop",
-    "content": "To deploy the software under development environment, run: . docker compose -f docker-compose.dev.yml up -d . This will apply the migrations to the database and run the Flask application. If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost . ",
+    "content": "To deploy the software under development environment, run: . docker compose -f docker/docker-compose.dev.yml up -d . This will apply the migrations to the database and run the Flask application. If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost . ",
     "url": "/docs/getting-started/#deploy-in-develop",
     
     "relUrl": "/docs/getting-started/#deploy-in-develop"
@@ -414,7 +414,7 @@
   },"59": {
     "doc": "Project structure",
     "title": "Table of contents",
-    "content": ". | .github/workflows | app | core | letsencrypt | migrations | nginx | populate | rosemary | scripts | .env.example | .flake8 | .gitignore | Dockerfile.dev | Dockerfile.mariadb | Dockerfile.prod | docker-compose.dev.yml | docker-compose.prod.yml | requirements.txt | setup.py | . ",
+    "content": ". | .github/workflows | app | core | docker . | images . | Dockerfile.dev | Dockerfile.mariadb | Dockerfile.prod | . | letsencrypt | nginx | public | docker-compose.dev.yml | docker-compose.prod.yml | . | migrations | rosemary | scripts | .env.X.example | .flake8 | .gitignore | requirements.txt | setup.py | . ",
     "url": "/docs/architecture/project_structure#table-of-contents",
     
     "relUrl": "/docs/architecture/project_structure#table-of-contents"
@@ -441,11 +441,11 @@
     "relUrl": "/docs/architecture/project_structure#core"
   },"63": {
     "doc": "Project structure",
-    "title": "letsencrypt",
-    "content": "This directory is related to Let’s Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates. ",
-    "url": "/docs/architecture/project_structure#letsencrypt",
+    "title": "docker",
+    "content": "images . Dockerfile.dev . Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment. Dockerfile.mariadb . Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment. Dockerfile.prod . Docker file for building the application’s production image. It is optimized for performance and security. letsencrypt . This directory is related to Let’s Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates. nginx . This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks. public . This directory is for generating SSL certificates, it acts as a temporary public folder. docker-compose.dev.yml . Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated. docker-compose.prod.yml . Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production. ",
+    "url": "/docs/architecture/project_structure#docker",
     
-    "relUrl": "/docs/architecture/project_structure#letsencrypt"
+    "relUrl": "/docs/architecture/project_structure#docker"
   },"64": {
     "doc": "Project structure",
     "title": "migrations",
@@ -455,376 +455,327 @@
     "relUrl": "/docs/architecture/project_structure#migrations"
   },"65": {
     "doc": "Project structure",
-    "title": "nginx",
-    "content": "This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks. ",
-    "url": "/docs/architecture/project_structure#nginx",
-    
-    "relUrl": "/docs/architecture/project_structure#nginx"
-  },"66": {
-    "doc": "Project structure",
-    "title": "populate",
-    "content": "This directory contains scripts and files used to populate the database with initial or test data. ",
-    "url": "/docs/architecture/project_structure#populate",
-    
-    "relUrl": "/docs/architecture/project_structure#populate"
-  },"67": {
-    "doc": "Project structure",
     "title": "rosemary",
     "content": "This directory contains the code for the Rosemary CLI package. It is a version still under development and is not available in pypi at the moment. ",
     "url": "/docs/architecture/project_structure#rosemary",
     
     "relUrl": "/docs/architecture/project_structure#rosemary"
-  },"68": {
+  },"66": {
     "doc": "Project structure",
     "title": "scripts",
     "content": "Contains auxiliary scripts that automate various tasks such as dependency installation, deployment, maintenance, and more. ",
     "url": "/docs/architecture/project_structure#scripts",
     
     "relUrl": "/docs/architecture/project_structure#scripts"
-  },"69": {
+  },"67": {
     "doc": "Project structure",
-    "title": ".env.example",
-    "content": "This file provides an example of the environment variables needed to run the application. It is used as a reference for setting up the development environment. ",
-    "url": "/docs/architecture/project_structure#envexample",
+    "title": ".env.X.example",
+    "content": "These files provide an example of the environment variables needed to run the application. They are used as a reference for setting up the development environment. ",
+    "url": "/docs/architecture/project_structure#envxexample",
     
-    "relUrl": "/docs/architecture/project_structure#envexample"
-  },"70": {
+    "relUrl": "/docs/architecture/project_structure#envxexample"
+  },"68": {
     "doc": "Project structure",
     "title": ".flake8",
     "content": "Contains configurations for Flake8, a code style and checking tool for Python. It helps maintain code consistency and find common errors. ",
     "url": "/docs/architecture/project_structure#flake8",
     
     "relUrl": "/docs/architecture/project_structure#flake8"
-  },"71": {
+  },"69": {
     "doc": "Project structure",
     "title": ".gitignore",
     "content": "A list of files and directories that Git should ignore. This prevents certain files (like local configurations and temporary files) from being included in version control. ",
     "url": "/docs/architecture/project_structure#gitignore",
     
     "relUrl": "/docs/architecture/project_structure#gitignore"
-  },"72": {
-    "doc": "Project structure",
-    "title": "Dockerfile.dev",
-    "content": "Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment. ",
-    "url": "/docs/architecture/project_structure#dockerfiledev",
-    
-    "relUrl": "/docs/architecture/project_structure#dockerfiledev"
-  },"73": {
-    "doc": "Project structure",
-    "title": "Dockerfile.mariadb",
-    "content": "Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment. ",
-    "url": "/docs/architecture/project_structure#dockerfilemariadb",
-    
-    "relUrl": "/docs/architecture/project_structure#dockerfilemariadb"
-  },"74": {
-    "doc": "Project structure",
-    "title": "Dockerfile.prod",
-    "content": "Docker file for building the application’s production image. It is optimized for performance and security. ",
-    "url": "/docs/architecture/project_structure#dockerfileprod",
-    
-    "relUrl": "/docs/architecture/project_structure#dockerfileprod"
-  },"75": {
-    "doc": "Project structure",
-    "title": "docker-compose.dev.yml",
-    "content": "Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated. ",
-    "url": "/docs/architecture/project_structure#docker-composedevyml",
-    
-    "relUrl": "/docs/architecture/project_structure#docker-composedevyml"
-  },"76": {
-    "doc": "Project structure",
-    "title": "docker-compose.prod.yml",
-    "content": "Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production. ",
-    "url": "/docs/architecture/project_structure#docker-composeprodyml",
-    
-    "relUrl": "/docs/architecture/project_structure#docker-composeprodyml"
-  },"77": {
+  },"70": {
     "doc": "Project structure",
     "title": "requirements.txt",
     "content": "A list of Python dependencies needed for the project. Used by pip to install all required libraries. ",
     "url": "/docs/architecture/project_structure#requirementstxt",
     
     "relUrl": "/docs/architecture/project_structure#requirementstxt"
-  },"78": {
+  },"71": {
     "doc": "Project structure",
     "title": "setup.py",
     "content": "A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. En este caso, sirve para poder usar el paquete rosemary . ",
     "url": "/docs/architecture/project_structure#setuppy",
     
     "relUrl": "/docs/architecture/project_structure#setuppy"
-  },"79": {
+  },"72": {
     "doc": "Reset database",
     "title": "Reset database",
     "content": "The rosemary db:reset command is a powerful tool for resetting your project’s database to its initial state. This command deletes all the data in your database, making it ideal for fixing any inconsistencies we may have created during development. ",
     "url": "/docs/rosemary/managing_database/reset_database",
     
     "relUrl": "/docs/rosemary/managing_database/reset_database"
-  },"80": {
+  },"73": {
     "doc": "Reset database",
     "title": "Table of contents",
     "content": ". | Basic Usage | Clear migrations | . ",
     "url": "/docs/rosemary/managing_database/reset_database#table-of-contents",
     
     "relUrl": "/docs/rosemary/managing_database/reset_database#table-of-contents"
-  },"81": {
+  },"74": {
     "doc": "Reset database",
     "title": "Basic Usage",
     "content": "To reset your database and clear all table data except for migration records, run: . rosemary db:reset . The rosemary db:reset command also clears the uploads directory as part of the reset process, ensuring that any files uploaded during development or testing are removed. ",
     "url": "/docs/rosemary/managing_database/reset_database#basic-usage",
     
     "relUrl": "/docs/rosemary/managing_database/reset_database#basic-usage"
-  },"82": {
+  },"75": {
     "doc": "Reset database",
     "title": "Clear migrations",
     "content": "If you need to completely rebuild your database from scratch, including removing all migration history and starting fresh, you can use the --clear-migrations option: . rosemary db:reset --clear-migrations . Be careful! This command will… . | Delete all data from the database, including the migration history. | Clear the migrations directory. | Initialize a new set of migrations. | Apply the migrations to rebuild the database schema. | . ",
     "url": "/docs/rosemary/managing_database/reset_database#clear-migrations",
     
     "relUrl": "/docs/rosemary/managing_database/reset_database#clear-migrations"
-  },"83": {
+  },"76": {
     "doc": "Rosemary CLI",
     "title": "Rosemary CLI",
     "content": "Rosemary is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks. ",
     "url": "/docs/rosemary",
     
     "relUrl": "/docs/rosemary"
-  },"84": {
+  },"77": {
     "doc": "Rosemary CLI",
     "title": "Using Rosemary in Docker environment",
     "content": "To use the Rosemary CLI in Docker environment, you need to be inside the web_app_container Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings. First, make sure your Docker environment is running. Then, access the web_app_container using the following command: . docker exec -it web_app_container /bin/sh . In the terminal, you should see the prefix /app #. You are now ready to use Rosemary’s commands. ",
     "url": "/docs/rosemary#using-rosemary-in-docker-environment",
     
     "relUrl": "/docs/rosemary#using-rosemary-in-docker-environment"
-  },"85": {
+  },"78": {
     "doc": "Routing",
     "title": "Routing",
     "content": "The rosemary command route:list allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods. ",
     "url": "/docs/rosemary/routing",
     
     "relUrl": "/docs/rosemary/routing"
-  },"86": {
+  },"79": {
     "doc": "Routing",
     "title": "Table of contents",
     "content": ". | List all routes | Group routes by module | List routes of a specific module | . ",
     "url": "/docs/rosemary/routing#table-of-contents",
     
     "relUrl": "/docs/rosemary/routing#table-of-contents"
-  },"87": {
+  },"80": {
     "doc": "Routing",
     "title": "List all routes",
     "content": "To list all the routes of all the modules, run: . rosemary route:list . ",
     "url": "/docs/rosemary/routing#list-all-routes",
     
     "relUrl": "/docs/rosemary/routing#list-all-routes"
-  },"88": {
+  },"81": {
     "doc": "Routing",
     "title": "Group routes by module",
     "content": "To get a grouped view of the routes by module, you can use the --group option. This is especially useful for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application. rosemary route:list --group . ",
     "url": "/docs/rosemary/routing#group-routes-by-module",
     
     "relUrl": "/docs/rosemary/routing#group-routes-by-module"
-  },"89": {
+  },"82": {
     "doc": "Routing",
     "title": "List routes of a specific module",
     "content": "It may be useful to see the routes associated with a specific module. To do this, simply provide the module name as an argument: . rosemary route:list &lt;module_name&gt; . Replace &lt;module_name&gt; with the actual name of the module for which you want to see the routes. ",
     "url": "/docs/rosemary/routing#list-routes-of-a-specific-module",
     
     "relUrl": "/docs/rosemary/routing#list-routes-of-a-specific-module"
-  },"90": {
+  },"83": {
     "doc": "Seeders",
     "title": "Seeders",
     "content": " ",
     "url": "/docs/rosemary/managing_database/seeders",
     
     "relUrl": "/docs/rosemary/managing_database/seeders"
-  },"91": {
+  },"84": {
     "doc": "Seeders",
     "title": "Table of contents",
     "content": ". | Basic Usage . | Populate from all modules | Populate from specific module | . | Reset database before populating . | Reset all modules test data | Reset test data of specific module | . | . ",
     "url": "/docs/rosemary/managing_database/seeders#table-of-contents",
     
     "relUrl": "/docs/rosemary/managing_database/seeders#table-of-contents"
-  },"92": {
+  },"85": {
     "doc": "Seeders",
     "title": "Basic Usage",
     "content": "It is possible to populate the database with predefined test data. It is very useful for testing certain that require existing data. Populate from all modules . To populate all test data of all modules, run: . rosemary db:seed . Populate from specific module . If we only want to popularize the test data of a specific module, run: . rosemary db:seed &lt;module_name&gt; . Replace &lt;module_name&gt; with the name of the module you want to populate (for example, auth for the authentication module). ",
     "url": "/docs/rosemary/managing_database/seeders#basic-usage",
     
     "relUrl": "/docs/rosemary/managing_database/seeders#basic-usage"
-  },"93": {
+  },"86": {
     "doc": "Seeders",
     "title": "Reset database before populating",
     "content": "If you want to make sure that the database is in a clean state before populating it with test data, you can use the --reset flag. This will reset the database to its initial state before running the seeders: . Reset all modules test data . rosemary db:seed --reset . Reset test data of specific module . You can also combine the --reset flag with a module specification if you want to reset the database before populating only the test data of a specific module: . rosemary db:seed &lt;module_name&gt; --reset . ",
     "url": "/docs/rosemary/managing_database/seeders#reset-database-before-populating",
     
     "relUrl": "/docs/rosemary/managing_database/seeders#reset-database-before-populating"
-  },"94": {
+  },"87": {
     "doc": "SSL certificate",
     "title": "SSL certificate",
     "content": "An SSL certificate (https) is essential for securing the communication between a website and its users. It encrypts transmitted data, protecting sensitive information from interception. Additionally, it authenticates the website’s identity, ensuring users they are interacting with the legitimate site. SSL certificates also improve search engine rankings, enhancing the website’s visibility and credibility. ",
     "url": "/docs/deployment/ssl_certificate",
     
     "relUrl": "/docs/deployment/ssl_certificate"
-  },"95": {
+  },"88": {
     "doc": "SSL certificate",
     "title": "Table of contents",
     "content": ". | Scripts folder | Generate certificate | Renew certificate | . The use of SSL certificates is configured for Docker deployment only. Visit ‘Installation with Docker. ",
     "url": "/docs/deployment/ssl_certificate#table-of-contents",
     
     "relUrl": "/docs/deployment/ssl_certificate#table-of-contents"
-  },"96": {
+  },"89": {
     "doc": "SSL certificate",
     "title": "Scripts folder",
     "content": "To begin with, we must go to the scripts folder: . cd scripts . ",
     "url": "/docs/deployment/ssl_certificate#scripts-folder",
     
     "relUrl": "/docs/deployment/ssl_certificate#scripts-folder"
-  },"97": {
+  },"90": {
     "doc": "SSL certificate",
     "title": "Generate certificate",
     "content": "To generate a new certificate, run: . chmod +x ssl_setup.sh ./ssl_setup.sh . ",
     "url": "/docs/deployment/ssl_certificate#generate-certificate",
     
     "relUrl": "/docs/deployment/ssl_certificate#generate-certificate"
-  },"98": {
+  },"91": {
     "doc": "SSL certificate",
     "title": "Renew certificate",
     "content": "To renew a certificate that is less than 60 days from expiry, execute: . chmod +x ssl_renew.sh ./ssl_renew.sh . ",
     "url": "/docs/deployment/ssl_certificate#renew-certificate",
     
     "relUrl": "/docs/deployment/ssl_certificate#renew-certificate"
-  },"99": {
+  },"92": {
     "doc": "Test coverage",
     "title": "Test coverage",
     "content": "The rosemary coverage command facilitates running code coverage analysis for your Flask project using pytest-cov. This command simplifies the process of assessing test coverage. ",
     "url": "/docs/rosemary/testing/test_coverage",
     
     "relUrl": "/docs/rosemary/testing/test_coverage"
-  },"100": {
+  },"93": {
     "doc": "Test coverage",
     "title": "Table of contents",
     "content": ". | Test coverage of all modules | Test coverage of a specific module | Command Options . | --html | . | . ",
     "url": "/docs/rosemary/testing/test_coverage#table-of-contents",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#table-of-contents"
-  },"101": {
+  },"94": {
     "doc": "Test coverage",
     "title": "Test coverage of all modules",
     "content": "To run coverage analysis for all modules within the app/blueprints directory and generate an HTML report, use: . rosemary coverage . ",
     "url": "/docs/rosemary/testing/test_coverage#test-coverage-of-all-modules",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#test-coverage-of-all-modules"
-  },"102": {
+  },"95": {
     "doc": "Test coverage",
     "title": "Test coverage of a specific module",
     "content": "If you wish to run coverage analysis for a specific module, include the module name: . rosemary coverage &lt;module_name&gt; . ",
     "url": "/docs/rosemary/testing/test_coverage#test-coverage-of-a-specific-module",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#test-coverage-of-a-specific-module"
-  },"103": {
+  },"96": {
     "doc": "Test coverage",
     "title": "Command Options",
     "content": "--html . This option generates an HTML coverage report. The report is saved in the htmlcov directory at the root of your project. rosemary coverage --html . ",
     "url": "/docs/rosemary/testing/test_coverage#command-options",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#command-options"
-  },"104": {
+  },"97": {
     "doc": "Testing",
     "title": "Testing",
     "content": " ",
     "url": "/docs/rosemary/testing",
     
     "relUrl": "/docs/rosemary/testing"
-  },"105": {
+  },"98": {
     "doc": "Testing workflow",
     "title": "Testing workflow",
     "content": "Path to file (view file on GitHub) . The original file is located at the following path: .github / workflows / test.yml . This GitHub Actions workflow is designed to automate the Continuous Integration (CI) process for a Flask application. It triggers on pushes and pull requests to the main and develop branches. The essential elements of this workflow are as follows: . | Workflow Name | Triggers | Jobs . | Services | Steps | Environment Variables for Tests | . | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow"
-  },"106": {
+  },"99": {
     "doc": "Testing workflow",
     "title": "Workflow Name",
     "content": ". | name: Flask CI | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow#workflow-name",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow#workflow-name"
-  },"107": {
+  },"100": {
     "doc": "Testing workflow",
     "title": "Triggers",
     "content": ". | on: . | push: Triggers on pushes to main and develop branches. | pull_request: Triggers on pull requests to main and develop branches. | . | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow#triggers",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow#triggers"
-  },"108": {
+  },"101": {
     "doc": "Testing workflow",
     "title": "Jobs",
     "content": ". | pytest: This job runs on the latest Ubuntu environment (ubuntu-latest). | . Services . | mysql: Sets up a MySQL 5.7 service with the following environment variables and options for health checks: . | MYSQL_ROOT_PASSWORD: uvlhub_root_password | MYSQL_DATABASE: uvlhubdb_test | MYSQL_USER: uvlhub_user | MYSQL_PASSWORD: uvlhub_password | Ports: 3306:3306 | Health check options: --health-cmd=\"mysqladmin ping\" --health-interval=10s --health-timeout=5s --health-retries=3 | . | . Steps . | Checkout Repository . | Uses the actions/checkout@v4 action to checkout the repository. | . | Setup Python . | Uses the actions/setup-python@v5 action to set up Python 3.12. | . | Prepare Environment . | Runs a command to modify the requirements.txt file, removing a specific line. | . | Install Dependencies . | Upgrades pip and installs dependencies from requirements.txt. | . | Run Tests . | Sets environment variables for testing and runs pytest on the Flask application. | . | . Environment Variables for Tests . | FLASK_ENV: testing | BLUEPRINTS_DIR: app/blueprints | MARIADB_HOSTNAME: 127.0.0.1 | MARIADB_PORT: 3306 | MARIADB_TEST_DATABASE: uvlhubdb_test | MARIADB_USER: uvlhub_user | MARIADB_PASSWORD: uvlhub_password | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow#jobs",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow#jobs"
-  },"109": {
+  },"102": {
     "doc": "Unit tests",
     "title": "Unit tests",
     "content": " ",
     "url": "/docs/rosemary/testing/unit_tests",
     
     "relUrl": "/docs/rosemary/testing/unit_tests"
-  },"110": {
+  },"103": {
     "doc": "Unit tests",
     "title": "Table of contents",
     "content": ". | Testing all modules | Testing a specific module | . ",
     "url": "/docs/rosemary/testing/unit_tests#table-of-contents",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#table-of-contents"
-  },"111": {
+  },"104": {
     "doc": "Unit tests",
     "title": "Testing all modules",
     "content": "To run tests across all modules in the project, you can use the following command: . rosemary test . This command will execute all tests found within the app/blueprints directory, covering all the modules of the project. ",
     "url": "/docs/rosemary/testing/unit_tests#testing-all-modules",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#testing-all-modules"
-  },"112": {
+  },"105": {
     "doc": "Unit tests",
     "title": "Testing a specific module",
     "content": "If you’re focusing on a particular module and want to run tests only for that module, you can specify the module name as an argument: . rosemary test &lt;module_name&gt; . ",
     "url": "/docs/rosemary/testing/unit_tests#testing-a-specific-module",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#testing-a-specific-module"
-  },"113": {
+  },"106": {
     "doc": "Updating dependencies",
     "title": "Updating dependencies",
     "content": "To update all project dependencies, run: . rosemary update . It is the responsibility of the developer to check that the update of the dependencies has not broken any functionality and each dependency maintains backwards compatibility. Use the script with care! . ",
     "url": "/docs/rosemary/updating_dependencies",
     
     "relUrl": "/docs/rosemary/updating_dependencies"
-  },"114": {
+  },"107": {
     "doc": "Zenodo",
     "title": "Zenodo",
     "content": "Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data. ",
     "url": "/docs/modules/zenodo",
     
     "relUrl": "/docs/modules/zenodo"
-  },"115": {
+  },"108": {
     "doc": "Zenodo",
     "title": "Table of contents",
     "content": ". | Obtain a token | Generate .env file | Include your access token | . ",
     "url": "/docs/modules/zenodo#table-of-contents",
     
     "relUrl": "/docs/modules/zenodo#table-of-contents"
-  },"116": {
+  },"109": {
     "doc": "Zenodo",
     "title": "Obtain a token",
     "content": "To use Zenodo module, it is important to obtain a token in Zenodo first. We recommend creating the token in the Sandbox version of Zenodo (https://sandbox.zenodo.org/), in order to generate fictitious DOIs and not make intensive use of the real Zenodo SLA. | Create an Account on Zenodo . | Go to Zenodo. | Click on Sign up and complete the registration. | . | Log in to Zenodo . | Go to Zenodo. | Click on Log in and log in with your account. | . | Access the Tokens Section . | Click on your username in the top right corner. | Select Applications. | . | Create a New Access Token . | Under Personal access tokens, click on New token. | Assign a name for your token. | Select all permissions to grant full access. | Read: Allows read-only access. | Write: Allows creating and modifying records. | Delete: Allows deleting records. | . | Click Create. | . | Save the Access Token . | Copy and save the generated token in a secure place. | . | . ",
     "url": "/docs/modules/zenodo#obtain-a-token",
     
     "relUrl": "/docs/modules/zenodo#obtain-a-token"
-  },"117": {
+  },"110": {
     "doc": "Zenodo",
     "title": "Generate .env file",
     "content": "To generate the Zenodo .env file in app/blueprints/zenodo, run in root project: . cp app/blueprints/zenodo/.env.example app/blueprints/zenodo/.env . ",
     "url": "/docs/modules/zenodo#generate-env-file",
     
     "relUrl": "/docs/modules/zenodo#generate-env-file"
-  },"118": {
+  },"111": {
     "doc": "Zenodo",
     "title": "Include your access token",
     "content": "In the generated .envfile, you must include the access token obtained in Zenodo: . ZENODO_ACCESS_TOKEN=&lt;GET_ACCESS_TOKEN_IN_ZENODO&gt; . A composition of variables is necessary! . To perform the composition of all environment variables, refer to section Composing environment. ",

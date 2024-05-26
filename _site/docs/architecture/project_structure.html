@@ -302,20 +302,26 @@
   <li><a href="#githubworkflows" id="markdown-toc-githubworkflows">.github/workflows</a></li>
   <li><a href="#app" id="markdown-toc-app">app</a></li>
   <li><a href="#core" id="markdown-toc-core">core</a></li>
-  <li><a href="#letsencrypt" id="markdown-toc-letsencrypt">letsencrypt</a></li>
+  <li><a href="#docker" id="markdown-toc-docker">docker</a>    <ol>
+      <li><a href="#images" id="markdown-toc-images">images</a>        <ol>
+          <li><a href="#dockerfiledev" id="markdown-toc-dockerfiledev">Dockerfile.dev</a></li>
+          <li><a href="#dockerfilemariadb" id="markdown-toc-dockerfilemariadb">Dockerfile.mariadb</a></li>
+          <li><a href="#dockerfileprod" id="markdown-toc-dockerfileprod">Dockerfile.prod</a></li>
+        </ol>
+      </li>
+      <li><a href="#letsencrypt" id="markdown-toc-letsencrypt">letsencrypt</a></li>
+      <li><a href="#nginx" id="markdown-toc-nginx">nginx</a></li>
+      <li><a href="#public" id="markdown-toc-public">public</a></li>
+      <li><a href="#docker-composedevyml" id="markdown-toc-docker-composedevyml">docker-compose.dev.yml</a></li>
+      <li><a href="#docker-composeprodyml" id="markdown-toc-docker-composeprodyml">docker-compose.prod.yml</a></li>
+    </ol>
+  </li>
   <li><a href="#migrations" id="markdown-toc-migrations">migrations</a></li>
-  <li><a href="#nginx" id="markdown-toc-nginx">nginx</a></li>
-  <li><a href="#populate" id="markdown-toc-populate">populate</a></li>
   <li><a href="#rosemary" id="markdown-toc-rosemary">rosemary</a></li>
   <li><a href="#scripts" id="markdown-toc-scripts">scripts</a></li>
-  <li><a href="#envexample" id="markdown-toc-envexample">.env.example</a></li>
+  <li><a href="#envxexample" id="markdown-toc-envxexample">.env.X.example</a></li>
   <li><a href="#flake8" id="markdown-toc-flake8">.flake8</a></li>
   <li><a href="#gitignore" id="markdown-toc-gitignore">.gitignore</a></li>
-  <li><a href="#dockerfiledev" id="markdown-toc-dockerfiledev">Dockerfile.dev</a></li>
-  <li><a href="#dockerfilemariadb" id="markdown-toc-dockerfilemariadb">Dockerfile.mariadb</a></li>
-  <li><a href="#dockerfileprod" id="markdown-toc-dockerfileprod">Dockerfile.prod</a></li>
-  <li><a href="#docker-composedevyml" id="markdown-toc-docker-composedevyml">docker-compose.dev.yml</a></li>
-  <li><a href="#docker-composeprodyml" id="markdown-toc-docker-composeprodyml">docker-compose.prod.yml</a></li>
   <li><a href="#requirementstxt" id="markdown-toc-requirementstxt">requirements.txt</a></li>
   <li><a href="#setuppy" id="markdown-toc-setuppy">setup.py</a></li>
 </ol>
@@ -346,15 +352,94 @@
 </h2>
     
 <p>This directory usually contains core components and services used throughout the application. It can include utilities, global configurations, and base classes.</p>
-<h2 id="letsencrypt">
+<h2 id="docker">
+  
+  
+    <a href="#docker" class="anchor-heading" aria-labelledby="docker"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker
+  
+  
+</h2>
+    
+<h3 id="images">
+  
+  
+    <a href="#images" class="anchor-heading" aria-labelledby="images"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> images
+  
+  
+</h3>
+    
+<h4 id="dockerfiledev">
+  
+  
+    <a href="#dockerfiledev" class="anchor-heading" aria-labelledby="dockerfiledev"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.dev
+  
+  
+</h4>
+    
+<p>Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment.</p>
+<h4 id="dockerfilemariadb">
+  
+  
+    <a href="#dockerfilemariadb" class="anchor-heading" aria-labelledby="dockerfilemariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.mariadb
+  
+  
+</h4>
+    
+<p>Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment.</p>
+<h4 id="dockerfileprod">
+  
+  
+    <a href="#dockerfileprod" class="anchor-heading" aria-labelledby="dockerfileprod"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.prod
+  
+  
+</h4>
+    
+<p>Docker file for building the application’s production image. It is optimized for performance and security.</p>
+<h3 id="letsencrypt">
   
   
     <a href="#letsencrypt" class="anchor-heading" aria-labelledby="letsencrypt"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> letsencrypt
   
   
-</h2>
+</h3>
     
 <p>This directory is related to Let’s Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates.</p>
+<h3 id="nginx">
+  
+  
+    <a href="#nginx" class="anchor-heading" aria-labelledby="nginx"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> nginx
+  
+  
+</h3>
+    
+<p>This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks.</p>
+<h3 id="public">
+  
+  
+    <a href="#public" class="anchor-heading" aria-labelledby="public"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> public
+  
+  
+</h3>
+    
+<p>This directory is for generating SSL certificates, it acts as a temporary public folder.</p>
+<h3 id="docker-composedevyml">
+  
+  
+    <a href="#docker-composedevyml" class="anchor-heading" aria-labelledby="docker-composedevyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.dev.yml
+  
+  
+</h3>
+    
+<p>Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated.</p>
+<h3 id="docker-composeprodyml">
+  
+  
+    <a href="#docker-composeprodyml" class="anchor-heading" aria-labelledby="docker-composeprodyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.yml
+  
+  
+</h3>
+    
+<p>Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production.</p>
 <h2 id="migrations">
   
   
@@ -364,24 +449,6 @@
 </h2>
     
 <p>This directory contains database migration files, which allow incremental changes to the database schema in a controlled and reproducible manner.</p>
-<h2 id="nginx">
-  
-  
-    <a href="#nginx" class="anchor-heading" aria-labelledby="nginx"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> nginx
-  
-  
-</h2>
-    
-<p>This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks.</p>
-<h2 id="populate">
-  
-  
-    <a href="#populate" class="anchor-heading" aria-labelledby="populate"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> populate
-  
-  
-</h2>
-    
-<p>This directory contains scripts and files used to populate the database with initial or test data.</p>
 <h2 id="rosemary">
   
   
@@ -400,15 +467,15 @@
 </h2>
     
 <p>Contains auxiliary scripts that automate various tasks such as dependency installation, deployment, maintenance, and more.</p>
-<h2 id="envexample">
+<h2 id="envxexample">
   
   
-    <a href="#envexample" class="anchor-heading" aria-labelledby="envexample"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .env.example
+    <a href="#envxexample" class="anchor-heading" aria-labelledby="envxexample"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .env.X.example
   
   
 </h2>
     
-<p>This file provides an example of the environment variables needed to run the application. It is used as a reference for setting up the development environment.</p>
+<p>These files provide an example of the environment variables needed to run the application. They are used as a reference for setting up the development environment.</p>
 <h2 id="flake8">
   
   
@@ -427,51 +494,6 @@
 </h2>
     
 <p>A list of files and directories that Git should ignore. This prevents certain files (like local configurations and temporary files) from being included in version control.</p>
-<h2 id="dockerfiledev">
-  
-  
-    <a href="#dockerfiledev" class="anchor-heading" aria-labelledby="dockerfiledev"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.dev
-  
-  
-</h2>
-    
-<p>Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment.</p>
-<h2 id="dockerfilemariadb">
-  
-  
-    <a href="#dockerfilemariadb" class="anchor-heading" aria-labelledby="dockerfilemariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.mariadb
-  
-  
-</h2>
-    
-<p>Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment.</p>
-<h2 id="dockerfileprod">
-  
-  
-    <a href="#dockerfileprod" class="anchor-heading" aria-labelledby="dockerfileprod"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.prod
-  
-  
-</h2>
-    
-<p>Docker file for building the application’s production image. It is optimized for performance and security.</p>
-<h2 id="docker-composedevyml">
-  
-  
-    <a href="#docker-composedevyml" class="anchor-heading" aria-labelledby="docker-composedevyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.dev.yml
-  
-  
-</h2>
-    
-<p>Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated.</p>
-<h2 id="docker-composeprodyml">
-  
-  
-    <a href="#docker-composeprodyml" class="anchor-heading" aria-labelledby="docker-composeprodyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.yml
-  
-  
-</h2>
-    
-<p>Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production.</p>
 <h2 id="requirementstxt">
   
   

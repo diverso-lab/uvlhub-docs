@@ -38,7 +38,7 @@ cp .env.docker.example .env
 To deploy the software under development environment, run:
 
 ```
-docker compose -f docker-compose.dev.yml up -d 
+docker compose -f docker/docker-compose.dev.yml up -d 
 ```
 
 This will apply the migrations to the database and run the Flask application. 
