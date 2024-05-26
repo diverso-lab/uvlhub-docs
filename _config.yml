@@ -51,7 +51,7 @@ exclude:
    - fixtures/
 
 # Set a path/url to a logo that will be displayed instead of the title
-logo: "/assets/images/uvlhub_horizontal_logo_white.svg"
+logo: "/assets/images/docs.uvlhub.io.svg"
 
 # Enable or disable the site search
 # Supports true (default) or false

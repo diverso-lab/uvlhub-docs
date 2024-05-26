@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Manual installation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Manual installation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/uvlhub_horizontal_logo_white.svg"}},"url":"http://0.0.0.0:4000/docs/installation/manual_installation"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Manual installation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/installation/manual_installation"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -297,33 +297,41 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#clone-the-repo" id="markdown-toc-clone-the-repo">Clone the repo</a></li>
   <li><a href="#update-the-system" id="markdown-toc-update-the-system">Update the system</a></li>
+  <li><a href="#clone-the-repo" id="markdown-toc-clone-the-repo">Clone the repo</a></li>
   <li><a href="#install-mariadb" id="markdown-toc-install-mariadb">Install MariaDB</a>    <ol>
       <li><a href="#install-official-package" id="markdown-toc-install-official-package">Install official package</a></li>
       <li><a href="#start-the-mariadb-service" id="markdown-toc-start-the-mariadb-service">Start the MariaDB service</a></li>
       <li><a href="#configure-mariadb" id="markdown-toc-configure-mariadb">Configure MariaDB</a></li>
-      <li><a href="#configure-databases-and-users" id="markdown-toc-configure-databases-and-users">Configure Databases and Users</a></li>
+      <li><a href="#configure-databases-and-users" id="markdown-toc-configure-databases-and-users">Configure databases and users</a></li>
     </ol>
   </li>
   <li><a href="#configure-app-environment" id="markdown-toc-configure-app-environment">Configure app environment</a>    <ol>
       <li><a href="#creates-and-activate-a-virtual-environment" id="markdown-toc-creates-and-activate-a-virtual-environment">Creates and activate a virtual environment</a></li>
       <li><a href="#install-python-dependencies" id="markdown-toc-install-python-dependencies">Install Python dependencies</a></li>
+      <li><a href="#install-python-dependencies-in-editable-mode" id="markdown-toc-install-python-dependencies-in-editable-mode">Install Python dependencies in editable mode</a></li>
     </ol>
   </li>
-</ol>
-<h2 id="clone-the-repo">
-  
-  
-    <a href="#clone-the-repo" class="anchor-heading" aria-labelledby="clone-the-repo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Clone the repo
-  
-  
-</h2>
-    
+  <li><a href="#run-app" id="markdown-toc-run-app">Run app</a>    <ol>
+      <li><a href="#environment-variables" id="markdown-toc-environment-variables">Environment variables</a></li>
+      <li><a href="#apply-migrations" id="markdown-toc-apply-migrations">Apply migrations</a></li>
+      <li><a href="#popular-database" id="markdown-toc-popular-database">Popular database</a></li>
+      <li><a href="#boot-development-flask-server" id="markdown-toc-boot-development-flask-server">Boot development Flask server</a></li>
+    </ol>
+  </li>
+</ol><hr />
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/diverso-lab/uvlhub.git
-cd uvlhub
-</code></pre></div></div>
+<blockquote class="important-title">
+  <p><i class="fa-brands fa-python"></i> Python version</p>
+
+  <p>Python version 3.12 or higher is recommended.</p>
+</blockquote>
+
+<blockquote class="warning-title">
+  <p><i class="fa-brands fa-ubuntu"></i> Ubuntu-only support</p>
+
+  <p>This tutorial is intended for use on Ubuntu 22.04 LTS or higher.</p>
+</blockquote>
 <h2 id="update-the-system">
   
   
@@ -335,6 +343,18 @@ cd uvlhub
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt update -y
 sudo apt upgrade -y
+</code></pre></div></div>
+<h2 id="clone-the-repo">
+  
+  
+    <a href="#clone-the-repo" class="anchor-heading" aria-labelledby="clone-the-repo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Clone the repo
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/diverso-lab/uvlhub.git
+cd uvlhub
 </code></pre></div></div>
 <h2 id="install-mariadb">
   
@@ -353,7 +373,7 @@ sudo apt upgrade -y
 </h3>
     
 
-<p>MariaDB is available in the official Ubuntu repositories, so you can easily install it with apt:</p>
+<p>MariaDB is available in the official Ubuntu repositories, so you can easily install it with <code class="language-plaintext highlighter-rouge">apt</code>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install mariadb-server -y
 </code></pre></div></div>
@@ -395,7 +415,7 @@ sudo apt upgrade -y
 <h3 id="configure-databases-and-users">
   
   
-    <a href="#configure-databases-and-users" class="anchor-heading" aria-labelledby="configure-databases-and-users"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configure Databases and Users
+    <a href="#configure-databases-and-users" class="anchor-heading" aria-labelledby="configure-databases-and-users"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configure databases and users
   
   
 </h3>
@@ -445,6 +465,69 @@ source venv/bin/activate
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install --upgrade pip
 pip install -r requirements.txt
+</code></pre></div></div>
+<h3 id="install-python-dependencies-in-editable-mode">
+  
+  
+    <a href="#install-python-dependencies-in-editable-mode" class="anchor-heading" aria-labelledby="install-python-dependencies-in-editable-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Python dependencies in editable mode
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+</code></pre></div></div>
+<h2 id="run-app">
+  
+  
+    <a href="#run-app" class="anchor-heading" aria-labelledby="run-app"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run app
+  
+  
+</h2>
+    
+<h3 id="environment-variables">
+  
+  
+    <a href="#environment-variables" class="anchor-heading" aria-labelledby="environment-variables"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environment variables
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.example .env
+</code></pre></div></div>
+<h3 id="apply-migrations">
+  
+  
+    <a href="#apply-migrations" class="anchor-heading" aria-labelledby="apply-migrations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Apply migrations
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:migrate
+</code></pre></div></div>
+<h3 id="popular-database">
+  
+  
+    <a href="#popular-database" class="anchor-heading" aria-labelledby="popular-database"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Popular database
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed
+</code></pre></div></div>
+<h3 id="boot-development-flask-server">
+  
+  
+    <a href="#boot-development-flask-server" class="anchor-heading" aria-labelledby="boot-development-flask-server"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Boot development Flask server
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask run --host=0.0.0.0.0 --port=5000 --reload --debug
 </code></pre></div></div>
           
 

@@ -44,5 +44,5 @@ docker compose -f docker-compose.dev.yml up -d
 This will apply the migrations to the database and run the Flask application. 
 
 > {: .highlight }
-  **If everything worked correctly, you should see the deployed version of UVLHub in development at `http://localhost`**
+  **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost`**
 

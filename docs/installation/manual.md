@@ -15,12 +15,17 @@ nav_order: 1
 1. TOC
 {:toc}
 
-## Clone the repo
+---
 
-```
-git clone https://github.com/diverso-lab/uvlhub.git
-cd uvlhub
-```
+{: .important-title }
+> <i class="fa-brands fa-python"></i> Python version
+>
+> Python version 3.12 or higher is recommended.
+
+{: .warning-title }
+> <i class="fa-brands fa-ubuntu"></i> Ubuntu-only support
+>
+> This tutorial is intended for use on Ubuntu 22.04 LTS or higher.
 
 ## Update the system
 
@@ -29,11 +34,18 @@ sudo apt update -y
 sudo apt upgrade -y
 ```
 
+## Clone the repo
+
+```
+git clone https://github.com/diverso-lab/uvlhub.git
+cd uvlhub
+```
+
 ## Install MariaDB
 
 ### Install official package
 
-MariaDB is available in the official Ubuntu repositories, so you can easily install it with apt:
+MariaDB is available in the official Ubuntu repositories, so you can easily install it with `apt`:
 
 ```
 sudo apt install mariadb-server -y
@@ -65,7 +77,7 @@ sudo mysql_secure_installation
 - Reload privilege tables now? [Y/n] : `y`
 ```
 
-###  Configure Databases and Users
+###  Configure databases and users
 
 Using `uvlhubdb_root_password` as root password:
 
@@ -97,4 +109,37 @@ source venv/bin/activate
 ```
 pip install --upgrade pip
 pip install -r requirements.txt
+```
+
+### Install Python dependencies in editable mode
+
+
+```
+pip install -e ./
+```
+
+## Run app
+
+### Environment variables
+
+```
+cp .env.example .env
+```
+
+### Apply migrations
+
+```
+rosemary db:migrate
+```
+
+### Popular database
+
+```
+rosemary db:seed
+```
+
+### Boot development Flask server
+
+```
+flask run --host=0.0.0.0.0 --port=5000 --reload --debug
 ```
