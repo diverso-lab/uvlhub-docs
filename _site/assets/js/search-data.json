@@ -337,7 +337,7 @@
   },"48": {
     "doc": "Manual installation",
     "title": "Run app",
-    "content": "Environment variables . cp .env.example .env . Apply migrations . rosemary db:migrate . Popular database . rosemary db:seed . Boot development Flask server . flask run --host=0.0.0.0.0 --port=5000 --reload --debug . ",
+    "content": "Environment variables . cp .env.example .env . Apply migrations . rosemary db:migrate . Popular database . rosemary db:seed . Boot development Flask server . flask run --host=0.0.0.0 --reload --debug . ",
     "url": "/docs/installation/manual_installation#run-app",
     
     "relUrl": "/docs/installation/manual_installation#run-app"

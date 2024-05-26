@@ -141,5 +141,5 @@ rosemary db:seed
 ### Boot development Flask server
 
 ```
-flask run --host=0.0.0.0.0 --port=5000 --reload --debug
+flask run --host=0.0.0.0 --reload --debug
 ```
