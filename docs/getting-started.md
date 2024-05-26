@@ -30,7 +30,7 @@ cd uvlhub
 To create an `.env` file according to a basic template, run:
 
 ```
-cp .env.example .env
+cp .env.docker.example .env
 ```
 
 ## Deploy in develop

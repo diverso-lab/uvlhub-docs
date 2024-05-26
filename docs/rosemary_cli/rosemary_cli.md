@@ -10,7 +10,9 @@ nav_order: 6
 
 `Rosemary` is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks.
 
-To use the Rosemary CLI, you need to be inside the `web_app_container` Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings.
+## Using Rosemary in Docker environment
+
+To use the Rosemary CLI in Docker environment, you need to be inside the `web_app_container` Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings.
 
 First, make sure your Docker environment is running. Then, access the `web_app_container` using the following command:
 

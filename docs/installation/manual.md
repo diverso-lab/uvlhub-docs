@@ -123,7 +123,7 @@ pip install -e ./
 ### Environment variables
 
 ```
-cp .env.example .env
+cp .env.local.example .env
 ```
 
 ### Apply migrations
@@ -143,3 +143,6 @@ rosemary db:seed
 ```
 flask run --host=0.0.0.0 --reload --debug
 ```
+
+> {: .highlight }
+  **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost:5000`**
