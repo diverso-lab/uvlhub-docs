@@ -279,7 +279,7 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 id="installation-with-vagrant">
+            <h1 class="no_toc" id="installation-with-vagrant">
   
   
     <a href="#installation-with-vagrant" class="anchor-heading" aria-labelledby="installation-with-vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Installation with Vagrant
@@ -287,8 +287,140 @@
   
 </h1>
     
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p class="fs-6 fw-300">Coming soon…</p>
+<ol id="markdown-toc">
+  <li><a href="#set-environment-files" id="markdown-toc-set-environment-files">Set environment files</a></li>
+  <li><a href="#working-with-vagrant" id="markdown-toc-working-with-vagrant">Working with Vagrant</a>    <ol>
+      <li><a href="#run-the-vm" id="markdown-toc-run-the-vm">Run the VM</a></li>
+      <li><a href="#provision-the-vm" id="markdown-toc-provision-the-vm">Provision the VM</a></li>
+      <li><a href="#see-vm-status" id="markdown-toc-see-vm-status">See VM status</a></li>
+      <li><a href="#halt-the-vm" id="markdown-toc-halt-the-vm">Halt the VM</a></li>
+      <li><a href="#destroy-the-vm" id="markdown-toc-destroy-the-vm">Destroy the VM</a></li>
+    </ol>
+  </li>
+</ol><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-desktop"></i> Required Vagrant and VirtualBox installation</p>
+
+  <p>You need to have Vagrant and VirtualBox installed on the machine where you want to deploy <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span></p>
+</blockquote>
+
+<blockquote class="note-title">
+  <p><i class="fa-solid fa-code"></i> Only for a development environment</p>
+
+  <p>This manual is intended for a development environment. For a production environment, visit ‘Deployment.</p>
+</blockquote>
+<h2 id="set-environment-files">
+  
+  
+    <a href="#set-environment-files" class="anchor-heading" aria-labelledby="set-environment-files"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set environment files
+  
+  
+</h2>
+    
+
+<p>First, copy the .env.vagrant.example file to the .env file that will be used to set the environment variables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.vagrant.example .env
+</code></pre></div></div>
+<h2 id="working-with-vagrant">
+  
+  
+    <a href="#working-with-vagrant" class="anchor-heading" aria-labelledby="working-with-vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Working with Vagrant
+  
+  
+</h2>
+    
+
+<blockquote class="warning-title">
+  <p><i class="fa-solid fa-folder"></i> <code class="language-plaintext highlighter-rouge">vagrant</code> folder</p>
+
+  <p>All Vagrant commands must be executed inside the <code class="language-plaintext highlighter-rouge">vagrant</code> folder located in the root of the project.</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd vagrant
+</code></pre></div>  </div>
+</blockquote>
+<h3 id="run-the-vm">
+  
+  
+    <a href="#run-the-vm" class="anchor-heading" aria-labelledby="run-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run the VM
+  
+  
+</h3>
+    
+
+<p>To start the virtual machine in development mode, use the Vagrantfile located in <code class="language-plaintext highlighter-rouge">vagrant</code> folder. The command will set up and run the VM.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up
+</code></pre></div></div>
+<h3 id="provision-the-vm">
+  
+  
+    <a href="#provision-the-vm" class="anchor-heading" aria-labelledby="provision-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Provision the VM
+  
+  
+</h3>
+    
+
+<p>If you need to run the provisioning scripts again (<code class="language-plaintext highlighter-rouge">*.yml</code>) (e.g., after making changes to them), use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up --provision
+</code></pre></div></div>
+<h3 id="see-vm-status">
+  
+  
+    <a href="#see-vm-status" class="anchor-heading" aria-labelledby="see-vm-status"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> See VM status
+  
+  
+</h3>
+    
+
+<p>To verify that the virtual machine is running correctly, use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant status
+</code></pre></div></div>
+
+<p class="highlight">If everything worked correctly, you should see the deployed version of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ in development at <code class="language-plaintext highlighter-rouge">http://localhost:5000</code></p>
+<h3 id="halt-the-vm">
+  
+  
+    <a href="#halt-the-vm" class="anchor-heading" aria-labelledby="halt-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Halt the VM
+  
+  
+</h3>
+    
+
+<p>To halt (stop) the virtual machine, use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant halt
+</code></pre></div></div>
+<h3 id="destroy-the-vm">
+  
+  
+    <a href="#destroy-the-vm" class="anchor-heading" aria-labelledby="destroy-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Destroy the VM
+  
+  
+</h3>
+    
+
+<p>To destroy the virtual machine (removing all data), use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant destroy
+</code></pre></div></div>
+
+<p>Following these steps, you should be able to set up, run, and manage your Vagrant virtual machine efficiently.</p>
           
 
           

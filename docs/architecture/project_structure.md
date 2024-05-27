@@ -54,6 +54,16 @@ Docker Compose configuration file for the development environment. It defines ho
 ### docker-compose.prod.yml
 Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production.
 
+## vagrant
+
+### Vagrantfile
+
+This file is a specification that describes how to create a virtual machine (VM) under specific characteristics. It defines the necessary configurations for the development environment, such as the base box, network, shared folders, and provisioning scripts.
+
+### *.yml
+
+These files, known as playbooks, are used by Ansible to automate system configuration and management. A playbook is a YAML file that contains a series of instructions and tasks that Ansible will execute on the target machines. Playbooks are used to automate complex and repetitive tasks, ensuring that the development or production environment is configured in a consistent manner.
+
 ## migrations
 This directory contains database migration files, which allow incremental changes to the database schema in a controlled and reproducible manner.
 

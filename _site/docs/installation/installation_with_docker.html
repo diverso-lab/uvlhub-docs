@@ -279,7 +279,7 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 id="installation-with-docker">
+            <h1 class="no_toc" id="installation-with-docker">
   
   
     <a href="#installation-with-docker" class="anchor-heading" aria-labelledby="installation-with-docker"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Installation with Docker
@@ -287,8 +287,92 @@
   
 </h1>
     
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p class="fs-6 fw-300">Coming soon…</p>
+<ol id="markdown-toc">
+  <li><a href="#set-environment-files" id="markdown-toc-set-environment-files">Set environment files</a></li>
+  <li><a href="#run-the-containers" id="markdown-toc-run-the-containers">Run the containers</a></li>
+  <li><a href="#see-containers-in-execution" id="markdown-toc-see-containers-in-execution">See containers in execution</a></li>
+  <li><a href="#down-the-containers" id="markdown-toc-down-the-containers">Down the containers</a></li>
+</ol><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-brands fa-docker"></i> Required Docker installation</p>
+
+  <p>You need to have Docker and Docker Compose installed on the machine where you want to deploy <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span></p>
+</blockquote>
+
+<blockquote class="note-title">
+  <p><i class="fa-solid fa-code"></i> Only for a development environment</p>
+
+  <p>This manual is intended for a development environment. For a production environment, visit <a href="/docs/deployment/">Deployment</a>.</p>
+</blockquote>
+<h2 id="set-environment-files">
+  
+  
+    <a href="#set-environment-files" class="anchor-heading" aria-labelledby="set-environment-files"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set environment files
+  
+  
+</h2>
+    
+
+<p>First, copy the <code class="language-plaintext highlighter-rouge">.env.docker.example</code> file to the <code class="language-plaintext highlighter-rouge">.env</code> file that will be used to set the environment variables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.docker.example .env
+</code></pre></div></div>
+<h2 id="run-the-containers">
+  
+  
+    <a href="#run-the-containers" class="anchor-heading" aria-labelledby="run-the-containers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run the containers
+  
+  
+</h2>
+    
+
+<p>To start containers in development mode, use the <code class="language-plaintext highlighter-rouge">docker-compose.dev.yml</code> file located in the docker directory. The command will run in the background (<code class="language-plaintext highlighter-rouge">-d</code>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.dev.yml up -d 
+</code></pre></div></div>
+<h2 id="see-containers-in-execution">
+  
+  
+    <a href="#see-containers-in-execution" class="anchor-heading" aria-labelledby="see-containers-in-execution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> See containers in execution
+  
+  
+</h2>
+    
+
+<p>To verify that the containers are running correctly, use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps
+</code></pre></div></div>
+
+<blockquote>
+  <p class="highlight"><strong>If everything worked correctly, you should see the deployed version of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ in development at <code class="language-plaintext highlighter-rouge">http://localhost</code></strong></p>
+</blockquote>
+<h2 id="down-the-containers">
+  
+  
+    <a href="#down-the-containers" class="anchor-heading" aria-labelledby="down-the-containers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Down the containers
+  
+  
+</h2>
+    
+
+<p>To download (stop) the containers, use the same <code class="language-plaintext highlighter-rouge">docker-compose.dev.yml</code> file with the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.dev.yml down
+</code></pre></div></div>
           
 
           
