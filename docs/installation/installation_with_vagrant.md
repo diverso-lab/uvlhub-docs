@@ -56,6 +56,9 @@ To start the virtual machine in development mode, use the Vagrantfile located in
 vagrant up
 ```
 
+{: .highlight }
+If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost:5000`
+
 ### Provision the VM
 
 If you need to run the provisioning scripts again (`*.yml`) (e.g., after making changes to them), use the following command:
@@ -71,9 +74,6 @@ To verify that the virtual machine is running correctly, use the following comma
 ```
 vagrant status
 ```
-
-{: .highlight }
-If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost:5000`
 
 ### Halt the VM
 
