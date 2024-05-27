@@ -59,6 +59,20 @@ vagrant up
 {: .highlight }
 If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost:5000`
 
+### Accessing the VM
+
+To access the VM and execute operations from within (such as `rosemary`), run:
+
+```
+vagrant ssh
+```
+
+This will switch to the internal MV console. To exit, run:
+
+```
+exit
+```
+
 ### Provision the VM
 
 If you need to run the provisioning scripts again (`*.yml`) (e.g., after making changes to them), use the following command:

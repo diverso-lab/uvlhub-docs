@@ -300,6 +300,7 @@
   <li><a href="#set-environment-files" id="markdown-toc-set-environment-files">Set environment files</a></li>
   <li><a href="#working-with-vagrant" id="markdown-toc-working-with-vagrant">Working with Vagrant</a>    <ol>
       <li><a href="#run-the-vm" id="markdown-toc-run-the-vm">Run the VM</a></li>
+      <li><a href="#accessing-the-vm" id="markdown-toc-accessing-the-vm">Accessing the VM</a></li>
       <li><a href="#provision-the-vm" id="markdown-toc-provision-the-vm">Provision the VM</a></li>
       <li><a href="#see-vm-status" id="markdown-toc-see-vm-status">See VM status</a></li>
       <li><a href="#halt-the-vm" id="markdown-toc-halt-the-vm">Halt the VM</a></li>
@@ -367,6 +368,24 @@
 <p class="highlight">If everything worked correctly, you should see the deployed version of <!-- _includes/flamapy.html -->
 <span class="uvlhub">uvlhub</span>
  in development at <code class="language-plaintext highlighter-rouge">http://localhost:5000</code></p>
+<h3 id="accessing-the-vm">
+  
+  
+    <a href="#accessing-the-vm" class="anchor-heading" aria-labelledby="accessing-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Accessing the VM
+  
+  
+</h3>
+    
+
+<p>To access the VM and execute operations from within (such as <code class="language-plaintext highlighter-rouge">rosemary</code>), run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh
+</code></pre></div></div>
+
+<p>This will switch to the internal MV console. To exit, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exit
+</code></pre></div></div>
 <h3 id="provision-the-vm">
   
   
