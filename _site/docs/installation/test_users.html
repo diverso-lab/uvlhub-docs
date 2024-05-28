@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(2)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(4)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(4) > ul > li:nth-child(2) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(4) > ul > li:nth-child(4) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(4) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(4) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(4) > ul > li:nth-child(4) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(4) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(4) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Test coverage | UVLHub docs</title>
+<title>Test users | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Test coverage" />
+<meta property="og:title" content="Test users" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing/test_coverage" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing/test_coverage" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/installation/test_users" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/installation/test_users" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Test coverage" />
+<meta property="twitter:title" content="Test users" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Test coverage","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing/test_coverage"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Test users","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/installation/test_users"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -274,91 +274,37 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/testing">Testing</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Test coverage</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/installation">Installation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Test users</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="test-coverage">
+            <h1 id="test-users">
   
   
-    <a href="#test-coverage" class="anchor-heading" aria-labelledby="test-coverage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test coverage
+    <a href="#test-users" class="anchor-heading" aria-labelledby="test-users"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test users
   
   
 </h1>
     
 
-<p>The <code class="language-plaintext highlighter-rouge">rosemary coverage</code> command facilitates running code coverage analysis for your Flask project using <code class="language-plaintext highlighter-rouge">pytest-cov</code>. 
-This command simplifies the process of assessing test coverage.</p>
-<h2 class="no_toc text-delta" id="table-of-contents">
-  
-  
-    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
-  
-  
-</h2>
-    
+<p>Test users are already available when the system is installed, regardless of the configuration environment. This is possible thanks to the <code class="language-plaintext highlighter-rouge">rosemary db:seed</code> command that is launched.</p>
 
-<ol id="markdown-toc">
-  <li><a href="#test-coverage-of-all-modules" id="markdown-toc-test-coverage-of-all-modules">Test coverage of all modules</a></li>
-  <li><a href="#test-coverage-of-a-specific-module" id="markdown-toc-test-coverage-of-a-specific-module">Test coverage of a specific module</a></li>
-  <li><a href="#command-options" id="markdown-toc-command-options">Command Options</a>    <ol>
-      <li><a href="#--html" id="markdown-toc---html"><strong>--html</strong></a></li>
-    </ol>
-  </li>
-</ol>
-<h2 id="test-coverage-of-all-modules">
-  
-  
-    <a href="#test-coverage-of-all-modules" class="anchor-heading" aria-labelledby="test-coverage-of-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test coverage of all modules
-  
-  
-</h2>
-    
-
-<p>To run coverage analysis for all modules within the <code class="language-plaintext highlighter-rouge">app/blueprints</code> directory and generate an HTML report, use:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary coverage
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User: user1@example.com
+Pass: 1234
 </code></pre></div></div>
-<h2 id="test-coverage-of-a-specific-module">
-  
-  
-    <a href="#test-coverage-of-a-specific-module" class="anchor-heading" aria-labelledby="test-coverage-of-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test coverage of a specific module
-  
-  
-</h2>
-    
 
-<p>If you wish to run coverage analysis for a specific module, include the 
-module name:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary coverage &lt;module_name&gt; 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User: user2@example.com
+Pass: 1234
 </code></pre></div></div>
-<h2 id="command-options">
-  
-  
-    <a href="#command-options" class="anchor-heading" aria-labelledby="command-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Command Options
-  
-  
-</h2>
-    
-<h3 id="--html">
-  
-  
-    <a href="#--html" class="anchor-heading" aria-labelledby="--html"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>--html</strong>
-  
-  
-</h3>
-    
 
-<p>This option generates an HTML coverage report. The report is saved in the <code class="language-plaintext highlighter-rouge">htmlcov</code> directory
-at the root of your project.</p>
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-database"></i> Repopulate the database</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary coverage --html
-</code></pre></div></div>
+  <p>You can change these test users and popular more modules. Visit <a href="/docs/rosemary/managing_database/seeders">Seeders</a>.</p>
+</blockquote>
           
 
           

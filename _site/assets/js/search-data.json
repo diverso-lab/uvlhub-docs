@@ -790,146 +790,153 @@
     
     "relUrl": "/docs/deployment/ssl_certificate#renew-certificate"
   },"113": {
+    "doc": "Test users",
+    "title": "Test users",
+    "content": "Test users are already available when the system is installed, regardless of the configuration environment. This is possible thanks to the rosemary db:seed command that is launched. User: user1@example.com Pass: 1234 . User: user2@example.com Pass: 1234 . Repopulate the database . You can change these test users and popular more modules. Visit Seeders. ",
+    "url": "/docs/installation/test_users",
+    
+    "relUrl": "/docs/installation/test_users"
+  },"114": {
     "doc": "Test coverage",
     "title": "Test coverage",
     "content": "The rosemary coverage command facilitates running code coverage analysis for your Flask project using pytest-cov. This command simplifies the process of assessing test coverage. ",
     "url": "/docs/rosemary/testing/test_coverage",
     
     "relUrl": "/docs/rosemary/testing/test_coverage"
-  },"114": {
+  },"115": {
     "doc": "Test coverage",
     "title": "Table of contents",
     "content": ". | Test coverage of all modules | Test coverage of a specific module | Command Options . | --html | . | . ",
     "url": "/docs/rosemary/testing/test_coverage#table-of-contents",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#table-of-contents"
-  },"115": {
+  },"116": {
     "doc": "Test coverage",
     "title": "Test coverage of all modules",
     "content": "To run coverage analysis for all modules within the app/blueprints directory and generate an HTML report, use: . rosemary coverage . ",
     "url": "/docs/rosemary/testing/test_coverage#test-coverage-of-all-modules",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#test-coverage-of-all-modules"
-  },"116": {
+  },"117": {
     "doc": "Test coverage",
     "title": "Test coverage of a specific module",
     "content": "If you wish to run coverage analysis for a specific module, include the module name: . rosemary coverage &lt;module_name&gt; . ",
     "url": "/docs/rosemary/testing/test_coverage#test-coverage-of-a-specific-module",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#test-coverage-of-a-specific-module"
-  },"117": {
+  },"118": {
     "doc": "Test coverage",
     "title": "Command Options",
     "content": "--html . This option generates an HTML coverage report. The report is saved in the htmlcov directory at the root of your project. rosemary coverage --html . ",
     "url": "/docs/rosemary/testing/test_coverage#command-options",
     
     "relUrl": "/docs/rosemary/testing/test_coverage#command-options"
-  },"118": {
+  },"119": {
     "doc": "Testing",
     "title": "Testing",
     "content": " ",
     "url": "/docs/rosemary/testing",
     
     "relUrl": "/docs/rosemary/testing"
-  },"119": {
+  },"120": {
     "doc": "Testing workflow",
     "title": "Testing workflow",
     "content": "Path to file (view file on GitHub) . The original file is located at the following path: .github / workflows / test.yml . This GitHub Actions workflow is designed to automate the Continuous Integration (CI) process for a Flask application. It triggers on pushes and pull requests to the main and develop branches. The essential elements of this workflow are as follows: . | Workflow Name | Triggers | Jobs . | Services | Steps | Environment Variables for Tests | . | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow"
-  },"120": {
+  },"121": {
     "doc": "Testing workflow",
     "title": "Workflow Name",
     "content": ". | name: Flask CI | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow#workflow-name",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow#workflow-name"
-  },"121": {
+  },"122": {
     "doc": "Testing workflow",
     "title": "Triggers",
     "content": ". | on: . | push: Triggers on pushes to main and develop branches. | pull_request: Triggers on pull requests to main and develop branches. | . | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow#triggers",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow#triggers"
-  },"122": {
+  },"123": {
     "doc": "Testing workflow",
     "title": "Jobs",
     "content": ". | pytest: This job runs on the latest Ubuntu environment (ubuntu-latest). | . Services . | mysql: Sets up a MySQL 5.7 service with the following environment variables and options for health checks: . | MYSQL_ROOT_PASSWORD: uvlhub_root_password | MYSQL_DATABASE: uvlhubdb_test | MYSQL_USER: uvlhub_user | MYSQL_PASSWORD: uvlhub_password | Ports: 3306:3306 | Health check options: --health-cmd=\"mysqladmin ping\" --health-interval=10s --health-timeout=5s --health-retries=3 | . | . Steps . | Checkout Repository . | Uses the actions/checkout@v4 action to checkout the repository. | . | Setup Python . | Uses the actions/setup-python@v5 action to set up Python 3.12. | . | Prepare Environment . | Runs a command to modify the requirements.txt file, removing a specific line. | . | Install Dependencies . | Upgrades pip and installs dependencies from requirements.txt. | . | Run Tests . | Sets environment variables for testing and runs pytest on the Flask application. | . | . Environment Variables for Tests . | FLASK_ENV: testing | BLUEPRINTS_DIR: app/blueprints | MARIADB_HOSTNAME: 127.0.0.1 | MARIADB_PORT: 3306 | MARIADB_TEST_DATABASE: uvlhubdb_test | MARIADB_USER: uvlhub_user | MARIADB_PASSWORD: uvlhub_password | . ",
     "url": "/docs/ci_cd/continuous_integration/testing_workflow#jobs",
     
     "relUrl": "/docs/ci_cd/continuous_integration/testing_workflow#jobs"
-  },"123": {
+  },"124": {
     "doc": "Troubleshooting",
     "title": "Troubleshooting",
     "content": "This section provides users with valuable guidance on identifying, diagnosing, and resolving common issues that may arise. This section is intended to help users troubleshoot various problems efficiently, ensuring a smoother and more productive experience. It includes step-by-step instructions, common error messages, and practical solutions to address a wide range of technical difficulties. ",
     "url": "/docs/troubleshooting",
     
     "relUrl": "/docs/troubleshooting"
-  },"124": {
+  },"125": {
     "doc": "Unit tests",
     "title": "Unit tests",
     "content": " ",
     "url": "/docs/rosemary/testing/unit_tests",
     
     "relUrl": "/docs/rosemary/testing/unit_tests"
-  },"125": {
+  },"126": {
     "doc": "Unit tests",
     "title": "Table of contents",
     "content": ". | Testing all modules | Testing a specific module | . ",
     "url": "/docs/rosemary/testing/unit_tests#table-of-contents",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#table-of-contents"
-  },"126": {
+  },"127": {
     "doc": "Unit tests",
     "title": "Testing all modules",
     "content": "To run tests across all modules in the project, you can use the following command: . rosemary test . This command will execute all tests found within the app/blueprints directory, covering all the modules of the project. ",
     "url": "/docs/rosemary/testing/unit_tests#testing-all-modules",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#testing-all-modules"
-  },"127": {
+  },"128": {
     "doc": "Unit tests",
     "title": "Testing a specific module",
     "content": "If you’re focusing on a particular module and want to run tests only for that module, you can specify the module name as an argument: . rosemary test &lt;module_name&gt; . ",
     "url": "/docs/rosemary/testing/unit_tests#testing-a-specific-module",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#testing-a-specific-module"
-  },"128": {
+  },"129": {
     "doc": "Updating dependencies",
     "title": "Updating dependencies",
     "content": "To update all project dependencies, run: . rosemary update . It is the responsibility of the developer to check that the update of the dependencies has not broken any functionality and each dependency maintains backwards compatibility. Use the script with care! . ",
     "url": "/docs/rosemary/updating_dependencies",
     
     "relUrl": "/docs/rosemary/updating_dependencies"
-  },"129": {
+  },"130": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary",
     "content": " ",
     "url": "/docs/rosemary/using_rosemary",
     
     "relUrl": "/docs/rosemary/using_rosemary"
-  },"130": {
+  },"131": {
     "doc": "Using Rosemary",
     "title": "Table of contents",
     "content": ". | Using Rosemary in manual environment | Using Rosemary in Docker environment | Using Rosemary in Vagrant environment | . ",
     "url": "/docs/rosemary/using_rosemary#table-of-contents",
     
     "relUrl": "/docs/rosemary/using_rosemary#table-of-contents"
-  },"131": {
+  },"132": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in manual environment",
     "content": "To use Rosemary CLI in a manual environment, we must activate the Python virtual environment: . python -m venv venv source venv/bin/activate . This will create a ``venv` folder. Rosemary is a development package, so we must install packages in editable mode: . pip install -e ./ . ",
     "url": "/docs/rosemary/using_rosemary#using-rosemary-in-manual-environment",
     
     "relUrl": "/docs/rosemary/using_rosemary#using-rosemary-in-manual-environment"
-  },"132": {
+  },"133": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Docker environment",
     "content": "To use the Rosemary CLI in Docker environment, you need to be inside the web_app_container Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings. First, make sure your Docker environment is running. Then, access the web_app_container using the following command: . docker exec -it web_app_container /bin/sh . In the terminal, you should see the prefix /app #. You are now ready to use Rosemary’s commands. ",
     "url": "/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment",
     
     "relUrl": "/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment"
-  },"133": {
+  },"134": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Vagrant environment",
     "content": "To use Rosemary CLI in Vagrant rosemary, you need to be inside the virtual machine. First, make sure the machine is booted: . cd vagrant vagrant up . Second, you must access the machine . vagrant ssh . Provisioning the machine already activates the Python virtual environment needed to run Rosemary. You should see the line (venv) ubuntu@ubuntu-mantic:/vagrant$. That means you can now use Rosemary along with all its commands. ",
