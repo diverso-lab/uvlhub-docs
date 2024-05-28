@@ -2,12 +2,12 @@
 layout: default
 parent: Testing
 grand_parent: Rosemary CLI
-title: Load tests
-permalink: /docs/rosemary/testing/load_tests
-nav_order: 3
+title: GUI tests
+permalink: /docs/rosemary/testing/gui_tests
+nav_order: 4
 ---
 
-# Load tests
+# GUI tests
 {: .no_toc }
 
 Coming soon...
