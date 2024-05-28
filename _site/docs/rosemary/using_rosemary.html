@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(4) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(1) > a {
   font-weight: 600;
   text-decoration: none;
 }.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(4) > button svg {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(1) > button svg {
   transform: rotate(-90deg);
 }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Unit tests | UVLHub docs</title>
+<title>Using Rosemary | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Unit tests" />
+<meta property="og:title" content="Using Rosemary" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/testing/unit_tests" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/using_rosemary" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/using_rosemary" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Unit tests" />
+<meta property="twitter:title" content="Using Rosemary" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Unit tests","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/testing/unit_tests"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Using Rosemary","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/using_rosemary"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -275,17 +275,16 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/testing">Testing</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Unit tests</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Using Rosemary</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="unit-tests">
+            <h1 class="no_toc" id="using-rosemary">
   
   
-    <a href="#unit-tests" class="anchor-heading" aria-labelledby="unit-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Unit tests
+    <a href="#using-rosemary" class="anchor-heading" aria-labelledby="using-rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Rosemary
   
   
 </h1>
@@ -300,38 +299,71 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#testing-all-modules" id="markdown-toc-testing-all-modules">Testing all modules</a></li>
-  <li><a href="#testing-a-specific-module" id="markdown-toc-testing-a-specific-module">Testing a specific module</a></li>
+  <li><a href="#using-rosemary-in-manual-environment" id="markdown-toc-using-rosemary-in-manual-environment">Using Rosemary in manual environment</a></li>
+  <li><a href="#using-rosemary-in-docker-environment" id="markdown-toc-using-rosemary-in-docker-environment">Using Rosemary in Docker environment</a></li>
+  <li><a href="#using-rosemary-in-vagrant-environment" id="markdown-toc-using-rosemary-in-vagrant-environment">Using Rosemary in Vagrant environment</a></li>
 </ol>
-<h2 id="testing-all-modules">
+<h2 id="using-rosemary-in-manual-environment">
   
   
-    <a href="#testing-all-modules" class="anchor-heading" aria-labelledby="testing-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing all modules
-  
-  
-</h2>
-    
-
-<p>To run tests across all modules in the project, you can use the following command:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test
-</code></pre></div></div>
-
-<p>This command will execute all tests found within the <code class="language-plaintext highlighter-rouge">app/blueprints</code> directory, covering all the modules of the project.</p>
-<h2 id="testing-a-specific-module">
-  
-  
-    <a href="#testing-a-specific-module" class="anchor-heading" aria-labelledby="testing-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing a specific module
+    <a href="#using-rosemary-in-manual-environment" class="anchor-heading" aria-labelledby="using-rosemary-in-manual-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Rosemary in manual environment
   
   
 </h2>
     
 
-<p>If you’re focusing on a particular module and want to run tests only for that module, you can specify the module
-name as an argument:</p>
+<p>To use Rosemary CLI in a manual environment, we must activate the Python virtual environment:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test &lt;module_name&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m venv venv
+source venv/bin/activate
 </code></pre></div></div>
+
+<p>This will create a ``venv` folder. Rosemary is a development package, so we must install packages in editable mode:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+</code></pre></div></div>
+<h2 id="using-rosemary-in-docker-environment">
+  
+  
+    <a href="#using-rosemary-in-docker-environment" class="anchor-heading" aria-labelledby="using-rosemary-in-docker-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Rosemary in Docker environment
+  
+  
+</h2>
+    
+
+<p>To use the Rosemary CLI in Docker environment, you need to be inside the <code class="language-plaintext highlighter-rouge">web_app_container</code> Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings.</p>
+
+<p>First, make sure your Docker environment is running. Then, access the <code class="language-plaintext highlighter-rouge">web_app_container</code> using the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker exec -it web_app_container /bin/sh
+</code></pre></div></div>
+
+<p>In the terminal, you should see the prefix <code class="language-plaintext highlighter-rouge">/app #</code>. You are now ready to use Rosemary’s commands.</p>
+<h2 id="using-rosemary-in-vagrant-environment">
+  
+  
+    <a href="#using-rosemary-in-vagrant-environment" class="anchor-heading" aria-labelledby="using-rosemary-in-vagrant-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Rosemary in Vagrant environment
+  
+  
+</h2>
+    
+
+<p>To use Rosemary CLI in Vagrant rosemary, you need to be inside the virtual machine.</p>
+
+<p>First, make sure the machine is booted:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd vagrant
+vagrant up
+</code></pre></div></div>
+
+<p>Second, you must access the machine</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh
+</code></pre></div></div>
+
+<p>Provisioning the machine already activates the Python virtual environment needed to run Rosemary.</p>
+
+<p>You should see the line <code class="language-plaintext highlighter-rouge">(venv) ubuntu@ubuntu-mantic:/vagrant$</code>. That means you can now use Rosemary along with all its commands.</p>
           
 
           

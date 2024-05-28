@@ -3,7 +3,7 @@ layout: default
 parent: Rosemary CLI
 title: Routing
 permalink: /docs/rosemary/routing
-nav_order: 4
+nav_order: 6
 ---
 
 # Routing
