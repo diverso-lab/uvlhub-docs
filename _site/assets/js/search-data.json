@@ -344,7 +344,7 @@
   },"49": {
     "doc": "Installation with Vagrant",
     "title": "Table of contents",
-    "content": ". | Set environment files | Working with Vagrant . | Run the VM | Accessing the VM | Provision the VM | See VM status | Halt the VM | Destroy the VM | . | . Required Vagrant and VirtualBox installation . You need to have Vagrant and VirtualBox installed on the machine where you want to deploy uvlhub . Only for a development environment . This manual is intended for a development environment. For a production environment, visit ‘Deployment. ",
+    "content": ". | Set environment files | Working with Vagrant . | Run the VM | Accessing the VM | Provision the VM | See VM status | Halt the VM | Destroy the VM | . | . Required Vagrant, Ansible and VirtualBox installation . You need to have Vagrant, Ansible and VirtualBox installed on the machine where you want to deploy uvlhub . Only for a development environment . This manual is intended for a development environment. For a production environment, visit Deployment. ",
     "url": "/docs/installation/installation_with_vagrant#table-of-contents",
     
     "relUrl": "/docs/installation/installation_with_vagrant#table-of-contents"

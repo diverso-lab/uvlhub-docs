@@ -18,14 +18,14 @@ nav_order: 3
 ---
 
 {: .important-title }
-> <i class="fa-solid fa-desktop"></i> Required Vagrant and VirtualBox installation
+> <i class="fa-solid fa-desktop"></i> Required Vagrant, Ansible and VirtualBox installation
 >
-> You need to have Vagrant and VirtualBox installed on the machine where you want to deploy {% include uvlhub.html %}
+> You need to have Vagrant, Ansible and VirtualBox installed on the machine where you want to deploy {% include uvlhub.html %}
 
 {: .note-title }
 > <i class="fa-solid fa-code"></i> Only for a development environment
 >
-> This manual is intended for a development environment. For a production environment, visit 'Deployment.
+> This manual is intended for a development environment. For a production environment, visit [Deployment]({{site.baseurl}}/docs/deployment).
 
 ## Set environment files
 

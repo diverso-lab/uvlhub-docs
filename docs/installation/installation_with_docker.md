@@ -25,7 +25,7 @@ nav_order: 2
 {: .note-title }
 > <i class="fa-solid fa-code"></i> Only for a development environment
 >
-> This manual is intended for a development environment. For a production environment, visit [Deployment]({{site.baseurl}}/docs/deployment/).
+> This manual is intended for a development environment. For a production environment, visit [Deployment]({{site.baseurl}}/docs/deployment).
 
 
 ## Set environment files
