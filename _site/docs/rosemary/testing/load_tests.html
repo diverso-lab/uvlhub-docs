@@ -292,8 +292,122 @@
   
 </h1>
     
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p class="fs-6 fw-300">Coming soon…</p>
+<ol id="markdown-toc">
+  <li><a href="#introduction-to-locust" id="markdown-toc-introduction-to-locust">Introduction to Locust</a>    <ol>
+      <li><a href="#key-features" id="markdown-toc-key-features">Key Features:</a></li>
+      <li><a href="#ramp-up-in-locust" id="markdown-toc-ramp-up-in-locust">Ramp-Up in Locust</a></li>
+    </ol>
+  </li>
+  <li><a href="#run-all-load-tests" id="markdown-toc-run-all-load-tests">Run all load tests</a></li>
+  <li><a href="#run-load-tests-from-specific-module" id="markdown-toc-run-load-tests-from-specific-module">Run load tests from specific module</a></li>
+  <li><a href="#stop-locust" id="markdown-toc-stop-locust">Stop Locust</a></li>
+  <li><a href="#official-documentation" id="markdown-toc-official-documentation">Official documentation</a></li>
+</ol>
+<h2 id="introduction-to-locust">
+  
+  
+    <a href="#introduction-to-locust" class="anchor-heading" aria-labelledby="introduction-to-locust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Introduction to Locust
+  
+  
+</h2>
+    
+
+<p>Locust is an open-source load testing tool that allows you to define user behavior with Python code and swarm your system with millions of simultaneous users. It’s useful for testing the performance of web applications and identifying potential bottlenecks.</p>
+<h3 id="key-features">
+  
+  
+    <a href="#key-features" class="anchor-heading" aria-labelledby="key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Features:
+  
+  
+</h3>
+    
+
+<ul>
+  <li>Scalability: Capable of simulating millions of users.</li>
+  <li>Flexibility: User behavior can be defined with simple Python code.</li>
+  <li>Real-time Monitoring: Provides real-time statistics and metrics during the test.</li>
+</ul>
+<h3 id="ramp-up-in-locust">
+  
+  
+    <a href="#ramp-up-in-locust" class="anchor-heading" aria-labelledby="ramp-up-in-locust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ramp-Up in Locust
+  
+  
+</h3>
+    
+
+<p>Ramp-up refers to the gradual increase in the number of simulated users over a specified period. This approach helps in observing how the system behaves as the load increases incrementally, rather than being hit with the maximum load all at once.</p><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-terminal"></i> Using Locust with your development environment</p>
+
+  <p>Load tests can be executed from any environment. To use the appropriate environment with Rosemary CLI, visit <a href="/docs/rosemary/using_rosemary">Using Rosemary</a>.</p>
+</blockquote>
+<h2 id="run-all-load-tests">
+  
+  
+    <a href="#run-all-load-tests" class="anchor-heading" aria-labelledby="run-all-load-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run all load tests
+  
+  
+</h2>
+    
+
+<p>To execute all load tests for all modules, run the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust
+</code></pre></div></div>
+
+<blockquote>
+  <p class="highlight"><strong>If everything worked correctly, you should see a Locust interface at <code class="language-plaintext highlighter-rouge">http://localhost:8089</code></strong></p>
+</blockquote>
+<h2 id="run-load-tests-from-specific-module">
+  
+  
+    <a href="#run-load-tests-from-specific-module" class="anchor-heading" aria-labelledby="run-load-tests-from-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run load tests from specific module
+  
+  
+</h2>
+    
+
+<p>It’s possible to run the load tests for a specific module. For this, the module must have a <code class="language-plaintext highlighter-rouge">locustfile.py</code> file defined within it. To execute the load tests for that module, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust &lt;module_name&gt;
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the name of the module.</p>
+<h2 id="stop-locust">
+  
+  
+    <a href="#stop-locust" class="anchor-heading" aria-labelledby="stop-locust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Stop Locust
+  
+  
+</h2>
+    
+
+<p>Es necesario detener Locust si se se desean correr los test de un módulo concreto o si se ha modificado el <code class="language-plaintext highlighter-rouge">locustfile.py</code> de algún módulo. Para detener Locust, ejecutar:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust:stop
+</code></pre></div></div>
+<h2 id="official-documentation">
+  
+  
+    <a href="#official-documentation" class="anchor-heading" aria-labelledby="official-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Official documentation
+  
+  
+</h2>
+    
+
+<p>We recommend visiting Locust’s <a href="https://docs.locust.io/en/stable/writing-a-locustfile.html">official documentation</a> for further test design to check the performance of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span></p>
           
 
           

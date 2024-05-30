@@ -24,7 +24,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-This will create a ``venv` folder. Rosemary is a development package, so we must install packages in editable mode:
+This will create a `venv` folder. Rosemary is a development package, so we must install packages in editable mode:
 
 ```
 pip install -e ./
