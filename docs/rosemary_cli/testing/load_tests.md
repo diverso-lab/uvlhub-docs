@@ -60,7 +60,7 @@ Replace `<module_name>` with the name of the module.
 
 ## Stop Locust
 
-Es necesario detener Locust si se se desean correr los test de un módulo concreto o si se ha modificado el `locustfile.py` de algún módulo. Para detener Locust, ejecutar:
+You need to stop Locust if you want to run tests for a particular module or if you have modified the `locustfile.py` for a module. To stop Locust, run:
 
 ```
 rosemary locust:stop
