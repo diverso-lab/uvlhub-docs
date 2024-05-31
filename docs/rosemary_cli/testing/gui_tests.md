@@ -20,7 +20,7 @@ nav_order: 4
 
 Selenium is a suite of web browser automation tools. It provides an easy-to-use interface for interacting with browsers such as Chrome, Firefox and Safari, enabling automated testing, data scraping and other repetitive tasks in web applications.
 
-## Interface test in local environment
+## Interface testing in local environment
 
 To perform all interface tests in local environment, use:
 

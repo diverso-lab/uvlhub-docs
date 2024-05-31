@@ -225,14 +225,14 @@
   },"32": {
     "doc": "Deployment in server",
     "title": "Environment variables",
-    "content": "It is necessary to configure the environment variables file in a production environment. These variables are crucial to define specific configurations of the production environment. cp .env.docker.production.example .env . Don’t forget to define the variables! . You need to properly define the values of the variables indicated with &lt;CHANGE_THIS&gt; in the .env file. ",
+    "content": "It is necessary to configure the environment variables file in a production environment. These variables are crucial to define specific configurations of the production environment. cp .env.docker.production.example .env . Don’t forget to define the variables! . You need to properly define the values of the variables indicated with &lt;CHANGE_THIS&gt; in the .env file. This is very sensitive and private information. Don’t use obvious passwords, use a password generator. Don’t forget your own variables! . If you have been using modules that included their own .env file, please note that in production environment neither the Rosemary CLI nor the rosemary compose:env command is available for security reasons. That means that you have to add to the .env file the variables defined by your modules. ",
     "url": "/docs/deployment/server#environment-variables",
     
     "relUrl": "/docs/deployment/server#environment-variables"
   },"33": {
     "doc": "Deployment in server",
     "title": "Deploy containers",
-    "content": "This process includes building and deploying the services defined in the Docker configuration file for the production environment. To deploy the application to production, run: . docker compose -f docker/docker-compose.prod.yml up -d --build . ",
+    "content": "This process includes building and deploying the services defined in the Docker configuration file for the production environment. To deploy the application to production, run: . docker compose -f docker/docker-compose.prod.yml up -d --build . If everything worked correctly, you should see the deployed version of uvlhub in development at http://yourdomain.com . ",
     "url": "/docs/deployment/server#deploy-containers",
     
     "relUrl": "/docs/deployment/server#deploy-containers"
@@ -351,7 +351,7 @@
   },"50": {
     "doc": "GUI tests",
     "title": "Table of contents",
-    "content": ". | Introduction to Selenium | Interface test in local environment | Interface testing in Docker and Vagrant environment . | Activate the virtual environment | Install dependencies | Run test | . | Selenium IDE . | Installation | Recording a test | Playback the recorded test | Exporting the test script | Using the test in the project | . | Using WSL2 (Windows Subsystem for Linux) and WebDriver . | Install Google Chrome version 114 | Install ChromeDriver | Unzip and make ChromeDriver executable | Move the ChromeDriver executable to the WSL2 path | . | . ",
+    "content": ". | Introduction to Selenium | Interface testing in local environment | Interface testing in Docker and Vagrant environment . | Activate the virtual environment | Install dependencies | Run test | . | Selenium IDE . | Installation | Recording a test | Playback the recorded test | Exporting the test script | Using the test in the project | . | Using WSL2 (Windows Subsystem for Linux) and WebDriver . | Install Google Chrome version 114 | Install ChromeDriver | Unzip and make ChromeDriver executable | Move the ChromeDriver executable to the WSL2 path | . | . ",
     "url": "/docs/rosemary/testing/gui_tests#table-of-contents",
     
     "relUrl": "/docs/rosemary/testing/gui_tests#table-of-contents"
@@ -364,11 +364,11 @@
     "relUrl": "/docs/rosemary/testing/gui_tests#introduction-to-selenium"
   },"52": {
     "doc": "GUI tests",
-    "title": "Interface test in local environment",
+    "title": "Interface testing in local environment",
     "content": "To perform all interface tests in local environment, use: . rosemary selenium . You can run an interface test of a specific module: . rosemary selenium &lt;module_name&gt; . ",
-    "url": "/docs/rosemary/testing/gui_tests#interface-test-in-local-environment",
+    "url": "/docs/rosemary/testing/gui_tests#interface-testing-in-local-environment",
     
-    "relUrl": "/docs/rosemary/testing/gui_tests#interface-test-in-local-environment"
+    "relUrl": "/docs/rosemary/testing/gui_tests#interface-testing-in-local-environment"
   },"53": {
     "doc": "GUI tests",
     "title": "Interface testing in Docker and Vagrant environment",

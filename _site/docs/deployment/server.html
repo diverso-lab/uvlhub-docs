@@ -339,9 +339,17 @@
 </code></pre></div></div>
 
 <blockquote class="important-title">
-  <p>Don’t forget to define the variables!</p>
+  <p><i class="fa-solid fa-triangle-exclamation"></i> Don’t forget to define the variables!</p>
 
-  <p>You need to properly define the values of the variables indicated with <code class="language-plaintext highlighter-rouge">&lt;CHANGE_THIS&gt;</code> in the <code class="language-plaintext highlighter-rouge">.env</code> file.</p>
+  <p>You need to properly define the values of the variables indicated with <code class="language-plaintext highlighter-rouge">&lt;CHANGE_THIS&gt;</code> in the <code class="language-plaintext highlighter-rouge">.env</code> file. This is very sensitive and private information. Don’t use obvious passwords, use a password generator.</p>
+</blockquote>
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-triangle-exclamation"></i> Don’t forget your own variables!</p>
+
+  <p>If you have been using modules that included their own <code class="language-plaintext highlighter-rouge">.env</code> file, please note that in production environment neither the Rosemary CLI nor the <code class="language-plaintext highlighter-rouge">rosemary compose:env</code> command is available for security reasons.</p>
+
+  <p>That means that you have to add to the <code class="language-plaintext highlighter-rouge">.env</code> file the variables defined by your modules.</p>
 </blockquote>
 <h2 id="deploy-containers">
   
@@ -356,6 +364,12 @@
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.prod.yml up -d --build
 </code></pre></div></div>
+
+<blockquote>
+  <p class="highlight"><strong>If everything worked correctly, you should see the deployed version of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ in development at <code class="language-plaintext highlighter-rouge">http://yourdomain.com</code></strong></p>
+</blockquote>
 <h2 id="watchdog-available">
   
   

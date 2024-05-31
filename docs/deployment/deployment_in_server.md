@@ -37,10 +37,16 @@ cp .env.docker.production.example .env
 ```
 
 {: .important-title }
-> Don't forget to define the variables!
+> <i class="fa-solid fa-triangle-exclamation"></i> Don't forget to define the variables!
 >
-> You need to properly define the values of the variables indicated with `<CHANGE_THIS>` in the `.env` file.
+> You need to properly define the values of the variables indicated with `<CHANGE_THIS>` in the `.env` file. This is very sensitive and private information. Don't use obvious passwords, use a password generator.
 
+{: .important-title }
+> <i class="fa-solid fa-triangle-exclamation"></i> Don't forget your own variables!
+>
+> If you have been using modules that included their own `.env` file, please note that in production environment neither the Rosemary CLI nor the `rosemary compose:env` command is available for security reasons.
+> 
+> That means that you have to add to the `.env` file the variables defined by your modules.
 
 ## Deploy containers
 
@@ -49,6 +55,10 @@ This process includes building and deploying the services defined in the Docker 
 ```
 docker compose -f docker/docker-compose.prod.yml up -d --build
 ```
+
+> {: .highlight }
+  **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://yourdomain.com`**
+
 
 ## Watchdog available
 
