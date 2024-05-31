@@ -52,11 +52,13 @@ docker compose -f docker/docker-compose.prod.yml up -d --build
 
 ## Watchdog available
 
-El despliegue en producción incluye un contenedor de Watchdog proporcionado por Watchtower ([más información](https://hub.docker.com/r/containrrr/watchtower)). Este contenedor se encarga de monitorear los cambios en las imágenes de Docker en Docker Hub. Cuando detecta una nueva versión de una imagen, automáticamente actualiza y reinicia los contenedores afectados. Esta funcionalidad es particularmente útil para implementar despliegues continuos, asegurando que siempre se esté utilizando la versión más reciente del software sin intervención manual.
+The production deployment includes a Watchdog container provided by Watchtower ([more info](https://hub.docker.com/r/containrrr/watchtower)). This container is responsible for monitoring changes to Docker images in Docker Hub. When it detects a new version of an image, it automatically updates and restarts the affected containers. This functionality is particularly useful for deploying continuous deployments, ensuring that you are always using the latest version of the software without manual intervention.
 
-## Consideraciones
-
-- El entorno de producción usa Gunicorn. Gunicorn es un servidor HTTP WSGI (Web Server Gateway Interface) para aplicaciones Python que permite manejar múltiples solicitudes simultáneamente en entornos de producción.
-- Rosemary es un paquete de desarrollo, así que no está disponible en producción por cuestiones de seguridad.
-- La base de datos de test tampoco está disponible.
-- El entorno de producción se despliega sin ningún dato populado.
+{: .warning-title }
+> <i class="fa-solid fa-server"></i> Important considerations
+>
+> - The production environment uses Gunicorn. Gunicorn is a WSGI (Web Server Gateway Interface) HTTP server for Python applications that allows multiple requests to be handled simultaneously in production environments.
+> - Rosemary is a development package, so it is not available in production for security reasons.
+> - The test database is also not available.
+> - The production environment is deployed without any populated test data for security reasons.
+> - Debug mode is disabled, so no specific error trace will be shown, only a generic error of type 4xx or 5xx.

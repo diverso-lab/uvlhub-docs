@@ -305,7 +305,6 @@
   <li><a href="#environment-variables" id="markdown-toc-environment-variables">Environment variables</a></li>
   <li><a href="#deploy-containers" id="markdown-toc-deploy-containers">Deploy containers</a></li>
   <li><a href="#watchdog-available" id="markdown-toc-watchdog-available">Watchdog available</a></li>
-  <li><a href="#consideraciones" id="markdown-toc-consideraciones">Consideraciones</a></li>
 </ol><hr />
 
 <blockquote class="important-title">
@@ -366,22 +365,19 @@
 </h2>
     
 
-<p>El despliegue en producción incluye un contenedor de Watchdog proporcionado por Watchtower (<a href="https://hub.docker.com/r/containrrr/watchtower">más información</a>). Este contenedor se encarga de monitorear los cambios en las imágenes de Docker en Docker Hub. Cuando detecta una nueva versión de una imagen, automáticamente actualiza y reinicia los contenedores afectados. Esta funcionalidad es particularmente útil para implementar despliegues continuos, asegurando que siempre se esté utilizando la versión más reciente del software sin intervención manual.</p>
-<h2 id="consideraciones">
-  
-  
-    <a href="#consideraciones" class="anchor-heading" aria-labelledby="consideraciones"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Consideraciones
-  
-  
-</h2>
-    
+<p>The production deployment includes a Watchdog container provided by Watchtower (<a href="https://hub.docker.com/r/containrrr/watchtower">more info</a>). This container is responsible for monitoring changes to Docker images in Docker Hub. When it detects a new version of an image, it automatically updates and restarts the affected containers. This functionality is particularly useful for deploying continuous deployments, ensuring that you are always using the latest version of the software without manual intervention.</p>
 
-<ul>
-  <li>El entorno de producción usa Gunicorn. Gunicorn es un servidor HTTP WSGI (Web Server Gateway Interface) para aplicaciones Python que permite manejar múltiples solicitudes simultáneamente en entornos de producción.</li>
-  <li>Rosemary es un paquete de desarrollo, así que no está disponible en producción por cuestiones de seguridad.</li>
-  <li>La base de datos de test tampoco está disponible.</li>
-  <li>El entorno de producción se despliega sin ningún dato populado.</li>
-</ul>
+<blockquote class="warning-title">
+  <p><i class="fa-solid fa-server"></i> Important considerations</p>
+
+  <ul>
+    <li>The production environment uses Gunicorn. Gunicorn is a WSGI (Web Server Gateway Interface) HTTP server for Python applications that allows multiple requests to be handled simultaneously in production environments.</li>
+    <li>Rosemary is a development package, so it is not available in production for security reasons.</li>
+    <li>The test database is also not available.</li>
+    <li>The production environment is deployed without any populated test data for security reasons.</li>
+    <li>Debug mode is disabled, so no specific error trace will be shown, only a generic error of type 4xx or 5xx.</li>
+  </ul>
+</blockquote>
           
 
           
