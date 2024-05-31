@@ -3,7 +3,7 @@ layout: default
 title: SSL certificate
 parent: Deployment
 permalink: /docs/deployment/ssl_certificate
-nav_order: 3
+nav_order: 4
 ---
 
 # SSL certificate

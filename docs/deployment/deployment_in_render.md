@@ -3,7 +3,7 @@ layout: default
 title: Deployment in Render
 parent: Deployment
 permalink: /docs/deployment/render
-nav_order: 1
+nav_order: 2
 ---
 
 # Deployment in Render

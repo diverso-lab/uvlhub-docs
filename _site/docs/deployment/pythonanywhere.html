@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(4)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(3)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(4) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(3) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(8) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(3) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Access MariaDB | UVLHub docs</title>
+<title>Deployment in PythonAnywhere | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Access MariaDB" />
+<meta property="og:title" content="Deployment in PythonAnywhere" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/managing_database/access_mariadb" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/managing_database/access_mariadb" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/deployment/pythonanywhere" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/deployment/pythonanywhere" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Access MariaDB" />
+<meta property="twitter:title" content="Deployment in PythonAnywhere" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Access MariaDB","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/managing_database/access_mariadb"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Deployment in PythonAnywhere","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/deployment/pythonanywhere"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,63 +276,23 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/managing_database">Managing database</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Access MariaDB</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/deployment">Deployment</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Deployment in PythonAnywhere</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="access-mariadb">
+            <h1 class="no_toc" id="deployment-in-pythonanywhere">
   
   
-    <a href="#access-mariadb" class="anchor-heading" aria-labelledby="access-mariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Access MariaDB
+    <a href="#deployment-in-pythonanywhere" class="anchor-heading" aria-labelledby="deployment-in-pythonanywhere"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deployment in PythonAnywhere
   
   
 </h1>
     
-<h2 class="no_toc text-delta" id="table-of-contents">
-  
-  
-    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
-  
-  
-</h2>
-    
 
-<ol id="markdown-toc">
-  <li><a href="#access-to-console" id="markdown-toc-access-to-console">Access to console</a></li>
-  <li><a href="#exit-console" id="markdown-toc-exit-console">Exit console</a></li>
-</ol>
-<h2 id="access-to-console">
-  
-  
-    <a href="#access-to-console" class="anchor-heading" aria-labelledby="access-to-console"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Access to console
-  
-  
-</h2>
-    
-
-<p>To directly use the MariaDB console to execute native SQL statements, use:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:console
-</code></pre></div></div>
-
-<p>This command connects to the MariaDB container using the credentials defined in the <code class="language-plaintext highlighter-rouge">.env</code> file.</p>
-<h2 id="exit-console">
-  
-  
-    <a href="#exit-console" class="anchor-heading" aria-labelledby="exit-console"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exit console
-  
-  
-</h2>
-    
-
-<p>To exit the MariaDB console, type:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exit;
-</code></pre></div></div>
+<p class="fs-6 fw-300">Coming soon…</p>
           
 
           

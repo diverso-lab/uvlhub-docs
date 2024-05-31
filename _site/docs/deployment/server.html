@@ -19,7 +19,7 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(2) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(1) > a {
   font-weight: 600;
   text-decoration: none;
 }.site-nav > ul.nav-list:first-child > li:nth-child(8) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(2) > button svg {
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(1) > button svg {
   transform: rotate(-90deg);
 }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Deployment in Heroku | UVLHub docs</title>
+<title>Deployment in server | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Deployment in Heroku" />
+<meta property="og:title" content="Deployment in server" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/deployment/heroku" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/deployment/heroku" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/deployment/server" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/deployment/server" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Deployment in Heroku" />
+<meta property="twitter:title" content="Deployment in server" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Deployment in Heroku","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/deployment/heroku"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Deployment in server","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/deployment/server"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -210,7 +210,7 @@
                 <a href="/docs/ci_cd/continuous_deployment/dockerHub_workflow" class="nav-list-link">Docker Hub workflow</a>
               </li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Deployment category" aria-pressed="false">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
-    </button><a href="/docs/deployment" class="nav-list-link">Deployment</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/deployment/render" class="nav-list-link">Deployment in Render</a></li><li class="nav-list-item"><a href="/docs/deployment/heroku" class="nav-list-link">Deployment in Heroku</a></li><li class="nav-list-item"><a href="/docs/deployment/ssl_certificate" class="nav-list-link">SSL certificate</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false">
+    </button><a href="/docs/deployment" class="nav-list-link">Deployment</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/deployment/server" class="nav-list-link">Deployment in server</a></li><li class="nav-list-item"><a href="/docs/deployment/render" class="nav-list-link">Deployment in Render</a></li><li class="nav-list-item"><a href="/docs/deployment/pythonanywhere" class="nav-list-link">Deployment in PythonAnywhere</a></li><li class="nav-list-item"><a href="/docs/deployment/ssl_certificate" class="nav-list-link">SSL certificate</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
     </button><a href="/docs/troubleshooting" class="nav-list-link">Troubleshooting</a><ul class="nav-list"><li class="nav-list-item"><a href="/docs/troubleshooting/docker" class="nav-list-link">Docker</a></li></ul></li></ul>
 
@@ -277,22 +277,111 @@
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
     <li class="breadcrumb-nav-list-item"><a href="/docs/deployment">Deployment</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Deployment in Heroku</span></li>
+    <li class="breadcrumb-nav-list-item"><span>Deployment in server</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="deployment-in-heroku">
+            <h1 class="no_toc" id="deployment-in-server">
   
   
-    <a href="#deployment-in-heroku" class="anchor-heading" aria-labelledby="deployment-in-heroku"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deployment in Heroku
+    <a href="#deployment-in-server" class="anchor-heading" aria-labelledby="deployment-in-server"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deployment in server
   
   
 </h1>
     
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p class="fs-6 fw-300">Coming soon…</p>
+<ol id="markdown-toc">
+  <li><a href="#clone-the-repo" id="markdown-toc-clone-the-repo">Clone the repo</a></li>
+  <li><a href="#environment-variables" id="markdown-toc-environment-variables">Environment variables</a></li>
+  <li><a href="#deploy-containers" id="markdown-toc-deploy-containers">Deploy containers</a></li>
+  <li><a href="#watchdog-available" id="markdown-toc-watchdog-available">Watchdog available</a></li>
+  <li><a href="#consideraciones" id="markdown-toc-consideraciones">Consideraciones</a></li>
+</ol><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-brands fa-docker"></i> Required Docker installation</p>
+
+  <p>You need to have Docker and Docker Compose installed on the server where you want to deploy <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span></p>
+</blockquote>
+<h2 id="clone-the-repo">
+  
+  
+    <a href="#clone-the-repo" class="anchor-heading" aria-labelledby="clone-the-repo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Clone the repo
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://www.github.com/diverso-lab/uvlhub
+</code></pre></div></div>
+<h2 id="environment-variables">
+  
+  
+    <a href="#environment-variables" class="anchor-heading" aria-labelledby="environment-variables"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environment variables
+  
+  
+</h2>
+    
+
+<p>It is necessary to configure the environment variables file in a production environment. These variables are crucial to define specific configurations of the production environment.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.docker.production.example .env
+</code></pre></div></div>
+
+<blockquote class="important-title">
+  <p>Don’t forget to define the variables!</p>
+
+  <p>You need to properly define the values of the variables indicated with <code class="language-plaintext highlighter-rouge">&lt;CHANGE_THIS&gt;</code> in the <code class="language-plaintext highlighter-rouge">.env</code> file.</p>
+</blockquote>
+<h2 id="deploy-containers">
+  
+  
+    <a href="#deploy-containers" class="anchor-heading" aria-labelledby="deploy-containers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deploy containers
+  
+  
+</h2>
+    
+
+<p>This process includes building and deploying the services defined in the Docker configuration file for the production environment. To deploy the application to production, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.prod.yml up -d --build
+</code></pre></div></div>
+<h2 id="watchdog-available">
+  
+  
+    <a href="#watchdog-available" class="anchor-heading" aria-labelledby="watchdog-available"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Watchdog available
+  
+  
+</h2>
+    
+
+<p>El despliegue en producción incluye un contenedor de Watchdog proporcionado por Watchtower (<a href="https://hub.docker.com/r/containrrr/watchtower">más información</a>). Este contenedor se encarga de monitorear los cambios en las imágenes de Docker en Docker Hub. Cuando detecta una nueva versión de una imagen, automáticamente actualiza y reinicia los contenedores afectados. Esta funcionalidad es particularmente útil para implementar despliegues continuos, asegurando que siempre se esté utilizando la versión más reciente del software sin intervención manual.</p>
+<h2 id="consideraciones">
+  
+  
+    <a href="#consideraciones" class="anchor-heading" aria-labelledby="consideraciones"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Consideraciones
+  
+  
+</h2>
+    
+
+<ul>
+  <li>El entorno de producción usa Gunicorn. Gunicorn es un servidor HTTP WSGI (Web Server Gateway Interface) para aplicaciones Python que permite manejar múltiples solicitudes simultáneamente en entornos de producción.</li>
+  <li>Rosemary es un paquete de desarrollo, así que no está disponible en producción por cuestiones de seguridad.</li>
+  <li>La base de datos de test tampoco está disponible.</li>
+  <li>El entorno de producción se despliega sin ningún dato populado.</li>
+</ul>
           
 
           
