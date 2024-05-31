@@ -61,4 +61,4 @@ vagrant ssh
 
 Provisioning the machine already activates the Python virtual environment needed to run Rosemary.
 
-You should see the line `(venv) ubuntu@ubuntu-mantic:/vagrant$`. That means you can now use Rosemary along with all its commands.
+You should see the line `(venv) vagrant@ubuntu-mantic:/vagrant$`. That means you can now use Rosemary along with all its commands.
