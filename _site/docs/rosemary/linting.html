@@ -19,7 +19,7 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(8)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(8) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(9) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(8) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(8) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Docker | UVLHub docs</title>
+<title>Linting | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Docker" />
+<meta property="og:title" content="Linting" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/troubleshooting/docker" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/troubleshooting/docker" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/linting" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/linting" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Docker" />
+<meta property="twitter:title" content="Linting" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Docker","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/troubleshooting/docker"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Linting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/linting"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,17 +276,17 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/troubleshooting">Troubleshooting</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Docker</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Linting</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="docker">
+            <h1 class="no_toc" id="linting">
   
   
-    <a href="#docker" class="anchor-heading" aria-labelledby="docker"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Docker
+    <a href="#linting" class="anchor-heading" aria-labelledby="linting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Linting
   
   
 </h1>
@@ -301,62 +301,34 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-mariadb_container-xxx-error-starting-userland-proxy-listen-tcp4-00003306-bind-address-already-in-use" id="markdown-toc-error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-mariadb_container-xxx-error-starting-userland-proxy-listen-tcp4-00003306-bind-address-already-in-use"><em>Error response from daemon: driver failed programming external connectivity on endpoint mariadb_container (XXX): Error starting userland proxy: listen tcp4 0.0.0.0:3306: bind: address already in use</em></a>    <ol>
-      <li><a href="#identify-the-process-using-port-3306" id="markdown-toc-identify-the-process-using-port-3306">Identify the process using port 3306</a></li>
-      <li><a href="#kill-process" id="markdown-toc-kill-process">Kill process</a></li>
-      <li><a href="#disable-mariadb" id="markdown-toc-disable-mariadb">Disable MariaDB</a></li>
-    </ol>
-  </li>
+  <li><a href="#check-python-syntax" id="markdown-toc-check-python-syntax">Check Python syntax</a></li>
+  <li><a href="#using-flake8-directly" id="markdown-toc-using-flake8-directly">Using flake8 directly</a></li>
 </ol>
-<h2 id="error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-mariadb_container-xxx-error-starting-userland-proxy-listen-tcp4-00003306-bind-address-already-in-use">
+<h2 id="check-python-syntax">
   
   
-    <a href="#error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-mariadb_container-xxx-error-starting-userland-proxy-listen-tcp4-00003306-bind-address-already-in-use" class="anchor-heading" aria-labelledby="error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-mariadb_container-xxx-error-starting-userland-proxy-listen-tcp4-00003306-bind-address-already-in-use"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>Error response from daemon: driver failed programming external connectivity on endpoint mariadb_container (XXX): Error starting userland proxy: listen tcp4 0.0.0.0:3306: bind: address already in use</em>
+    <a href="#check-python-syntax" class="anchor-heading" aria-labelledby="check-python-syntax"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Check Python syntax
   
   
 </h2>
     
 
-<p>This occurs because there is already a process on port 3306 (typically because MariaDB has been installed manually).</p>
-<h3 id="identify-the-process-using-port-3306">
-  
-  
-    <a href="#identify-the-process-using-port-3306" class="anchor-heading" aria-labelledby="identify-the-process-using-port-3306"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Identify the process using port 3306
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo lsof -i :3306
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary linter
 </code></pre></div></div>
 
-<p>With this we find out the <code class="language-plaintext highlighter-rouge">PID</code> identifier of the process running on 3306</p>
-<h3 id="kill-process">
+<p>This command is designed to run the linter <a href="https://flake8.pycqa.org/en/latest/">Flake8</a> in the <code class="language-plaintext highlighter-rouge">app</code>, <code class="language-plaintext highlighter-rouge">rosemary</code> and <code class="language-plaintext highlighter-rouge">core</code> directories to check the quality of the code.</p>
+<h2 id="using-flake8-directly">
   
   
-    <a href="#kill-process" class="anchor-heading" aria-labelledby="kill-process"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Kill process
+    <a href="#using-flake8-directly" class="anchor-heading" aria-labelledby="using-flake8-directly"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using flake8 directly
   
   
-</h3>
+</h2>
     
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo kill -9 &lt;PID&gt;
-</code></pre></div></div>
-<h3 id="disable-mariadb">
-  
-  
-    <a href="#disable-mariadb" class="anchor-heading" aria-labelledby="disable-mariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Disable MariaDB
-  
-  
-</h3>
-    
+<p>You can run flake8 directly on the desired directories. To do this, run:</p>
 
-<p>If you have installed <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- manually and you are not going to use this deployment anymore, it is convenient to disable the MariaDB process:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl stop mariadb
-sudo systemctl disable mariadb
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flake8 app rosemary core
 </code></pre></div></div>
           
 
