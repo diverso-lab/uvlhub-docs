@@ -71,7 +71,7 @@ This directory is for generating SSL certificates, it acts as a temporary public
 ### docker-compose.dev.yml
 Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated.
 
-### docker-compose.prod.yml
+### docker-compose.prod.ssl.yml
 Docker Compose configuration file for the production environment (with SSL). It defines how containers should be orchestrated in production.
 
 ### docker-compose.prod.yml

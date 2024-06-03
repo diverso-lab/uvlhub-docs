@@ -30,7 +30,7 @@ This GitHub Actions workflow is designed to automate the Continuous Integration 
 
 
 ## Workflow Name
-- **name**: Flask CI
+- **name**: Run tests
 
 ## Triggers
 - **on**: 
@@ -67,7 +67,6 @@ This GitHub Actions workflow is designed to automate the Continuous Integration 
 
 ### Environment Variables for Tests
 - `FLASK_ENV`: `testing`
-- `BLUEPRINTS_DIR`: `app/blueprints`
 - `MARIADB_HOSTNAME`: `127.0.0.1`
 - `MARIADB_PORT`: `3306`
 - `MARIADB_TEST_DATABASE`: `uvlhubdb_test`

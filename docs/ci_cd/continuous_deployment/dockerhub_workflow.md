@@ -17,7 +17,7 @@ nav_order: 3
 > The original file is located at the following path:
 >
 > ```
-> .github / workflows / deployment.yml 
+> .github / workflows / deployment_on_dockerhub.yml 
 > ```
 
 {: .important-title }
@@ -35,7 +35,7 @@ nav_order: 3
 This GitHub Actions workflow is designed to automate the process of building and publishing Docker images to Docker Hub whenever a new release is published. The essential elements of this workflow are as follows:
 
 ## Workflow Name
-- **name**: Publish Docker image
+- **name**: Publish image in Docker Hub
 
 ## Triggers
 - **on**: 
