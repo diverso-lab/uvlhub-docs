@@ -57,7 +57,7 @@ docker compose -f docker/docker-compose.prod.yml up -d --build
 ```
 
 > {: .highlight }
-  **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://yourdomain.com`**
+  <i class="fa-solid fa-globe"></i> **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://yourdomain.com`**
 
 
 ## Watchdog available
