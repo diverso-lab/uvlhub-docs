@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(2)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(5)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(2) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(5) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(9) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(5) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list > li.nav-list-item:nth-child(5) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Seeders | UVLHub docs</title>
+<title>Vagrant | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Seeders" />
+<meta property="og:title" content="Vagrant" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/managing_database/seeders" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/managing_database/seeders" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/troubleshooting/vagrant" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/troubleshooting/vagrant" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Seeders" />
+<meta property="twitter:title" content="Vagrant" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Seeders","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/managing_database/seeders"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Vagrant","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/troubleshooting/vagrant"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,18 +276,17 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/managing_database">Managing database</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Seeders</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/troubleshooting">Troubleshooting</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Vagrant</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="seeders">
+            <h1 class="no_toc" id="vagrant">
   
   
-    <a href="#seeders" class="anchor-heading" aria-labelledby="seeders"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Seeders
+    <a href="#vagrant" class="anchor-heading" aria-labelledby="vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Vagrant
   
   
 </h1>
@@ -302,92 +301,34 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#basic-usage" id="markdown-toc-basic-usage">Basic Usage</a>    <ol>
-      <li><a href="#populate-from-all-modules" id="markdown-toc-populate-from-all-modules">Populate from all modules</a></li>
-      <li><a href="#populate-from-specific-module" id="markdown-toc-populate-from-specific-module">Populate from specific module</a></li>
-    </ol>
-  </li>
-  <li><a href="#reset-database-before-populating" id="markdown-toc-reset-database-before-populating">Reset database before populating</a>    <ol>
-      <li><a href="#reset-all-modules-test-data" id="markdown-toc-reset-all-modules-test-data">Reset all modules test data</a></li>
-      <li><a href="#reset-test-data-of-specific-module" id="markdown-toc-reset-test-data-of-specific-module">Reset test data of specific module</a></li>
-    </ol>
-  </li>
+  <li><a href="#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again" id="markdown-toc-a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again"><em>A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again</em></a></li>
+  <li><a href="#vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine" id="markdown-toc-vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine"><em>Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine.</em></a></li>
 </ol>
-<h2 id="basic-usage">
+<h2 id="a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again">
   
   
-    <a href="#basic-usage" class="anchor-heading" aria-labelledby="basic-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Usage
-  
-  
-</h2>
-    
-
-<p>It is possible to populate the database with predefined test data. It is very useful for testing certain
-that require existing data.</p>
-<h3 id="populate-from-all-modules">
-  
-  
-    <a href="#populate-from-all-modules" class="anchor-heading" aria-labelledby="populate-from-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Populate from all modules
-  
-  
-</h3>
-    
-
-<p>To populate all test data of all modules, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed
-</code></pre></div></div>
-<h3 id="populate-from-specific-module">
-  
-  
-    <a href="#populate-from-specific-module" class="anchor-heading" aria-labelledby="populate-from-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Populate from specific module
-  
-  
-</h3>
-    
-
-<p>If we only want to popularize the test data of a specific module, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed &lt;module_name&gt;
-</code></pre></div></div>
-
-<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the name of the module you want to populate 
-(for example, <code class="language-plaintext highlighter-rouge">auth</code> for the authentication module).</p>
-<h2 id="reset-database-before-populating">
-  
-  
-    <a href="#reset-database-before-populating" class="anchor-heading" aria-labelledby="reset-database-before-populating"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset database before populating
+    <a href="#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again" class="anchor-heading" aria-labelledby="a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again</em>
   
   
 </h2>
     
 
-<p>If you want to make sure that the database is in a clean state before populating it with test data, 
-you can use the <code class="language-plaintext highlighter-rouge">--reset</code> flag. This will reset the database to its initial state before running the seeders:</p>
-<h3 id="reset-all-modules-test-data">
-  
-  
-    <a href="#reset-all-modules-test-data" class="anchor-heading" aria-labelledby="reset-all-modules-test-data"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset all modules test data
-  
-  
-</h3>
-    
+<p>You are not in the <code class="language-plaintext highlighter-rouge">vagrant</code> folder.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed --reset
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd vagrant
 </code></pre></div></div>
-<h3 id="reset-test-data-of-specific-module">
+<h2 id="vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine">
   
   
-    <a href="#reset-test-data-of-specific-module" class="anchor-heading" aria-labelledby="reset-test-data-of-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset test data of specific module
+    <a href="#vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine" class="anchor-heading" aria-labelledby="vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine.</em>
   
   
-</h3>
+</h2>
     
 
-<p>You can also combine the <code class="language-plaintext highlighter-rouge">--reset</code> flag with a module specification if you want to reset the database before populating 
-only the test data of a specific module:</p>
+<p>Locust is most likely running locally and you need to shut it down. To do this, run it from the local environment:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed &lt;module_name&gt; --reset
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust:stop
 </code></pre></div></div>
           
 

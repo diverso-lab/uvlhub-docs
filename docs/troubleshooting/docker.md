@@ -3,7 +3,6 @@ layout: default
 title: Docker
 parent: Troubleshooting
 permalink: /docs/troubleshooting/docker
-nav_order: 2
 ---
 
 # Docker

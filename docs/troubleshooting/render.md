@@ -3,7 +3,6 @@ layout: default
 title: Render
 parent: Troubleshooting
 permalink: /docs/troubleshooting/render
-nav_order: 3
 ---
 
 # Render

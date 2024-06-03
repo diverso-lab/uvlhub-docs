@@ -29,7 +29,7 @@ nav_order: 3
 
 ## Set environment files
 
-First, copy the .env.vagrant.example file to the .env file that will be used to set the environment variables.
+First, copy the `.env.vagrant.example` file to the `.env` file that will be used to set the environment variables.
 
 ```
 cp .env.vagrant.example .env

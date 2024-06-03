@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(2)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(4)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(2) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(4) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(9) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(4) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Seeders | UVLHub docs</title>
+<title>Rosemary | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Seeders" />
+<meta property="og:title" content="Rosemary" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/rosemary/managing_database/seeders" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/rosemary/managing_database/seeders" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/troubleshooting/rosemary" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/troubleshooting/rosemary" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Seeders" />
+<meta property="twitter:title" content="Rosemary" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Seeders","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/rosemary/managing_database/seeders"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Rosemary","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/troubleshooting/rosemary"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,18 +276,17 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/docs/rosemary/managing_database">Managing database</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Seeders</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/troubleshooting">Troubleshooting</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Rosemary</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="seeders">
+            <h1 class="no_toc" id="rosemary">
   
   
-    <a href="#seeders" class="anchor-heading" aria-labelledby="seeders"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Seeders
+    <a href="#rosemary" class="anchor-heading" aria-labelledby="rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Rosemary
   
   
 </h1>
@@ -302,93 +301,89 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#basic-usage" id="markdown-toc-basic-usage">Basic Usage</a>    <ol>
-      <li><a href="#populate-from-all-modules" id="markdown-toc-populate-from-all-modules">Populate from all modules</a></li>
-      <li><a href="#populate-from-specific-module" id="markdown-toc-populate-from-specific-module">Populate from specific module</a></li>
+  <li><a href="#rosemary-order-not-found--no-se-encontró-la-orden" id="markdown-toc-rosemary-order-not-found--no-se-encontró-la-orden"><em>rosemary: order not found | no se encontró la orden</em></a></li>
+  <li><a href="#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido" id="markdown-toc-bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido"><em>bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido</em></a>    <ol>
+      <li><a href="#solution-1-run-rosemary-from-the-original-environment" id="markdown-toc-solution-1-run-rosemary-from-the-original-environment">Solution 1: Run Rosemary from the original environment.</a></li>
+      <li><a href="#solution-2-run-rosemary-from-local-environment" id="markdown-toc-solution-2-run-rosemary-from-local-environment">Solution 2: Run Rosemary from local environment</a></li>
     </ol>
   </li>
-  <li><a href="#reset-database-before-populating" id="markdown-toc-reset-database-before-populating">Reset database before populating</a>    <ol>
-      <li><a href="#reset-all-modules-test-data" id="markdown-toc-reset-all-modules-test-data">Reset all modules test data</a></li>
-      <li><a href="#reset-test-data-of-specific-module" id="markdown-toc-reset-test-data-of-specific-module">Reset test data of specific module</a></li>
-    </ol>
-  </li>
+  <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’</em></a></li>
+  <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’</em></a></li>
 </ol>
-<h2 id="basic-usage">
+<h2 id="rosemary-order-not-found--no-se-encontró-la-orden">
   
   
-    <a href="#basic-usage" class="anchor-heading" aria-labelledby="basic-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Usage
-  
-  
-</h2>
-    
-
-<p>It is possible to populate the database with predefined test data. It is very useful for testing certain
-that require existing data.</p>
-<h3 id="populate-from-all-modules">
-  
-  
-    <a href="#populate-from-all-modules" class="anchor-heading" aria-labelledby="populate-from-all-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Populate from all modules
-  
-  
-</h3>
-    
-
-<p>To populate all test data of all modules, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed
-</code></pre></div></div>
-<h3 id="populate-from-specific-module">
-  
-  
-    <a href="#populate-from-specific-module" class="anchor-heading" aria-labelledby="populate-from-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Populate from specific module
-  
-  
-</h3>
-    
-
-<p>If we only want to popularize the test data of a specific module, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed &lt;module_name&gt;
-</code></pre></div></div>
-
-<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the name of the module you want to populate 
-(for example, <code class="language-plaintext highlighter-rouge">auth</code> for the authentication module).</p>
-<h2 id="reset-database-before-populating">
-  
-  
-    <a href="#reset-database-before-populating" class="anchor-heading" aria-labelledby="reset-database-before-populating"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset database before populating
+    <a href="#rosemary-order-not-found--no-se-encontró-la-orden" class="anchor-heading" aria-labelledby="rosemary-order-not-found--no-se-encontró-la-orden"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>rosemary: order not found | no se encontró la orden</em>
   
   
 </h2>
     
 
-<p>If you want to make sure that the database is in a clean state before populating it with test data, 
-you can use the <code class="language-plaintext highlighter-rouge">--reset</code> flag. This will reset the database to its initial state before running the seeders:</p>
-<h3 id="reset-all-modules-test-data">
+<p>The most likely cause is that Rosemary is not installed in the development environment you are using. To do this, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+</code></pre></div></div>
+<h2 id="bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido">
   
   
-    <a href="#reset-all-modules-test-data" class="anchor-heading" aria-labelledby="reset-all-modules-test-data"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset all modules test data
+    <a href="#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido" class="anchor-heading" aria-labelledby="bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido</em>
+  
+  
+</h2>
+    
+
+<p>This problem occurs because the <code class="language-plaintext highlighter-rouge">venv</code> environment is installed by Docker or Vagrant and you are running <code class="language-plaintext highlighter-rouge">rosemary</code> in a different environment than the one it was created in:</p>
+<h3 id="solution-1-run-rosemary-from-the-original-environment">
+  
+  
+    <a href="#solution-1-run-rosemary-from-the-original-environment" class="anchor-heading" aria-labelledby="solution-1-run-rosemary-from-the-original-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 1: Run Rosemary from the original environment.
   
   
 </h3>
     
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed --reset
-</code></pre></div></div>
-<h3 id="reset-test-data-of-specific-module">
+<p>If you installed <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ from a Docker or Vagrant environment, make sure you are using it correctly from that environment. Visit <a href="/docs/rosemary/using_rosemary">Using Rosemary</a> for more info.</p>
+<h3 id="solution-2-run-rosemary-from-local-environment">
   
   
-    <a href="#reset-test-data-of-specific-module" class="anchor-heading" aria-labelledby="reset-test-data-of-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset test data of specific module
+    <a href="#solution-2-run-rosemary-from-local-environment" class="anchor-heading" aria-labelledby="solution-2-run-rosemary-from-local-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 2: Run Rosemary from local environment
   
   
 </h3>
     
 
-<p>You can also combine the <code class="language-plaintext highlighter-rouge">--reset</code> flag with a module specification if you want to reset the database before populating 
-only the test data of a specific module:</p>
+<p>If you have decided to move to a local environment, the <code class="language-plaintext highlighter-rouge">venv</code> directory is no longer valid, you will have to create another one. To do this, run:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed &lt;module_name&gt; --reset
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m venv venv
+source venv/bin/activate
+source .env
 </code></pre></div></div>
+<h2 id="filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints">
+  
+  
+    <a href="#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints" class="anchor-heading" aria-labelledby="filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’</em>
+  
+  
+</h2>
+    
+
+<p>This error occurs when you are running Rosemary locally but the development environment is configured in Docker.</p>
+
+<p>You must use Rosemary inside the web application container. Visit <a href="/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment">Using Rosemary</a> for more info.</p>
+<h2 id="filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints">
+  
+  
+    <a href="#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints" class="anchor-heading" aria-labelledby="filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’</em>
+  
+  
+</h2>
+    
+
+<p>This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant.</p>
+
+<p>You must use Rosemary inside the Vagrant virtual machine. Visit <a href="/docs/rosemary/using_rosemary#using-rosemary-in-vagrant-environment">Using Rosemary</a> for more info.</p>
           
 
           
