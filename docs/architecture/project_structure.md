@@ -28,16 +28,36 @@ This directory usually contains core components and services used throughout the
 
 ## docker
 
+### entrypoints
+
+### development_entrypoints.sh
+
+Entrypoint script that is launched when running the web app container in development environment.
+
+### production_entrypoints.sh
+
+Entrypoint script that is launched when running the web app container in production environment.
+
+### render_entrypoints.sh
+
+Entrypoint script that is launched when running the web app container in Render environment.
+
 ### images
 
 #### Dockerfile.dev
 Docker file for building the application's development image. It includes all dependencies and configurations needed for a development environment.
+
+#### Dockerfile.locust
+Docker file for running load and stress tests using Locust package
 
 #### Dockerfile.mariadb
 Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment.
 
 #### Dockerfile.prod
 Docker file for building the application's production image. It is optimized for performance and security.
+
+#### Dockerfile.render
+Docker file for deploying the application on Render.com service
 
 ### letsencrypt
 This directory is related to Let's Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates.
@@ -50,6 +70,9 @@ This directory is for generating SSL certificates, it acts as a temporary public
 
 ### docker-compose.dev.yml
 Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated.
+
+### docker-compose.prod.yml
+Docker Compose configuration file for the production environment (with SSL). It defines how containers should be orchestrated in production.
 
 ### docker-compose.prod.yml
 Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production.

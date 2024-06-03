@@ -307,10 +307,16 @@
   <li><a href="#app" id="markdown-toc-app">app</a></li>
   <li><a href="#core" id="markdown-toc-core">core</a></li>
   <li><a href="#docker" id="markdown-toc-docker">docker</a>    <ol>
+      <li><a href="#entrypoints" id="markdown-toc-entrypoints">entrypoints</a></li>
+      <li><a href="#development_entrypointssh" id="markdown-toc-development_entrypointssh">development_entrypoints.sh</a></li>
+      <li><a href="#production_entrypointssh" id="markdown-toc-production_entrypointssh">production_entrypoints.sh</a></li>
+      <li><a href="#render_entrypointssh" id="markdown-toc-render_entrypointssh">render_entrypoints.sh</a></li>
       <li><a href="#images" id="markdown-toc-images">images</a>        <ol>
           <li><a href="#dockerfiledev" id="markdown-toc-dockerfiledev">Dockerfile.dev</a></li>
+          <li><a href="#dockerfilelocust" id="markdown-toc-dockerfilelocust">Dockerfile.locust</a></li>
           <li><a href="#dockerfilemariadb" id="markdown-toc-dockerfilemariadb">Dockerfile.mariadb</a></li>
           <li><a href="#dockerfileprod" id="markdown-toc-dockerfileprod">Dockerfile.prod</a></li>
+          <li><a href="#dockerfilerender" id="markdown-toc-dockerfilerender">Dockerfile.render</a></li>
         </ol>
       </li>
       <li><a href="#letsencrypt" id="markdown-toc-letsencrypt">letsencrypt</a></li>
@@ -318,6 +324,7 @@
       <li><a href="#public" id="markdown-toc-public">public</a></li>
       <li><a href="#docker-composedevyml" id="markdown-toc-docker-composedevyml">docker-compose.dev.yml</a></li>
       <li><a href="#docker-composeprodyml" id="markdown-toc-docker-composeprodyml">docker-compose.prod.yml</a></li>
+      <li><a href="#docker-composeprodyml-1" id="markdown-toc-docker-composeprodyml-1">docker-compose.prod.yml</a></li>
     </ol>
   </li>
   <li><a href="#vagrant" id="markdown-toc-vagrant">vagrant</a>    <ol>
@@ -369,6 +376,44 @@
   
 </h2>
     
+<h3 id="entrypoints">
+  
+  
+    <a href="#entrypoints" class="anchor-heading" aria-labelledby="entrypoints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> entrypoints
+  
+  
+</h3>
+    
+<h3 id="development_entrypointssh">
+  
+  
+    <a href="#development_entrypointssh" class="anchor-heading" aria-labelledby="development_entrypointssh"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> development_entrypoints.sh
+  
+  
+</h3>
+    
+
+<p>Entrypoint script that is launched when running the web app container in development environment.</p>
+<h3 id="production_entrypointssh">
+  
+  
+    <a href="#production_entrypointssh" class="anchor-heading" aria-labelledby="production_entrypointssh"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> production_entrypoints.sh
+  
+  
+</h3>
+    
+
+<p>Entrypoint script that is launched when running the web app container in production environment.</p>
+<h3 id="render_entrypointssh">
+  
+  
+    <a href="#render_entrypointssh" class="anchor-heading" aria-labelledby="render_entrypointssh"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> render_entrypoints.sh
+  
+  
+</h3>
+    
+
+<p>Entrypoint script that is launched when running the web app container in Render environment.</p>
 <h3 id="images">
   
   
@@ -386,6 +431,15 @@
 </h4>
     
 <p>Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment.</p>
+<h4 id="dockerfilelocust">
+  
+  
+    <a href="#dockerfilelocust" class="anchor-heading" aria-labelledby="dockerfilelocust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.locust
+  
+  
+</h4>
+    
+<p>Docker file for running load and stress tests using Locust package</p>
 <h4 id="dockerfilemariadb">
   
   
@@ -404,6 +458,15 @@
 </h4>
     
 <p>Docker file for building the application’s production image. It is optimized for performance and security.</p>
+<h4 id="dockerfilerender">
+  
+  
+    <a href="#dockerfilerender" class="anchor-heading" aria-labelledby="dockerfilerender"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.render
+  
+  
+</h4>
+    
+<p>Docker file for deploying the application on Render.com service</p>
 <h3 id="letsencrypt">
   
   
@@ -444,6 +507,15 @@
   
   
     <a href="#docker-composeprodyml" class="anchor-heading" aria-labelledby="docker-composeprodyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.yml
+  
+  
+</h3>
+    
+<p>Docker Compose configuration file for the production environment (with SSL). It defines how containers should be orchestrated in production.</p>
+<h3 id="docker-composeprodyml-1">
+  
+  
+    <a href="#docker-composeprodyml-1" class="anchor-heading" aria-labelledby="docker-composeprodyml-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.yml
   
   
 </h3>
