@@ -62,3 +62,21 @@ To download (stop) the containers, use the same `docker-compose.dev.yml` file wi
 ```
 docker compose -f docker/docker-compose.dev.yml down
 ```
+
+## Down the containers (removing also volumes)
+
+The above command removes the containers but not the volumes. This can be problematic in the case of MariaDB, which continues saving the previous configuration and will give problems if we want to load a different configuration.
+
+To stop the containers and remove the volumes, we will use the `-v` flag:
+
+```
+docker compose -f docker/docker-compose.dev.yml down -v
+```
+
+## Reload configuration
+
+If any `Dockerfile` or `docker-compose.*.yml` file has been modified, it is necessary to rebuild the images with the `--build` flag. To do this, execute:
+
+```
+docker compose -f docker/docker-compose.dev.yml up -d --build
+```

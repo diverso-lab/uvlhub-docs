@@ -305,6 +305,8 @@
   <li><a href="#run-the-containers" id="markdown-toc-run-the-containers">Run the containers</a></li>
   <li><a href="#see-containers-in-execution" id="markdown-toc-see-containers-in-execution">See containers in execution</a></li>
   <li><a href="#down-the-containers" id="markdown-toc-down-the-containers">Down the containers</a></li>
+  <li><a href="#down-the-containers-removing-also-volumes" id="markdown-toc-down-the-containers-removing-also-volumes">Down the containers (removing also volumes)</a></li>
+  <li><a href="#reload-configuration" id="markdown-toc-reload-configuration">Reload configuration</a></li>
 </ol><hr />
 
 <blockquote class="important-title">
@@ -376,6 +378,34 @@
 <p>To download (stop) the containers, use the same <code class="language-plaintext highlighter-rouge">docker-compose.dev.yml</code> file with the following command:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.dev.yml down
+</code></pre></div></div>
+<h2 id="down-the-containers-removing-also-volumes">
+  
+  
+    <a href="#down-the-containers-removing-also-volumes" class="anchor-heading" aria-labelledby="down-the-containers-removing-also-volumes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Down the containers (removing also volumes)
+  
+  
+</h2>
+    
+
+<p>The above command removes the containers but not the volumes. This can be problematic in the case of MariaDB, which continues saving the previous configuration and will give problems if we want to load a different configuration.</p>
+
+<p>To stop the containers and remove the volumes, we will use the <code class="language-plaintext highlighter-rouge">-v</code> flag:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.dev.yml down -v
+</code></pre></div></div>
+<h2 id="reload-configuration">
+  
+  
+    <a href="#reload-configuration" class="anchor-heading" aria-labelledby="reload-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reload configuration
+  
+  
+</h2>
+    
+
+<p>If any <code class="language-plaintext highlighter-rouge">Dockerfile</code> or <code class="language-plaintext highlighter-rouge">docker-compose.*.yml</code> file has been modified, it is necessary to rebuild the images with the <code class="language-plaintext highlighter-rouge">--build</code> flag. To do this, execute:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.dev.yml up -d --build
 </code></pre></div></div>
           
 
