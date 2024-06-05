@@ -44,8 +44,25 @@ source .env
 
 This error occurs when you are running Rosemary locally but the development environment is configured in Docker.
 
+### Solution 1: run Rosemary in the correct environment
+
 You must use Rosemary inside the web application container. Visit [Using Rosemary]({{site.baseurl}}/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment) for more info.
 
+### Solution 2: technological limitations
+
+If you are intentionally switching from a Docker environment to a local environment (for example, to run tests with Selenium), you must change the environment variable settings.
+
+While in a terminal in the local environment, run:
+
+```
+cp .env.local.example .env
+source .env
+```
+
+{: .note-title }
+> Beware of custom variables
+>
+> Be careful, this command will cause the modules own variables to be lost. Remember to run `rosemary compose:env` to generate the final `env` file.
 
 ## *FileNotFoundError: [Errno 2] No such file or directory: '/vagrant/app/blueprints'*
 

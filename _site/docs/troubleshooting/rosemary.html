@@ -307,7 +307,11 @@
       <li><a href="#solution-2-run-rosemary-from-local-environment" id="markdown-toc-solution-2-run-rosemary-from-local-environment">Solution 2: Run Rosemary from local environment</a></li>
     </ol>
   </li>
-  <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’</em></a></li>
+  <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’</em></a>    <ol>
+      <li><a href="#solution-1-run-rosemary-in-the-correct-environment" id="markdown-toc-solution-1-run-rosemary-in-the-correct-environment">Solution 1: run Rosemary in the correct environment</a></li>
+      <li><a href="#solution-2-technological-limitations" id="markdown-toc-solution-2-technological-limitations">Solution 2: technological limitations</a></li>
+    </ol>
+  </li>
   <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’</em></a></li>
 </ol>
 <h2 id="rosemary-order-not-found--no-se-encontró-la-orden">
@@ -370,8 +374,38 @@ source .env
     
 
 <p>This error occurs when you are running Rosemary locally but the development environment is configured in Docker.</p>
+<h3 id="solution-1-run-rosemary-in-the-correct-environment">
+  
+  
+    <a href="#solution-1-run-rosemary-in-the-correct-environment" class="anchor-heading" aria-labelledby="solution-1-run-rosemary-in-the-correct-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 1: run Rosemary in the correct environment
+  
+  
+</h3>
+    
 
 <p>You must use Rosemary inside the web application container. Visit <a href="/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment">Using Rosemary</a> for more info.</p>
+<h3 id="solution-2-technological-limitations">
+  
+  
+    <a href="#solution-2-technological-limitations" class="anchor-heading" aria-labelledby="solution-2-technological-limitations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 2: technological limitations
+  
+  
+</h3>
+    
+
+<p>If you are intentionally switching from a Docker environment to a local environment (for example, to run tests with Selenium), you must change the environment variable settings.</p>
+
+<p>While in a terminal in the local environment, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.local.example .env
+source .env
+</code></pre></div></div>
+
+<blockquote class="note-title">
+  <p>Beware of custom variables</p>
+
+  <p>Be careful, this command will cause the modules own variables to be lost. Remember to run <code class="language-plaintext highlighter-rouge">rosemary compose:env</code> to generate the final <code class="language-plaintext highlighter-rouge">env</code> file.</p>
+</blockquote>
 <h2 id="filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints">
   
   

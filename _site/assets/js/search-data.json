@@ -925,7 +925,7 @@
   },"132": {
     "doc": "Rosemary",
     "title": "Table of contents",
-    "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’ | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’ | . ",
+    "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’ . | Solution 1: run Rosemary in the correct environment | Solution 2: technological limitations | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’ | . ",
     "url": "/docs/troubleshooting/rosemary#table-of-contents",
     
     "relUrl": "/docs/troubleshooting/rosemary#table-of-contents"
@@ -946,7 +946,7 @@
   },"135": {
     "doc": "Rosemary",
     "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’",
-    "content": "This error occurs when you are running Rosemary locally but the development environment is configured in Docker. You must use Rosemary inside the web application container. Visit Using Rosemary for more info. ",
+    "content": "This error occurs when you are running Rosemary locally but the development environment is configured in Docker. Solution 1: run Rosemary in the correct environment . You must use Rosemary inside the web application container. Visit Using Rosemary for more info. Solution 2: technological limitations . If you are intentionally switching from a Docker environment to a local environment (for example, to run tests with Selenium), you must change the environment variable settings. While in a terminal in the local environment, run: . cp .env.local.example .env source .env . Beware of custom variables . Be careful, this command will cause the modules own variables to be lost. Remember to run rosemary compose:env to generate the final env file. ",
     "url": "/docs/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints",
     
     "relUrl": "/docs/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"
