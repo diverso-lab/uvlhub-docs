@@ -304,6 +304,7 @@
 <ol id="markdown-toc">
   <li><a href="#testing-all-modules" id="markdown-toc-testing-all-modules">Testing all modules</a></li>
   <li><a href="#testing-a-specific-module" id="markdown-toc-testing-a-specific-module">Testing a specific module</a></li>
+  <li><a href="#testing-with-an-expression" id="markdown-toc-testing-with-an-expression">Testing with an expression</a></li>
 </ol>
 <h2 id="testing-all-modules">
   
@@ -333,6 +334,24 @@
 name as an argument:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test &lt;module_name&gt;
+</code></pre></div></div>
+<h2 id="testing-with-an-expression">
+  
+  
+    <a href="#testing-with-an-expression" class="anchor-heading" aria-labelledby="testing-with-an-expression"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing with an expression
+  
+  
+</h2>
+    
+
+<p>To run tests that match a specific expression:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test -k &lt;expression&gt;
+</code></pre></div></div>
+
+<p>To run tests for a specific module that match a specific expression:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary test &lt;module_name&gt; -k &lt;expression&gt;
 </code></pre></div></div>
           
 

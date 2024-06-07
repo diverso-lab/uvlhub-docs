@@ -35,3 +35,17 @@ name as an argument:
 ```
 rosemary test <module_name>
 ```
+
+## Testing with an expression
+
+To run tests that match a specific expression:
+
+```
+rosemary test -k <expression>
+```
+
+To run tests for a specific module that match a specific expression:
+
+```
+rosemary test <module_name> -k <expression>
+```

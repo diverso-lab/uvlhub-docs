@@ -1163,7 +1163,7 @@
   },"166": {
     "doc": "Unit tests",
     "title": "Table of contents",
-    "content": ". | Testing all modules | Testing a specific module | . ",
+    "content": ". | Testing all modules | Testing a specific module | Testing with an expression | . ",
     "url": "/docs/rosemary/testing/unit_tests#table-of-contents",
     
     "relUrl": "/docs/rosemary/testing/unit_tests#table-of-contents"
@@ -1182,69 +1182,76 @@
     
     "relUrl": "/docs/rosemary/testing/unit_tests#testing-a-specific-module"
   },"169": {
+    "doc": "Unit tests",
+    "title": "Testing with an expression",
+    "content": "To run tests that match a specific expression: . rosemary test -k &lt;expression&gt; . To run tests for a specific module that match a specific expression: . rosemary test &lt;module_name&gt; -k &lt;expression&gt; . ",
+    "url": "/docs/rosemary/testing/unit_tests#testing-with-an-expression",
+    
+    "relUrl": "/docs/rosemary/testing/unit_tests#testing-with-an-expression"
+  },"170": {
     "doc": "Updating dependencies",
     "title": "Updating dependencies",
     "content": "To update all project dependencies, run: . rosemary update . It is the responsibility of the developer to check that the update of the dependencies has not broken any functionality and each dependency maintains backwards compatibility. Use the script with care! . ",
     "url": "/docs/rosemary/updating_dependencies",
     
     "relUrl": "/docs/rosemary/updating_dependencies"
-  },"170": {
+  },"171": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary",
     "content": " ",
     "url": "/docs/rosemary/using_rosemary",
     
     "relUrl": "/docs/rosemary/using_rosemary"
-  },"171": {
+  },"172": {
     "doc": "Using Rosemary",
     "title": "Table of contents",
     "content": ". | Using Rosemary in manual environment | Using Rosemary in Docker environment | Using Rosemary in Vagrant environment | . ",
     "url": "/docs/rosemary/using_rosemary#table-of-contents",
     
     "relUrl": "/docs/rosemary/using_rosemary#table-of-contents"
-  },"172": {
+  },"173": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in manual environment",
     "content": "To use Rosemary CLI in a manual environment, we must activate the Python virtual environment: . python -m venv venv source venv/bin/activate . This will create a venv folder. Rosemary is a development package, so we must install packages in editable mode: . pip install -e ./ . ",
     "url": "/docs/rosemary/using_rosemary#using-rosemary-in-manual-environment",
     
     "relUrl": "/docs/rosemary/using_rosemary#using-rosemary-in-manual-environment"
-  },"173": {
+  },"174": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Docker environment",
     "content": "To use the Rosemary CLI in Docker environment, you need to be inside the web_app_container Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings. First, make sure your Docker environment is running. Then, access the web_app_container using the following command: . docker exec -it web_app_container /bin/sh . In the terminal, you should see the prefix /app #. You are now ready to use Rosemary’s commands. ",
     "url": "/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment",
     
     "relUrl": "/docs/rosemary/using_rosemary#using-rosemary-in-docker-environment"
-  },"174": {
+  },"175": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Vagrant environment",
     "content": "To use Rosemary CLI in Vagrant rosemary, you need to be inside the virtual machine. First, make sure the machine is booted: . cd vagrant vagrant up . Second, you must access the machine . vagrant ssh . Provisioning the machine already activates the Python virtual environment needed to run Rosemary. You should see the line (venv) vagrant@ubuntu-mantic:/vagrant$. That means you can now use Rosemary along with all its commands. ",
     "url": "/docs/rosemary/using_rosemary#using-rosemary-in-vagrant-environment",
     
     "relUrl": "/docs/rosemary/using_rosemary#using-rosemary-in-vagrant-environment"
-  },"175": {
+  },"176": {
     "doc": "Vagrant",
     "title": "Vagrant",
     "content": " ",
     "url": "/docs/troubleshooting/vagrant",
     
     "relUrl": "/docs/troubleshooting/vagrant"
-  },"176": {
+  },"177": {
     "doc": "Vagrant",
     "title": "Table of contents",
     "content": ". | A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again | Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine. | . ",
     "url": "/docs/troubleshooting/vagrant#table-of-contents",
     
     "relUrl": "/docs/troubleshooting/vagrant#table-of-contents"
-  },"177": {
+  },"178": {
     "doc": "Vagrant",
     "title": "A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again",
     "content": "You are not in the vagrant folder. cd vagrant . ",
     "url": "/docs/troubleshooting/vagrant#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again",
     
     "relUrl": "/docs/troubleshooting/vagrant#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again"
-  },"178": {
+  },"179": {
     "doc": "Vagrant",
     "title": "Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine.",
     "content": "Locust is most likely running locally and you need to shut it down. To do this, run it from the local environment: . rosemary locust:stop . ",
