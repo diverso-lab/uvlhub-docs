@@ -9,13 +9,8 @@ nav_order: 3
 # HTTP Request
 {: .no_toc }
 
-
-
-
 ## Table of contents
 {: .no_toc .text-delta }
-
-
 
 1. TOC
 {:toc}
@@ -24,7 +19,7 @@ nav_order: 3
 *Figure 1: HTTP Request.*
 
 
-The Figure 1 shows an architecture of a web application using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern.
+The Figure 1 shows an architecture of {% include uvlhub.html %} using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern.
 
 
 ## Internet

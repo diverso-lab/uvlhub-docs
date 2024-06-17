@@ -470,7 +470,7 @@
   },"67": {
     "doc": "HTTP Request",
     "title": "Table of contents",
-    "content": ". | Internet | Server | Model-View-Controller (MVC) | Interaction and Data Flow | Database | . Figure 1: HTTP Request. The Figure 1 shows an architecture of a web application using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern. ",
+    "content": ". | Internet | Server | Model-View-Controller (MVC) | Interaction and Data Flow | Database | . Figure 1: HTTP Request. The Figure 1 shows an architecture of uvlhub using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern. ",
     "url": "/docs/architecture/http_request#table-of-contents",
     
     "relUrl": "/docs/architecture/http_request#table-of-contents"
