@@ -19,7 +19,7 @@ nav_order: 3
 *Figure 1: HTTP Request.*
 
 
-The Figure 1 shows an architecture of {% include uvlhub.html %} using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern.
+The Figure 1 shows an HTTP request in {% include uvlhub.html %} using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern.
 
 
 ## Internet
@@ -31,6 +31,8 @@ The application is accessible through the internet.
 A Flask server handles web requests and responses.
 
 ## Model-View-Controller (MVC)
+
+Each module in {% include uvlhub.html %} has a series of folders and files to handle HTTP requests separating responsibility as indicated:
 
 - *Model*. Represents the data and business logic of the application.
     - `models.py`: Defines the data structures and database interactions.

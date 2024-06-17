@@ -470,7 +470,7 @@
   },"67": {
     "doc": "HTTP Request",
     "title": "Table of contents",
-    "content": ". | Internet | Server | Model-View-Controller (MVC) | Interaction and Data Flow | Database | . Figure 1: HTTP Request. The Figure 1 shows an architecture of uvlhub using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern. ",
+    "content": ". | Internet | Server | Model-View-Controller (MVC) | Interaction and Data Flow | Database | . Figure 1: HTTP Request. The Figure 1 shows an HTTP request in uvlhub using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern. ",
     "url": "/docs/architecture/http_request#table-of-contents",
     
     "relUrl": "/docs/architecture/http_request#table-of-contents"
@@ -491,7 +491,7 @@
   },"70": {
     "doc": "HTTP Request",
     "title": "Model-View-Controller (MVC)",
-    "content": ". | Model. Represents the data and business logic of the application. | models.py: Defines the data structures and database interactions. | repositories.py: Implements functions to access and manipulate the data stored in the models. | . | View. Represents the user interface. | templates: Contains the Jinja templates to generate the user interface. | forms.py: Defines forms and data validations that users can submit. | . | Controller. Handles the application logic and the communication between the model and the view. | routes.py: Defines the application routes, handling HTTP requests and determining which view should be rendered. | services.py: Implements the business logic and operations that belong neither to the model nor to the view. | . | . ",
+    "content": "Each module in uvlhub has a series of folders and files to handle HTTP requests separating responsibility as indicated: . | Model. Represents the data and business logic of the application. | models.py: Defines the data structures and database interactions. | repositories.py: Implements functions to access and manipulate the data stored in the models. | . | View. Represents the user interface. | templates: Contains the Jinja templates to generate the user interface. | forms.py: Defines forms and data validations that users can submit. | . | Controller. Handles the application logic and the communication between the model and the view. | routes.py: Defines the application routes, handling HTTP requests and determining which view should be rendered. | services.py: Implements the business logic and operations that belong neither to the model nor to the view. | . | . ",
     "url": "/docs/architecture/http_request#model-view-controller-mvc",
     
     "relUrl": "/docs/architecture/http_request#model-view-controller-mvc"
