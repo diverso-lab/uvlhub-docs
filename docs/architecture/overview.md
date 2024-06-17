@@ -3,7 +3,7 @@ layout: default
 title: Overview
 parent: Architecture
 permalink: /docs/architecture/overview
-nav_order: 3
+nav_order: 1
 ---
 
 # Overview

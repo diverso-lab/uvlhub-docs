@@ -19,7 +19,7 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(3)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(2) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(3) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(9) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(2) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(3) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>File permissions | UVLHub docs</title>
+<title>HTTP Request | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="File permissions" />
+<meta property="og:title" content="HTTP Request" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/docs/troubleshooting/file_permissions" />
-<meta property="og:url" content="http://0.0.0.0:4000/docs/troubleshooting/file_permissions" />
+<link rel="canonical" href="http://0.0.0.0:4000/docs/architecture/http_request" />
+<meta property="og:url" content="http://0.0.0.0:4000/docs/architecture/http_request" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="File permissions" />
+<meta property="twitter:title" content="HTTP Request" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"File permissions","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/troubleshooting/file_permissions"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"HTTP Request","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/docs/architecture/http_request"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,17 +276,17 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/docs/troubleshooting">Troubleshooting</a></li>
-    <li class="breadcrumb-nav-list-item"><span>File permissions</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/docs/architecture">Architecture</a></li>
+    <li class="breadcrumb-nav-list-item"><span>HTTP Request</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="file-permissions">
+            <h1 class="no_toc" id="http-request">
   
   
-    <a href="#file-permissions" class="anchor-heading" aria-labelledby="file-permissions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> File permissions
+    <a href="#http-request" class="anchor-heading" aria-labelledby="http-request"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> HTTP Request
   
   
 </h1>
@@ -301,21 +301,97 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#permissionerror-errno-13-permission-denied-applog" id="markdown-toc-permissionerror-errno-13-permission-denied-applog"><em>PermissionError: [Errno 13] Permission denied: ‘…app.log’</em></a></li>
+  <li><a href="#internet" id="markdown-toc-internet">Internet</a></li>
+  <li><a href="#server" id="markdown-toc-server">Server</a></li>
+  <li><a href="#model-view-controller-mvc" id="markdown-toc-model-view-controller-mvc">Model-View-Controller (MVC)</a></li>
+  <li><a href="#interaction-and-data-flow" id="markdown-toc-interaction-and-data-flow">Interaction and Data Flow</a></li>
+  <li><a href="#database" id="markdown-toc-database">Database</a></li>
 </ol>
-<h2 id="permissionerror-errno-13-permission-denied-applog">
+
+<p><img src="/assets/images/http_request.svg" alt="HTTP Request" />
+<em>Figure 1: HTTP Request.</em></p>
+
+<p>The Figure 1 shows an architecture of a web application using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern.</p>
+<h2 id="internet">
   
   
-    <a href="#permissionerror-errno-13-permission-denied-applog" class="anchor-heading" aria-labelledby="permissionerror-errno-13-permission-denied-applog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>PermissionError: [Errno 13] Permission denied: ‘…app.log’</em>
+    <a href="#internet" class="anchor-heading" aria-labelledby="internet"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Internet
   
   
 </h2>
     
 
-<p>There is a problem with file permissions. The simplest solution, from the console, is:</p>
+<p>The application is accessible through the internet.</p>
+<h2 id="server">
+  
+  
+    <a href="#server" class="anchor-heading" aria-labelledby="server"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Server
+  
+  
+</h2>
+    
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo rm app.log
-</code></pre></div></div>
+<p>A Flask server handles web requests and responses.</p>
+<h2 id="model-view-controller-mvc">
+  
+  
+    <a href="#model-view-controller-mvc" class="anchor-heading" aria-labelledby="model-view-controller-mvc"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Model-View-Controller (MVC)
+  
+  
+</h2>
+    
+
+<ul>
+  <li><em>Model</em>. Represents the data and business logic of the application.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">models.py</code>: Defines the data structures and database interactions.</li>
+      <li><code class="language-plaintext highlighter-rouge">repositories.py</code>: Implements functions to access and manipulate the data stored in the models.</li>
+    </ul>
+  </li>
+  <li><em>View</em>. Represents the user interface.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">templates</code>: Contains the Jinja templates to generate the user interface.</li>
+      <li><code class="language-plaintext highlighter-rouge">forms.py</code>: Defines forms and data validations that users can submit.</li>
+    </ul>
+  </li>
+  <li><em>Controller</em>. Handles the application logic and the communication between the model and the view.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">routes.py</code>: Defines the application routes, handling HTTP requests and determining which view should be rendered.</li>
+      <li><code class="language-plaintext highlighter-rouge">services.py</code>: Implements the business logic and operations that belong neither to the model nor to the view.</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="interaction-and-data-flow">
+  
+  
+    <a href="#interaction-and-data-flow" class="anchor-heading" aria-labelledby="interaction-and-data-flow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interaction and Data Flow
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Requests come to the Flask server from the Internet.</li>
+  <li>The server redirects these requests to <code class="language-plaintext highlighter-rouge">routes.py</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">routes.py</code> can call <code class="language-plaintext highlighter-rouge">services.py</code> to perform business operations.</li>
+  <li><code class="language-plaintext highlighter-rouge">services.py</code> interacts with repositories.py to access data from <code class="language-plaintext highlighter-rouge">models.py</code> and the database.</li>
+  <li><code class="language-plaintext highlighter-rouge">forms.py</code> and templates are used to handle user input and generate the visual response that is sent back to the user through the Flask server.</li>
+</ul>
+<h2 id="database">
+  
+  
+    <a href="#database" class="anchor-heading" aria-labelledby="database"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Database
+  
+  
+</h2>
+    
+
+<ul>
+  <li>The database stores the persistent information of the application.</li>
+  <li><code class="language-plaintext highlighter-rouge">models.py</code> defines how this information is structured and accessed.</li>
+</ul>
+
+<p>This architecture facilitates the separation of concerns, making the code more modular and easier to maintain. Each component has a clear and distinct responsibility, which improves the organization and scalability of the application.</p>
           
 
           

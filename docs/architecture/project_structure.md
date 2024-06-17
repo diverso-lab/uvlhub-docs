@@ -3,7 +3,7 @@ layout: default
 title: Project structure
 parent: Architecture
 permalink: /docs/architecture/project_structure
-nav_order: 3
+nav_order: 2
 ---
 
 # Project structure
