@@ -12,7 +12,7 @@ permalink: /
 
 Welcome to the official documentation for {% include uvlhub.html %}, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and {% include flamapy.html %} from DiversoLab for advanced model analysis, {% include uvlhub.html %} empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how {% include uvlhub.html %} can streamline your workflow, enhance collaboration, and drive innovation in feature model management.
 
-[Get started now](docs/getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Get started now](getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [View it on GitHub][uvlhub repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
 
 
