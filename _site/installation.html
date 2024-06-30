@@ -18,7 +18,7 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li:not(:nth-child(4)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
@@ -29,12 +29,12 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(4) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(4) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(4) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +56,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Installation | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Installation" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/installation" />
+<meta property="og:url" content="http://0.0.0.0:4000/installation" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Installation" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Installation","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/installation"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,38 +276,95 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 id="installation">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#installation" class="anchor-heading" aria-labelledby="installation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Installation
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
+<p class="fs-6 fw-300">Understanding how to install <!-- _includes/flamapy.html -->
 <span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+ is an essential skill that will enhance your technical proficiency and broaden your knowledge base. Whether you are setting up a local environment manually, using Docker, or deploying with Vagrant, mastering these installation methods brings several benefits.</p>
+<h3 id="hands-on-installation">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#hands-on-installation" class="anchor-heading" aria-labelledby="hands-on-installation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hands-On Installation
   
   
 </h3>
     
+<p>Learning to install <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ manually helps you:</p>
+<ul>
+  <li><strong>Gain In-Depth Understanding</strong>: By installing <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ step-by-step, you get a deep understanding of its underlying components and dependencies.</li>
+  <li><strong>Troubleshoot Effectively</strong>: When you know how each part fits together, you can troubleshoot issues more effectively and keep your environment running smoothly.</li>
+  <li><strong>Customize Configurations</strong>: Manual installation allows you to tailor the setup to meet your specific needs and preferences.</li>
+</ul>
+<h3 id="using-docker">
+  
+  
+    <a href="#using-docker" class="anchor-heading" aria-labelledby="using-docker"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Docker
+  
+  
+</h3>
+    
+<p>Installing <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ with Docker provides:</p>
+<ul>
+  <li><strong>Simplified Setup</strong>: Docker encapsulates all dependencies and configurations, simplifying the installation process.</li>
+  <li><strong>Consistency Across Environments</strong>: Docker ensures that your development, testing, and production environments are identical, reducing the “it works on my machine” problem.</li>
+  <li><strong>Scalability and Portability</strong>: Easily scale your applications and move them across different environments without worrying about compatibility issues.</li>
+</ul>
+<h3 id="deploying-with-vagrant">
+  
+  
+    <a href="#deploying-with-vagrant" class="anchor-heading" aria-labelledby="deploying-with-vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deploying with Vagrant
+  
+  
+</h3>
+    
+<p>Learning to deploy <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ with Vagrant offers:</p>
+<ul>
+  <li><strong>Automated Environment Provisioning</strong>: Vagrant automates the setup of your virtual environments, saving time and reducing human error.</li>
+  <li><strong>Reproducibility</strong>: Vagrant allows you to create reproducible and portable work environments, ensuring that everyone on your team works in the same environment.</li>
+  <li><strong>Ease of Use</strong>: With Vagrant, you can manage and switch between different project environments effortlessly, making your development workflow more efficient.</li>
+</ul>
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>By becoming proficient in these installation methods, you not only enhance your technical skills but also prepare yourself to tackle a wide range of challenges in various development and deployment scenarios. Embrace the opportunity to learn and master these installation techniques to stay ahead in the ever-evolving tech landscape.</p>
           
+
+          
+            <hr>
+<h2 class="text-delta">Table of contents</h2>
+
+<ul>
+
+  <li>
+    <a href="/installation/manual_installation">Manual installation</a>
+  </li>
+
+  <li>
+    <a href="/installation/installation_with_docker">Installation with Docker</a>
+  </li>
+
+  <li>
+    <a href="/installation/installation_with_vagrant">Installation with Vagrant</a>
+  </li>
+
+  <li>
+    <a href="/installation/test_users">Test users</a>
+  </li>
+
+</ul>
 
           
         </main>

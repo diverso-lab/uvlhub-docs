@@ -18,9 +18,9 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(3)) > a {
   background-image: none;
 }
 
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > ul > li:nth-child(3) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(3) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Reset database | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Reset database" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/rosemary/managing_database/reset_database" />
+<meta property="og:url" content="http://0.0.0.0:4000/rosemary/managing_database/reset_database" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Reset database" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Reset database","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/rosemary/managing_database/reset_database"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,82 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/rosemary">Rosemary CLI</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/rosemary/managing_database">Managing database</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Reset database</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="reset-database">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#reset-database" class="anchor-heading" aria-labelledby="reset-database"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Reset database
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<p>The <code class="language-plaintext highlighter-rouge">rosemary db:reset</code> command is a powerful tool for resetting your project’s database to its 
+initial state. This command deletes all the data in your database, making it ideal for fixing any inconsistencies 
+we may have created during development.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
   
   
-</h3>
+</h2>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<ol id="markdown-toc">
+  <li><a href="#basic-usage" id="markdown-toc-basic-usage">Basic Usage</a></li>
+  <li><a href="#clear-migrations" id="markdown-toc-clear-migrations">Clear migrations</a></li>
+</ol>
+<h2 id="basic-usage">
+  
+  
+    <a href="#basic-usage" class="anchor-heading" aria-labelledby="basic-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Usage
+  
+  
+</h2>
+    
+
+<p>To reset your database and clear all table data except for migration records, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:reset
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">rosemary db:reset</code> command also clears the uploads directory as part of the reset process, ensuring that any files 
+uploaded during development or testing are removed.</p>
+<h2 id="clear-migrations">
+  
+  
+    <a href="#clear-migrations" class="anchor-heading" aria-labelledby="clear-migrations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Clear migrations
+  
+  
+</h2>
+    
+
+<p>If you need to completely rebuild your database from scratch, including removing all migration history and starting
+fresh, you can use the <code class="language-plaintext highlighter-rouge">--clear-migrations</code> option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:reset --clear-migrations
+</code></pre></div></div>
+
+<blockquote class="warning-title">
+  <p>Be careful! This command will…</p>
+
+  <ul>
+    <li>Delete all data from the database, including the migration history.</li>
+    <li>Clear the migrations directory.</li>
+    <li>Initialize a new set of migrations.</li>
+    <li>Apply the migrations to rebuild the database schema.</li>
+  </ul>
+</blockquote>
           
 
           

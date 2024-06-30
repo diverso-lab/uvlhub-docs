@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(5)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(5) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(5) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(5) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Routing | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Routing" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/rosemary/routing" />
+<meta property="og:url" content="http://0.0.0.0:4000/rosemary/routing" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Routing" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Routing","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/rosemary/routing"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,82 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/rosemary">Rosemary CLI</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Routing</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="routing">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#routing" class="anchor-heading" aria-labelledby="routing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Routing
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<p>The rosemary command <code class="language-plaintext highlighter-rouge">route:list</code> allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
   
   
-</h3>
+</h2>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<ol id="markdown-toc">
+  <li><a href="#list-all-routes" id="markdown-toc-list-all-routes">List all routes</a></li>
+  <li><a href="#group-routes-by-module" id="markdown-toc-group-routes-by-module">Group routes by module</a></li>
+  <li><a href="#list-routes-of-a-specific-module" id="markdown-toc-list-routes-of-a-specific-module">List routes of a specific module</a></li>
+</ol>
+<h2 id="list-all-routes">
+  
+  
+    <a href="#list-all-routes" class="anchor-heading" aria-labelledby="list-all-routes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> List all routes
+  
+  
+</h2>
+    
+
+<p>To list all the routes of all the modules, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list
+</code></pre></div></div>
+<h2 id="group-routes-by-module">
+  
+  
+    <a href="#group-routes-by-module" class="anchor-heading" aria-labelledby="group-routes-by-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Group routes by module
+  
+  
+</h2>
+    
+
+<p>To get a grouped view of the routes by module, you can use the <code class="language-plaintext highlighter-rouge">--group</code> option. This is especially useful 
+for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list --group
+</code></pre></div></div>
+<h2 id="list-routes-of-a-specific-module">
+  
+  
+    <a href="#list-routes-of-a-specific-module" class="anchor-heading" aria-labelledby="list-routes-of-a-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> List routes of a specific module
+  
+  
+</h2>
+    
+
+<p>It may be useful to see the routes associated with a specific module. To do this, simply provide the module 
+name as an argument:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list &lt;module_name&gt;
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the actual name of the module for which you want to see the routes.</p>
           
 
           

@@ -29,8 +29,8 @@ Detailed changes for each release are documented in the [release notes].
 [Jekyll]: https://jekyllrb.com
 [Markdown]: https://daringfireball.net/projects/markdown/
 [Liquid]: https://github.com/Shopify/liquid/wiki
-[Front matter]: https://jekyllrb.com/docs/front-matter/
-[Jekyll configuration]: https://jekyllrb.com/docs/configuration/
+[Front matter]: https://jekyllrb.com/front-matter/
+[Jekyll configuration]: https://jekyllrb.com/configuration/
 [source file for this page]: https://github.com/just-the-docs/just-the-docs/blob/main/index.md
 [Just the Docs Template]: https://just-the-docs.github.io/just-the-docs-template/
 [Just the Docs]: https://just-the-docs.com
@@ -42,6 +42,6 @@ Detailed changes for each release are documented in the [release notes].
 
 [use the template]: https://github.com/just-the-docs/just-the-docs-template/generate
 
-[getting-started]: {% link docs/getting-started.md %}
+[getting-started]: {% link getting-started.md %}
 
 [release notes]: https://github.com/diverso-lab/uvlhub/releases

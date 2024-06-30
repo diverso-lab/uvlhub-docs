@@ -18,7 +18,7 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li:not(:nth-child(8)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
@@ -29,12 +29,12 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(8) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +56,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Deployment | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Deployment" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/deployment" />
+<meta property="og:url" content="http://0.0.0.0:4000/deployment" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Deployment" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Deployment","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/deployment"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,38 +276,37 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 id="deployment">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#deployment" class="anchor-heading" aria-labelledby="deployment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deployment
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
-  
-  
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
-  
-  
-</h3>
-    
-
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p class="fs-6 fw-300">Knowing how to deploy applications on platforms like Render and PythonAnywhere is crucial for any developer, as it bridges the gap between development and production, ensuring your code runs efficiently and securely in real-world environments. These platforms simplify the deployment process with automation tools, enabling continuous integration and continuous deployment (CI/CD), which enhances productivity by allowing rapid updates.</p>
           
+
+          
+            <hr>
+<h2 class="text-delta">Table of contents</h2>
+
+<ul>
+
+  <li>
+    <a href="/deployment/server">Deployment in server</a>
+  </li>
+
+  <li>
+    <a href="/deployment/render">Deployment in Render</a>
+  </li>
+
+  <li>
+    <a href="/deployment/ssl_certificate">SSL certificate</a>
+  </li>
+
+</ul>
 
           
         </main>

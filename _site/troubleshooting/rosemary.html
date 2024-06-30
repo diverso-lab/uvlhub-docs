@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(4)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(4) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(9) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(4) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Rosemary | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Rosemary" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/troubleshooting/rosemary" />
+<meta property="og:url" content="http://0.0.0.0:4000/troubleshooting/rosemary" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Rosemary" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Rosemary","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/troubleshooting/rosemary"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,150 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/troubleshooting">Troubleshooting</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Rosemary</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="rosemary">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#rosemary" class="anchor-heading" aria-labelledby="rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Rosemary
   
   
 </h1>
     
-
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<h2 class="no_toc text-delta" id="table-of-contents">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#rosemary-order-not-found--no-se-encontró-la-orden" id="markdown-toc-rosemary-order-not-found--no-se-encontró-la-orden"><em>rosemary: order not found | no se encontró la orden</em></a></li>
+  <li><a href="#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido" id="markdown-toc-bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido"><em>bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido</em></a>    <ol>
+      <li><a href="#solution-1-run-rosemary-from-the-original-environment" id="markdown-toc-solution-1-run-rosemary-from-the-original-environment">Solution 1: Run Rosemary from the original environment.</a></li>
+      <li><a href="#solution-2-run-rosemary-from-local-environment" id="markdown-toc-solution-2-run-rosemary-from-local-environment">Solution 2: Run Rosemary from local environment</a></li>
+    </ol>
+  </li>
+  <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’</em></a>    <ol>
+      <li><a href="#solution-1-run-rosemary-in-the-correct-environment" id="markdown-toc-solution-1-run-rosemary-in-the-correct-environment">Solution 1: run Rosemary in the correct environment</a></li>
+      <li><a href="#solution-2-technological-limitations" id="markdown-toc-solution-2-technological-limitations">Solution 2: technological limitations</a></li>
+    </ol>
+  </li>
+  <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’</em></a></li>
+</ol>
+<h2 id="rosemary-order-not-found--no-se-encontró-la-orden">
+  
+  
+    <a href="#rosemary-order-not-found--no-se-encontró-la-orden" class="anchor-heading" aria-labelledby="rosemary-order-not-found--no-se-encontró-la-orden"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>rosemary: order not found | no se encontró la orden</em>
+  
+  
+</h2>
+    
+
+<p>The most likely cause is that Rosemary is not installed in the development environment you are using. To do this, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+</code></pre></div></div>
+<h2 id="bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido">
+  
+  
+    <a href="#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido" class="anchor-heading" aria-labelledby="bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido</em>
+  
+  
+</h2>
+    
+
+<p>This problem occurs because the <code class="language-plaintext highlighter-rouge">venv</code> environment is installed by Docker or Vagrant and you are running <code class="language-plaintext highlighter-rouge">rosemary</code> in a different environment than the one it was created in:</p>
+<h3 id="solution-1-run-rosemary-from-the-original-environment">
+  
+  
+    <a href="#solution-1-run-rosemary-from-the-original-environment" class="anchor-heading" aria-labelledby="solution-1-run-rosemary-from-the-original-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 1: Run Rosemary from the original environment.
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>If you installed <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ from a Docker or Vagrant environment, make sure you are using it correctly from that environment. Visit <a href="/rosemary/using_rosemary">Using Rosemary</a> for more info.</p>
+<h3 id="solution-2-run-rosemary-from-local-environment">
+  
+  
+    <a href="#solution-2-run-rosemary-from-local-environment" class="anchor-heading" aria-labelledby="solution-2-run-rosemary-from-local-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 2: Run Rosemary from local environment
+  
+  
+</h3>
+    
+
+<p>If you have decided to move to a local environment, the <code class="language-plaintext highlighter-rouge">venv</code> directory is no longer valid, you will have to create another one. To do this, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m venv venv
+source venv/bin/activate
+source .env
+</code></pre></div></div>
+<h2 id="filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints">
+  
+  
+    <a href="#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints" class="anchor-heading" aria-labelledby="filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’</em>
+  
+  
+</h2>
+    
+
+<p>This error occurs when you are running Rosemary locally but the development environment is configured in Docker.</p>
+<h3 id="solution-1-run-rosemary-in-the-correct-environment">
+  
+  
+    <a href="#solution-1-run-rosemary-in-the-correct-environment" class="anchor-heading" aria-labelledby="solution-1-run-rosemary-in-the-correct-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 1: run Rosemary in the correct environment
+  
+  
+</h3>
+    
+
+<p>You must use Rosemary inside the web application container. Visit <a href="/rosemary/using_rosemary#using-rosemary-in-docker-environment">Using Rosemary</a> for more info.</p>
+<h3 id="solution-2-technological-limitations">
+  
+  
+    <a href="#solution-2-technological-limitations" class="anchor-heading" aria-labelledby="solution-2-technological-limitations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 2: technological limitations
+  
+  
+</h3>
+    
+
+<p>If you are intentionally switching from a Docker environment to a local environment (for example, to run tests with Selenium), you must change the environment variable settings.</p>
+
+<p>While in a terminal in the local environment, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.local.example .env
+source .env
+</code></pre></div></div>
+
+<blockquote class="note-title">
+  <p>Beware of custom variables</p>
+
+  <p>Be careful, this command will cause the modules own variables to be lost. Remember to run <code class="language-plaintext highlighter-rouge">rosemary compose:env</code> to generate the final <code class="language-plaintext highlighter-rouge">env</code> file.</p>
+</blockquote>
+<h2 id="filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints">
+  
+  
+    <a href="#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints" class="anchor-heading" aria-labelledby="filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’</em>
+  
+  
+</h2>
+    
+
+<p>This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant.</p>
+
+<p>You must use Rosemary inside the Vagrant virtual machine. Visit <a href="/rosemary/using_rosemary#using-rosemary-in-vagrant-environment">Using Rosemary</a> for more info.</p>
           
 
           

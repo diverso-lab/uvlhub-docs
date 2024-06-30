@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(2) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(8) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(8) > ul > li:nth-child(2) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(8) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Deployment in Render | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Deployment in Render" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/deployment/render" />
+<meta property="og:url" content="http://0.0.0.0:4000/deployment/render" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Deployment in Render" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Deployment in Render","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/deployment/render"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,209 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/deployment">Deployment</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Deployment in Render</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="deployment-in-render">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#deployment-in-render" class="anchor-heading" aria-labelledby="deployment-in-render"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Deployment in Render
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
+<p><a href="https://render.com">Render.com</a> is a modern hosting and deployment platform that simplifies the deployment of web applications and services. It provides a managed infrastructure that allows developers to focus on code instead of worrying about server configuration and maintenance. With Render, web applications, APIs, databases and static services can be deployed with ease. The platform supports multiple programming languages and frameworks, and provides advanced features such as integrated CI/CD, automatic scaling, and free SSL. In addition, Render offers an intuitive interface and extensive documentation, making the deployment process fast and accessible for beginners and experienced developers alike.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<ol id="markdown-toc">
+  <li><a href="#part-one-deploying-database-in-filessio" id="markdown-toc-part-one-deploying-database-in-filessio">Part one: deploying database in Filess.io</a></li>
+  <li><a href="#part-two-deploy-application-in-render" id="markdown-toc-part-two-deploy-application-in-render">Part two: deploy application in Render</a>    <ol>
+      <li><a href="#sign-in-to-render" id="markdown-toc-sign-in-to-render">Sign in to Render</a></li>
+      <li><a href="#create-app-instance" id="markdown-toc-create-app-instance">Create app instance</a>        <ol>
+          <li><a href="#basic-settings" id="markdown-toc-basic-settings"><strong>Basic Settings</strong></a></li>
+          <li><a href="#environment-variables-configuration" id="markdown-toc-environment-variables-configuration"><strong>Environment Variables Configuration</strong>.</a></li>
+          <li><a href="#custom-dockerfile" id="markdown-toc-custom-dockerfile"><strong>Custom Dockerfile</strong></a></li>
+        </ol>
+      </li>
+      <li><a href="#verify-deployment-process" id="markdown-toc-verify-deployment-process">Verify deployment process</a></li>
+    </ol>
+  </li>
+</ol><hr />
+<h2 id="part-one-deploying-database-in-filessio">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#part-one-deploying-database-in-filessio" class="anchor-heading" aria-labelledby="part-one-deploying-database-in-filessio"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part one: deploying database in Filess.io
+  
+  
+</h2>
+    
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-database"></i> External database</p>
+
+  <p>Unfortunately, Render only has native support for PostgreSQL. All other databases (MySQL, MariaDB, etc), require a subscription. We use the Filess.io service to host the database.</p>
+</blockquote>
+
+<p>We deploy the database service in <a href="filess.io">Filess.io</a></p>
+
+<ul>
+  <li>Log in to Filess.io and create an account at <a href="https://dash.filess.io/#/register">Sign up</a></li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">+ New Database</code>.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Database identifier</code>, we put <code class="language-plaintext highlighter-rouge">uvlhubdatabase</code>.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Database engine</code>, we choose <code class="language-plaintext highlighter-rouge">MariaDB</code>.</li>
+</ul>
+
+<p>This will take us to the main management section of our cloud database. It is important to keep this data in view, as we will need it in the next part.</p><hr />
+<h2 id="part-two-deploy-application-in-render">
+  
+  
+    <a href="#part-two-deploy-application-in-render" class="anchor-heading" aria-labelledby="part-two-deploy-application-in-render"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Part two: deploy application in Render
+  
+  
+</h2>
+    
+
+<p>We are going to use Render as a cloud deployment service.</p>
+<h3 id="sign-in-to-render">
+  
+  
+    <a href="#sign-in-to-render" class="anchor-heading" aria-labelledby="sign-in-to-render"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sign in to Render
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>Click <a href="https://dashboard.render.com/">Sign in</a>. It is convenient that we use our GitHub account because it will be easier to link the repository where we are working.</p>
+<h3 id="create-app-instance">
+  
+  
+    <a href="#create-app-instance" class="anchor-heading" aria-labelledby="create-app-instance"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create app instance
+  
+  
+</h3>
+    
+
+<p>Since our app requires a specific configuration (install dependencies, scripts, create migrations, among others) we have our own Dockerfile image for the Render service.</p>
+<h4 id="basic-settings">
+  
+  
+    <a href="#basic-settings" class="anchor-heading" aria-labelledby="basic-settings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Basic Settings</strong>
+  
+  
+</h4>
+    
+
+<ul>
+  <li>In the top menu, click on <code class="language-plaintext highlighter-rouge">Dashboard</code> and then on the <code class="language-plaintext highlighter-rouge">New Web Service</code> button.</li>
+  <li>Choose the option <code class="language-plaintext highlighter-rouge">Build and deploy from a Git repository</code>.</li>
+  <li>We need to find the repository where we are working. Click on the <code class="language-plaintext highlighter-rouge">Connect</code> button.
+    <ul>
+      <li>As <code class="language-plaintext highlighter-rouge">Name</code> we put <code class="language-plaintext highlighter-rouge">uvlhub_web_app</code> or similar, any available name is fine.</li>
+      <li>In <code class="language-plaintext highlighter-rouge">Region</code> we choose <code class="language-plaintext highlighter-rouge">Frankfurt (central EU)</code>.</li>
+      <li>Under <code class="language-plaintext highlighter-rouge">Branch</code>, unless we have a reason to do so, it should be <code class="language-plaintext highlighter-rouge">main</code>.</li>
+      <li>Under <code class="language-plaintext highlighter-rouge">Root Directory</code>, we leave it blank.</li>
+      <li>In <code class="language-plaintext highlighter-rouge">Runtime</code>, we choose <code class="language-plaintext highlighter-rouge">Docker</code>.</li>
+      <li>In <code class="language-plaintext highlighter-rouge">Instance Type</code>, we choose <code class="language-plaintext highlighter-rouge">Free</code>.</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="environment-variables-configuration">
+  
+  
+    <a href="#environment-variables-configuration" class="anchor-heading" aria-labelledby="environment-variables-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Environment Variables Configuration</strong>.
+  
+  
+</h4>
+    
+
+<p>In <code class="language-plaintext highlighter-rouge">Environment Variables</code>, to avoid defining each environment variable one by one, click on <code class="language-plaintext highlighter-rouge">Add from .env</code> and copy and paste this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FLASK_APP_NAME="UVLHUB.IO"
+FLASK_ENV=production
+DOMAIN=render.com
+MARIADB_HOSTNAME=&lt;CHANGE_THIS&gt;
+MARIADB_DATABASE=&lt;CHANGE_THIS&gt;
+MARIADB_USER=&lt;CHANGE_THIS&gt;
+MARIADB_PORT=&lt;CHANGE_THIS&gt;
+MARIADB_PASSWORD=&lt;CHANGE_THIS&gt;
+MARIADB_ROOT_PASSWORD=&lt;CHANGE_THIS&gt;
+WORKING_DIR=/app/
+</code></pre></div></div>
+
+<blockquote>
+  <p class="highlight"><i class="fa-solid fa-seedling"></i> It is very important to replace the <code class="language-plaintext highlighter-rouge">&lt;CHANGE_THIS&gt;</code> values with the data provided by our database management panel in Filess.io.</p>
+</blockquote>
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-triangle-exclamation"></i> Don’t forget your own variables!</p>
+
+  <p>If you have been using modules that included their own <code class="language-plaintext highlighter-rouge">.env</code> file, please note that in production environment neither the Rosemary CLI nor the <code class="language-plaintext highlighter-rouge">rosemary compose:env</code> command is available for security reasons.</p>
+
+  <p>That means that you have to add to the <code class="language-plaintext highlighter-rouge">Add from .env</code> option the variables defined by your modules.</p>
+</blockquote>
+<h4 id="custom-dockerfile">
+  
+  
+    <a href="#custom-dockerfile" class="anchor-heading" aria-labelledby="custom-dockerfile"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Custom Dockerfile</strong>
+  
+  
+</h4>
+    
+
+<p>Now let’s tell Render to use our custom Dockerfile</p>
+
+<ul>
+  <li>We click on <code class="language-plaintext highlighter-rouge">Advanced</code>:
+    <ul>
+      <li>In <code class="language-plaintext highlighter-rouge">Dockerfile Path</code> we make sure to put <code class="language-plaintext highlighter-rouge">docker/images/Dockerfile.render</code></li>
+      <li>The rest of the options are left untouched.</li>
+    </ul>
+  </li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Apply</code>.</li>
+</ul>
+<h3 id="verify-deployment-process">
+  
+  
+    <a href="#verify-deployment-process" class="anchor-heading" aria-labelledby="verify-deployment-process"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Verify deployment process
+  
+  
+</h3>
+    
+
+<p>Once you have done the above steps, you should see a log. It is important to keep an eye out for any errors that may occur.</p>
+
+<blockquote>
+  <p class="highlight"><i class="fa-solid fa-globe"></i> If everything went well, you should see our project deployed at <code class="language-plaintext highlighter-rouge">https://&lt;name_of_my_app&gt;.onrender.com/</code>
+The deployment process can take up to 5 minutes.</p>
+</blockquote>
+
+<blockquote class="warning-title">
+  <p><i class="fa-solid fa-seedling"></i> Migrations troubleshooting</p>
+
+  <p>A common error is often migrations. If you encounter the error <code class="language-plaintext highlighter-rouge">ERROR [flask_migrate] Error: Can't locate revision identified by...</code> it means that there has been a conflict with the Flask cache. It is very easy to solve it:</p>
+  <ul>
+    <li>We go to the management panel of our Filess.io database.</li>
+    <li>Click on <code class="language-plaintext highlighter-rouge">Web Client</code>.</li>
+    <li>Click on the table <code class="language-plaintext highlighter-rouge">alembic_version</code>.</li>
+    <li>Identify the conflicting migration on the right, right click, <code class="language-plaintext highlighter-rouge">Delete rows (s)</code>.</li>
+    <li>To apply the changes, click on <code class="language-plaintext highlighter-rouge">Save</code> in the bottom menu.</li>
+    <li>This should now allow the normal deployment process. Render makes several attempts, but if it doesn’t, click <code class="language-plaintext highlighter-rouge">Manual Deploy</code> and <code class="language-plaintext highlighter-rouge">Clear build cache &amp; deploy</code>.</li>
+  </ul>
+</blockquote>
           
 
           

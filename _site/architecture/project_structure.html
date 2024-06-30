@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(2) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(3) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(3) > ul > li:nth-child(2) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Project structure | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Project structure" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/architecture/project_structure" />
+<meta property="og:url" content="http://0.0.0.0:4000/architecture/project_structure" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Project structure" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Project structure","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/architecture/project_structure"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,353 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/architecture">Architecture</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Project structure</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="project-structure">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#project-structure" class="anchor-heading" aria-labelledby="project-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Project structure
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
+<p>This section provides an overview of the directory and file structure of the project. Each subsection describes the purpose and contents of specific directories and files, highlighting their roles within the overall architecture. Understanding this structure is crucial for effective development, maintenance, and deployment of the application. Below is a detailed explanation of each component in the project.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<ol id="markdown-toc">
+  <li><a href="#githubworkflows" id="markdown-toc-githubworkflows">.github/workflows</a></li>
+  <li><a href="#app" id="markdown-toc-app">app</a></li>
+  <li><a href="#core" id="markdown-toc-core">core</a></li>
+  <li><a href="#docker" id="markdown-toc-docker">docker</a>    <ol>
+      <li><a href="#entrypoints" id="markdown-toc-entrypoints">entrypoints</a></li>
+      <li><a href="#development_entrypointssh" id="markdown-toc-development_entrypointssh">development_entrypoints.sh</a></li>
+      <li><a href="#production_entrypointssh" id="markdown-toc-production_entrypointssh">production_entrypoints.sh</a></li>
+      <li><a href="#render_entrypointssh" id="markdown-toc-render_entrypointssh">render_entrypoints.sh</a></li>
+      <li><a href="#images" id="markdown-toc-images">images</a>        <ol>
+          <li><a href="#dockerfiledev" id="markdown-toc-dockerfiledev">Dockerfile.dev</a></li>
+          <li><a href="#dockerfilelocust" id="markdown-toc-dockerfilelocust">Dockerfile.locust</a></li>
+          <li><a href="#dockerfilemariadb" id="markdown-toc-dockerfilemariadb">Dockerfile.mariadb</a></li>
+          <li><a href="#dockerfileprod" id="markdown-toc-dockerfileprod">Dockerfile.prod</a></li>
+          <li><a href="#dockerfilerender" id="markdown-toc-dockerfilerender">Dockerfile.render</a></li>
+        </ol>
+      </li>
+      <li><a href="#letsencrypt" id="markdown-toc-letsencrypt">letsencrypt</a></li>
+      <li><a href="#nginx" id="markdown-toc-nginx">nginx</a></li>
+      <li><a href="#public" id="markdown-toc-public">public</a></li>
+      <li><a href="#docker-composedevyml" id="markdown-toc-docker-composedevyml">docker-compose.dev.yml</a></li>
+      <li><a href="#docker-composeprodsslyml" id="markdown-toc-docker-composeprodsslyml">docker-compose.prod.ssl.yml</a></li>
+      <li><a href="#docker-composeprodyml" id="markdown-toc-docker-composeprodyml">docker-compose.prod.yml</a></li>
+    </ol>
+  </li>
+  <li><a href="#vagrant" id="markdown-toc-vagrant">vagrant</a>    <ol>
+      <li><a href="#vagrantfile" id="markdown-toc-vagrantfile">Vagrantfile</a></li>
+      <li><a href="#yml" id="markdown-toc-yml">*.yml</a></li>
+    </ol>
+  </li>
+  <li><a href="#migrations" id="markdown-toc-migrations">migrations</a></li>
+  <li><a href="#rosemary" id="markdown-toc-rosemary">rosemary</a></li>
+  <li><a href="#scripts" id="markdown-toc-scripts">scripts</a></li>
+  <li><a href="#envxexample" id="markdown-toc-envxexample">.env.X.example</a></li>
+  <li><a href="#flake8" id="markdown-toc-flake8">.flake8</a></li>
+  <li><a href="#gitignore" id="markdown-toc-gitignore">.gitignore</a></li>
+  <li><a href="#requirementstxt" id="markdown-toc-requirementstxt">requirements.txt</a></li>
+  <li><a href="#setuppy" id="markdown-toc-setuppy">setup.py</a></li>
+</ol>
+<h2 id="githubworkflows">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#githubworkflows" class="anchor-heading" aria-labelledby="githubworkflows"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .github/workflows
+  
+  
+</h2>
+    
+<p>This directory contains GitHub Actions workflows. These YAML files define automated actions that run on specific repository events, such as pushes or pull requests.</p>
+<h2 id="app">
+  
+  
+    <a href="#app" class="anchor-heading" aria-labelledby="app"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> app
+  
+  
+</h2>
+    
+<p>This directory likely contains the main application code. It includes modules, views, controllers, and other fundamental components of the application’s business logic.</p>
+<h2 id="core">
+  
+  
+    <a href="#core" class="anchor-heading" aria-labelledby="core"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> core
+  
+  
+</h2>
+    
+<p>This directory usually contains core components and services used throughout the application. It can include utilities, global configurations, and base classes.</p>
+<h2 id="docker">
+  
+  
+    <a href="#docker" class="anchor-heading" aria-labelledby="docker"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker
+  
+  
+</h2>
+    
+<h3 id="entrypoints">
+  
+  
+    <a href="#entrypoints" class="anchor-heading" aria-labelledby="entrypoints"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> entrypoints
+  
+  
+</h3>
+    
+<h3 id="development_entrypointssh">
+  
+  
+    <a href="#development_entrypointssh" class="anchor-heading" aria-labelledby="development_entrypointssh"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> development_entrypoints.sh
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>Entrypoint script that is launched when running the web app container in development environment.</p>
+<h3 id="production_entrypointssh">
+  
+  
+    <a href="#production_entrypointssh" class="anchor-heading" aria-labelledby="production_entrypointssh"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> production_entrypoints.sh
+  
+  
+</h3>
+    
+
+<p>Entrypoint script that is launched when running the web app container in production environment.</p>
+<h3 id="render_entrypointssh">
+  
+  
+    <a href="#render_entrypointssh" class="anchor-heading" aria-labelledby="render_entrypointssh"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> render_entrypoints.sh
+  
+  
+</h3>
+    
+
+<p>Entrypoint script that is launched when running the web app container in Render environment.</p>
+<h3 id="images">
+  
+  
+    <a href="#images" class="anchor-heading" aria-labelledby="images"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> images
+  
+  
+</h3>
+    
+<h4 id="dockerfiledev">
+  
+  
+    <a href="#dockerfiledev" class="anchor-heading" aria-labelledby="dockerfiledev"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.dev
+  
+  
+</h4>
+    
+<p>Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment.</p>
+<h4 id="dockerfilelocust">
+  
+  
+    <a href="#dockerfilelocust" class="anchor-heading" aria-labelledby="dockerfilelocust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.locust
+  
+  
+</h4>
+    
+<p>Docker file for running load and stress tests using Locust package</p>
+<h4 id="dockerfilemariadb">
+  
+  
+    <a href="#dockerfilemariadb" class="anchor-heading" aria-labelledby="dockerfilemariadb"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.mariadb
+  
+  
+</h4>
+    
+<p>Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment.</p>
+<h4 id="dockerfileprod">
+  
+  
+    <a href="#dockerfileprod" class="anchor-heading" aria-labelledby="dockerfileprod"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.prod
+  
+  
+</h4>
+    
+<p>Docker file for building the application’s production image. It is optimized for performance and security.</p>
+<h4 id="dockerfilerender">
+  
+  
+    <a href="#dockerfilerender" class="anchor-heading" aria-labelledby="dockerfilerender"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dockerfile.render
+  
+  
+</h4>
+    
+<p>Docker file for deploying the application on Render.com service</p>
+<h3 id="letsencrypt">
+  
+  
+    <a href="#letsencrypt" class="anchor-heading" aria-labelledby="letsencrypt"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> letsencrypt
+  
+  
+</h3>
+    
+<p>This directory is related to Let’s Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates.</p>
+<h3 id="nginx">
+  
+  
+    <a href="#nginx" class="anchor-heading" aria-labelledby="nginx"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> nginx
+  
+  
+</h3>
+    
+<p>This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks.</p>
+<h3 id="public">
+  
+  
+    <a href="#public" class="anchor-heading" aria-labelledby="public"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> public
+  
+  
+</h3>
+    
+<p>This directory is for generating SSL certificates, it acts as a temporary public folder.</p>
+<h3 id="docker-composedevyml">
+  
+  
+    <a href="#docker-composedevyml" class="anchor-heading" aria-labelledby="docker-composedevyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.dev.yml
+  
+  
+</h3>
+    
+<p>Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated.</p>
+<h3 id="docker-composeprodsslyml">
+  
+  
+    <a href="#docker-composeprodsslyml" class="anchor-heading" aria-labelledby="docker-composeprodsslyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.ssl.yml
+  
+  
+</h3>
+    
+<p>Docker Compose configuration file for the production environment (with SSL). It defines how containers should be orchestrated in production.</p>
+<h3 id="docker-composeprodyml">
+  
+  
+    <a href="#docker-composeprodyml" class="anchor-heading" aria-labelledby="docker-composeprodyml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> docker-compose.prod.yml
+  
+  
+</h3>
+    
+<p>Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production.</p>
+<h2 id="vagrant">
+  
+  
+    <a href="#vagrant" class="anchor-heading" aria-labelledby="vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> vagrant
+  
+  
+</h2>
+    
+<h3 id="vagrantfile">
+  
+  
+    <a href="#vagrantfile" class="anchor-heading" aria-labelledby="vagrantfile"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Vagrantfile
+  
+  
+</h3>
+    
+
+<p>This file is a specification that describes how to create a virtual machine (VM) under specific characteristics. It defines the necessary configurations for the development environment, such as the base box, network, shared folders, and provisioning scripts.</p>
+<h3 id="yml">
+  
+  
+    <a href="#yml" class="anchor-heading" aria-labelledby="yml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> *.yml
+  
+  
+</h3>
+    
+
+<p>These files, known as playbooks, are used by Ansible to automate system configuration and management. A playbook is a YAML file that contains a series of instructions and tasks that Ansible will execute on the target machines. Playbooks are used to automate complex and repetitive tasks, ensuring that the development or production environment is configured in a consistent manner.</p>
+<h2 id="migrations">
+  
+  
+    <a href="#migrations" class="anchor-heading" aria-labelledby="migrations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> migrations
+  
+  
+</h2>
+    
+<p>This directory contains database migration files, which allow incremental changes to the database schema in a controlled and reproducible manner.</p>
+<h2 id="rosemary">
+  
+  
+    <a href="#rosemary" class="anchor-heading" aria-labelledby="rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> rosemary
+  
+  
+</h2>
+    
+<p>This directory contains the code for the Rosemary CLI package. It is a version still under development and is not available in <code class="language-plaintext highlighter-rouge">pypi</code> at the moment.</p>
+<h2 id="scripts">
+  
+  
+    <a href="#scripts" class="anchor-heading" aria-labelledby="scripts"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> scripts
+  
+  
+</h2>
+    
+<p>Contains auxiliary scripts that automate various tasks such as dependency installation, deployment, maintenance, and more.</p>
+<h2 id="envxexample">
+  
+  
+    <a href="#envxexample" class="anchor-heading" aria-labelledby="envxexample"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .env.X.example
+  
+  
+</h2>
+    
+<p>These files provide an example of the environment variables needed to run the application. They are used as a reference for setting up the development environment.</p>
+<h2 id="flake8">
+  
+  
+    <a href="#flake8" class="anchor-heading" aria-labelledby="flake8"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .flake8
+  
+  
+</h2>
+    
+<p>Contains configurations for Flake8, a code style and checking tool for Python. It helps maintain code consistency and find common errors.</p>
+<h2 id="gitignore">
+  
+  
+    <a href="#gitignore" class="anchor-heading" aria-labelledby="gitignore"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> .gitignore
+  
+  
+</h2>
+    
+<p>A list of files and directories that Git should ignore. This prevents certain files (like local configurations and temporary files) from being included in version control.</p>
+<h2 id="requirementstxt">
+  
+  
+    <a href="#requirementstxt" class="anchor-heading" aria-labelledby="requirementstxt"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> requirements.txt
+  
+  
+</h2>
+    
+<p>A list of Python dependencies needed for the project. Used by <code class="language-plaintext highlighter-rouge">pip</code> to install all required libraries.</p>
+<h2 id="setuppy">
+  
+  
+    <a href="#setuppy" class="anchor-heading" aria-labelledby="setuppy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> setup.py
+  
+  
+</h2>
+    
+<p>A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. En este caso, sirve para poder usar el paquete <code class="language-plaintext highlighter-rouge">rosemary</code></p>
           
 
           

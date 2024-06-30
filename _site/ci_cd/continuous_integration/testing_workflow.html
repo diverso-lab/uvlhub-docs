@@ -18,9 +18,9 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(1)) > a {
   background-image: none;
 }
 
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > ul > li:nth-child(1) > ul > li:nth-child(1) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(7) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(7) > ul > li:nth-child(1) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(7) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Testing workflow | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Testing workflow" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/ci_cd/continuous_integration/testing_workflow" />
+<meta property="og:url" content="http://0.0.0.0:4000/ci_cd/continuous_integration/testing_workflow" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Testing workflow" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Testing workflow","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/ci_cd/continuous_integration/testing_workflow"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,156 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/ci_cd">CI/CD</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/ci_cd/continuous_integration">Continuous integration</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Testing workflow</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="testing-workflow">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#testing-workflow" class="anchor-heading" aria-labelledby="testing-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing workflow
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
+<blockquote class="important-title">
 
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+  <p>Path to file <a href="https://github.com/diverso-lab/uvlhub/blob/main/.github/workflows/test.yml">(view file on GitHub)</a></p>
+
+  <p>The original file is located at the following path:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.github / workflows / test.yml 
+</code></pre></div>  </div>
+</blockquote>
+
+<p>This GitHub Actions workflow is designed to automate the Continuous Integration (CI) process for a Flask application. It triggers on pushes and pull requests to the <code class="language-plaintext highlighter-rouge">main</code> and <code class="language-plaintext highlighter-rouge">develop</code> branches. The essential elements of this workflow are as follows:</p>
+
+<ol class="no_toc text-delta" id="markdown-toc">
+  <li><a href="#workflow-name" id="markdown-toc-workflow-name">Workflow Name</a></li>
+  <li><a href="#triggers" id="markdown-toc-triggers">Triggers</a></li>
+  <li><a href="#jobs" id="markdown-toc-jobs">Jobs</a>    <ol>
+      <li><a href="#services" id="markdown-toc-services">Services</a></li>
+      <li><a href="#steps" id="markdown-toc-steps">Steps</a></li>
+      <li><a href="#environment-variables-for-tests" id="markdown-toc-environment-variables-for-tests">Environment Variables for Tests</a></li>
+    </ol>
+  </li>
+</ol>
+<h2 id="workflow-name">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#workflow-name" class="anchor-heading" aria-labelledby="workflow-name"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Workflow Name
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>name</strong>: Run tests</li>
+</ul>
+<h2 id="triggers">
+  
+  
+    <a href="#triggers" class="anchor-heading" aria-labelledby="triggers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Triggers
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>on</strong>:
+    <ul>
+      <li><strong>push</strong>: Triggers on pushes to <code class="language-plaintext highlighter-rouge">main</code> and <code class="language-plaintext highlighter-rouge">develop</code> branches.</li>
+      <li><strong>pull_request</strong>: Triggers on pull requests to <code class="language-plaintext highlighter-rouge">main</code> and <code class="language-plaintext highlighter-rouge">develop</code> branches.</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="jobs">
+  
+  
+    <a href="#jobs" class="anchor-heading" aria-labelledby="jobs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Jobs
+  
+  
+</h2>
+    
+<ul>
+  <li><strong>pytest</strong>: This job runs on the latest Ubuntu environment (<code class="language-plaintext highlighter-rouge">ubuntu-latest</code>).</li>
+</ul>
+<h3 id="services">
+  
+  
+    <a href="#services" class="anchor-heading" aria-labelledby="services"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Services
   
   
 </h3>
     
-
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<ul>
+  <li><strong>mysql</strong>: Sets up a MySQL 5.7 service with the following environment variables and options for health checks:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">MYSQL_ROOT_PASSWORD</code>: <code class="language-plaintext highlighter-rouge">uvlhub_root_password</code></li>
+      <li><code class="language-plaintext highlighter-rouge">MYSQL_DATABASE</code>: <code class="language-plaintext highlighter-rouge">uvlhubdb_test</code></li>
+      <li><code class="language-plaintext highlighter-rouge">MYSQL_USER</code>: <code class="language-plaintext highlighter-rouge">uvlhub_user</code></li>
+      <li><code class="language-plaintext highlighter-rouge">MYSQL_PASSWORD</code>: <code class="language-plaintext highlighter-rouge">uvlhub_password</code></li>
+      <li>Ports: <code class="language-plaintext highlighter-rouge">3306:3306</code></li>
+      <li>Health check options: <code class="language-plaintext highlighter-rouge">--health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3</code></li>
+    </ul>
+  </li>
+</ul>
+<h3 id="steps">
+  
+  
+    <a href="#steps" class="anchor-heading" aria-labelledby="steps"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Steps
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Checkout Repository</strong>
+    <ul>
+      <li>Uses the <code class="language-plaintext highlighter-rouge">actions/checkout@v4</code> action to checkout the repository.</li>
+    </ul>
+  </li>
+  <li><strong>Setup Python</strong>
+    <ul>
+      <li>Uses the <code class="language-plaintext highlighter-rouge">actions/setup-python@v5</code> action to set up Python 3.12.</li>
+    </ul>
+  </li>
+  <li><strong>Prepare Environment</strong>
+    <ul>
+      <li>Runs a command to modify the <code class="language-plaintext highlighter-rouge">requirements.txt</code> file, removing a specific line.</li>
+    </ul>
+  </li>
+  <li><strong>Install Dependencies</strong>
+    <ul>
+      <li>Upgrades <code class="language-plaintext highlighter-rouge">pip</code> and installs dependencies from <code class="language-plaintext highlighter-rouge">requirements.txt</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Run Tests</strong>
+    <ul>
+      <li>Sets environment variables for testing and runs <code class="language-plaintext highlighter-rouge">pytest</code> on the Flask application.</li>
+    </ul>
+  </li>
+</ol>
+<h3 id="environment-variables-for-tests">
+  
+  
+    <a href="#environment-variables-for-tests" class="anchor-heading" aria-labelledby="environment-variables-for-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environment Variables for Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">FLASK_ENV</code>: <code class="language-plaintext highlighter-rouge">testing</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MARIADB_HOSTNAME</code>: <code class="language-plaintext highlighter-rouge">127.0.0.1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MARIADB_PORT</code>: <code class="language-plaintext highlighter-rouge">3306</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MARIADB_TEST_DATABASE</code>: <code class="language-plaintext highlighter-rouge">uvlhubdb_test</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MARIADB_USER</code>: <code class="language-plaintext highlighter-rouge">uvlhub_user</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MARIADB_PASSWORD</code>: <code class="language-plaintext highlighter-rouge">uvlhub_password</code></li>
+</ul>
           
 
           

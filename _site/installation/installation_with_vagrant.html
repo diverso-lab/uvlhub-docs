@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(3)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(4) > ul > li:nth-child(3) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(4) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(4) > ul > li:nth-child(3) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(4) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(4) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Installation with Vagrant | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Installation with Vagrant" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/installation/installation_with_vagrant" />
+<meta property="og:url" content="http://0.0.0.0:4000/installation/installation_with_vagrant" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Installation with Vagrant" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Installation with Vagrant","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/installation/installation_with_vagrant"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,176 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/installation">Installation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Installation with Vagrant</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="installation-with-vagrant">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#installation-with-vagrant" class="anchor-heading" aria-labelledby="installation-with-vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Installation with Vagrant
   
   
 </h1>
     
-
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<h2 class="no_toc text-delta" id="table-of-contents">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#set-environment-files" id="markdown-toc-set-environment-files">Set environment files</a></li>
+  <li><a href="#working-with-vagrant" id="markdown-toc-working-with-vagrant">Working with Vagrant</a>    <ol>
+      <li><a href="#run-the-vm" id="markdown-toc-run-the-vm">Run the VM</a></li>
+      <li><a href="#accessing-the-vm" id="markdown-toc-accessing-the-vm">Accessing the VM</a></li>
+      <li><a href="#provision-the-vm" id="markdown-toc-provision-the-vm">Provision the VM</a></li>
+      <li><a href="#see-vm-status" id="markdown-toc-see-vm-status">See VM status</a></li>
+      <li><a href="#halt-the-vm" id="markdown-toc-halt-the-vm">Halt the VM</a></li>
+      <li><a href="#destroy-the-vm" id="markdown-toc-destroy-the-vm">Destroy the VM</a></li>
+    </ol>
+  </li>
+</ol><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-desktop"></i> Required Vagrant, Ansible and VirtualBox installation</p>
+
+  <p>You need to have Vagrant, Ansible and VirtualBox installed on the machine where you want to deploy <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span></p>
+</blockquote>
+
+<blockquote class="note-title">
+  <p><i class="fa-solid fa-code"></i> Only for a development environment</p>
+
+  <p>This manual is intended for a development environment. For a production environment, visit <a href="/deployment">Deployment</a>.</p>
+</blockquote>
+<h2 id="set-environment-files">
+  
+  
+    <a href="#set-environment-files" class="anchor-heading" aria-labelledby="set-environment-files"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set environment files
+  
+  
+</h2>
+    
+
+<p>First, copy the <code class="language-plaintext highlighter-rouge">.env.vagrant.example</code> file to the <code class="language-plaintext highlighter-rouge">.env</code> file that will be used to set the environment variables.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.vagrant.example .env
+</code></pre></div></div>
+<h2 id="working-with-vagrant">
+  
+  
+    <a href="#working-with-vagrant" class="anchor-heading" aria-labelledby="working-with-vagrant"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Working with Vagrant
+  
+  
+</h2>
+    
+
+<blockquote class="warning-title">
+  <p><i class="fa-solid fa-folder"></i> <code class="language-plaintext highlighter-rouge">vagrant</code> folder</p>
+
+  <p>All Vagrant commands must be executed inside the <code class="language-plaintext highlighter-rouge">vagrant</code> folder located in the root of the project.</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd vagrant
+</code></pre></div>  </div>
+</blockquote>
+<h3 id="run-the-vm">
+  
+  
+    <a href="#run-the-vm" class="anchor-heading" aria-labelledby="run-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run the VM
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>To start the virtual machine in development mode, use the Vagrantfile located in <code class="language-plaintext highlighter-rouge">vagrant</code> folder. The command will set up and run the VM.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up
+</code></pre></div></div>
+
+<p class="highlight">If everything worked correctly, you should see the deployed version of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ in development at <code class="language-plaintext highlighter-rouge">http://localhost:5000</code></p>
+<h3 id="accessing-the-vm">
+  
+  
+    <a href="#accessing-the-vm" class="anchor-heading" aria-labelledby="accessing-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Accessing the VM
+  
+  
+</h3>
+    
+
+<p>To access the VM and execute operations from within (such as <code class="language-plaintext highlighter-rouge">rosemary</code>), run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh
+</code></pre></div></div>
+
+<p>This will switch to the internal MV console. To exit, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exit
+</code></pre></div></div>
+<h3 id="provision-the-vm">
+  
+  
+    <a href="#provision-the-vm" class="anchor-heading" aria-labelledby="provision-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Provision the VM
+  
+  
+</h3>
+    
+
+<p>If you need to run the provisioning scripts again (<code class="language-plaintext highlighter-rouge">*.yml</code>) (e.g., after making changes to them), use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up --provision
+</code></pre></div></div>
+<h3 id="see-vm-status">
+  
+  
+    <a href="#see-vm-status" class="anchor-heading" aria-labelledby="see-vm-status"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> See VM status
+  
+  
+</h3>
+    
+
+<p>To verify that the virtual machine is running correctly, use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant status
+</code></pre></div></div>
+<h3 id="halt-the-vm">
+  
+  
+    <a href="#halt-the-vm" class="anchor-heading" aria-labelledby="halt-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Halt the VM
+  
+  
+</h3>
+    
+
+<p>To halt (stop) the virtual machine, use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant halt
+</code></pre></div></div>
+<h3 id="destroy-the-vm">
+  
+  
+    <a href="#destroy-the-vm" class="anchor-heading" aria-labelledby="destroy-the-vm"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Destroy the VM
+  
+  
+</h3>
+    
+
+<p>To destroy the virtual machine (removing all data), use the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant destroy
+</code></pre></div></div>
+
+<p>Following these steps, you should be able to set up, run, and manage your Vagrant virtual machine efficiently.</p>
           
 
           

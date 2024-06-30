@@ -18,7 +18,7 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li:not(:nth-child(6)) > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
@@ -29,12 +29,12 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +56,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Rosemary CLI | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Rosemary CLI" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/rosemary" />
+<meta property="og:url" content="http://0.0.0.0:4000/rosemary" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Rosemary CLI" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Rosemary CLI","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/rosemary"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,38 +276,117 @@
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 id="rosemary-cli">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#rosemary-cli" class="anchor-heading" aria-labelledby="rosemary-cli"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Rosemary CLI
   
   
 </h1>
     
 
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<p class="fs-6 fw-300"><code class="language-plaintext highlighter-rouge">Rosemary</code> is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks.</p>
+<h2 id="advantages-of-using-a-cli">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#advantages-of-using-a-cli" class="anchor-heading" aria-labelledby="advantages-of-using-a-cli"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advantages of Using a CLI
+  
+  
+</h2>
+    
+<h3 id="common-usage-point">
+  
+  
+    <a href="#common-usage-point" class="anchor-heading" aria-labelledby="common-usage-point"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common usage point
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<p>A CLI provides a standardized interface for executing commands, making it easier for users to perform a wide range of tasks from a single point.</p>
+<h3 id="command-unification">
+  
+  
+    <a href="#command-unification" class="anchor-heading" aria-labelledby="command-unification"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Command unification
+  
+  
+</h3>
+    
+
+<p>With a CLI, commands are unified under a single tool, reducing the need to remember different commands for different environments or tools. This unification streamlines workflows and enhances productivity.</p>
+<h3 id="environment-problem-resolution">
+  
+  
+    <a href="#environment-problem-resolution" class="anchor-heading" aria-labelledby="environment-problem-resolution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environment problem resolution
+  
+  
+</h3>
+    
+
+<p>Rosemary detects the environment in which it is running, whether local, Docker, or Vagrant. This capability acts as a layer that simplifies environment management, automatically adjusting its behavior to suit the detected environment and minimizing the potential for environment-specific issues.</p>
+<h3 id="efficiency-and-speed">
+  
+  
+    <a href="#efficiency-and-speed" class="anchor-heading" aria-labelledby="efficiency-and-speed"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Efficiency and speed
+  
+  
+</h3>
+    
+
+<p>CLIs are typically faster than graphical user interfaces (GUIs) because they require fewer resources and can execute commands more quickly without the overhead of graphical elements.</p>
+<h3 id="automation">
+  
+  
+    <a href="#automation" class="anchor-heading" aria-labelledby="automation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automation
+  
+  
+</h3>
+    
+
+<p>A CLI can be easily scripted, allowing for the automation of repetitive tasks. This feature is particularly beneficial in development and project management, where certain tasks need to be performed frequently and consistently.</p>
+
+<p>By incorporating these advantages, Rosemary enhances the efficiency and effectiveness of project management and development processes, providing a robust tool for developers and project managers alike.</p>
           
+
+          
+            <hr>
+<h2 class="text-delta">Table of contents</h2>
+
+<ul>
+
+  <li>
+    <a href="/rosemary/using_rosemary">Using Rosemary</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/extending_uvlhub">Extending uvlhub</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/managing_database">Managing database</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/testing">Testing</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/routing">Routing</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/updating_dependencies">Updating dependencies</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/clearing_files">Clearing files</a>
+  </li>
+
+  <li>
+    <a href="/rosemary/linting">Linting</a>
+  </li>
+
+</ul>
 
           
         </main>

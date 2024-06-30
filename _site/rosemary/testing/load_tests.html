@@ -18,9 +18,9 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(3)) > a {
   background-image: none;
 }
 
@@ -29,12 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(4) > ul > li:nth-child(3) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(4) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
   display: block;
 }
   </style>
@@ -56,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Home | UVLHub docs</title>
+<title>Load tests | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Home" />
+<meta property="og:title" content="Load tests" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<meta property="og:description" content="Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages." />
-<link rel="canonical" href="http://0.0.0.0:4000/" />
-<meta property="og:url" content="http://0.0.0.0:4000/" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/rosemary/testing/load_tests" />
+<meta property="og:url" content="http://0.0.0.0:4000/rosemary/testing/load_tests" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home" />
+<meta property="twitter:title" content="Load tests" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages.","headline":"Home","name":"UVLHub docs","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Load tests","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/rosemary/testing/load_tests"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -272,41 +274,140 @@
 </div>
 
     <div class="main-content-wrap">
-      
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/rosemary">Rosemary CLI</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/rosemary/testing">Testing</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Load tests</span></li>
+  </ol>
+</nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="fs-9" id="welcome-to-uvlhub-docs">
+            <h1 class="no_toc" id="load-tests">
   
   
-    <a href="#welcome-to-uvlhub-docs" class="anchor-heading" aria-labelledby="welcome-to-uvlhub-docs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Welcome to uvlhub docs!
+    <a href="#load-tests" class="anchor-heading" aria-labelledby="load-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Load tests
   
   
 </h1>
     
-
-<p>Welcome to the official documentation for <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
-, your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and <!-- _includes/flamapy.html -->
-<span class="flamapy">flama<span class="blue">p</span><span class="yellow">y</span></span>
- from DiversoLab for advanced model analysis, <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how <!-- _includes/flamapy.html -->
-<span class="uvlhub">uvlhub</span>
- can streamline your workflow, enhance collaboration, and drive innovation in feature model management.</p>
-
-<p><a href="docs/getting-started" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">Get started now</a>
-<a href="https://github.com/diverso-lab/uvlhub" class="btn fs-5 mb-4 mb-md-0">View it on GitHub</a></p><hr />
-<h3 id="changelog">
+<h2 class="no_toc text-delta" id="table-of-contents">
   
   
-    <a href="#changelog" class="anchor-heading" aria-labelledby="changelog"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Changelog
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#introduction-to-locust" id="markdown-toc-introduction-to-locust">Introduction to Locust</a>    <ol>
+      <li><a href="#key-features" id="markdown-toc-key-features">Key Features:</a></li>
+      <li><a href="#ramp-up-in-locust" id="markdown-toc-ramp-up-in-locust">Ramp-Up in Locust</a></li>
+    </ol>
+  </li>
+  <li><a href="#run-all-load-tests" id="markdown-toc-run-all-load-tests">Run all load tests</a></li>
+  <li><a href="#run-load-tests-from-specific-module" id="markdown-toc-run-load-tests-from-specific-module">Run load tests from specific module</a></li>
+  <li><a href="#stop-locust" id="markdown-toc-stop-locust">Stop Locust</a></li>
+  <li><a href="#official-documentation" id="markdown-toc-official-documentation">Official documentation</a></li>
+</ol>
+<h2 id="introduction-to-locust">
+  
+  
+    <a href="#introduction-to-locust" class="anchor-heading" aria-labelledby="introduction-to-locust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Introduction to Locust
+  
+  
+</h2>
+    
+
+<p>Locust is an open-source load testing tool that allows you to define user behavior with Python code and swarm your system with millions of simultaneous users. It’s useful for testing the performance of web applications and identifying potential bottlenecks.</p>
+<h3 id="key-features">
+  
+  
+    <a href="#key-features" class="anchor-heading" aria-labelledby="key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Features:
   
   
 </h3>
     
 
-<p>Detailed changes for each release are documented in the <a href="https://github.com/diverso-lab/uvlhub/releases">release notes</a>.</p>
+<ul>
+  <li>Scalability: Capable of simulating millions of users.</li>
+  <li>Flexibility: User behavior can be defined with simple Python code.</li>
+  <li>Real-time Monitoring: Provides real-time statistics and metrics during the test.</li>
+</ul>
+<h3 id="ramp-up-in-locust">
+  
+  
+    <a href="#ramp-up-in-locust" class="anchor-heading" aria-labelledby="ramp-up-in-locust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ramp-Up in Locust
+  
+  
+</h3>
+    
+
+<p>Ramp-up refers to the gradual increase in the number of simulated users over a specified period. This approach helps in observing how the system behaves as the load increases incrementally, rather than being hit with the maximum load all at once.</p><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-terminal"></i> Using Locust with your development environment</p>
+
+  <p>Load tests can be executed from any environment. To use the appropriate environment with Rosemary CLI, visit <a href="/rosemary/using_rosemary">Using Rosemary</a>.</p>
+</blockquote>
+<h2 id="run-all-load-tests">
+  
+  
+    <a href="#run-all-load-tests" class="anchor-heading" aria-labelledby="run-all-load-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run all load tests
+  
+  
+</h2>
+    
+
+<p>To execute all load tests for all modules, run the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust
+</code></pre></div></div>
+
+<blockquote>
+  <p class="highlight"><strong>If everything worked correctly, you should see a Locust interface at <code class="language-plaintext highlighter-rouge">http://localhost:8089</code></strong></p>
+</blockquote>
+<h2 id="run-load-tests-from-specific-module">
+  
+  
+    <a href="#run-load-tests-from-specific-module" class="anchor-heading" aria-labelledby="run-load-tests-from-specific-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run load tests from specific module
+  
+  
+</h2>
+    
+
+<p>It’s possible to run the load tests for a specific module. For this, the module must have a <code class="language-plaintext highlighter-rouge">locustfile.py</code> file defined within it. To execute the load tests for that module, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust &lt;module_name&gt;
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the name of the module.</p>
+<h2 id="stop-locust">
+  
+  
+    <a href="#stop-locust" class="anchor-heading" aria-labelledby="stop-locust"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Stop Locust
+  
+  
+</h2>
+    
+
+<p>You need to stop Locust if you want to run tests for a particular module or if you have modified the <code class="language-plaintext highlighter-rouge">locustfile.py</code> for a module. To stop Locust, run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary locust:stop
+</code></pre></div></div>
+<h2 id="official-documentation">
+  
+  
+    <a href="#official-documentation" class="anchor-heading" aria-labelledby="official-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Official documentation
+  
+  
+</h2>
+    
+
+<p>We recommend visiting Locust’s <a href="https://docs.locust.io/en/stable/writing-a-locustfile.html">official documentation</a> for further test design to check the performance of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span></p>
           
 
           
