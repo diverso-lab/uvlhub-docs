@@ -25,7 +25,7 @@ To run tests across all modules in the project, you can use the following comman
 rosemary test
 ```
 
-This command will execute all tests found within the `app/blueprints` directory, covering all the modules of the project.
+This command will execute all tests found within the `app/modules` directory, covering all the modules of the project.
 
 ## Testing a specific module
 

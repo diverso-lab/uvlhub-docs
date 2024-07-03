@@ -51,10 +51,10 @@ and not make intensive use of the real Zenodo SLA.**
 
 ## Generate `.env` file
 
-To generate the Zenodo `.env` file in `app/blueprints/zenodo`, run in root project:
+To generate the Zenodo `.env` file in `app/modules/zenodo`, run in root project:
 
 ```
-cp app/blueprints/zenodo/.env.example app/blueprints/zenodo/.env
+cp app/modules/zenodo/.env.example app/modules/zenodo/.env
 ```
 
 ## Include your access token

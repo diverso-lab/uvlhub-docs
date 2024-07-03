@@ -66,7 +66,7 @@ pip install -e ./
 To run the interface test of a module in this environment, run:
 
 ```
-python app/blueprints/<module_name>/tests/test_selenium.py 
+python app/modules/<module_name>/tests/test_selenium.py 
 ```
 
 Remember to replace `<module_name>` with the name of the module you want to test.
@@ -118,7 +118,7 @@ Selenium IDE (Integrated Development Environment) is a tool for recording, editi
 If you want to export the test script for use with Selenium WebDriver, follow these steps:
 
 - Click on the `Export` button.
-- Choose `Python pytest` and location to save the file in `app/blueprints/<module_name>/tests/test_selenium/`
+- Choose `Python pytest` and location to save the file in `app/modules/<module_name>/tests/test_selenium/`
 
 ### Using the test in the project
 
@@ -143,7 +143,7 @@ self.driver.get(get_host_for_selenium_testing())
 2. **Run the test with pytest**.
 
 ```
-pytest --noconftest app/blueprints/auth/tests/test_selenium_ide/test_signup.py
+pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py
 ```
 
 Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation.

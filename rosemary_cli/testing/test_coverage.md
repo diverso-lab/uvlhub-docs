@@ -21,7 +21,7 @@ This command simplifies the process of assessing test coverage.
 
 ## Test coverage of all modules
 
-To run coverage analysis for all modules within the `app/blueprints` directory and generate an HTML report, use:
+To run coverage analysis for all modules within the `app/modules` directory and generate an HTML report, use:
 
 ```
 rosemary coverage

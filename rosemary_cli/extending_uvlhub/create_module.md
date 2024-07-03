@@ -21,7 +21,7 @@ nav_order: 1
 To quickly generate a new module within the project, including necessary boilerplate files 
 like `__init__.py`, `routes.py`, `models.py`, `repositories.py`, `services.py`, `forms.py`,
 and a basic `index.html` template, you can use the `rosemary` CLI tool's `make:module` 
-command. This command will create a new blueprint structure ready for development.
+command. This command will create a new module structure ready for development.
 
 ## Create module
 
@@ -33,7 +33,7 @@ rosemary make:module <module_name>
 
 Replace `<module_name>` with the desired name of your module.
 
-This command creates a new directory under `app/blueprints/` with the name of your module and sets up the initial files and directories needed to get started, including a dedicated `templates` directory for your module's templates.
+This command creates a new directory under `app/modules/` with the name of your module and sets up the initial files and directories needed to get started, including a dedicated `templates` directory for your module's templates.
 
 This feature is designed to streamline the development process, making it easy to add new features to the project.
 

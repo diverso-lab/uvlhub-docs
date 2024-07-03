@@ -85,7 +85,7 @@
   },"12": {
     "doc": "Clearing files",
     "title": "Clear cache",
-    "content": "rosemary clear:cache . This command is used to clear the pytest cache in the app/blueprints directory and the build directory in the root of the project. After confirming the action, the command removes the .pytest_cache folder, the build folder, all __pycache__ directories and all .pyc files found in the project. ",
+    "content": "rosemary clear:cache . This command is used to clear the pytest cache in the app/modules directory and the build directory in the root of the project. After confirming the action, the command removes the .pytest_cache folder, the build folder, all __pycache__ directories and all .pyc files found in the project. ",
     "url": "/rosemary/clearing_files#clear-cache",
     
     "relUrl": "/rosemary/clearing_files#clear-cache"
@@ -169,14 +169,14 @@
   },"24": {
     "doc": "Create module",
     "title": "About",
-    "content": "To quickly generate a new module within the project, including necessary boilerplate files like __init__.py, routes.py, models.py, repositories.py, services.py, forms.py, and a basic index.html template, you can use the rosemary CLI tool’s make:module command. This command will create a new blueprint structure ready for development. ",
+    "content": "To quickly generate a new module within the project, including necessary boilerplate files like __init__.py, routes.py, models.py, repositories.py, services.py, forms.py, and a basic index.html template, you can use the rosemary CLI tool’s make:module command. This command will create a new module structure ready for development. ",
     "url": "/rosemary/extending_uvlhub/create_module#about",
     
     "relUrl": "/rosemary/extending_uvlhub/create_module#about"
   },"25": {
     "doc": "Create module",
     "title": "Create module",
-    "content": "To create a new module, run: . rosemary make:module &lt;module_name&gt; . Replace &lt;module_name&gt; with the desired name of your module. This command creates a new directory under app/blueprints/ with the name of your module and sets up the initial files and directories needed to get started, including a dedicated templates directory for your module’s templates. This feature is designed to streamline the development process, making it easy to add new features to the project. Note . If the module with &lt;module_name&gt; already exists, rosemary will simply notify you and not overwrite any existing files. Reboot required! . It is necessary to restart the application’s Docker container for the changes to take effect: . docker restart web_app_container . ",
+    "content": "To create a new module, run: . rosemary make:module &lt;module_name&gt; . Replace &lt;module_name&gt; with the desired name of your module. This command creates a new directory under app/modules/ with the name of your module and sets up the initial files and directories needed to get started, including a dedicated templates directory for your module’s templates. This feature is designed to streamline the development process, making it easy to add new features to the project. Note . If the module with &lt;module_name&gt; already exists, rosemary will simply notify you and not overwrite any existing files. Reboot required! . It is necessary to restart the application’s Docker container for the changes to take effect: . docker restart web_app_container . ",
     "url": "/rosemary/extending_uvlhub/create_module",
     
     "relUrl": "/rosemary/extending_uvlhub/create_module"
@@ -407,14 +407,14 @@
   },"58": {
     "doc": "GUI tests",
     "title": "Interface testing in Docker and Vagrant environment",
-    "content": "Rosemary CLI not available . Currently it is not possible to use Rosemary CLI to run Selenium in Docker and/or Vagrant environment. This is a feature that will be added in the future. You have to do this in the local environment. Activate the virtual environment . It is recommended to use the virtual environment. python -m venv venv source venv/bin/activate . Install dependencies . pip install -r requirements.txt pip install -e ./ . Run test . To run the interface test of a module in this environment, run: . python app/blueprints/&lt;module_name&gt;/tests/test_selenium.py . Remember to replace &lt;module_name&gt; with the name of the module you want to test. ",
+    "content": "Rosemary CLI not available . Currently it is not possible to use Rosemary CLI to run Selenium in Docker and/or Vagrant environment. This is a feature that will be added in the future. You have to do this in the local environment. Activate the virtual environment . It is recommended to use the virtual environment. python -m venv venv source venv/bin/activate . Install dependencies . pip install -r requirements.txt pip install -e ./ . Run test . To run the interface test of a module in this environment, run: . python app/modules/&lt;module_name&gt;/tests/test_selenium.py . Remember to replace &lt;module_name&gt; with the name of the module you want to test. ",
     "url": "/rosemary/testing/gui_tests#interface-testing-in-docker-and-vagrant-environment",
     
     "relUrl": "/rosemary/testing/gui_tests#interface-testing-in-docker-and-vagrant-environment"
   },"59": {
     "doc": "GUI tests",
     "title": "Selenium IDE",
-    "content": "Selenium IDE (Integrated Development Environment) is a tool for recording, editing, and debugging web application tests. It is a browser extension available for both Chrome and Firefox that allows users to create test cases quickly without any programming knowledge. Selenium IDE is particularly useful for creating simple and quick tests, making it an excellent choice for beginners. Installation . | Chrome: Install the Selenium IDE extension from the Chrome Web Store. | Firefox: Install the Selenium IDE extension from the Firefox Add-ons. | . Recording a test . | Open Selenium IDE: After installation, click on the Selenium IDE icon in the browser toolbar to open it. | Create a new project: . | Click on Create a new project. | Name your project and click OK. | . | Start recording: . | Click on the Record a new test in a new project button. | Enter the base URL of your application, e.g., http://localhost, and click Start Recording. | . | Navigate to the desired page: . | In the browser, go to the page you want to test. | Selenium IDE will record your navigation to this page. | . | Perform actions: . | Perform the actions you want to test. Selenium IDE will record each of these actions. | . | Stop recording: . | Once you have performed all the necessary actions, click on the Stop recording button in Selenium IDE. | . | Save the test: . | Name your test case and save it. | . | . Playback the recorded test . | Select the test case: In Selenium IDE, select the test case you want to playback. | Run the Test: Click on the Run current test button. Selenium IDE will execute the recorded actions. | . Exporting the test script . If you want to export the test script for use with Selenium WebDriver, follow these steps: . | Click on the Export button. | Choose Python pytest and location to save the file in app/blueprints/&lt;module_name&gt;/tests/test_selenium/ | . Using the test in the project . You have to do this in the local environment. | Adjust the generated test | . Remember to adjust the generated test to the project. def setup_method(self, method): self.driver = initialize_driver() self.vars = {} . self.driver.get(get_host_for_selenium_testing()) . | Run the test with pytest. | . pytest --noconftest app/blueprints/auth/tests/test_selenium_ide/test_signup.py . Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation. ",
+    "content": "Selenium IDE (Integrated Development Environment) is a tool for recording, editing, and debugging web application tests. It is a browser extension available for both Chrome and Firefox that allows users to create test cases quickly without any programming knowledge. Selenium IDE is particularly useful for creating simple and quick tests, making it an excellent choice for beginners. Installation . | Chrome: Install the Selenium IDE extension from the Chrome Web Store. | Firefox: Install the Selenium IDE extension from the Firefox Add-ons. | . Recording a test . | Open Selenium IDE: After installation, click on the Selenium IDE icon in the browser toolbar to open it. | Create a new project: . | Click on Create a new project. | Name your project and click OK. | . | Start recording: . | Click on the Record a new test in a new project button. | Enter the base URL of your application, e.g., http://localhost, and click Start Recording. | . | Navigate to the desired page: . | In the browser, go to the page you want to test. | Selenium IDE will record your navigation to this page. | . | Perform actions: . | Perform the actions you want to test. Selenium IDE will record each of these actions. | . | Stop recording: . | Once you have performed all the necessary actions, click on the Stop recording button in Selenium IDE. | . | Save the test: . | Name your test case and save it. | . | . Playback the recorded test . | Select the test case: In Selenium IDE, select the test case you want to playback. | Run the Test: Click on the Run current test button. Selenium IDE will execute the recorded actions. | . Exporting the test script . If you want to export the test script for use with Selenium WebDriver, follow these steps: . | Click on the Export button. | Choose Python pytest and location to save the file in app/modules/&lt;module_name&gt;/tests/test_selenium/ | . Using the test in the project . You have to do this in the local environment. | Adjust the generated test | . Remember to adjust the generated test to the project. def setup_method(self, method): self.driver = initialize_driver() self.vars = {} . self.driver.get(get_host_for_selenium_testing()) . | Run the test with pytest. | . pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py . Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation. ",
     "url": "/rosemary/testing/gui_tests#selenium-ide",
     
     "relUrl": "/rosemary/testing/gui_tests#selenium-ide"
@@ -939,7 +939,7 @@
   },"134": {
     "doc": "Rosemary",
     "title": "Table of contents",
-    "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’ . | Solution 1: run Rosemary in the correct environment | Solution 2: technological limitations | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’ | . ",
+    "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/modules’ . | Solution 1: run Rosemary in the correct environment | Solution 2: technological limitations | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’ | . ",
     "url": "/troubleshooting/rosemary#table-of-contents",
     
     "relUrl": "/troubleshooting/rosemary#table-of-contents"
@@ -959,18 +959,18 @@
     "relUrl": "/troubleshooting/rosemary#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido"
   },"137": {
     "doc": "Rosemary",
-    "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/blueprints’",
+    "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/modules’",
     "content": "This error occurs when you are running Rosemary locally but the development environment is configured in Docker. Solution 1: run Rosemary in the correct environment . You must use Rosemary inside the web application container. Visit Using Rosemary for more info. Solution 2: technological limitations . If you are intentionally switching from a Docker environment to a local environment (for example, to run tests with Selenium), you must change the environment variable settings. While in a terminal in the local environment, run: . cp .env.local.example .env source .env . Beware of custom variables . Be careful, this command will cause the modules own variables to be lost. Remember to run rosemary compose:env to generate the final env file. ",
-    "url": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints",
+    "url": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappmodules",
     
-    "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappblueprints"
+    "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappmodules"
   },"138": {
     "doc": "Rosemary",
-    "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/blueprints’",
+    "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’",
     "content": "This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant. You must use Rosemary inside the Vagrant virtual machine. Visit Using Rosemary for more info. ",
-    "url": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints",
+    "url": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules",
     
-    "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappblueprints"
+    "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules"
   },"139": {
     "doc": "Rosemary CLI",
     "title": "Rosemary CLI",
@@ -1107,7 +1107,7 @@
   },"158": {
     "doc": "Test coverage",
     "title": "Test coverage of all modules",
-    "content": "To run coverage analysis for all modules within the app/blueprints directory and generate an HTML report, use: . rosemary coverage . ",
+    "content": "To run coverage analysis for all modules within the app/modules directory and generate an HTML report, use: . rosemary coverage . ",
     "url": "/rosemary/testing/test_coverage#test-coverage-of-all-modules",
     
     "relUrl": "/rosemary/testing/test_coverage#test-coverage-of-all-modules"
@@ -1184,7 +1184,7 @@
   },"169": {
     "doc": "Unit tests",
     "title": "Testing all modules",
-    "content": "To run tests across all modules in the project, you can use the following command: . rosemary test . This command will execute all tests found within the app/blueprints directory, covering all the modules of the project. ",
+    "content": "To run tests across all modules in the project, you can use the following command: . rosemary test . This command will execute all tests found within the app/modules directory, covering all the modules of the project. ",
     "url": "/rosemary/testing/unit_tests#testing-all-modules",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-all-modules"
@@ -1296,7 +1296,7 @@
   },"185": {
     "doc": "Zenodo",
     "title": "Generate .env file",
-    "content": "To generate the Zenodo .env file in app/blueprints/zenodo, run in root project: . cp app/blueprints/zenodo/.env.example app/blueprints/zenodo/.env . ",
+    "content": "To generate the Zenodo .env file in app/modules/zenodo, run in root project: . cp app/modules/zenodo/.env.example app/modules/zenodo/.env . ",
     "url": "/modules/zenodo#generate-env-file",
     
     "relUrl": "/modules/zenodo#generate-env-file"

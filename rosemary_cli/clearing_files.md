@@ -21,7 +21,7 @@ nav_order: 8
 rosemary clear:cache
 ```
 
-This command is used to clear the pytest cache in the `app/blueprints` directory and the build directory in the root of the project. After confirming the action, the command removes the `.pytest_cache` folder, the `build` folder, all `__pycache__` directories and all `.pyc` files found in the project.
+This command is used to clear the pytest cache in the `app/modules` directory and the build directory in the root of the project. After confirming the action, the command removes the `.pytest_cache` folder, the `build` folder, all `__pycache__` directories and all `.pyc` files found in the project.
 
 
 ## Clear log

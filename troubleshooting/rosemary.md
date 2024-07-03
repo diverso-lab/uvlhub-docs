@@ -40,7 +40,7 @@ source venv/bin/activate
 source .env
 ```
 
-## *FileNotFoundError: [Errno 2] No such file or directory: '/app/app/blueprints'*
+## *FileNotFoundError: [Errno 2] No such file or directory: '/app/app/modules'*
 
 This error occurs when you are running Rosemary locally but the development environment is configured in Docker.
 
@@ -64,7 +64,7 @@ source .env
 >
 > Be careful, this command will cause the modules own variables to be lost. Remember to run `rosemary compose:env` to generate the final `env` file.
 
-## *FileNotFoundError: [Errno 2] No such file or directory: '/vagrant/app/blueprints'*
+## *FileNotFoundError: [Errno 2] No such file or directory: '/vagrant/app/modules'*
 
 This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant.
 

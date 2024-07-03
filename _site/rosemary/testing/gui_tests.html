@@ -410,7 +410,7 @@ pip install -e ./
 
 <p>To run the interface test of a module in this environment, run:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python app/blueprints/&lt;module_name&gt;/tests/test_selenium.py 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python app/modules/&lt;module_name&gt;/tests/test_selenium.py 
 </code></pre></div></div>
 
 <p>Remember to replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the name of the module you want to test.</p><hr />
@@ -514,7 +514,7 @@ pip install -e ./
 
 <ul>
   <li>Click on the <code class="language-plaintext highlighter-rouge">Export</code> button.</li>
-  <li>Choose <code class="language-plaintext highlighter-rouge">Python pytest</code> and location to save the file in <code class="language-plaintext highlighter-rouge">app/blueprints/&lt;module_name&gt;/tests/test_selenium/</code></li>
+  <li>Choose <code class="language-plaintext highlighter-rouge">Python pytest</code> and location to save the file in <code class="language-plaintext highlighter-rouge">app/modules/&lt;module_name&gt;/tests/test_selenium/</code></li>
 </ul>
 <h3 id="using-the-test-in-the-project">
   
@@ -548,7 +548,7 @@ pip install -e ./
   <li><strong>Run the test with pytest</strong>.</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pytest --noconftest app/blueprints/auth/tests/test_selenium_ide/test_signup.py
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py
 </code></pre></div></div>
 
 <p>Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation.</p>
