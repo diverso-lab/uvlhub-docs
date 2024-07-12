@@ -40,3 +40,25 @@ If you have installed {% include uvlhub.html %} manually and you are not going t
 sudo systemctl stop mariadb
 sudo systemctl disable mariadb
 ```
+
+## *docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))*
+
+This happens because it has been deployed in production and the `webhook` module has not been added to the `.moduleignore` file. The `webhook` module uses Docker CLI which is only available in the `Dockerfile.dev` and `Dockerfile.webhook` images.
+
+To fix this, add the following line to the `.moduleignore` file:
+
+```
+webhook
+```
+
+After that, the containers have to be lifted back into production:
+
+```
+docker compose -f docker/docker-compose.prod.yml up -d --build
+```
+
+If you are deploying using the SSL option:
+
+```
+docker compose -f docker/docker-compose.prod.ssl.yml up -d --build
+```

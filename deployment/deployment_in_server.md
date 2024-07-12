@@ -50,6 +50,18 @@ cp .env.docker.production.example .env
 
 ## Deploy containers
 
+### Ignore `webhook` module
+
+The `webhook` module uses Docker CLI which is only available in the `Dockerfile.dev` and `Dockerfile.webhook` images.
+
+To fix this, add the following line to the `.moduleignore` file:
+
+```
+webhook
+```
+
+### Up the containers
+
 This process includes building and deploying the services defined in the Docker configuration file for the production environment. To deploy the application to production, run:
 
 ```

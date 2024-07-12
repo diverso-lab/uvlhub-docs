@@ -307,6 +307,7 @@
       <li><a href="#disable-mariadb" id="markdown-toc-disable-mariadb">Disable MariaDB</a></li>
     </ol>
   </li>
+  <li><a href="#dockererrorsdockerexception-error-while-fetching-server-api-version-connection-aborted-filenotfounderror2-no-such-file-or-directory" id="markdown-toc-dockererrorsdockerexception-error-while-fetching-server-api-version-connection-aborted-filenotfounderror2-no-such-file-or-directory"><em>docker.errors.DockerException: Error while fetching server API version: (‘Connection aborted.’, FileNotFoundError(2, ‘No such file or directory’))</em></a></li>
 </ol>
 <h2 id="error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-mariadb_container-xxx-error-starting-userland-proxy-listen-tcp4-00003306-bind-address-already-in-use">
   
@@ -357,6 +358,31 @@
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl stop mariadb
 sudo systemctl disable mariadb
+</code></pre></div></div>
+<h2 id="dockererrorsdockerexception-error-while-fetching-server-api-version-connection-aborted-filenotfounderror2-no-such-file-or-directory">
+  
+  
+    <a href="#dockererrorsdockerexception-error-while-fetching-server-api-version-connection-aborted-filenotfounderror2-no-such-file-or-directory" class="anchor-heading" aria-labelledby="dockererrorsdockerexception-error-while-fetching-server-api-version-connection-aborted-filenotfounderror2-no-such-file-or-directory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>docker.errors.DockerException: Error while fetching server API version: (‘Connection aborted.’, FileNotFoundError(2, ‘No such file or directory’))</em>
+  
+  
+</h2>
+    
+
+<p>This happens because it has been deployed in production and the <code class="language-plaintext highlighter-rouge">webhook</code> module has not been added to the <code class="language-plaintext highlighter-rouge">.moduleignore</code> file. The <code class="language-plaintext highlighter-rouge">webhook</code> module uses Docker CLI which is only available in the <code class="language-plaintext highlighter-rouge">Dockerfile.dev</code> and <code class="language-plaintext highlighter-rouge">Dockerfile.webhook</code> images.</p>
+
+<p>To fix this, add the following line to the <code class="language-plaintext highlighter-rouge">.moduleignore</code> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>webhook
+</code></pre></div></div>
+
+<p>After that, the containers have to be lifted back into production:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.prod.yml up -d --build
+</code></pre></div></div>
+
+<p>If you are deploying using the SSL option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose -f docker/docker-compose.prod.ssl.yml up -d --build
 </code></pre></div></div>
           
 

@@ -303,7 +303,11 @@
 <ol id="markdown-toc">
   <li><a href="#clone-the-repo" id="markdown-toc-clone-the-repo">Clone the repo</a></li>
   <li><a href="#environment-variables" id="markdown-toc-environment-variables">Environment variables</a></li>
-  <li><a href="#deploy-containers" id="markdown-toc-deploy-containers">Deploy containers</a></li>
+  <li><a href="#deploy-containers" id="markdown-toc-deploy-containers">Deploy containers</a>    <ol>
+      <li><a href="#ignore-webhook-module" id="markdown-toc-ignore-webhook-module">Ignore <code class="language-plaintext highlighter-rouge">webhook</code> module</a></li>
+      <li><a href="#up-the-containers" id="markdown-toc-up-the-containers">Up the containers</a></li>
+    </ol>
+  </li>
   <li><a href="#watchdog-available" id="markdown-toc-watchdog-available">Watchdog available</a></li>
 </ol><hr />
 
@@ -358,6 +362,29 @@
   
   
 </h2>
+    
+<h3 id="ignore-webhook-module">
+  
+  
+    <a href="#ignore-webhook-module" class="anchor-heading" aria-labelledby="ignore-webhook-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ignore <code class="language-plaintext highlighter-rouge">webhook</code> module
+  
+  
+</h3>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">webhook</code> module uses Docker CLI which is only available in the <code class="language-plaintext highlighter-rouge">Dockerfile.dev</code> and <code class="language-plaintext highlighter-rouge">Dockerfile.webhook</code> images.</p>
+
+<p>To fix this, add the following line to the <code class="language-plaintext highlighter-rouge">.moduleignore</code> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>webhook
+</code></pre></div></div>
+<h3 id="up-the-containers">
+  
+  
+    <a href="#up-the-containers" class="anchor-heading" aria-labelledby="up-the-containers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Up the containers
+  
+  
+</h3>
     
 
 <p>This process includes building and deploying the services defined in the Docker configuration file for the production environment. To deploy the application to production, run:</p>
