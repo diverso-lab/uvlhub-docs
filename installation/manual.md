@@ -36,6 +36,17 @@ sudo apt upgrade -y
 
 ## Clone the repo
 
+{: .important-title }
+> <i class="fa-solid fa-graduation-cap"></i> Are you a student of Configuration Evolution and Management (EGC)?
+>
+> Remember that you have to clone from the subject fork instead of the official one.
+> ```
+> git clone https://github.com/EGCETSII/uvlhub.git
+> cd uvlhub
+> ```
+
+You can clone the original repo with the HTTPS method:
+
 ```
 git clone https://github.com/diverso-lab/uvlhub.git
 cd uvlhub
@@ -79,11 +90,13 @@ sudo mysql_secure_installation
 
 ###  Configure databases and users
 
-Using `uvlhubdb_root_password` as root password:
+To configure the database, we are going to use the MariaDB command console:
 
 ```
 sudo mysql -u root -p
 ```
+
+Use `uvlhubdb_root_password` as root password.
 
 ```
 CREATE DATABASE uvlhubdb;
@@ -100,6 +113,7 @@ EXIT;
 ### Creates and activate a virtual environment
 
 ```
+sudo apt install python3.12-venv
 python3 -m venv venv
 source venv/bin/activate
 ```
@@ -118,6 +132,15 @@ pip install -r requirements.txt
 pip install -e ./
 ```
 
+### Ignore `webhook` module
+
+The `webhook` module only makes sense in a deployment using Docker and in a pre-production environment. To avoid problems, we indicate that this module should be
+ignored in the initial loading of modules by appending the name to the `.moduleignore` file:
+
+```
+echo "webhook" > .moduleignore
+``` 
+
 ## Run app
 
 ### Environment variables
@@ -129,7 +152,7 @@ cp .env.local.example .env
 ### Apply migrations
 
 ```
-rosemary db:migrate
+flask db upgrade
 ```
 
 ### Popular database

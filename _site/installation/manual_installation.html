@@ -314,6 +314,7 @@
       <li><a href="#creates-and-activate-a-virtual-environment" id="markdown-toc-creates-and-activate-a-virtual-environment">Creates and activate a virtual environment</a></li>
       <li><a href="#install-python-dependencies" id="markdown-toc-install-python-dependencies">Install Python dependencies</a></li>
       <li><a href="#install-python-dependencies-in-editable-mode" id="markdown-toc-install-python-dependencies-in-editable-mode">Install Python dependencies in editable mode</a></li>
+      <li><a href="#ignore-webhook-module" id="markdown-toc-ignore-webhook-module">Ignore <code class="language-plaintext highlighter-rouge">webhook</code> module</a></li>
     </ol>
   </li>
   <li><a href="#run-app" id="markdown-toc-run-app">Run app</a>    <ol>
@@ -356,6 +357,17 @@ sudo apt upgrade -y
   
 </h2>
     
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-graduation-cap"></i> Are you a student of Configuration Evolution and Management (EGC)?</p>
+
+  <p>Remember that you have to clone from the subject fork instead of the official one.</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/EGCETSII/uvlhub.git
+cd uvlhub
+</code></pre></div>  </div>
+</blockquote>
+
+<p>You can clone the original repo with the HTTPS method:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/diverso-lab/uvlhub.git
 cd uvlhub
@@ -425,10 +437,12 @@ cd uvlhub
 </h3>
     
 
-<p>Using <code class="language-plaintext highlighter-rouge">uvlhubdb_root_password</code> as root password:</p>
+<p>To configure the database, we are going to use the MariaDB command console:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mysql -u root -p
 </code></pre></div></div>
+
+<p>Use <code class="language-plaintext highlighter-rouge">uvlhubdb_root_password</code> as root password.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE DATABASE uvlhubdb;
 CREATE DATABASE uvlhubdb_test;
@@ -455,7 +469,8 @@ EXIT;
 </h3>
     
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 -m venv venv
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install python3.12-venv
+python3 -m venv venv
 source venv/bin/activate
 </code></pre></div></div>
 <h3 id="install-python-dependencies">
@@ -480,6 +495,20 @@ pip install -r requirements.txt
     
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+</code></pre></div></div>
+<h3 id="ignore-webhook-module">
+  
+  
+    <a href="#ignore-webhook-module" class="anchor-heading" aria-labelledby="ignore-webhook-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Ignore <code class="language-plaintext highlighter-rouge">webhook</code> module
+  
+  
+</h3>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">webhook</code> module only makes sense in a deployment using Docker and in a pre-production environment. To avoid problems, we indicate that this module should be
+ignored in the initial loading of modules by appending the name to the <code class="language-plaintext highlighter-rouge">.moduleignore</code> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "webhook" &gt; .moduleignore
 </code></pre></div></div>
 <h2 id="run-app">
   
@@ -509,7 +538,7 @@ pip install -r requirements.txt
 </h3>
     
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:migrate
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask db upgrade
 </code></pre></div></div>
 <h3 id="popular-database">
   

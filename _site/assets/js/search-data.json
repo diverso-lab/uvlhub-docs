@@ -680,7 +680,7 @@
   },"97": {
     "doc": "Manual installation",
     "title": "Table of contents",
-    "content": ". | Update the system | Clone the repo | Install MariaDB . | Install official package | Start the MariaDB service | Configure MariaDB | Configure databases and users | . | Configure app environment . | Creates and activate a virtual environment | Install Python dependencies | Install Python dependencies in editable mode | . | Run app . | Environment variables | Apply migrations | Popular database | Boot development Flask server | . | . Python version . Python version 3.12 or higher is recommended. Ubuntu-only support . This tutorial is intended for use on Ubuntu 22.04 LTS or higher. ",
+    "content": ". | Update the system | Clone the repo | Install MariaDB . | Install official package | Start the MariaDB service | Configure MariaDB | Configure databases and users | . | Configure app environment . | Creates and activate a virtual environment | Install Python dependencies | Install Python dependencies in editable mode | Ignore webhook module | . | Run app . | Environment variables | Apply migrations | Popular database | Boot development Flask server | . | . Python version . Python version 3.12 or higher is recommended. Ubuntu-only support . This tutorial is intended for use on Ubuntu 22.04 LTS or higher. ",
     "url": "/installation/manual_installation#table-of-contents",
     
     "relUrl": "/installation/manual_installation#table-of-contents"
@@ -694,28 +694,28 @@
   },"99": {
     "doc": "Manual installation",
     "title": "Clone the repo",
-    "content": "git clone https://github.com/diverso-lab/uvlhub.git cd uvlhub . ",
+    "content": "Are you a student of Configuration Evolution and Management (EGC)? . Remember that you have to clone from the subject fork instead of the official one. git clone https://github.com/EGCETSII/uvlhub.git cd uvlhub . You can clone the original repo with the HTTPS method: . git clone https://github.com/diverso-lab/uvlhub.git cd uvlhub . ",
     "url": "/installation/manual_installation#clone-the-repo",
     
     "relUrl": "/installation/manual_installation#clone-the-repo"
   },"100": {
     "doc": "Manual installation",
     "title": "Install MariaDB",
-    "content": "Install official package . MariaDB is available in the official Ubuntu repositories, so you can easily install it with apt: . sudo apt install mariadb-server -y . Start the MariaDB service . sudo systemctl start mariadb . Configure MariaDB . After installing MariaDB, it is recommended to run the security script to perform some initial configurations: . sudo mysql_secure_installation . - Enter current password for root (enter for none): (enter) - Switch to unix_socket authentication [Y/n]: `y` - Change the root password? [Y/n]: `y` - New password: `uvlhubdb_root_password` - Re-enter new password: `uvlhubdb_root_password` - Remove anonymous users? [Y/n]: `y` - Disallow root login remotely? [Y/n]: `y` - Remove test database and access to it? [Y/n]: `y` - Reload privilege tables now? [Y/n] : `y` . Configure databases and users . Using uvlhubdb_root_password as root password: . sudo mysql -u root -p . CREATE DATABASE uvlhubdb; CREATE DATABASE uvlhubdb_test; CREATE USER 'uvlhubdb_user'@'localhost' IDENTIFIED BY 'uvlhubdb_password'; GRANT ALL PRIVILEGES ON uvlhubdb.* TO 'uvlhubdb_user'@'localhost'; GRANT ALL PRIVILEGES ON uvlhubdb_test.* TO 'uvlhubdb_user'@'localhost'; FLUSH PRIVILEGES; EXIT; . ",
+    "content": "Install official package . MariaDB is available in the official Ubuntu repositories, so you can easily install it with apt: . sudo apt install mariadb-server -y . Start the MariaDB service . sudo systemctl start mariadb . Configure MariaDB . After installing MariaDB, it is recommended to run the security script to perform some initial configurations: . sudo mysql_secure_installation . - Enter current password for root (enter for none): (enter) - Switch to unix_socket authentication [Y/n]: `y` - Change the root password? [Y/n]: `y` - New password: `uvlhubdb_root_password` - Re-enter new password: `uvlhubdb_root_password` - Remove anonymous users? [Y/n]: `y` - Disallow root login remotely? [Y/n]: `y` - Remove test database and access to it? [Y/n]: `y` - Reload privilege tables now? [Y/n] : `y` . Configure databases and users . To configure the database, we are going to use the MariaDB command console: . sudo mysql -u root -p . Use uvlhubdb_root_password as root password. CREATE DATABASE uvlhubdb; CREATE DATABASE uvlhubdb_test; CREATE USER 'uvlhubdb_user'@'localhost' IDENTIFIED BY 'uvlhubdb_password'; GRANT ALL PRIVILEGES ON uvlhubdb.* TO 'uvlhubdb_user'@'localhost'; GRANT ALL PRIVILEGES ON uvlhubdb_test.* TO 'uvlhubdb_user'@'localhost'; FLUSH PRIVILEGES; EXIT; . ",
     "url": "/installation/manual_installation#install-mariadb",
     
     "relUrl": "/installation/manual_installation#install-mariadb"
   },"101": {
     "doc": "Manual installation",
     "title": "Configure app environment",
-    "content": "Creates and activate a virtual environment . python3 -m venv venv source venv/bin/activate . Install Python dependencies . pip install --upgrade pip pip install -r requirements.txt . Install Python dependencies in editable mode . pip install -e ./ . ",
+    "content": "Creates and activate a virtual environment . sudo apt install python3.12-venv python3 -m venv venv source venv/bin/activate . Install Python dependencies . pip install --upgrade pip pip install -r requirements.txt . Install Python dependencies in editable mode . pip install -e ./ . Ignore webhook module . The webhook module only makes sense in a deployment using Docker and in a pre-production environment. To avoid problems, we indicate that this module should be ignored in the initial loading of modules by appending the name to the .moduleignore file: . echo \"webhook\" &gt; .moduleignore . ",
     "url": "/installation/manual_installation#configure-app-environment",
     
     "relUrl": "/installation/manual_installation#configure-app-environment"
   },"102": {
     "doc": "Manual installation",
     "title": "Run app",
-    "content": "Environment variables . cp .env.local.example .env . Apply migrations . rosemary db:migrate . Popular database . rosemary db:seed . Boot development Flask server . flask run --host=0.0.0.0 --reload --debug . If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost:5000 . ",
+    "content": "Environment variables . cp .env.local.example .env . Apply migrations . flask db upgrade . Popular database . rosemary db:seed . Boot development Flask server . flask run --host=0.0.0.0 --reload --debug . If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost:5000 . ",
     "url": "/installation/manual_installation#run-app",
     
     "relUrl": "/installation/manual_installation#run-app"
