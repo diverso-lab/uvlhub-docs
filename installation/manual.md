@@ -39,9 +39,9 @@ sudo apt upgrade -y
 {: .important-title }
 > <i class="fa-solid fa-graduation-cap"></i> Are you a student of Configuration Evolution and Management (EGC)?
 >
-> Remember that you have to clone from the subject fork instead of the official one.
+> Remember that you have to clone your fork from the subject fork instead of the official one.
 > ```
-> git clone https://github.com/EGCETSII/uvlhub.git
+> git clone git@github.com:<YOUR_GITHUB_USER>/uvlhub.git
 > cd uvlhub
 > ```
 
