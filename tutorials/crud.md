@@ -28,7 +28,7 @@ We are going to create the `notepad` module. To do this, we are going to use the
 rosemary make:module notepad
 ```
 
-This creates a folder in `app/modules/notepad` with a number of files inside. Take some time to examine each file and understand how they are related.
+This creates a folder in `app/modules/notepad` with several files inside. Take some time to examine each file and understand how they are related.
 
 ### Dynamic loading of modules
 
