@@ -1,0 +1,908 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/custom.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style id="jtd-nav-activation">
+  
+
+.site-nav > ul.nav-list:first-child > li > a,
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(1)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
+  background-image: none;
+}
+
+.site-nav > ul.nav-list:not(:first-child) a,
+.site-nav li.external a {
+  background-image: none;
+}
+
+.site-nav > ul.nav-list:first-child > li:nth-child(10) > ul > li:nth-child(1) > a {
+  font-weight: 600;
+  text-decoration: none;
+}.site-nav > ul.nav-list:first-child > li:nth-child(10) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(10) > ul > li:nth-child(1) > button svg {
+  transform: rotate(-90deg);
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(10) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(10) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+  display: block;
+}
+  </style>
+
+  
+
+  
+    <script src="/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>C.R.U.D. tutorial | UVLHub docs</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="C.R.U.D. tutorial" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
+<link rel="canonical" href="http://0.0.0.0:4000/tutorials/crud_tutorial" />
+<meta property="og:url" content="http://0.0.0.0:4000/tutorials/crud_tutorial" />
+<meta property="og:site_name" content="UVLHub docs" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="C.R.U.D. tutorial" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"C.R.U.D. tutorial","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/tutorials/crud_tutorial"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/" class="site-title lh-tight">
+  <div class="site-logo" role="img" aria-label="UVLHub docs"></div>
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><a href="/" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/getting-started/" class="nav-list-link">Getting started</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Architecture category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/architecture" class="nav-list-link">Architecture</a><ul class="nav-list"><li class="nav-list-item"><a href="/architecture/overview" class="nav-list-link">Overview</a></li><li class="nav-list-item"><a href="/architecture/project_structure" class="nav-list-link">Project structure</a></li><li class="nav-list-item"><a href="/architecture/http_request" class="nav-list-link">HTTP Request</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Installation category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/installation" class="nav-list-link">Installation</a><ul class="nav-list"><li class="nav-list-item"><a href="/installation/manual_installation" class="nav-list-link">Manual installation</a></li><li class="nav-list-item"><a href="/installation/installation_with_docker" class="nav-list-link">Installation with Docker</a></li><li class="nav-list-item"><a href="/installation/installation_with_vagrant" class="nav-list-link">Installation with Vagrant</a></li><li class="nav-list-item"><a href="/installation/test_users" class="nav-list-link">Test users</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Modules category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/modules" class="nav-list-link">Modules</a><ul class="nav-list"><li class="nav-list-item"><a href="/modules/zenodo" class="nav-list-link">Zenodo</a></li><li class="nav-list-item"><a href="/modules/fakenodo" class="nav-list-link">Fakenodo</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Rosemary CLI category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/rosemary" class="nav-list-link">Rosemary CLI</a><ul class="nav-list"><li class="nav-list-item"><a href="/rosemary/using_rosemary" class="nav-list-link">Using Rosemary</a></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Extending uvlhub category" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+          </button><a href="/rosemary/extending_uvlhub" class="nav-list-link">Extending uvlhub</a><ul class="nav-list"><li class="nav-list-item">
+                <a href="/rosemary/extending_uvlhub/create_module" class="nav-list-link">Create module</a>
+              </li><li class="nav-list-item">
+                <a href="/rosemary/extending_uvlhub/composing_environment" class="nav-list-link">Composing environment</a>
+              </li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Managing database category" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+          </button><a href="/rosemary/managing_database" class="nav-list-link">Managing database</a><ul class="nav-list"><li class="nav-list-item">
+                <a href="/rosemary/managing_database/seeders" class="nav-list-link">Seeders</a>
+              </li><li class="nav-list-item">
+                <a href="/rosemary/managing_database/reset_database" class="nav-list-link">Reset database</a>
+              </li><li class="nav-list-item">
+                <a href="/rosemary/managing_database/access_mariadb" class="nav-list-link">Access MariaDB</a>
+              </li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Testing category" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+          </button><a href="/rosemary/testing" class="nav-list-link">Testing</a><ul class="nav-list"><li class="nav-list-item">
+                <a href="/rosemary/testing/unit_tests" class="nav-list-link">Unit tests</a>
+              </li><li class="nav-list-item">
+                <a href="/rosemary/testing/test_coverage" class="nav-list-link">Test coverage</a>
+              </li><li class="nav-list-item">
+                <a href="/rosemary/testing/load_tests" class="nav-list-link">Load tests</a>
+              </li><li class="nav-list-item">
+                <a href="/rosemary/testing/gui_tests" class="nav-list-link">GUI tests</a>
+              </li></ul></li><li class="nav-list-item"><a href="/rosemary/routing" class="nav-list-link">Routing</a></li><li class="nav-list-item"><a href="/rosemary/updating_dependencies" class="nav-list-link">Updating dependencies</a></li><li class="nav-list-item"><a href="/rosemary/clearing_files" class="nav-list-link">Clearing files</a></li><li class="nav-list-item"><a href="/rosemary/linting" class="nav-list-link">Linting</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in CI/CD category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/ci_cd" class="nav-list-link">CI/CD</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Continuous integration category" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+          </button><a href="/ci_cd/continuous_integration" class="nav-list-link">Continuous integration</a><ul class="nav-list"><li class="nav-list-item">
+                <a href="/ci_cd/continuous_integration/testing_workflow" class="nav-list-link">Testing workflow</a>
+              </li><li class="nav-list-item">
+                <a href="/ci_cd/continuous_integration/linter_workflow" class="nav-list-link">Linter workflow</a>
+              </li><li class="nav-list-item">
+                <a href="/ci_cd/continuous_integration/commit_syntax_checker_workflow" class="nav-list-link">Commit syntax checker workflow</a>
+              </li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Continuous deployment category" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+          </button><a href="/ci_cd/continuous_deployment" class="nav-list-link">Continuous deployment</a><ul class="nav-list"><li class="nav-list-item">
+                <a href="/ci_cd/continuous_deployment/dockerHub_workflow" class="nav-list-link">Docker Hub workflow</a>
+              </li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Deployment category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/deployment" class="nav-list-link">Deployment</a><ul class="nav-list"><li class="nav-list-item"><a href="/deployment/server" class="nav-list-link">Deployment in server</a></li><li class="nav-list-item"><a href="/deployment/render" class="nav-list-link">Deployment in Render</a></li><li class="nav-list-item"><a href="/deployment/ssl_certificate" class="nav-list-link">SSL certificate</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Troubleshooting category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/troubleshooting" class="nav-list-link">Troubleshooting</a><ul class="nav-list"><li class="nav-list-item"><a href="/troubleshooting/docker" class="nav-list-link">Docker</a></li><li class="nav-list-item"><a href="/troubleshooting/file_permissions" class="nav-list-link">File permissions</a></li><li class="nav-list-item"><a href="/troubleshooting/render" class="nav-list-link">Render</a></li><li class="nav-list-item"><a href="/troubleshooting/rosemary" class="nav-list-link">Rosemary</a></li><li class="nav-list-item"><a href="/troubleshooting/vagrant" class="nav-list-link">Vagrant</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in Tutorials category" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button><a href="/tutorials" class="nav-list-link">Tutorials</a><ul class="nav-list"><li class="nav-list-item"><a href="/tutorials/crud_tutorial" class="nav-list-link">C.R.U.D. tutorial</a></li></ul></li></ul>
+
+  <ul class="nav-list"><li class="nav-list-item external">
+          <a href="https://github.com/diverso-lab/uvlhub" class="nav-list-link external"
+            
+          >
+            Official GitHub
+            <svg viewBox="0 0 24 24" aria-labelledby="svg-external-link-title"><use xlink:href="#svg-external-link"></use></svg>
+          </a>
+        </li></ul>
+</nav>
+
+
+  
+  
+    <footer class="site-footer"> 
+    
+    <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+ is sponsored by <a href="https://www.us.es/">University of Seville</a>, 
+    <a href="https://www.uma.es/">University of Malaga</a> and
+    <a href="https://www.uni-ulm.de/en/">University of Ulm</a>.
+
+</footer>
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search on uvlhub docs" aria-label="Search on uvlhub docs" autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/diverso-lab/uvlhub" class="site-button"
+          
+        >
+          uvlhub on GitHub
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/tutorials">Tutorials</a></li>
+    <li class="breadcrumb-nav-list-item"><span>C.R.U.D. tutorial</span></li>
+  </ol>
+</nav>
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 class="no_toc" id="crud-tutorial">
+  
+  
+    <a href="#crud-tutorial" class="anchor-heading" aria-labelledby="crud-tutorial"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> C.R.U.D. tutorial
+  
+  
+</h1>
+    
+
+<p class="fs-6 fw-300">In this tutorial we are going to add the concept of a notepad (title and description) to our application. The logical steps are detailed as a first approach to the development of <!-- _includes/flamapy.html -->
+<span class="uvlhub">uvlhub</span>
+.</p>
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
+
+<ol id="markdown-toc">
+  <li><a href="#create-a-new-module" id="markdown-toc-create-a-new-module">Create a new module</a>    <ol>
+      <li><a href="#dynamic-loading-of-modules" id="markdown-toc-dynamic-loading-of-modules">Dynamic loading of modules</a></li>
+    </ol>
+  </li>
+  <li><a href="#model-design" id="markdown-toc-model-design">Model design</a></li>
+  <li><a href="#inclusion-of-dependencies" id="markdown-toc-inclusion-of-dependencies">Inclusion of dependencies</a></li>
+  <li><a href="#default-route-list-all-my-notepads" id="markdown-toc-default-route-list-all-my-notepads">Default route: list all my notepads</a>    <ol>
+      <li><a href="#define-the-route" id="markdown-toc-define-the-route">Define the route</a></li>
+      <li><a href="#define-the-template-notepadtemplatesnotepadindexhtml" id="markdown-toc-define-the-template-notepadtemplatesnotepadindexhtml">Define the template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/index.html</code></a></li>
+    </ol>
+  </li>
+  <li><a href="#migrations" id="markdown-toc-migrations">Migrations</a>    <ol>
+      <li><a href="#create-a-new-migration" id="markdown-toc-create-a-new-migration">Create a new migration</a></li>
+      <li><a href="#apply-the-new-migration" id="markdown-toc-apply-the-new-migration">Apply the new migration</a></li>
+    </ol>
+  </li>
+  <li><a href="#design-form" id="markdown-toc-design-form">Design form</a></li>
+  <li><a href="#complete-crud" id="markdown-toc-complete-crud">Complete C.R.U.D.</a>    <ol>
+      <li><a href="#create-a-notepad" id="markdown-toc-create-a-notepad">Create a notepad</a>        <ol>
+          <li><a href="#route" id="markdown-toc-route">Route</a></li>
+          <li><a href="#template-notepadtemplatesnotepadcreatehml" id="markdown-toc-template-notepadtemplatesnotepadcreatehml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/create.hml</code></a></li>
+        </ol>
+      </li>
+      <li><a href="#read-a-notepad" id="markdown-toc-read-a-notepad">Read a notepad</a>        <ol>
+          <li><a href="#route-1" id="markdown-toc-route-1">Route</a></li>
+          <li><a href="#template-notepadtemplatesnotepadshowhml" id="markdown-toc-template-notepadtemplatesnotepadshowhml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/show.hml</code></a></li>
+        </ol>
+      </li>
+      <li><a href="#edit-a-notepad" id="markdown-toc-edit-a-notepad">Edit a notepad</a>        <ol>
+          <li><a href="#route-2" id="markdown-toc-route-2">Route</a></li>
+          <li><a href="#template-notepadtemplatesnotepadedithml" id="markdown-toc-template-notepadtemplatesnotepadedithml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/edit.hml</code></a></li>
+        </ol>
+      </li>
+      <li><a href="#delete-a-notepad" id="markdown-toc-delete-a-notepad">Delete a notepad</a>        <ol>
+          <li><a href="#route-3" id="markdown-toc-route-3">Route</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol><hr />
+<h2 id="create-a-new-module">
+  
+  
+    <a href="#create-a-new-module" class="anchor-heading" aria-labelledby="create-a-new-module"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create a new module
+  
+  
+</h2>
+    
+
+<p>We are going to create the <code class="language-plaintext highlighter-rouge">notepad</code> module. To do this, we are going to use the <code class="language-plaintext highlighter-rouge">Rosemary CLI</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary make:module notepad
+</code></pre></div></div>
+
+<p>This creates a folder in <code class="language-plaintext highlighter-rouge">app/modules/notepad</code> with a number of files inside. Take some time to examine each file and understand how they are related.</p>
+<h3 id="dynamic-loading-of-modules">
+  
+  
+    <a href="#dynamic-loading-of-modules" class="anchor-heading" aria-labelledby="dynamic-loading-of-modules"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dynamic loading of modules
+  
+  
+</h3>
+    
+
+<p>If we would like to check if the module is already listed by the system, we apply:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary module:list
+</code></pre></div></div>
+
+<blockquote class="warning-title">
+  <p>Reboot required!</p>
+
+  <p>However, we are not going to see our module there since Flask has a particular way of loading files and modules. We have to <strong>restart</strong> our Flask server (or the Docker container). After that, our module should be listed.</p>
+
+</blockquote>
+
+<p>We can also list the current routes of our module with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list notepad
+</code></pre></div></div>
+
+<p>We should see something like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>notepad.index           GET         /notepad  
+</code></pre></div></div>
+<h2 id="model-design">
+  
+  
+    <a href="#model-design" class="anchor-heading" aria-labelledby="model-design"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Model design
+  
+  
+</h2>
+    
+
+<p>Let’s make the <code class="language-plaintext highlighter-rouge">Notepad</code> model a bit more interesting. Let’s add two fields and add an owner user.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">app/modules/notepad/models.py</code> file would look like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">app</span> <span class="kn">import</span> <span class="n">db</span>
+
+<span class="k">class</span> <span class="nc">Notepad</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="nc">Column</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="nc">Column</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="nc">String</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="nc">Column</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">Text</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="nc">Column</span><span class="p">(</span><span class="n">db</span><span class="p">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">db</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="sh">'</span><span class="s">user.id</span><span class="sh">'</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="n">user</span> <span class="o">=</span> <span class="n">db</span><span class="p">.</span><span class="nf">relationship</span><span class="p">(</span><span class="sh">'</span><span class="s">User</span><span class="sh">'</span><span class="p">,</span> <span class="n">backref</span><span class="o">=</span><span class="sh">'</span><span class="s">notepads</span><span class="sh">'</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">'</span><span class="s">Notepad&lt;</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="nb">id</span><span class="si">}</span><span class="s">, Title=</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">title</span><span class="si">}</span><span class="s">, Author=</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">user</span><span class="p">.</span><span class="n">username</span><span class="si">}</span><span class="s">&gt;</span><span class="sh">'</span>
+</code></pre></div></div>
+<h2 id="inclusion-of-dependencies">
+  
+  
+    <a href="#inclusion-of-dependencies" class="anchor-heading" aria-labelledby="inclusion-of-dependencies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Inclusion of dependencies
+  
+  
+</h2>
+    
+
+<p>Since this is your first time developing this project, it can be a bit confusing to manage dependencies.</p>
+
+<p>Before you continue, make sure that <strong>at the beginning of the <code class="language-plaintext highlighter-rouge">routes.py</code></strong> file you have the following content:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">flask</span> <span class="kn">import</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">flash</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="n">flask_login</span> <span class="kn">import</span> <span class="n">login_required</span><span class="p">,</span> <span class="n">current_user</span>
+
+<span class="kn">from</span> <span class="n">app.modules.notepad.forms</span> <span class="kn">import</span> <span class="n">NotepadForm</span>
+<span class="kn">from</span> <span class="n">app.modules.notepad</span> <span class="kn">import</span> <span class="n">notepad_bp</span>
+<span class="kn">from</span> <span class="n">app.modules.notepad.services</span> <span class="kn">import</span> <span class="n">NotepadService</span>
+
+<span class="n">notepad_service</span> <span class="o">=</span> <span class="nc">NotepadService</span><span class="p">()</span>
+</code></pre></div></div>
+<h2 id="default-route-list-all-my-notepads">
+  
+  
+    <a href="#default-route-list-all-my-notepads" class="anchor-heading" aria-labelledby="default-route-list-all-my-notepads"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Default route: list all my notepads
+  
+  
+</h2>
+    
+
+<p>It’s a bit boring to work only with code and not see anything, so let’s do something interesting! Let’s re-define the <code class="language-plaintext highlighter-rouge">/notepad</code> route to list the notepads created by me (even if we don’t have any yet).</p>
+<h3 id="define-the-route">
+  
+  
+    <a href="#define-the-route" class="anchor-heading" aria-labelledby="define-the-route"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Define the route
+  
+  
+</h3>
+    
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">'''</span><span class="s">
+READ ALL
+</span><span class="sh">'''</span>
+<span class="nd">@notepad_bp.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/notepad</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="nc">NotepadForm</span><span class="p">()</span>
+    <span class="n">notepads</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">get_all_by_user</span><span class="p">(</span><span class="n">current_user</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/index.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">notepads</span><span class="o">=</span><span class="n">notepads</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="define-the-template-notepadtemplatesnotepadindexhtml">
+  
+  
+    <a href="#define-the-template-notepadtemplatesnotepadindexhtml" class="anchor-heading" aria-labelledby="define-the-template-notepadtemplatesnotepadindexhtml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Define the template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/index.html</code>
+  
+  
+</h3>
+    
+
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>View my notepads<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">notepads</span> <span class="cp">%}</span>
+    <span class="nt">&lt;ul&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">notepad</span> <span class="ow">in</span> <span class="nv">notepads</span> <span class="cp">%}</span>
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;strong&gt;&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.edit_notepad'</span><span class="p">,</span> <span class="nv">notepad_id</span><span class="o">=</span><span class="nv">notepad.id</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">notepad.title</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/strong&gt;</span> - <span class="cp">{{</span> <span class="nv">notepad.body</span> <span class="cp">}}</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.edit_notepad'</span><span class="p">,</span> <span class="nv">notepad_id</span><span class="o">=</span><span class="nv">notepad.id</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">action=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.delete_notepad'</span><span class="p">,</span> <span class="nv">notepad_id</span><span class="o">=</span><span class="nv">notepad.id</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>
+                <span class="cp">{{</span> <span class="nv">form.hidden_tag</span><span class="p">()</span> <span class="cp">}}</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+    <span class="nt">&lt;p&gt;</span>You have no notepads.<span class="nt">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+</code></pre></div></div>
+
+<p>We go to the <code class="language-plaintext highlighter-rouge">/notepad</code> route in the browser and see that it gives an error. Why do you think it gives an error?</p>
+<h2 id="migrations">
+  
+  
+    <a href="#migrations" class="anchor-heading" aria-labelledby="migrations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Migrations
+  
+  
+</h2>
+    
+
+<p>Even if you define a model, it does not automatically exist in the database. You need to update the database, but don’t even think of creating a table by hand! No, that’s what migrations are for.</p>
+
+<blockquote class="note-title">
+  <p><i class="fa-solid fa-code"></i> Concept of a migration</p>
+
+  <p>A migration is a software artefact that details how a database evolves, i.e. how it migrates from one state to another.</p>
+</blockquote>
+<h3 id="create-a-new-migration">
+  
+  
+    <a href="#create-a-new-migration" class="anchor-heading" aria-labelledby="create-a-new-migration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create a new migration
+  
+  
+</h3>
+    
+
+<p>Since we have a new entity in our model, in this case <code class="language-plaintext highlighter-rouge">Notepad</code>, it is necessary to create a new migration:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask db migrate -m "create_notepad_model"
+</code></pre></div></div>
+
+<p>This creates a file in <code class="language-plaintext highlighter-rouge">migrations/versions/XXXXXXXXX_create_notepad_model</code> with <code class="language-plaintext highlighter-rouge">XXXXXXXXX</code> being a unique alphanumeric string generated via the timestamp. Take your time to parse this file.</p>
+
+<p>Let’s go back to the <code class="language-plaintext highlighter-rouge">/notepad</code> path and see that it <strong>still</strong> gives an error. Why do you think it happens, if we have already created a new migration?</p>
+<h3 id="apply-the-new-migration">
+  
+  
+    <a href="#apply-the-new-migration" class="anchor-heading" aria-labelledby="apply-the-new-migration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Apply the new migration
+  
+  
+</h3>
+    
+
+<p>It is important to understand that the above command has only created the migration file, but we have not executed it yet. To run new migrations:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask db upgrade
+</code></pre></div></div>
+
+<p>We go to the <code class="language-plaintext highlighter-rouge">/notepad</code> route and see that it no longer gives an error. Excellent!</p>
+<h2 id="design-form">
+  
+  
+    <a href="#design-form" class="anchor-heading" aria-labelledby="design-form"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Design form
+  
+  
+</h2>
+    
+
+<p>We are going to design a form thanks to the Flask-WTForms package.</p>
+
+<blockquote class="note-title">
+  <p><i class="fa-solid fa-code"></i> Flask-WTForms</p>
+
+  <p>Flask-WTForms is a Flask extension that allows you to manage and validate forms in an efficient and structured way within Flask web applications. It combines the simplicity of HTML forms with the advantages of server-side data validation, all in a simple and reusable way.</p>
+</blockquote>
+
+<p>The <code class="language-plaintext highlighter-rouge">notepad/forms.py</code> file must have this content:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">flask_wtf</span> <span class="kn">import</span> <span class="n">FlaskForm</span>
+<span class="kn">from</span> <span class="n">wtforms</span> <span class="kn">import</span> <span class="n">StringField</span><span class="p">,</span> <span class="n">TextAreaField</span><span class="p">,</span> <span class="n">SubmitField</span>
+<span class="kn">from</span> <span class="n">wtforms.validators</span> <span class="kn">import</span> <span class="n">DataRequired</span><span class="p">,</span> <span class="n">Length</span>
+
+<span class="k">class</span> <span class="nc">NotepadForm</span><span class="p">(</span><span class="n">FlaskForm</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="nc">StringField</span><span class="p">(</span><span class="sh">'</span><span class="s">Title</span><span class="sh">'</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="nc">DataRequired</span><span class="p">(),</span> <span class="nc">Length</span><span class="p">(</span><span class="nb">max</span><span class="o">=</span><span class="mi">256</span><span class="p">)])</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="nc">TextAreaField</span><span class="p">(</span><span class="sh">'</span><span class="s">Body</span><span class="sh">'</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="nc">DataRequired</span><span class="p">()])</span>
+    <span class="n">submit</span> <span class="o">=</span> <span class="nc">SubmitField</span><span class="p">(</span><span class="sh">'</span><span class="s">Save notepad</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="complete-crud">
+  
+  
+    <a href="#complete-crud" class="anchor-heading" aria-labelledby="complete-crud"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Complete C.R.U.D.
+  
+  
+</h2>
+    
+
+<p>With all that we have learned and thanks to the form, we are ready to design a complete C.R.U.D.</p>
+<h3 id="create-a-notepad">
+  
+  
+    <a href="#create-a-notepad" class="anchor-heading" aria-labelledby="create-a-notepad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create a notepad
+  
+  
+</h3>
+    
+<h4 id="route">
+  
+  
+    <a href="#route" class="anchor-heading" aria-labelledby="route"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+  
+  
+</h4>
+    
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">'''</span><span class="s">
+CREATE
+</span><span class="sh">'''</span>
+<span class="nd">@notepad_bp.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/notepad/create</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">create_notepad</span><span class="p">():</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="nc">NotepadForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">form</span><span class="p">.</span><span class="nf">validate_on_submit</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">form</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">form</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">current_user</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">handle_service_response</span><span class="p">(</span>
+            <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">,</span>
+            <span class="n">errors</span><span class="o">=</span><span class="n">form</span><span class="p">.</span><span class="n">errors</span><span class="p">,</span>
+            <span class="n">success_url_redirect</span><span class="o">=</span><span class="sh">'</span><span class="s">notepad.index</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">success_msg</span><span class="o">=</span><span class="sh">'</span><span class="s">Notepad created successfully!</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">error_template</span><span class="o">=</span><span class="sh">'</span><span class="s">notepad/create.html</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">form</span><span class="o">=</span><span class="n">form</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/create.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">)</span>
+</code></pre></div></div>
+<h4 id="template-notepadtemplatesnotepadcreatehml">
+  
+  
+    <a href="#template-notepadtemplatesnotepadcreatehml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadcreatehml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/create.hml</code>
+  
+  
+</h4>
+    
+
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Create notepad<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">action=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.create_notepad'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>
+    <span class="cp">{{</span> <span class="nv">form.hidden_tag</span><span class="p">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.title.label</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.title</span><span class="p">(</span><span class="nv">size</span><span class="o">=</span><span class="nv">32</span><span class="p">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.body.label</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.body</span><span class="p">(</span><span class="nv">rows</span><span class="o">=</span><span class="nv">5</span><span class="p">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.submit</span><span class="p">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+</code></pre></div></div>
+<h3 id="read-a-notepad">
+  
+  
+    <a href="#read-a-notepad" class="anchor-heading" aria-labelledby="read-a-notepad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Read a notepad
+  
+  
+</h3>
+    
+<h4 id="route-1">
+  
+  
+    <a href="#route-1" class="anchor-heading" aria-labelledby="route-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+  
+  
+</h4>
+    
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">'''</span><span class="s">
+READ BY ID
+</span><span class="sh">'''</span>
+<span class="nd">@notepad_bp.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/notepad/&lt;int:notepad_id&gt;</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">get_notepad</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">):</span>
+    <span class="n">notepad</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">get_or_404</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">notepad</span><span class="p">.</span><span class="n">user_id</span> <span class="o">!=</span> <span class="n">current_user</span><span class="p">.</span><span class="nb">id</span><span class="p">:</span>
+        <span class="nf">flash</span><span class="p">(</span><span class="sh">'</span><span class="s">You are not authorized to view this notepad</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">redirect</span><span class="p">(</span><span class="nf">url_for</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad.index</span><span class="sh">'</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/show.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">notepad</span><span class="o">=</span><span class="n">notepad</span><span class="p">)</span>
+</code></pre></div></div>
+<h4 id="template-notepadtemplatesnotepadshowhml">
+  
+  
+    <a href="#template-notepadtemplatesnotepadshowhml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadshowhml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/show.hml</code>
+  
+  
+</h4>
+    
+
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Notepad details<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+<span class="nt">&lt;h1&gt;</span><span class="cp">{{</span> <span class="nv">notepad.title</span> <span class="cp">}}</span><span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p&gt;</span><span class="cp">{{</span> <span class="nv">notepad.body</span> <span class="cp">}}</span><span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.index'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>Back to Notepads<span class="nt">&lt;/a&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+</code></pre></div></div>
+<h3 id="edit-a-notepad">
+  
+  
+    <a href="#edit-a-notepad" class="anchor-heading" aria-labelledby="edit-a-notepad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Edit a notepad
+  
+  
+</h3>
+    
+<h4 id="route-2">
+  
+  
+    <a href="#route-2" class="anchor-heading" aria-labelledby="route-2"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+  
+  
+</h4>
+    
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">'''</span><span class="s">
+EDIT
+</span><span class="sh">'''</span>
+<span class="nd">@notepad_bp.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/notepad/edit/&lt;int:notepad_id&gt;</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">edit_notepad</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">):</span>
+    <span class="n">notepad</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">get_or_404</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">notepad</span><span class="p">.</span><span class="n">user_id</span> <span class="o">!=</span> <span class="n">current_user</span><span class="p">.</span><span class="nb">id</span><span class="p">:</span>
+        <span class="nf">flash</span><span class="p">(</span><span class="sh">'</span><span class="s">You are not authorized to edit this notepad</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">redirect</span><span class="p">(</span><span class="nf">url_for</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad.index</span><span class="sh">'</span><span class="p">))</span>
+
+    <span class="n">form</span> <span class="o">=</span> <span class="nc">NotepadForm</span><span class="p">(</span><span class="n">obj</span><span class="o">=</span><span class="n">notepad</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">form</span><span class="p">.</span><span class="nf">validate_on_submit</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span>
+            <span class="n">notepad_id</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">form</span><span class="p">.</span><span class="n">title</span><span class="p">.</span><span class="n">data</span><span class="p">,</span>
+            <span class="n">body</span><span class="o">=</span><span class="n">form</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">data</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">handle_service_response</span><span class="p">(</span>
+            <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">,</span>
+            <span class="n">errors</span><span class="o">=</span><span class="n">form</span><span class="p">.</span><span class="n">errors</span><span class="p">,</span>
+            <span class="n">success_url_redirect</span><span class="o">=</span><span class="sh">'</span><span class="s">notepad.index</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">success_msg</span><span class="o">=</span><span class="sh">'</span><span class="s">Notepad updated successfully!</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">error_template</span><span class="o">=</span><span class="sh">'</span><span class="s">notepad/edit.html</span><span class="sh">'</span><span class="p">,</span>
+            <span class="n">form</span><span class="o">=</span><span class="n">form</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/edit.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span> <span class="n">notepad</span><span class="o">=</span><span class="n">notepad</span><span class="p">)</span>
+</code></pre></div></div>
+<h4 id="template-notepadtemplatesnotepadedithml">
+  
+  
+    <a href="#template-notepadtemplatesnotepadedithml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadedithml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/edit.hml</code>
+  
+  
+</h4>
+    
+
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>View notepad<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">action=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.edit_notepad'</span><span class="p">,</span> <span class="nv">notepad_id</span><span class="o">=</span><span class="nv">notepad.id</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span>
+    <span class="cp">{{</span> <span class="nv">form.hidden_tag</span><span class="p">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.title.label</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.title</span><span class="p">(</span><span class="nv">size</span><span class="o">=</span><span class="nv">32</span><span class="p">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.body.label</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.body</span><span class="p">(</span><span class="nv">rows</span><span class="o">=</span><span class="nv">5</span><span class="p">)</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+        <span class="cp">{{</span> <span class="nv">form.submit</span><span class="p">()</span> <span class="cp">}}</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+
+</code></pre></div></div>
+<h3 id="delete-a-notepad">
+  
+  
+    <a href="#delete-a-notepad" class="anchor-heading" aria-labelledby="delete-a-notepad"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Delete a notepad
+  
+  
+</h3>
+    
+<h4 id="route-3">
+  
+  
+    <a href="#route-3" class="anchor-heading" aria-labelledby="route-3"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+  
+  
+</h4>
+    
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">'''</span><span class="s">
+DELETE
+</span><span class="sh">'''</span>
+<span class="nd">@notepad_bp.route</span><span class="p">(</span><span class="sh">'</span><span class="s">/notepad/delete/&lt;int:notepad_id&gt;</span><span class="sh">'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">])</span>
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">delete_notepad</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">):</span>
+    <span class="n">notepad</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">get_or_404</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">notepad</span><span class="p">.</span><span class="n">user_id</span> <span class="o">!=</span> <span class="n">current_user</span><span class="p">.</span><span class="nb">id</span><span class="p">:</span>
+        <span class="nf">flash</span><span class="p">(</span><span class="sh">'</span><span class="s">You are not authorized to delete this notepad</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">redirect</span><span class="p">(</span><span class="nf">url_for</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad.index</span><span class="sh">'</span><span class="p">))</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">notepad_service</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">notepad_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+        <span class="nf">flash</span><span class="p">(</span><span class="sh">'</span><span class="s">Notepad deleted successfully!</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">success</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">flash</span><span class="p">(</span><span class="sh">'</span><span class="s">Error deleting notepad</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">error</span><span class="sh">'</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nf">redirect</span><span class="p">(</span><span class="nf">url_for</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad.index</span><span class="sh">'</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<p>Take the time to check that everything is working properly. Happy development!</p>
+          
+
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+      <p><a href="#top" id="back-to-top">Back to top</a></p>
+    
+
+    <p class="text-small text-grey-dk-100 mb-0"><span class='uvlhub'>uvlhub</span>. Distributed by an <a href='https://www.gnu.org/licenses/lgpl-3.0.en.html'>LGPL license v3.</a> Contact us: <a href='mailto:drorganvidez@us.es'>drorganvidez@us.es</a></p>
+
+    
+      <div class="d-flex mt-2">
+        
+        
+      </div>
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+    
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9.1.6/dist/mermaid.min.js"></script>
+
+
+<script>
+  var config = {}
+;
+  mermaid.initialize(config);
+  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+</script>
+
+
+
+  
+</body>
+</html>
+

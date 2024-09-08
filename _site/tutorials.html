@@ -18,8 +18,8 @@
   <style id="jtd-nav-activation">
   
 
-.site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(8)) > a,
+.site-nav > ul.nav-list:first-child > li:not(:nth-child(10)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > a,
 .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
@@ -29,14 +29,12 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(8) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(10) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(8) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(10) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(8) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(10) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +56,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Linting | UVLHub docs</title>
+<title>Tutorials | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Linting" />
+<meta property="og:title" content="Tutorials" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/rosemary/linting" />
-<meta property="og:url" content="http://0.0.0.0:4000/rosemary/linting" />
+<link rel="canonical" href="http://0.0.0.0:4000/tutorials" />
+<meta property="og:url" content="http://0.0.0.0:4000/tutorials" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Linting" />
+<meta property="twitter:title" content="Tutorials" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Linting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/rosemary/linting"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Tutorials","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/tutorials"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -274,63 +272,33 @@
 </div>
 
     <div class="main-content-wrap">
-      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-  <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Linting</span></li>
-  </ol>
-</nav>
+      
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="linting">
+            <h1 id="tutorials">
   
   
-    <a href="#linting" class="anchor-heading" aria-labelledby="linting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Linting
+    <a href="#tutorials" class="anchor-heading" aria-labelledby="tutorials"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Tutorials
   
   
 </h1>
     
-<h2 class="no_toc text-delta" id="table-of-contents">
-  
-  
-    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
-  
-  
-</h2>
-    
 
-<ol id="markdown-toc">
-  <li><a href="#check-python-syntax" id="markdown-toc-check-python-syntax">Check Python syntax</a></li>
-  <li><a href="#using-flake8-directly" id="markdown-toc-using-flake8-directly">Using flake8 directly</a></li>
-</ol>
-<h2 id="check-python-syntax">
-  
-  
-    <a href="#check-python-syntax" class="anchor-heading" aria-labelledby="check-python-syntax"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Check Python syntax
-  
-  
-</h2>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary linter
-</code></pre></div></div>
-
-<p>This command is designed to run the linter <a href="https://flake8.pycqa.org/en/latest/">Flake8</a> in the <code class="language-plaintext highlighter-rouge">app</code>, <code class="language-plaintext highlighter-rouge">rosemary</code> and <code class="language-plaintext highlighter-rouge">core</code> directories to check the quality of the code.</p>
-<h2 id="using-flake8-directly">
-  
-  
-    <a href="#using-flake8-directly" class="anchor-heading" aria-labelledby="using-flake8-directly"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using flake8 directly
-  
-  
-</h2>
-    
-
-<p>You can run flake8 directly on the desired directories. To do this, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flake8 app rosemary core
-</code></pre></div></div>
+<p class="fs-6 fw-300">The intention of these tutorials is to improve the onboarding of new people to the project. Specifically, we aim to provide some quick guides to familiarise and understand the development environment.</p>
           
+
+          
+            <hr>
+<h2 class="text-delta">Table of contents</h2>
+
+<ul>
+
+  <li>
+    <a href="/tutorials/crud_tutorial">C.R.U.D. tutorial</a>
+  </li>
+
+</ul>
 
           
         </main>
