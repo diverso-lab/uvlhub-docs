@@ -41,7 +41,7 @@ rosemary module:list
 {: .warning-title }
 > Reboot required!
 > 
-> However, even if we see the module listed, Flask may not yet allow navigation in the paths of that module. This is because Flask has a particular way of loading files and modules in its initial stage. We have to **reboot** our Flask server (or Docker container). After that, our module should appear in the list.
+> However, even if we see the module listed, Flask may not yet allow navigation in the routes of that module. This is because Flask has a particular way of loading files and modules in its initial stage. We have to **reboot** our Flask server (or Docker container). After that, our module should appear in the list.
 >
 
 We can also list the current routes of our module with:
@@ -208,7 +208,7 @@ flask db migrate -m "create_notepad_model"
 
 This creates a file in `migrations/versions/XXXXXXXXX_create_notepad_model` with `XXXXXXXXX` being a unique alphanumeric string generated via the timestamp. Take your time to parse this file.
 
-Let's go back to the `/notepad` path and see that it **still** gives an error. Why do you think it happens, if we have already created a new migration?
+Let's go back to the `/notepad` route and see that it **still** gives an error. Why do you think it happens, if we have already created a new migration?
 
 ### Apply the new migration
 
@@ -439,7 +439,7 @@ def delete_notepad(notepad_id):
 
 ```
 
-Take the time to check that everything is working properly. 
+Take the time to check that everything is working properly. Try creating a notepad in the `/notepad/create` route.
 
 You can list the routes again to see that the log has been updated:
 

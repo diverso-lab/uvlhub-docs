@@ -379,7 +379,7 @@
 <blockquote class="warning-title">
   <p>Reboot required!</p>
 
-  <p>However, even if we see the module listed, Flask may not yet allow navigation in the paths of that module. This is because Flask has a particular way of loading files and modules in its initial stage. We have to <strong>reboot</strong> our Flask server (or Docker container). After that, our module should appear in the list.</p>
+  <p>However, even if we see the module listed, Flask may not yet allow navigation in the routes of that module. This is because Flask has a particular way of loading files and modules in its initial stage. We have to <strong>reboot</strong> our Flask server (or Docker container). After that, our module should appear in the list.</p>
 
 </blockquote>
 
@@ -592,7 +592,7 @@ Pass: 1234
 
 <p>This creates a file in <code class="language-plaintext highlighter-rouge">migrations/versions/XXXXXXXXX_create_notepad_model</code> with <code class="language-plaintext highlighter-rouge">XXXXXXXXX</code> being a unique alphanumeric string generated via the timestamp. Take your time to parse this file.</p>
 
-<p>Let’s go back to the <code class="language-plaintext highlighter-rouge">/notepad</code> path and see that it <strong>still</strong> gives an error. Why do you think it happens, if we have already created a new migration?</p>
+<p>Let’s go back to the <code class="language-plaintext highlighter-rouge">/notepad</code> route and see that it <strong>still</strong> gives an error. Why do you think it happens, if we have already created a new migration?</p>
 <h3 id="apply-the-new-migration">
   
   
@@ -899,7 +899,7 @@ DELETE
 
 </code></pre></div></div>
 
-<p>Take the time to check that everything is working properly.</p>
+<p>Take the time to check that everything is working properly. Try creating a notepad in the <code class="language-plaintext highlighter-rouge">/notepad/create</code> route.</p>
 
 <p>You can list the routes again to see that the log has been updated:</p>
 
