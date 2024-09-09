@@ -41,7 +41,7 @@ rosemary module:list
 {: .warning-title }
 > Reboot required!
 > 
-> However, we are not going to see our module there since Flask has a particular way of loading files and modules. We have to **restart** our Flask server (or the Docker container). After that, our module should be listed.
+> However, even if we see the module listed, Flask may not yet allow navigation in the paths of that module. This is because Flask has a particular way of loading files and modules in its initial stage. We have to **reboot** our Flask server (or Docker container). After that, our module should appear in the list.
 >
 
 We can also list the current routes of our module with:
@@ -153,10 +153,13 @@ def index():
 The `notepad/services.py` file should look like this:
 
 ```python
+from app.modules.notepad.repositories import NotepadRepository
+from core.services.BaseService import BaseService
+
 class NotepadService(BaseService):
     def __init__(self):
         super().__init__(NotepadRepository())
-    
+
     def get_all_by_user(self, user_id):
         return self.repository.get_all_by_user(user_id)
 ```
@@ -166,6 +169,9 @@ class NotepadService(BaseService):
 The `notepad/repositories.py` file should look like this:
 
 ```python
+from app.modules.notepad.models import Notepad
+from core.repositories.BaseRepository import BaseRepository
+
 class NotepadRepository(BaseRepository):
     def __init__(self):
         super().__init__(Notepad)
@@ -433,4 +439,12 @@ def delete_notepad(notepad_id):
 
 ```
 
-Take the time to check that everything is working properly. Happy development!
+Take the time to check that everything is working properly. 
+
+You can list the routes again to see that the log has been updated:
+
+```
+rosemary route:list notepad
+```
+
+Happy development!

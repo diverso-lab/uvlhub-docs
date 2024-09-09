@@ -379,7 +379,7 @@
 <blockquote class="warning-title">
   <p>Reboot required!</p>
 
-  <p>However, we are not going to see our module there since Flask has a particular way of loading files and modules. We have to <strong>restart</strong> our Flask server (or the Docker container). After that, our module should be listed.</p>
+  <p>However, even if we see the module listed, Flask may not yet allow navigation in the paths of that module. This is because Flask has a particular way of loading files and modules in its initial stage. We have to <strong>reboot</strong> our Flask server (or Docker container). After that, our module should appear in the list.</p>
 
 </blockquote>
 
@@ -521,10 +521,13 @@ READ ALL
 
 <p>The <code class="language-plaintext highlighter-rouge">notepad/services.py</code> file should look like this:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NotepadService</span><span class="p">(</span><span class="n">BaseService</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">app.modules.notepad.repositories</span> <span class="kn">import</span> <span class="n">NotepadRepository</span>
+<span class="kn">from</span> <span class="n">core.services.BaseService</span> <span class="kn">import</span> <span class="n">BaseService</span>
+
+<span class="k">class</span> <span class="nc">NotepadService</span><span class="p">(</span><span class="n">BaseService</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
         <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="nc">NotepadRepository</span><span class="p">())</span>
-    
+
     <span class="k">def</span> <span class="nf">get_all_by_user</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">repository</span><span class="p">.</span><span class="nf">get_all_by_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
 </code></pre></div></div>
@@ -539,7 +542,10 @@ READ ALL
 
 <p>The <code class="language-plaintext highlighter-rouge">notepad/repositories.py</code> file should look like this:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NotepadRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">app.modules.notepad.models</span> <span class="kn">import</span> <span class="n">Notepad</span>
+<span class="kn">from</span> <span class="n">core.repositories.BaseRepository</span> <span class="kn">import</span> <span class="n">BaseRepository</span>
+
+<span class="k">class</span> <span class="nc">NotepadRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
         <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="n">Notepad</span><span class="p">)</span>
 
@@ -893,7 +899,14 @@ DELETE
 
 </code></pre></div></div>
 
-<p>Take the time to check that everything is working properly. Happy development!</p>
+<p>Take the time to check that everything is working properly.</p>
+
+<p>You can list the routes again to see that the log has been updated:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary route:list notepad
+</code></pre></div></div>
+
+<p>Happy development!</p>
           
 
           
