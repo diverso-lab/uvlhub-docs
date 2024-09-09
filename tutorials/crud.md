@@ -53,6 +53,7 @@ rosemary route:list notepad
 We should see something like this:
 
 ```
+notepad.scripts         GET         /notepad/script.js  
 notepad.index           GET         /notepad  
 ```
 
@@ -98,7 +99,7 @@ notepad_service = NotepadService()
 
 It's a bit boring to work only with code and not see anything, so let's do something interesting! Let's re-define the `/notepad` route to list the notepads created by me (even if we don't have any yet).
 
-### Define the route
+### Define the route in `routes.py`
 
 ```python
 '''
@@ -147,7 +148,40 @@ def index():
 {% endraw %}
 ```
 
-We go to the `/notepad` route in the browser and see that it gives an error. Why do you think it gives an error?
+### Add new function in NotepadService
+
+The `notepad/services.py` file should look like this:
+
+```python
+class NotepadService(BaseService):
+    def __init__(self):
+        super().__init__(NotepadRepository())
+    
+    def get_all_by_user(self, user_id):
+        return self.repository.get_all_by_user(user_id)
+```
+
+### Add new function in NotepadRepository
+
+The `notepad/repositories.py` file should look like this:
+
+```python
+class NotepadRepository(BaseRepository):
+    def __init__(self):
+        super().__init__(Notepad)
+
+    def get_all_by_user(self, user_id):
+        return Notepad.query.filter_by(user_id=user_id).all()
+```
+
+We go to the `/notepad` route in the browser. Since we use the middleware `@login_required`, it is necessary to log in using a test user:
+
+```
+User: user1@example.com
+Pass: 1234
+```
+
+If we access `/notepad` we notice that it gives error. Why do you think it gives error?
 
 ## Migrations
 
@@ -207,7 +241,7 @@ With all that we have learned and thanks to the form, we are ready to design a c
 
 ### Create a notepad
 
-#### Route
+#### Route in `routes.py`
 
 ```python
 '''
@@ -230,7 +264,7 @@ def create_notepad():
     return render_template('notepad/create.html', form=form)
 ```
 
-#### Template `notepad/templates/notepad/create.hml`
+#### Template `notepad/templates/notepad/create.html`
 
 ```jinja
 {% raw %}
@@ -266,7 +300,7 @@ def create_notepad():
 
 ### Read a notepad
 
-#### Route
+#### Route in `routes.py`
 
 ```python
 '''
@@ -284,7 +318,7 @@ def get_notepad(notepad_id):
     return render_template('notepad/show.html', notepad=notepad)
 ```
 
-#### Template `notepad/templates/notepad/show.hml`
+#### Template `notepad/templates/notepad/show.html`
 
 ```jinja
 {% raw %}
@@ -307,7 +341,7 @@ def get_notepad(notepad_id):
 
 ### Edit a notepad
 
-#### Route
+#### Route in `routes.py`
 
 ```python
 '''
@@ -339,7 +373,7 @@ def edit_notepad(notepad_id):
     return render_template('notepad/edit.html', form=form, notepad=notepad)
 ```
 
-#### Template `notepad/templates/notepad/edit.hml`
+#### Template `notepad/templates/notepad/edit.html`
 
 ```jinja
 {% raw %}
@@ -375,7 +409,7 @@ def edit_notepad(notepad_id):
 
 ### Delete a notepad
 
-#### Route
+#### Route in `routes.py`
 
 ```python
 '''

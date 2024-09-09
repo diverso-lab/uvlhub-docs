@@ -312,8 +312,10 @@
   <li><a href="#model-design" id="markdown-toc-model-design">Model design</a></li>
   <li><a href="#inclusion-of-dependencies" id="markdown-toc-inclusion-of-dependencies">Inclusion of dependencies</a></li>
   <li><a href="#default-route-list-all-my-notepads" id="markdown-toc-default-route-list-all-my-notepads">Default route: list all my notepads</a>    <ol>
-      <li><a href="#define-the-route" id="markdown-toc-define-the-route">Define the route</a></li>
+      <li><a href="#define-the-route-in-routespy" id="markdown-toc-define-the-route-in-routespy">Define the route in <code class="language-plaintext highlighter-rouge">routes.py</code></a></li>
       <li><a href="#define-the-template-notepadtemplatesnotepadindexhtml" id="markdown-toc-define-the-template-notepadtemplatesnotepadindexhtml">Define the template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/index.html</code></a></li>
+      <li><a href="#add-new-function-in-notepadservice" id="markdown-toc-add-new-function-in-notepadservice">Add new function in NotepadService</a></li>
+      <li><a href="#add-new-function-in-notepadrepository" id="markdown-toc-add-new-function-in-notepadrepository">Add new function in NotepadRepository</a></li>
     </ol>
   </li>
   <li><a href="#migrations" id="markdown-toc-migrations">Migrations</a>    <ol>
@@ -324,22 +326,22 @@
   <li><a href="#design-form" id="markdown-toc-design-form">Design form</a></li>
   <li><a href="#complete-crud" id="markdown-toc-complete-crud">Complete C.R.U.D.</a>    <ol>
       <li><a href="#create-a-notepad" id="markdown-toc-create-a-notepad">Create a notepad</a>        <ol>
-          <li><a href="#route" id="markdown-toc-route">Route</a></li>
-          <li><a href="#template-notepadtemplatesnotepadcreatehml" id="markdown-toc-template-notepadtemplatesnotepadcreatehml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/create.hml</code></a></li>
+          <li><a href="#route-in-routespy" id="markdown-toc-route-in-routespy">Route in <code class="language-plaintext highlighter-rouge">routes.py</code></a></li>
+          <li><a href="#template-notepadtemplatesnotepadcreatehtml" id="markdown-toc-template-notepadtemplatesnotepadcreatehtml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/create.html</code></a></li>
         </ol>
       </li>
       <li><a href="#read-a-notepad" id="markdown-toc-read-a-notepad">Read a notepad</a>        <ol>
-          <li><a href="#route-1" id="markdown-toc-route-1">Route</a></li>
-          <li><a href="#template-notepadtemplatesnotepadshowhml" id="markdown-toc-template-notepadtemplatesnotepadshowhml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/show.hml</code></a></li>
+          <li><a href="#route-in-routespy-1" id="markdown-toc-route-in-routespy-1">Route in <code class="language-plaintext highlighter-rouge">routes.py</code></a></li>
+          <li><a href="#template-notepadtemplatesnotepadshowhtml" id="markdown-toc-template-notepadtemplatesnotepadshowhtml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/show.html</code></a></li>
         </ol>
       </li>
       <li><a href="#edit-a-notepad" id="markdown-toc-edit-a-notepad">Edit a notepad</a>        <ol>
-          <li><a href="#route-2" id="markdown-toc-route-2">Route</a></li>
-          <li><a href="#template-notepadtemplatesnotepadedithml" id="markdown-toc-template-notepadtemplatesnotepadedithml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/edit.hml</code></a></li>
+          <li><a href="#route-in-routespy-2" id="markdown-toc-route-in-routespy-2">Route in <code class="language-plaintext highlighter-rouge">routes.py</code></a></li>
+          <li><a href="#template-notepadtemplatesnotepadedithtml" id="markdown-toc-template-notepadtemplatesnotepadedithtml">Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/edit.html</code></a></li>
         </ol>
       </li>
       <li><a href="#delete-a-notepad" id="markdown-toc-delete-a-notepad">Delete a notepad</a>        <ol>
-          <li><a href="#route-3" id="markdown-toc-route-3">Route</a></li>
+          <li><a href="#route-in-routespy-3" id="markdown-toc-route-in-routespy-3">Route in <code class="language-plaintext highlighter-rouge">routes.py</code></a></li>
         </ol>
       </li>
     </ol>
@@ -388,7 +390,8 @@
 
 <p>We should see something like this:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>notepad.index           GET         /notepad  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>notepad.scripts         GET         /notepad/script.js  
+notepad.index           GET         /notepad  
 </code></pre></div></div>
 <h2 id="model-design">
   
@@ -448,10 +451,10 @@
     
 
 <p>It’s a bit boring to work only with code and not see anything, so let’s do something interesting! Let’s re-define the <code class="language-plaintext highlighter-rouge">/notepad</code> route to list the notepads created by me (even if we don’t have any yet).</p>
-<h3 id="define-the-route">
+<h3 id="define-the-route-in-routespy">
   
   
-    <a href="#define-the-route" class="anchor-heading" aria-labelledby="define-the-route"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Define the route
+    <a href="#define-the-route-in-routespy" class="anchor-heading" aria-labelledby="define-the-route-in-routespy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Define the route in <code class="language-plaintext highlighter-rouge">routes.py</code>
   
   
 </h3>
@@ -507,8 +510,50 @@ READ ALL
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
 </code></pre></div></div>
+<h3 id="add-new-function-in-notepadservice">
+  
+  
+    <a href="#add-new-function-in-notepadservice" class="anchor-heading" aria-labelledby="add-new-function-in-notepadservice"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Add new function in NotepadService
+  
+  
+</h3>
+    
 
-<p>We go to the <code class="language-plaintext highlighter-rouge">/notepad</code> route in the browser and see that it gives an error. Why do you think it gives an error?</p>
+<p>The <code class="language-plaintext highlighter-rouge">notepad/services.py</code> file should look like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NotepadService</span><span class="p">(</span><span class="n">BaseService</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="nc">NotepadRepository</span><span class="p">())</span>
+    
+    <span class="k">def</span> <span class="nf">get_all_by_user</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">repository</span><span class="p">.</span><span class="nf">get_all_by_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="add-new-function-in-notepadrepository">
+  
+  
+    <a href="#add-new-function-in-notepadrepository" class="anchor-heading" aria-labelledby="add-new-function-in-notepadrepository"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Add new function in NotepadRepository
+  
+  
+</h3>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">notepad/repositories.py</code> file should look like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NotepadRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">(</span><span class="n">Notepad</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_all_by_user</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Notepad</span><span class="p">.</span><span class="n">query</span><span class="p">.</span><span class="nf">filter_by</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">).</span><span class="nf">all</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We go to the <code class="language-plaintext highlighter-rouge">/notepad</code> route in the browser. Since we use the middleware <code class="language-plaintext highlighter-rouge">@login_required</code>, it is necessary to log in using a test user:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>User: user1@example.com
+Pass: 1234
+</code></pre></div></div>
+
+<p>If we access <code class="language-plaintext highlighter-rouge">/notepad</code> we notice that it gives error. Why do you think it gives error?</p>
 <h2 id="migrations">
   
   
@@ -602,10 +647,10 @@ READ ALL
   
 </h3>
     
-<h4 id="route">
+<h4 id="route-in-routespy">
   
   
-    <a href="#route" class="anchor-heading" aria-labelledby="route"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+    <a href="#route-in-routespy" class="anchor-heading" aria-labelledby="route-in-routespy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route in <code class="language-plaintext highlighter-rouge">routes.py</code>
   
   
 </h4>
@@ -630,10 +675,10 @@ CREATE
         <span class="p">)</span>
     <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/create.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">)</span>
 </code></pre></div></div>
-<h4 id="template-notepadtemplatesnotepadcreatehml">
+<h4 id="template-notepadtemplatesnotepadcreatehtml">
   
   
-    <a href="#template-notepadtemplatesnotepadcreatehml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadcreatehml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/create.hml</code>
+    <a href="#template-notepadtemplatesnotepadcreatehtml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadcreatehtml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/create.html</code>
   
   
 </h4>
@@ -677,10 +722,10 @@ CREATE
   
 </h3>
     
-<h4 id="route-1">
+<h4 id="route-in-routespy-1">
   
   
-    <a href="#route-1" class="anchor-heading" aria-labelledby="route-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+    <a href="#route-in-routespy-1" class="anchor-heading" aria-labelledby="route-in-routespy-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route in <code class="language-plaintext highlighter-rouge">routes.py</code>
   
   
 </h4>
@@ -700,10 +745,10 @@ READ BY ID
 
     <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/show.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">notepad</span><span class="o">=</span><span class="n">notepad</span><span class="p">)</span>
 </code></pre></div></div>
-<h4 id="template-notepadtemplatesnotepadshowhml">
+<h4 id="template-notepadtemplatesnotepadshowhtml">
   
   
-    <a href="#template-notepadtemplatesnotepadshowhml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadshowhml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/show.hml</code>
+    <a href="#template-notepadtemplatesnotepadshowhtml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadshowhtml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/show.html</code>
   
   
 </h4>
@@ -734,10 +779,10 @@ READ BY ID
   
 </h3>
     
-<h4 id="route-2">
+<h4 id="route-in-routespy-2">
   
   
-    <a href="#route-2" class="anchor-heading" aria-labelledby="route-2"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+    <a href="#route-in-routespy-2" class="anchor-heading" aria-labelledby="route-in-routespy-2"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route in <code class="language-plaintext highlighter-rouge">routes.py</code>
   
   
 </h4>
@@ -771,10 +816,10 @@ EDIT
         <span class="p">)</span>
     <span class="k">return</span> <span class="nf">render_template</span><span class="p">(</span><span class="sh">'</span><span class="s">notepad/edit.html</span><span class="sh">'</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span> <span class="n">notepad</span><span class="o">=</span><span class="n">notepad</span><span class="p">)</span>
 </code></pre></div></div>
-<h4 id="template-notepadtemplatesnotepadedithml">
+<h4 id="template-notepadtemplatesnotepadedithtml">
   
   
-    <a href="#template-notepadtemplatesnotepadedithml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadedithml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/edit.hml</code>
+    <a href="#template-notepadtemplatesnotepadedithtml" class="anchor-heading" aria-labelledby="template-notepadtemplatesnotepadedithtml"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Template <code class="language-plaintext highlighter-rouge">notepad/templates/notepad/edit.html</code>
   
   
 </h4>
@@ -818,10 +863,10 @@ EDIT
   
 </h3>
     
-<h4 id="route-3">
+<h4 id="route-in-routespy-3">
   
   
-    <a href="#route-3" class="anchor-heading" aria-labelledby="route-3"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route
+    <a href="#route-in-routespy-3" class="anchor-heading" aria-labelledby="route-in-routespy-3"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Route in <code class="language-plaintext highlighter-rouge">routes.py</code>
   
   
 </h4>
