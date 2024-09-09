@@ -69,3 +69,12 @@ source .env
 This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant.
 
 You must use Rosemary inside the Vagrant virtual machine. Visit [Using Rosemary]({{site.baseurl}}/rosemary/using_rosemary#using-rosemary-in-vagrant-environment) for more info.
+
+
+## *error: Cannot update time stamp of directory 'rosemary.egg-info'*
+
+This is due to a previous installation of Rosemary from a different working environment than the current one. To fix this:
+
+```
+sudo rm -r rosemary.egg-info/
+```

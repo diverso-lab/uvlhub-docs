@@ -995,7 +995,7 @@
   },"142": {
     "doc": "Rosemary",
     "title": "Table of contents",
-    "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/modules’ . | Solution 1: run Rosemary in the correct environment | Solution 2: technological limitations | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’ | . ",
+    "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/modules’ . | Solution 1: run Rosemary in the correct environment | Solution 2: technological limitations | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’ | error: Cannot update time stamp of directory ‘rosemary.egg-info’ | . ",
     "url": "/troubleshooting/rosemary#table-of-contents",
     
     "relUrl": "/troubleshooting/rosemary#table-of-contents"
@@ -1028,342 +1028,349 @@
     
     "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules"
   },"147": {
+    "doc": "Rosemary",
+    "title": "error: Cannot update time stamp of directory ‘rosemary.egg-info’",
+    "content": "This is due to a previous installation of Rosemary from a different working environment than the current one. To fix this: . sudo rm -r rosemary.egg-info/ . ",
+    "url": "/troubleshooting/rosemary#error-cannot-update-time-stamp-of-directory-rosemaryegg-info",
+    
+    "relUrl": "/troubleshooting/rosemary#error-cannot-update-time-stamp-of-directory-rosemaryegg-info"
+  },"148": {
     "doc": "Rosemary CLI",
     "title": "Rosemary CLI",
     "content": "Rosemary is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks. ",
     "url": "/rosemary",
     
     "relUrl": "/rosemary"
-  },"148": {
+  },"149": {
     "doc": "Rosemary CLI",
     "title": "Advantages of Using a CLI",
     "content": "Common usage point . A CLI provides a standardized interface for executing commands, making it easier for users to perform a wide range of tasks from a single point. Command unification . With a CLI, commands are unified under a single tool, reducing the need to remember different commands for different environments or tools. This unification streamlines workflows and enhances productivity. Environment problem resolution . Rosemary detects the environment in which it is running, whether local, Docker, or Vagrant. This capability acts as a layer that simplifies environment management, automatically adjusting its behavior to suit the detected environment and minimizing the potential for environment-specific issues. Efficiency and speed . CLIs are typically faster than graphical user interfaces (GUIs) because they require fewer resources and can execute commands more quickly without the overhead of graphical elements. Automation . A CLI can be easily scripted, allowing for the automation of repetitive tasks. This feature is particularly beneficial in development and project management, where certain tasks need to be performed frequently and consistently. By incorporating these advantages, Rosemary enhances the efficiency and effectiveness of project management and development processes, providing a robust tool for developers and project managers alike. ",
     "url": "/rosemary#advantages-of-using-a-cli",
     
     "relUrl": "/rosemary#advantages-of-using-a-cli"
-  },"149": {
+  },"150": {
     "doc": "Routing",
     "title": "Routing",
     "content": "The rosemary command route:list allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods. ",
     "url": "/rosemary/routing",
     
     "relUrl": "/rosemary/routing"
-  },"150": {
+  },"151": {
     "doc": "Routing",
     "title": "Table of contents",
     "content": ". | List all routes | Group routes by module | List routes of a specific module | . ",
     "url": "/rosemary/routing#table-of-contents",
     
     "relUrl": "/rosemary/routing#table-of-contents"
-  },"151": {
+  },"152": {
     "doc": "Routing",
     "title": "List all routes",
     "content": "To list all the routes of all the modules, run: . rosemary route:list . ",
     "url": "/rosemary/routing#list-all-routes",
     
     "relUrl": "/rosemary/routing#list-all-routes"
-  },"152": {
+  },"153": {
     "doc": "Routing",
     "title": "Group routes by module",
     "content": "To get a grouped view of the routes by module, you can use the --group option. This is especially useful for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application. rosemary route:list --group . ",
     "url": "/rosemary/routing#group-routes-by-module",
     
     "relUrl": "/rosemary/routing#group-routes-by-module"
-  },"153": {
+  },"154": {
     "doc": "Routing",
     "title": "List routes of a specific module",
     "content": "It may be useful to see the routes associated with a specific module. To do this, simply provide the module name as an argument: . rosemary route:list &lt;module_name&gt; . Replace &lt;module_name&gt; with the actual name of the module for which you want to see the routes. ",
     "url": "/rosemary/routing#list-routes-of-a-specific-module",
     
     "relUrl": "/rosemary/routing#list-routes-of-a-specific-module"
-  },"154": {
+  },"155": {
     "doc": "Seeders",
     "title": "Seeders",
     "content": " ",
     "url": "/rosemary/managing_database/seeders",
     
     "relUrl": "/rosemary/managing_database/seeders"
-  },"155": {
+  },"156": {
     "doc": "Seeders",
     "title": "Table of contents",
     "content": ". | Basic Usage . | Populate from all modules | Populate from specific module | . | Reset database before populating . | Reset all modules test data | Reset test data of specific module | . | . ",
     "url": "/rosemary/managing_database/seeders#table-of-contents",
     
     "relUrl": "/rosemary/managing_database/seeders#table-of-contents"
-  },"156": {
+  },"157": {
     "doc": "Seeders",
     "title": "Basic Usage",
     "content": "It is possible to populate the database with predefined test data. It is very useful for testing certain that require existing data. Populate from all modules . To populate all test data of all modules, run: . rosemary db:seed . Populate from specific module . If we only want to popularize the test data of a specific module, run: . rosemary db:seed &lt;module_name&gt; . Replace &lt;module_name&gt; with the name of the module you want to populate (for example, auth for the authentication module). ",
     "url": "/rosemary/managing_database/seeders#basic-usage",
     
     "relUrl": "/rosemary/managing_database/seeders#basic-usage"
-  },"157": {
+  },"158": {
     "doc": "Seeders",
     "title": "Reset database before populating",
     "content": "If you want to make sure that the database is in a clean state before populating it with test data, you can use the --reset flag. This will reset the database to its initial state before running the seeders: . Reset all modules test data . rosemary db:seed --reset . Reset test data of specific module . You can also combine the --reset flag with a module specification if you want to reset the database before populating only the test data of a specific module: . rosemary db:seed &lt;module_name&gt; --reset . ",
     "url": "/rosemary/managing_database/seeders#reset-database-before-populating",
     
     "relUrl": "/rosemary/managing_database/seeders#reset-database-before-populating"
-  },"158": {
+  },"159": {
     "doc": "SSL certificate",
     "title": "SSL certificate",
     "content": "An SSL certificate (https) is essential for securing the communication between a website and its users. It encrypts transmitted data, protecting sensitive information from interception. Additionally, it authenticates the website’s identity, ensuring users they are interacting with the legitimate site. SSL certificates also improve search engine rankings, enhancing the website’s visibility and credibility. ",
     "url": "/deployment/ssl_certificate",
     
     "relUrl": "/deployment/ssl_certificate"
-  },"159": {
+  },"160": {
     "doc": "SSL certificate",
     "title": "Table of contents",
     "content": ". | Scripts folder | Generate certificate | Renew certificate | . The use of SSL certificates is configured for Docker deployment only. Visit ‘Installation with Docker. ",
     "url": "/deployment/ssl_certificate#table-of-contents",
     
     "relUrl": "/deployment/ssl_certificate#table-of-contents"
-  },"160": {
+  },"161": {
     "doc": "SSL certificate",
     "title": "Scripts folder",
     "content": "To begin with, we must go to the scripts folder: . cd scripts . ",
     "url": "/deployment/ssl_certificate#scripts-folder",
     
     "relUrl": "/deployment/ssl_certificate#scripts-folder"
-  },"161": {
+  },"162": {
     "doc": "SSL certificate",
     "title": "Generate certificate",
     "content": "To generate a new certificate, run: . chmod +x ssl_setup.sh ./ssl_setup.sh . ",
     "url": "/deployment/ssl_certificate#generate-certificate",
     
     "relUrl": "/deployment/ssl_certificate#generate-certificate"
-  },"162": {
+  },"163": {
     "doc": "SSL certificate",
     "title": "Renew certificate",
     "content": "To renew a certificate that is less than 60 days from expiry, execute: . chmod +x ssl_renew.sh ./ssl_renew.sh . ",
     "url": "/deployment/ssl_certificate#renew-certificate",
     
     "relUrl": "/deployment/ssl_certificate#renew-certificate"
-  },"163": {
+  },"164": {
     "doc": "Test users",
     "title": "Test users",
     "content": "Test users are already available when the system is installed, regardless of the configuration environment. This is possible thanks to the rosemary db:seed command that is launched. User: user1@example.com Pass: 1234 . User: user2@example.com Pass: 1234 . Repopulate the database . You can change these test users and popular more modules. Visit Seeders. ",
     "url": "/installation/test_users",
     
     "relUrl": "/installation/test_users"
-  },"164": {
+  },"165": {
     "doc": "Test coverage",
     "title": "Test coverage",
     "content": "The rosemary coverage command facilitates running code coverage analysis for your Flask project using pytest-cov. This command simplifies the process of assessing test coverage. ",
     "url": "/rosemary/testing/test_coverage",
     
     "relUrl": "/rosemary/testing/test_coverage"
-  },"165": {
+  },"166": {
     "doc": "Test coverage",
     "title": "Table of contents",
     "content": ". | Test coverage of all modules | Test coverage of a specific module | Command Options . | --html | . | . ",
     "url": "/rosemary/testing/test_coverage#table-of-contents",
     
     "relUrl": "/rosemary/testing/test_coverage#table-of-contents"
-  },"166": {
+  },"167": {
     "doc": "Test coverage",
     "title": "Test coverage of all modules",
     "content": "To run coverage analysis for all modules within the app/modules directory and generate an HTML report, use: . rosemary coverage . ",
     "url": "/rosemary/testing/test_coverage#test-coverage-of-all-modules",
     
     "relUrl": "/rosemary/testing/test_coverage#test-coverage-of-all-modules"
-  },"167": {
+  },"168": {
     "doc": "Test coverage",
     "title": "Test coverage of a specific module",
     "content": "If you wish to run coverage analysis for a specific module, include the module name: . rosemary coverage &lt;module_name&gt; . ",
     "url": "/rosemary/testing/test_coverage#test-coverage-of-a-specific-module",
     
     "relUrl": "/rosemary/testing/test_coverage#test-coverage-of-a-specific-module"
-  },"168": {
+  },"169": {
     "doc": "Test coverage",
     "title": "Command Options",
     "content": "--html . This option generates an HTML coverage report. The report is saved in the htmlcov directory at the root of your project. rosemary coverage --html . ",
     "url": "/rosemary/testing/test_coverage#command-options",
     
     "relUrl": "/rosemary/testing/test_coverage#command-options"
-  },"169": {
+  },"170": {
     "doc": "Testing",
     "title": "Testing",
     "content": " ",
     "url": "/rosemary/testing",
     
     "relUrl": "/rosemary/testing"
-  },"170": {
+  },"171": {
     "doc": "Testing workflow",
     "title": "Testing workflow",
     "content": "Path to file (view file on GitHub) . The original file is located at the following path: .github / workflows / test.yml . This GitHub Actions workflow is designed to automate the Continuous Integration (CI) process for a Flask application. It triggers on pushes and pull requests to the main and develop branches. The essential elements of this workflow are as follows: . | Workflow Name | Triggers | Jobs . | Services | Steps | Environment Variables for Tests | . | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow"
-  },"171": {
+  },"172": {
     "doc": "Testing workflow",
     "title": "Workflow Name",
     "content": ". | name: Run tests | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow#workflow-name",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow#workflow-name"
-  },"172": {
+  },"173": {
     "doc": "Testing workflow",
     "title": "Triggers",
     "content": ". | on: . | push: Triggers on pushes to main and develop branches. | pull_request: Triggers on pull requests to main and develop branches. | . | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow#triggers",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow#triggers"
-  },"173": {
+  },"174": {
     "doc": "Testing workflow",
     "title": "Jobs",
     "content": ". | pytest: This job runs on the latest Ubuntu environment (ubuntu-latest). | . Services . | mysql: Sets up a MySQL 5.7 service with the following environment variables and options for health checks: . | MYSQL_ROOT_PASSWORD: uvlhub_root_password | MYSQL_DATABASE: uvlhubdb_test | MYSQL_USER: uvlhub_user | MYSQL_PASSWORD: uvlhub_password | Ports: 3306:3306 | Health check options: --health-cmd=\"mysqladmin ping\" --health-interval=10s --health-timeout=5s --health-retries=3 | . | . Steps . | Checkout Repository . | Uses the actions/checkout@v4 action to checkout the repository. | . | Setup Python . | Uses the actions/setup-python@v5 action to set up Python 3.12. | . | Prepare Environment . | Runs a command to modify the requirements.txt file, removing a specific line. | . | Install Dependencies . | Upgrades pip and installs dependencies from requirements.txt. | . | Run Tests . | Sets environment variables for testing and runs pytest on the Flask application. | . | . Environment Variables for Tests . | FLASK_ENV: testing | MARIADB_HOSTNAME: 127.0.0.1 | MARIADB_PORT: 3306 | MARIADB_TEST_DATABASE: uvlhubdb_test | MARIADB_USER: uvlhub_user | MARIADB_PASSWORD: uvlhub_password | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow#jobs",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow#jobs"
-  },"174": {
+  },"175": {
     "doc": "Troubleshooting",
     "title": "Troubleshooting",
     "content": "This section provides users with valuable guidance on identifying, diagnosing, and resolving common issues that may arise. This section is intended to help users troubleshoot various problems efficiently, ensuring a smoother and more productive experience. It includes step-by-step instructions, common error messages, and practical solutions to address a wide range of technical difficulties. ",
     "url": "/troubleshooting",
     
     "relUrl": "/troubleshooting"
-  },"175": {
+  },"176": {
     "doc": "Tutorials",
     "title": "Tutorials",
     "content": "The intention of these tutorials is to improve the onboarding of new people to the project. Specifically, we aim to provide some quick guides to familiarise and understand the development environment. ",
     "url": "/tutorials",
     
     "relUrl": "/tutorials"
-  },"176": {
+  },"177": {
     "doc": "Unit tests",
     "title": "Unit tests",
     "content": " ",
     "url": "/rosemary/testing/unit_tests",
     
     "relUrl": "/rosemary/testing/unit_tests"
-  },"177": {
+  },"178": {
     "doc": "Unit tests",
     "title": "Table of contents",
     "content": ". | Testing all modules | Testing a specific module | Testing with an expression | . ",
     "url": "/rosemary/testing/unit_tests#table-of-contents",
     
     "relUrl": "/rosemary/testing/unit_tests#table-of-contents"
-  },"178": {
+  },"179": {
     "doc": "Unit tests",
     "title": "Testing all modules",
     "content": "To run tests across all modules in the project, you can use the following command: . rosemary test . This command will execute all tests found within the app/modules directory, covering all the modules of the project. ",
     "url": "/rosemary/testing/unit_tests#testing-all-modules",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-all-modules"
-  },"179": {
+  },"180": {
     "doc": "Unit tests",
     "title": "Testing a specific module",
     "content": "If you’re focusing on a particular module and want to run tests only for that module, you can specify the module name as an argument: . rosemary test &lt;module_name&gt; . ",
     "url": "/rosemary/testing/unit_tests#testing-a-specific-module",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-a-specific-module"
-  },"180": {
+  },"181": {
     "doc": "Unit tests",
     "title": "Testing with an expression",
     "content": "To run tests that match a specific expression: . rosemary test -k &lt;expression&gt; . To run tests for a specific module that match a specific expression: . rosemary test &lt;module_name&gt; -k &lt;expression&gt; . ",
     "url": "/rosemary/testing/unit_tests#testing-with-an-expression",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-with-an-expression"
-  },"181": {
+  },"182": {
     "doc": "Updating dependencies",
     "title": "Updating dependencies",
     "content": "To update all project dependencies, run: . rosemary update . It is the responsibility of the developer to check that the update of the dependencies has not broken any functionality and each dependency maintains backwards compatibility. Use the script with care! . ",
     "url": "/rosemary/updating_dependencies",
     
     "relUrl": "/rosemary/updating_dependencies"
-  },"182": {
+  },"183": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary",
     "content": " ",
     "url": "/rosemary/using_rosemary",
     
     "relUrl": "/rosemary/using_rosemary"
-  },"183": {
+  },"184": {
     "doc": "Using Rosemary",
     "title": "Table of contents",
     "content": ". | Using Rosemary in manual environment | Using Rosemary in Docker environment | Using Rosemary in Vagrant environment | . ",
     "url": "/rosemary/using_rosemary#table-of-contents",
     
     "relUrl": "/rosemary/using_rosemary#table-of-contents"
-  },"184": {
+  },"185": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in manual environment",
     "content": "To use Rosemary CLI in a manual environment, we must activate the Python virtual environment: . python -m venv venv source venv/bin/activate . This will create a venv folder. Rosemary is a development package, so we must install packages in editable mode: . pip install -e ./ . ",
     "url": "/rosemary/using_rosemary#using-rosemary-in-manual-environment",
     
     "relUrl": "/rosemary/using_rosemary#using-rosemary-in-manual-environment"
-  },"185": {
+  },"186": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Docker environment",
     "content": "To use the Rosemary CLI in Docker environment, you need to be inside the web_app_container Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings. First, make sure your Docker environment is running. Then, access the web_app_container using the following command: . docker exec -it web_app_container /bin/sh . In the terminal, you should see the prefix /app #. You are now ready to use Rosemary’s commands. ",
     "url": "/rosemary/using_rosemary#using-rosemary-in-docker-environment",
     
     "relUrl": "/rosemary/using_rosemary#using-rosemary-in-docker-environment"
-  },"186": {
+  },"187": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Vagrant environment",
     "content": "To use Rosemary CLI in Vagrant rosemary, you need to be inside the virtual machine. First, make sure the machine is booted: . cd vagrant vagrant up . Second, you must access the machine . vagrant ssh . Provisioning the machine already activates the Python virtual environment needed to run Rosemary. You should see the line (venv) vagrant@ubuntu-mantic:/vagrant$. That means you can now use Rosemary along with all its commands. ",
     "url": "/rosemary/using_rosemary#using-rosemary-in-vagrant-environment",
     
     "relUrl": "/rosemary/using_rosemary#using-rosemary-in-vagrant-environment"
-  },"187": {
+  },"188": {
     "doc": "Vagrant",
     "title": "Vagrant",
     "content": " ",
     "url": "/troubleshooting/vagrant",
     
     "relUrl": "/troubleshooting/vagrant"
-  },"188": {
+  },"189": {
     "doc": "Vagrant",
     "title": "Table of contents",
     "content": ". | A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again | Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine. | . ",
     "url": "/troubleshooting/vagrant#table-of-contents",
     
     "relUrl": "/troubleshooting/vagrant#table-of-contents"
-  },"189": {
+  },"190": {
     "doc": "Vagrant",
     "title": "A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again",
     "content": "You are not in the vagrant folder. cd vagrant . ",
     "url": "/troubleshooting/vagrant#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again",
     
     "relUrl": "/troubleshooting/vagrant#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again"
-  },"190": {
+  },"191": {
     "doc": "Vagrant",
     "title": "Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine.",
     "content": "Locust is most likely running locally and you need to shut it down. To do this, run it from the local environment: . rosemary locust:stop . ",
     "url": "/troubleshooting/vagrant#vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine",
     
     "relUrl": "/troubleshooting/vagrant#vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine"
-  },"191": {
+  },"192": {
     "doc": "Zenodo",
     "title": "Zenodo",
     "content": "Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data. ",
     "url": "/modules/zenodo",
     
     "relUrl": "/modules/zenodo"
-  },"192": {
+  },"193": {
     "doc": "Zenodo",
     "title": "Table of contents",
     "content": ". | Obtain a token | Generate .env file | Include your access token | . ",
     "url": "/modules/zenodo#table-of-contents",
     
     "relUrl": "/modules/zenodo#table-of-contents"
-  },"193": {
+  },"194": {
     "doc": "Zenodo",
     "title": "Obtain a token",
     "content": "To use Zenodo module, it is important to obtain a token in Zenodo first. We recommend creating the token in the Sandbox version of Zenodo (https://sandbox.zenodo.org/), in order to generate fictitious DOIs and not make intensive use of the real Zenodo SLA. | Create an Account on Zenodo . | Go to Zenodo. | Click on Sign up and complete the registration. | . | Log in to Zenodo . | Go to Zenodo. | Click on Log in and log in with your account. | . | Access the Tokens Section . | Click on your username in the top right corner. | Select Applications. | . | Create a New Access Token . | Under Personal access tokens, click on New token. | Assign a name for your token. | Select all permissions to grant full access. | Read: Allows read-only access. | Write: Allows creating and modifying records. | Delete: Allows deleting records. | . | Click Create. | . | Save the Access Token . | Copy and save the generated token in a secure place. | . | . ",
     "url": "/modules/zenodo#obtain-a-token",
     
     "relUrl": "/modules/zenodo#obtain-a-token"
-  },"194": {
+  },"195": {
     "doc": "Zenodo",
     "title": "Generate .env file",
     "content": "To generate the Zenodo .env file in app/modules/zenodo, run in root project: . cp app/modules/zenodo/.env.example app/modules/zenodo/.env . ",
     "url": "/modules/zenodo#generate-env-file",
     
     "relUrl": "/modules/zenodo#generate-env-file"
-  },"195": {
+  },"196": {
     "doc": "Zenodo",
     "title": "Include your access token",
     "content": "In the generated .envfile, you must include the access token obtained in Zenodo: . ZENODO_ACCESS_TOKEN=&lt;GET_ACCESS_TOKEN_IN_ZENODO&gt; . A composition of variables is necessary! . To perform the composition of all environment variables, refer to section Composing environment. ",

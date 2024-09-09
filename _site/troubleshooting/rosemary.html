@@ -313,6 +313,7 @@
     </ol>
   </li>
   <li><a href="#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules" id="markdown-toc-filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules"><em>FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’</em></a></li>
+  <li><a href="#error-cannot-update-time-stamp-of-directory-rosemaryegg-info" id="markdown-toc-error-cannot-update-time-stamp-of-directory-rosemaryegg-info"><em>error: Cannot update time stamp of directory ‘rosemary.egg-info’</em></a></li>
 </ol>
 <h2 id="rosemary-order-not-found--no-se-encontró-la-orden">
   
@@ -418,6 +419,19 @@ source .env
 <p>This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant.</p>
 
 <p>You must use Rosemary inside the Vagrant virtual machine. Visit <a href="/rosemary/using_rosemary#using-rosemary-in-vagrant-environment">Using Rosemary</a> for more info.</p>
+<h2 id="error-cannot-update-time-stamp-of-directory-rosemaryegg-info">
+  
+  
+    <a href="#error-cannot-update-time-stamp-of-directory-rosemaryegg-info" class="anchor-heading" aria-labelledby="error-cannot-update-time-stamp-of-directory-rosemaryegg-info"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>error: Cannot update time stamp of directory ‘rosemary.egg-info’</em>
+  
+  
+</h2>
+    
+
+<p>This is due to a previous installation of Rosemary from a different working environment than the current one. To fix this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo rm -r rosemary.egg-info/
+</code></pre></div></div>
           
 
           
