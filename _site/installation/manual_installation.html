@@ -311,17 +311,20 @@
     </ol>
   </li>
   <li><a href="#configure-app-environment" id="markdown-toc-configure-app-environment">Configure app environment</a>    <ol>
-      <li><a href="#creates-and-activate-a-virtual-environment" id="markdown-toc-creates-and-activate-a-virtual-environment">Creates and activate a virtual environment</a></li>
-      <li><a href="#install-python-dependencies" id="markdown-toc-install-python-dependencies">Install Python dependencies</a></li>
-      <li><a href="#install-python-dependencies-in-editable-mode" id="markdown-toc-install-python-dependencies-in-editable-mode">Install Python dependencies in editable mode</a></li>
+      <li><a href="#environment-variables" id="markdown-toc-environment-variables">Environment variables</a></li>
       <li><a href="#ignore-webhook-module" id="markdown-toc-ignore-webhook-module">Ignore <code class="language-plaintext highlighter-rouge">webhook</code> module</a></li>
     </ol>
   </li>
+  <li><a href="#install-dependencies" id="markdown-toc-install-dependencies">Install dependencies</a>    <ol>
+      <li><a href="#creates-and-activate-a-virtual-environment" id="markdown-toc-creates-and-activate-a-virtual-environment">Creates and activate a virtual environment</a></li>
+      <li><a href="#install-python-dependencies" id="markdown-toc-install-python-dependencies">Install Python dependencies</a></li>
+      <li><a href="#install-python-dependencies-in-editable-mode-rosemary" id="markdown-toc-install-python-dependencies-in-editable-mode-rosemary">Install Python dependencies in editable mode (Rosemary)</a></li>
+    </ol>
+  </li>
   <li><a href="#run-app" id="markdown-toc-run-app">Run app</a>    <ol>
-      <li><a href="#environment-variables" id="markdown-toc-environment-variables">Environment variables</a></li>
       <li><a href="#apply-migrations" id="markdown-toc-apply-migrations">Apply migrations</a></li>
-      <li><a href="#popular-database" id="markdown-toc-popular-database">Popular database</a></li>
-      <li><a href="#boot-development-flask-server" id="markdown-toc-boot-development-flask-server">Boot development Flask server</a></li>
+      <li><a href="#populate-database" id="markdown-toc-populate-database">Populate database</a></li>
+      <li><a href="#run-development-flask-server" id="markdown-toc-run-development-flask-server">Run development Flask server</a></li>
     </ol>
   </li>
 </ol><hr />
@@ -380,6 +383,8 @@ cd uvlhub
   
 </h2>
     
+
+<p>We need a relational database for our application. We will use MariaDB (<a href="https://mariadb.org/" title="Title">more information</a>)</p>
 <h3 id="install-official-package">
   
   
@@ -402,6 +407,8 @@ cd uvlhub
 </h3>
     
 
+<p>We need to start the MariaDB service to work with the database.</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl start mariadb
 </code></pre></div></div>
 <h3 id="configure-mariadb">
@@ -417,6 +424,8 @@ cd uvlhub
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mysql_secure_installation
 </code></pre></div></div>
+
+<p>Here we detail the default values that must be entered for a successful installation:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Enter current password for root (enter for none): (enter)
 - Switch to unix_socket authentication [Y/n]: `y`
@@ -460,41 +469,19 @@ EXIT;
   
 </h2>
     
-<h3 id="creates-and-activate-a-virtual-environment">
+<h3 id="environment-variables">
   
   
-    <a href="#creates-and-activate-a-virtual-environment" class="anchor-heading" aria-labelledby="creates-and-activate-a-virtual-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creates and activate a virtual environment
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install python3.12-venv
-python3 -m venv venv
-source venv/bin/activate
-</code></pre></div></div>
-<h3 id="install-python-dependencies">
-  
-  
-    <a href="#install-python-dependencies" class="anchor-heading" aria-labelledby="install-python-dependencies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Python dependencies
+    <a href="#environment-variables" class="anchor-heading" aria-labelledby="environment-variables"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environment variables
   
   
 </h3>
     
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install --upgrade pip
-pip install -r requirements.txt
-</code></pre></div></div>
-<h3 id="install-python-dependencies-in-editable-mode">
-  
-  
-    <a href="#install-python-dependencies-in-editable-mode" class="anchor-heading" aria-labelledby="install-python-dependencies-in-editable-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Python dependencies in editable mode
-  
-  
-</h3>
-    
+<p>We need some environment variables for the connection to the database and the other elements to work properly. 
+To do this, we can either write a <code class="language-plaintext highlighter-rouge">.env</code> file in the root or use a base template:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.local.example .env
 </code></pre></div></div>
 <h3 id="ignore-webhook-module">
   
@@ -510,6 +497,60 @@ ignored in the initial loading of modules by appending the name to the <code cla
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "webhook" &gt; .moduleignore
 </code></pre></div></div>
+<h2 id="install-dependencies">
+  
+  
+    <a href="#install-dependencies" class="anchor-heading" aria-labelledby="install-dependencies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install dependencies
+  
+  
+</h2>
+    
+<h3 id="creates-and-activate-a-virtual-environment">
+  
+  
+    <a href="#creates-and-activate-a-virtual-environment" class="anchor-heading" aria-labelledby="creates-and-activate-a-virtual-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Creates and activate a virtual environment
+  
+  
+</h3>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install python3.12-venv
+python3.12 -m venv venv
+source venv/bin/activate
+</code></pre></div></div>
+<h3 id="install-python-dependencies">
+  
+  
+    <a href="#install-python-dependencies" class="anchor-heading" aria-labelledby="install-python-dependencies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Python dependencies
+  
+  
+</h3>
+    
+
+<p><code class="language-plaintext highlighter-rouge">Pip</code> is the package manager for Python. Its main function is to facilitate the installation, upgrade and uninstallation of Python packages (libraries or modules). It is important to update <code class="language-plaintext highlighter-rouge">pip</code> because some newer versions of packages require an updated version of pip in order to be installed correctly.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install --upgrade pip
+pip install -r requirements.txt
+</code></pre></div></div>
+<h3 id="install-python-dependencies-in-editable-mode-rosemary">
+  
+  
+    <a href="#install-python-dependencies-in-editable-mode-rosemary" class="anchor-heading" aria-labelledby="install-python-dependencies-in-editable-mode-rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Python dependencies in editable mode (Rosemary)
+  
+  
+</h3>
+    
+
+<p><code class="language-plaintext highlighter-rouge">Rosemary</code> is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks (<a href="/rosemary/" title="Title">more information</a>) . It’s a development package and it’s not available in the <code class="language-plaintext highlighter-rouge">pypi</code> package manager, we have to install it manually using the <code class="language-plaintext highlighter-rouge">setup.py</code> file in the root. 
+Since we are developers, it would be a pain to reinstall <code class="language-plaintext highlighter-rouge">Rosemary</code> every time we make a change. Therefore, we use the <code class="language-plaintext highlighter-rouge">-e</code> flag to install it in editable mode so that any changes to the <code class="language-plaintext highlighter-rouge">Rosemary</code> code will be detected by the system and the configuration will be reloaded in real time.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -e ./
+</code></pre></div></div>
+
+<p>Para comprobar que <code class="language-plaintext highlighter-rouge">Rosemary</code> se ha instalado correctamente, prueba a lanzar este comando. Debería listar todos los comandos disponibles de la CLI:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary
+</code></pre></div></div>
 <h2 id="run-app">
   
   
@@ -518,17 +559,6 @@ ignored in the initial loading of modules by appending the name to the <code cla
   
 </h2>
     
-<h3 id="environment-variables">
-  
-  
-    <a href="#environment-variables" class="anchor-heading" aria-labelledby="environment-variables"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environment variables
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp .env.local.example .env
-</code></pre></div></div>
 <h3 id="apply-migrations">
   
   
@@ -538,30 +568,49 @@ ignored in the initial loading of modules by appending the name to the <code cla
 </h3>
     
 
+<p>We have already created the database, but it is empty! We need to create the tables and their relationships. We can make use of migrations:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask db upgrade
 </code></pre></div></div>
-<h3 id="popular-database">
+<h3 id="populate-database">
   
   
-    <a href="#popular-database" class="anchor-heading" aria-labelledby="popular-database"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Popular database
+    <a href="#populate-database" class="anchor-heading" aria-labelledby="populate-database"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Populate database
   
   
 </h3>
     
+
+<p>It is possible to create test data so that the system deployed in development has a minimum of navigability without the need to create the entities ourselves.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:seed
 </code></pre></div></div>
-<h3 id="boot-development-flask-server">
+<h3 id="run-development-flask-server">
   
   
-    <a href="#boot-development-flask-server" class="anchor-heading" aria-labelledby="boot-development-flask-server"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Boot development Flask server
+    <a href="#run-development-flask-server" class="anchor-heading" aria-labelledby="run-development-flask-server"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run development Flask server
   
   
 </h3>
     
 
+<p>We run our application using a Flask developer server. By default, this server starts the app on port <code class="language-plaintext highlighter-rouge">5000</code>.</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask run --host=0.0.0.0 --reload --debug
 </code></pre></div></div>
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-book"></i> What is this?</p>
+
+  <p>Each of the flags (<code class="language-plaintext highlighter-rouge">--host</code>, <code class="language-plaintext highlighter-rouge">--reload</code>, <code class="language-plaintext highlighter-rouge">--debug</code>) has a specific function when running a Flask application.</p>
+
+  <p><code class="language-plaintext highlighter-rouge">--host=0.0.0.0.0</code>: <strong>This flag specifies the IP address on which Flask will listen for requests</strong>. By default, Flask listens on <code class="language-plaintext highlighter-rouge">127.0.0.1</code> (localhost), which means it is only accessible from the machine it is running on. 
+If you specify <code class="language-plaintext highlighter-rouge">0.0.0.0</code>, Flask will be available to any external connection, allowing the application to be accessible from any device on the network.</p>
+
+  <p><code class="language-plaintext highlighter-rouge">--reload</code>: <strong>Enables automatic reload mode</strong>. Flask will automatically restart the server if it detects changes to your application files. This is especially useful in development, as it allows you to see the changes &gt; without having to stop and restart the server every time you update the code.</p>
+
+  <p><code class="language-plaintext highlighter-rouge">--debug</code>: <strong>Enables debug mode</strong>. When debug mode is enabled, Flask will display detailed error information in the browser if an exception occurs.</p>
+</blockquote>
 
 <blockquote>
   <p class="highlight"><strong>If everything worked correctly, you should see the deployed version of <!-- _includes/flamapy.html -->
