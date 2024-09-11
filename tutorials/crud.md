@@ -116,8 +116,7 @@ def index():
 ### Define the template `notepad/templates/notepad/index.html`
 
 ```jinja
-{% raw %}
-{% extends "base_template.html" %}
+{% raw %}{% extends "base_template.html" %}
 
 {% block title %}View my notepads{% endblock %}
 
@@ -144,8 +143,7 @@ def index():
 
 {% block scripts %}
     <script src="{{ url_for('notepad.scripts') }}"></script>
-{% endblock %}
-{% endraw %}
+{% endblock %}{% endraw %}
 ```
 
 ### Add new function in NotepadService
@@ -273,8 +271,7 @@ def create_notepad():
 #### Template `notepad/templates/notepad/create.html`
 
 ```jinja
-{% raw %}
-{% extends "base_template.html" %}
+{% raw %}{% extends "base_template.html" %}
 
 {% block title %}Create notepad{% endblock %}
 
@@ -300,8 +297,7 @@ def create_notepad():
 
 {% block scripts %}
     <script src="{{ url_for('notepad.scripts') }}"></script>
-{% endblock %}
-{% endraw %}
+{% endblock %}{% endraw %}
 ```
 
 ### Read a notepad
@@ -327,8 +323,7 @@ def get_notepad(notepad_id):
 #### Template `notepad/templates/notepad/show.html`
 
 ```jinja
-{% raw %}
-{% extends "base_template.html" %}
+{% raw %}{% extends "base_template.html" %}
 
 {% block title %}Notepad details{% endblock %}
 
@@ -341,8 +336,7 @@ def get_notepad(notepad_id):
 
 {% block scripts %}
     <script src="{{ url_for('notepad.scripts') }}"></script>
-{% endblock %}
-{% endraw %}
+{% endblock %}{% endraw %}
 ```
 
 ### Edit a notepad
@@ -382,8 +376,7 @@ def edit_notepad(notepad_id):
 #### Template `notepad/templates/notepad/edit.html`
 
 ```jinja
-{% raw %}
-{% extends "base_template.html" %}
+{% raw %}{% extends "base_template.html" %}
 
 {% block title %}View notepad{% endblock %}
 
@@ -408,9 +401,7 @@ def edit_notepad(notepad_id):
 
 {% block scripts %}
     <script src="{{ url_for('notepad.scripts') }}"></script>
-{% endblock %}
-
-{% endraw %}
+{% endblock %}{% endraw %}
 ```
 
 ### Delete a notepad

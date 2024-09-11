@@ -479,8 +479,7 @@ READ ALL
 </h3>
     
 
-<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>View my notepads<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
@@ -508,7 +507,6 @@ READ ALL
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
-
 </code></pre></div></div>
 <h3 id="add-new-function-in-notepadservice">
   
@@ -690,8 +688,7 @@ CREATE
 </h4>
     
 
-<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Create notepad<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
@@ -718,7 +715,6 @@ CREATE
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
-
 </code></pre></div></div>
 <h3 id="read-a-notepad">
   
@@ -760,8 +756,7 @@ READ BY ID
 </h4>
     
 
-<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Notepad details<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
@@ -775,7 +770,6 @@ READ BY ID
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
-
 </code></pre></div></div>
 <h3 id="edit-a-notepad">
   
@@ -831,8 +825,7 @@ EDIT
 </h4>
     
 
-<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
+<div class="language-jinja highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">"base_template.html"</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>View notepad<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 
@@ -858,8 +851,6 @@ EDIT
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">scripts</span> <span class="cp">%}</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="p">(</span><span class="s1">'notepad.scripts'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
-
-
 </code></pre></div></div>
 <h3 id="delete-a-notepad">
   
@@ -919,7 +910,7 @@ DELETE
       <p><a href="#top" id="back-to-top">Back to top</a></p>
     
 
-    <p class="text-small text-grey-dk-100 mb-0"><span class='uvlhub'>uvlhub</span>. Distributed by an <a href='https://www.gnu.org/licenses/lgpl-3.0.en.html'>LGPL license v3.</a> Contact us: <a href='mailto:drorganvidez@us.es'>drorganvidez@us.es</a></p>
+    <p class="text-small text-grey-dk-100 mb-0"><span class='uvlhub'>uvlhub</span>. Distributed by an <a href='https://www.gnu.org/licenses/lgpl-3.0.en.html'>LGPL license v3.</a> Contact us: <a href='mailto:support@uvlhub.io'>support@uvlhub.io</a></p>
 
     
       <div class="d-flex mt-2">
