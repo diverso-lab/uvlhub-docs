@@ -162,7 +162,7 @@ Since we are developers, it would be a pain to reinstall `Rosemary` every time w
 pip install -e ./
 ```
 
-Para comprobar que `Rosemary` se ha instalado correctamente, prueba a lanzar este comando. Debería listar todos los comandos disponibles de la CLI:
+To check that `Rosemary` has been installed correctly, try running this command. It should list all available CLI commands:
 
 ```
 rosemary
