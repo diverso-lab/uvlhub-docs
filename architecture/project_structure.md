@@ -96,7 +96,7 @@ This directory contains the code for the Rosemary CLI package. It is a version s
 ## scripts
 Contains auxiliary scripts that automate various tasks such as dependency installation, deployment, maintenance, and more.
 
-## .env.X.example
+## `.env.<deployment_environment>.example`
 These files provide an example of the environment variables needed to run the application. They are used as a reference for setting up the development environment.
 
 ## .flake8
@@ -105,12 +105,8 @@ Contains configurations for Flake8, a code style and checking tool for Python. I
 ## .gitignore
 A list of files and directories that Git should ignore. This prevents certain files (like local configurations and temporary files) from being included in version control.
 
-
-
-
-
 ## requirements.txt
 A list of Python dependencies needed for the project. Used by `pip` to install all required libraries.
 
 ## setup.py
-A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. En este caso, sirve para poder usar el paquete `rosemary`
+A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. In this case, it is used to use the `rosemary` package.

@@ -848,7 +848,7 @@
   },"121": {
     "doc": "Project structure",
     "title": "Table of contents",
-    "content": ". | .github/workflows | app | core | docker . | entrypoints | development_entrypoints.sh | production_entrypoints.sh | render_entrypoints.sh | images . | Dockerfile.dev | Dockerfile.locust | Dockerfile.mariadb | Dockerfile.prod | Dockerfile.render | . | letsencrypt | nginx | public | docker-compose.dev.yml | docker-compose.prod.ssl.yml | docker-compose.prod.yml | . | vagrant . | Vagrantfile | *.yml | . | migrations | rosemary | scripts | .env.X.example | .flake8 | .gitignore | requirements.txt | setup.py | . ",
+    "content": ". | .github/workflows | app | core | docker . | entrypoints | development_entrypoints.sh | production_entrypoints.sh | render_entrypoints.sh | images . | Dockerfile.dev | Dockerfile.locust | Dockerfile.mariadb | Dockerfile.prod | Dockerfile.render | . | letsencrypt | nginx | public | docker-compose.dev.yml | docker-compose.prod.ssl.yml | docker-compose.prod.yml | . | vagrant . | Vagrantfile | *.yml | . | migrations | rosemary | scripts | .env.&lt;deployment_environment&gt;.example | .flake8 | .gitignore | requirements.txt | setup.py | . ",
     "url": "/architecture/project_structure#table-of-contents",
     
     "relUrl": "/architecture/project_structure#table-of-contents"
@@ -910,11 +910,11 @@
     "relUrl": "/architecture/project_structure#scripts"
   },"130": {
     "doc": "Project structure",
-    "title": ".env.X.example",
+    "title": ".env.&lt;deployment_environment&gt;.example",
     "content": "These files provide an example of the environment variables needed to run the application. They are used as a reference for setting up the development environment. ",
-    "url": "/architecture/project_structure#envxexample",
+    "url": "/architecture/project_structure#envdeployment_environmentexample",
     
-    "relUrl": "/architecture/project_structure#envxexample"
+    "relUrl": "/architecture/project_structure#envdeployment_environmentexample"
   },"131": {
     "doc": "Project structure",
     "title": ".flake8",
@@ -939,7 +939,7 @@
   },"134": {
     "doc": "Project structure",
     "title": "setup.py",
-    "content": "A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. En este caso, sirve para poder usar el paquete rosemary . ",
+    "content": "A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. In this case, it is used to use the rosemary package. ",
     "url": "/architecture/project_structure#setuppy",
     
     "relUrl": "/architecture/project_structure#setuppy"
