@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(5) > ul > li:nth-child(1) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(10) > ul > li:nth-child(1) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(5) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(5) > ul > li:nth-child(1) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(10) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(10) > ul > li:nth-child(1) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(5) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(5) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(10) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(10) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Zenodo | UVLHub docs</title>
+<title>CI: Codacy tutorial | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Zenodo" />
+<meta property="og:title" content="CI: Codacy tutorial" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/modules/zenodo" />
-<meta property="og:url" content="http://0.0.0.0:4000/modules/zenodo" />
+<link rel="canonical" href="http://0.0.0.0:4000/tutorials/codacy_tutorial" />
+<meta property="og:url" content="http://0.0.0.0:4000/tutorials/codacy_tutorial" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Zenodo" />
+<meta property="twitter:title" content="CI: Codacy tutorial" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Zenodo","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/modules/zenodo"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"CI: Codacy tutorial","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/tutorials/codacy_tutorial"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,23 +276,23 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/modules">Modules</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Zenodo</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/tutorials">Tutorials</a></li>
+    <li class="breadcrumb-nav-list-item"><span>CI: Codacy tutorial</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="zenodo">
+            <h1 class="no_toc" id="ci-codacy-tutorial">
   
   
-    <a href="#zenodo" class="anchor-heading" aria-labelledby="zenodo"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Zenodo
+    <a href="#ci-codacy-tutorial" class="anchor-heading" aria-labelledby="ci-codacy-tutorial"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CI: Codacy tutorial
   
   
 </h1>
     
 
-<p>Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data.</p>
+<p class="fs-6 fw-300">Codacy is a static code analysis tool used to review code quality and ensure that it follows programming best practices. It provides automated analysis across multiple programming languages and helps developers identify issues such as style errors, security issues, code complexity, duplication and more.</p>
 <h2 class="no_toc text-delta" id="table-of-contents">
   
   
@@ -303,94 +303,125 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#obtain-a-token" id="markdown-toc-obtain-a-token">Obtain a token</a></li>
-  <li><a href="#generate-env-file" id="markdown-toc-generate-env-file">Generate <code class="language-plaintext highlighter-rouge">.env</code> file</a></li>
-  <li><a href="#include-your-access-token" id="markdown-toc-include-your-access-token">Include your access token</a></li>
-</ol>
-<h2 id="obtain-a-token">
+  <li><a href="#get-token-from-codacy" id="markdown-toc-get-token-from-codacy">Get token from Codacy</a></li>
+  <li><a href="#register-the-secret-in-your-repository" id="markdown-toc-register-the-secret-in-your-repository">Register the secret in your repository</a></li>
+  <li><a href="#codacy-workflow" id="markdown-toc-codacy-workflow">Codacy workflow</a></li>
+  <li><a href="#try-it" id="markdown-toc-try-it">Try it!</a></li>
+</ol><hr />
+<h2 id="get-token-from-codacy">
   
   
-    <a href="#obtain-a-token" class="anchor-heading" aria-labelledby="obtain-a-token"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Obtain a token
-  
-  
-</h2>
-    
-
-<p>To use Zenodo module, it is important to obtain a token in Zenodo first.</p>
-
-<p class="warning"><strong>We recommend creating the token in the Sandbox version of Zenodo (<a href="https://sandbox.zenodo.org/">https://sandbox.zenodo.org/</a>), in order to generate fictitious DOIs 
-and not make intensive use of the real Zenodo SLA.</strong></p>
-
-<ol>
-  <li><strong>Create an Account on Zenodo</strong>
-    <ul>
-      <li>Go to <a href="https://sandbox.zenodo.org/">Zenodo</a>.</li>
-      <li>Click on <code class="language-plaintext highlighter-rouge">Sign up</code> and complete the registration.</li>
-    </ul>
-  </li>
-  <li><strong>Log in to Zenodo</strong>
-    <ul>
-      <li>Go to <a href="https://sandbox.zenodo.org/">Zenodo</a>.</li>
-      <li>Click on <code class="language-plaintext highlighter-rouge">Log in</code> and log in with your account.</li>
-    </ul>
-  </li>
-  <li><strong>Access the Tokens Section</strong>
-    <ul>
-      <li>Click on your username in the top right corner.</li>
-      <li>Select <code class="language-plaintext highlighter-rouge">Applications</code>.</li>
-    </ul>
-  </li>
-  <li><strong>Create a New Access Token</strong>
-    <ul>
-      <li>Under <code class="language-plaintext highlighter-rouge">Personal access tokens</code>, click on <code class="language-plaintext highlighter-rouge">New token</code>.</li>
-      <li>Assign a name for your token.</li>
-      <li><strong>Select all permissions</strong> to grant full access.
-        <ul>
-          <li>Read: Allows read-only access.</li>
-          <li>Write: Allows creating and modifying records.</li>
-          <li>Delete: Allows deleting records.</li>
-        </ul>
-      </li>
-      <li>Click <code class="language-plaintext highlighter-rouge">Create</code>.</li>
-    </ul>
-  </li>
-  <li><strong>Save the Access Token</strong>
-    <ul>
-      <li>Copy and save the generated token in a secure place.</li>
-    </ul>
-  </li>
-</ol>
-<h2 id="generate-env-file">
-  
-  
-    <a href="#generate-env-file" class="anchor-heading" aria-labelledby="generate-env-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Generate <code class="language-plaintext highlighter-rouge">.env</code> file
+    <a href="#get-token-from-codacy" class="anchor-heading" aria-labelledby="get-token-from-codacy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Get token from Codacy
   
   
 </h2>
     
 
-<p>To generate the Zenodo <code class="language-plaintext highlighter-rouge">.env</code> file in <code class="language-plaintext highlighter-rouge">app/modules/zenodo</code>, run in root project:</p>
+<ul>
+  <li>Go to <a href="https://www.codacy.com">Codacy.com</a>. Click the <code class="language-plaintext highlighter-rouge">Start free</code> button and then the <code class="language-plaintext highlighter-rouge">GitHub</code> button.</li>
+  <li>Add your GitHub account. You must add permission to either all your repositories or the uvlhub repository. We recommend you choose the second option.</li>
+  <li>Go to <a href="https://app.codacy.com/organizations">Organizations</a> and choose your GitHub username.</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">Repositories</code> and click on the repository you want to apply Codacy to.</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">Settings</code> (the cogwheel) and go to <code class="language-plaintext highlighter-rouge">Integrations</code>.</li>
+  <li>Go to the bottom. Under <code class="language-plaintext highlighter-rouge">Repository API tokens</code> the token you need appears.</li>
+</ul>
+<h2 id="register-the-secret-in-your-repository">
+  
+  
+    <a href="#register-the-secret-in-your-repository" class="anchor-heading" aria-labelledby="register-the-secret-in-your-repository"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Register the secret in your repository
+  
+  
+</h2>
+    
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp app/modules/zenodo/.env.example app/modules/zenodo/.env
+<ul>
+  <li>In GitHub, in your repository, go to <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Secrets and variables</code> -&gt; <code class="language-plaintext highlighter-rouge">Actions</code>.</li>
+  <li>Click the green <code class="language-plaintext highlighter-rouge">New repository secret</code> button.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Name</code> type <code class="language-plaintext highlighter-rouge">CODACY_PROJECT_TOKEN</code>.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Secret</code>, add the token you got from Codacy’s <code class="language-plaintext highlighter-rouge">Repository API tokens</code> field.</li>
+</ul>
+<h2 id="codacy-workflow">
+  
+  
+    <a href="#codacy-workflow" class="anchor-heading" aria-labelledby="codacy-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Codacy workflow
+  
+  
+</h2>
+    
+
+<p>In the <code class="language-plaintext highlighter-rouge">.github/workflows</code> folder you have to add the following <code class="language-plaintext highlighter-rouge">codacy.yml</code>.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Codacy CI</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">main</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">main</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">services</span><span class="pi">:</span>
+      <span class="na">mysql</span><span class="pi">:</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">mysql:5.7</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s">uvlhub_root_password</span>
+          <span class="na">MYSQL_DATABASE</span><span class="pi">:</span> <span class="s">uvlhubdb_test</span>
+          <span class="na">MYSQL_USER</span><span class="pi">:</span> <span class="s">uvlhub_user</span>
+          <span class="na">MYSQL_PASSWORD</span><span class="pi">:</span> <span class="s">uvlhub_password</span>
+        <span class="na">ports</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">3306:3306</span>
+        <span class="na">options</span><span class="pi">:</span> <span class="s">--health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3</span>
+
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout code</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Set up Python</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-python@v5</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">python-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.12'</span>
+
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">python -m pip install --upgrade pip</span>
+        <span class="s">pip install -r requirements.txt</span>
+
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Upload coverage to Codacy</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">pip install codacy-coverage</span>
+        <span class="s">coverage run -m pytest app/modules/ --ignore-glob='*selenium*'</span>
+        <span class="s">coverage xml </span>
+        <span class="s">python-codacy-coverage -r coverage.xml</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="na">FLASK_ENV</span><span class="pi">:</span> <span class="s">testing</span>
+        <span class="na">MARIADB_HOSTNAME</span><span class="pi">:</span> <span class="s">127.0.0.1</span>
+        <span class="na">MARIADB_PORT</span><span class="pi">:</span> <span class="m">3306</span>
+        <span class="na">MARIADB_TEST_DATABASE</span><span class="pi">:</span> <span class="s">uvlhubdb_test</span>
+        <span class="na">MARIADB_USER</span><span class="pi">:</span> <span class="s">uvlhub_user</span>
+        <span class="na">MARIADB_PASSWORD</span><span class="pi">:</span> <span class="s">uvlhub_password</span>
+        <span class="na">CODACY_PROJECT_TOKEN</span><span class="pi">:</span> <span class="s">${{ secrets.CODACY_PROJECT_TOKEN }}</span>
 </code></pre></div></div>
-<h2 id="include-your-access-token">
+<h2 id="try-it">
   
   
-    <a href="#include-your-access-token" class="anchor-heading" aria-labelledby="include-your-access-token"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Include your access token
+    <a href="#try-it" class="anchor-heading" aria-labelledby="try-it"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Try it!
   
   
 </h2>
     
 
-<p>In the generated <code class="language-plaintext highlighter-rouge">.env</code>file, you must include the access token obtained in Zenodo:</p>
+<ul>
+  <li>Make some changes to your code and upload it to GitHub.</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">Repositories</code> and click on the repository in which you want to study Codacy’s analysis.</li>
+  <li>There you go!</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ZENODO_ACCESS_TOKEN=&lt;GET_ACCESS_TOKEN_IN_ZENODO&gt;
-</code></pre></div></div>
-
-<blockquote class="important-title">
-  <p>A composition of variables is necessary!</p>
-
-  <p>To perform the composition of all environment variables, refer to section <a href="/rosemary/extending_uvlhub/composing_environment">Composing environment</a>.</p>
+<blockquote class="highlight">
+  <p><i class="fa-solid fa-magnifying-glass-chart"></i> What things do you think we could improve in the code thanks to Codacy’s analysis?</p>
 </blockquote>
           
 
