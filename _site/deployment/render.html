@@ -309,7 +309,6 @@
       <li><a href="#create-app-instance" id="markdown-toc-create-app-instance">Create app instance</a>        <ol>
           <li><a href="#basic-settings" id="markdown-toc-basic-settings"><strong>Basic Settings</strong></a></li>
           <li><a href="#environment-variables-configuration" id="markdown-toc-environment-variables-configuration"><strong>Environment Variables Configuration</strong>.</a></li>
-          <li><a href="#custom-dockerfile" id="markdown-toc-custom-dockerfile"><strong>Custom Dockerfile</strong></a></li>
         </ol>
       </li>
       <li><a href="#verify-deployment-process" id="markdown-toc-verify-deployment-process">Verify deployment process</a></li>
@@ -328,10 +327,10 @@
 <blockquote class="important-title">
   <p><i class="fa-solid fa-database"></i> External database</p>
 
-  <p>Unfortunately, Render only has native support for PostgreSQL. All other databases (MySQL, MariaDB, etc), require a subscription. We use the Filess.io service to host the database.</p>
+  <p>Unfortunately, Render only has native support for PostgreSQL. All other databases (MySQL, MariaDB, etc), require a subscription fee. We use the Filess.io service to host the database.</p>
 </blockquote>
 
-<p>We deploy the database service in <a href="filess.io">Filess.io</a></p>
+<p>We deploy the database service in <a href="https://filess.io">Filess.io</a></p>
 
 <ul>
   <li>Log in to Filess.io and create an account at <a href="https://dash.filess.io/#/register">Sign up</a></li>
@@ -381,18 +380,15 @@
     
 
 <ul>
-  <li>In the top menu, click on <code class="language-plaintext highlighter-rouge">Dashboard</code> and then on the <code class="language-plaintext highlighter-rouge">New Web Service</code> button.</li>
-  <li>Choose the option <code class="language-plaintext highlighter-rouge">Build and deploy from a Git repository</code>.</li>
-  <li>We need to find the repository where we are working. Click on the <code class="language-plaintext highlighter-rouge">Connect</code> button.
-    <ul>
-      <li>As <code class="language-plaintext highlighter-rouge">Name</code> we put <code class="language-plaintext highlighter-rouge">uvlhub_web_app</code> or similar, any available name is fine.</li>
-      <li>In <code class="language-plaintext highlighter-rouge">Region</code> we choose <code class="language-plaintext highlighter-rouge">Frankfurt (central EU)</code>.</li>
-      <li>Under <code class="language-plaintext highlighter-rouge">Branch</code>, unless we have a reason to do so, it should be <code class="language-plaintext highlighter-rouge">main</code>.</li>
-      <li>Under <code class="language-plaintext highlighter-rouge">Root Directory</code>, we leave it blank.</li>
-      <li>In <code class="language-plaintext highlighter-rouge">Runtime</code>, we choose <code class="language-plaintext highlighter-rouge">Docker</code>.</li>
-      <li>In <code class="language-plaintext highlighter-rouge">Instance Type</code>, we choose <code class="language-plaintext highlighter-rouge">Free</code>.</li>
-    </ul>
-  </li>
+  <li>In the top menu, click on <code class="language-plaintext highlighter-rouge">Dashboard</code> -&gt; <code class="language-plaintext highlighter-rouge">New</code> -&gt; <code class="language-plaintext highlighter-rouge">Web Service</code>.</li>
+  <li>In Git Provider, we paste the path to the Git repository we want to deploy. Click on <code class="language-plaintext highlighter-rouge">Connect</code>.</li>
+  <li>As <code class="language-plaintext highlighter-rouge">Name</code> we put <code class="language-plaintext highlighter-rouge">uvlhub_&lt;uvus&gt;</code>. For example, for the UVUS <code class="language-plaintext highlighter-rouge">drorganvidez</code>, the service name would be <code class="language-plaintext highlighter-rouge">uvlhub_drorganvidez</code>.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Project</code> we can create a new project named <code class="language-plaintext highlighter-rouge">uvlhub</code> (this step is not very relevant).</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Language</code>, we will use <code class="language-plaintext highlighter-rouge">Docker</code> as the deployment system.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Region</code> we choose <code class="language-plaintext highlighter-rouge">Frankfurt (central EU)</code>.</li>
+  <li>Under <code class="language-plaintext highlighter-rouge">Branch</code>, unless we have a reason to do so, it should be <code class="language-plaintext highlighter-rouge">main</code>.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Dockerfile Path</code> we make sure to put <code class="language-plaintext highlighter-rouge">docker/images/Dockerfile.render</code></li>
+  <li>In <code class="language-plaintext highlighter-rouge">Instance Type</code>, we choose <code class="language-plaintext highlighter-rouge">Free</code>.</li>
 </ul>
 <h4 id="environment-variables-configuration">
   
@@ -407,7 +403,9 @@
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FLASK_APP_NAME="UVLHUB.IO"
 FLASK_ENV=production
-DOMAIN=render.com
+FLASK_APP=app
+SECRET_KEY=dev_test_key_1234567890abcdefghijklmnopqrstu
+DOMAIN=uvlhub_&lt;uvus&gt;.onrender.com
 MARIADB_HOSTNAME=&lt;CHANGE_THIS&gt;
 MARIADB_DATABASE=&lt;CHANGE_THIS&gt;
 MARIADB_USER=&lt;CHANGE_THIS&gt;
@@ -421,6 +419,10 @@ WORKING_DIR=/app/
   <p class="highlight"><i class="fa-solid fa-seedling"></i> It is very important to replace the <code class="language-plaintext highlighter-rouge">&lt;CHANGE_THIS&gt;</code> values with the data provided by our database management panel in Filess.io.</p>
 </blockquote>
 
+<blockquote>
+  <p class="highlight"><i class="fa-solid fa-seedling"></i> It is very important to replace the <code class="language-plaintext highlighter-rouge">&lt;uvus&gt;</code> values with your UVUS (University of Seville)</p>
+</blockquote>
+
 <blockquote class="important-title">
   <p><i class="fa-solid fa-triangle-exclamation"></i> Don’t forget your own variables!</p>
 
@@ -428,26 +430,6 @@ WORKING_DIR=/app/
 
   <p>That means that you have to add to the <code class="language-plaintext highlighter-rouge">Add from .env</code> option the variables defined by your modules.</p>
 </blockquote>
-<h4 id="custom-dockerfile">
-  
-  
-    <a href="#custom-dockerfile" class="anchor-heading" aria-labelledby="custom-dockerfile"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Custom Dockerfile</strong>
-  
-  
-</h4>
-    
-
-<p>Now let’s tell Render to use our custom Dockerfile</p>
-
-<ul>
-  <li>We click on <code class="language-plaintext highlighter-rouge">Advanced</code>:
-    <ul>
-      <li>In <code class="language-plaintext highlighter-rouge">Dockerfile Path</code> we make sure to put <code class="language-plaintext highlighter-rouge">docker/images/Dockerfile.render</code></li>
-      <li>The rest of the options are left untouched.</li>
-    </ul>
-  </li>
-  <li>Click on <code class="language-plaintext highlighter-rouge">Apply</code>.</li>
-</ul>
 <h3 id="verify-deployment-process">
   
   
@@ -460,22 +442,8 @@ WORKING_DIR=/app/
 <p>Once you have done the above steps, you should see a log. It is important to keep an eye out for any errors that may occur.</p>
 
 <blockquote>
-  <p class="highlight"><i class="fa-solid fa-globe"></i> If everything went well, you should see our project deployed at <code class="language-plaintext highlighter-rouge">https://&lt;name_of_my_app&gt;.onrender.com/</code>
+  <p class="highlight"><i class="fa-solid fa-globe"></i> If everything went well, you should see our project deployed at <code class="language-plaintext highlighter-rouge">https://uvlhub_&lt;uvus&gt;.onrender.com</code>
 The deployment process can take up to 5 minutes.</p>
-</blockquote>
-
-<blockquote class="warning-title">
-  <p><i class="fa-solid fa-seedling"></i> Migrations troubleshooting</p>
-
-  <p>A common error is often migrations. If you encounter the error <code class="language-plaintext highlighter-rouge">ERROR [flask_migrate] Error: Can't locate revision identified by...</code> it means that there has been a conflict with the Flask cache. It is very easy to solve it:</p>
-  <ul>
-    <li>We go to the management panel of our Filess.io database.</li>
-    <li>Click on <code class="language-plaintext highlighter-rouge">Web Client</code>.</li>
-    <li>Click on the table <code class="language-plaintext highlighter-rouge">alembic_version</code>.</li>
-    <li>Identify the conflicting migration on the right, right click, <code class="language-plaintext highlighter-rouge">Delete rows (s)</code>.</li>
-    <li>To apply the changes, click on <code class="language-plaintext highlighter-rouge">Save</code> in the bottom menu.</li>
-    <li>This should now allow the normal deployment process. Render makes several attempts, but if it doesn’t, click <code class="language-plaintext highlighter-rouge">Manual Deploy</code> and <code class="language-plaintext highlighter-rouge">Clear build cache &amp; deploy</code>.</li>
-  </ul>
 </blockquote>
           
 
