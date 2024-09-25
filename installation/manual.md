@@ -41,8 +41,8 @@ sudo apt upgrade -y
 >
 > Remember that you have to clone your fork from the subject fork instead of the official one.
 > ```
-> git clone git@github.com:<YOUR_GITHUB_USER>/uvlhub.git
-> cd uvlhub
+> git clone git@github.com:<YOUR_GITHUB_USER>/uvlhub_practicas.git
+> cd uvlhub_practicas
 > ```
 
 You can clone the original repo with the HTTPS method:
