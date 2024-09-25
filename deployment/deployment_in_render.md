@@ -50,7 +50,7 @@ Click [Sign in](https://dashboard.render.com/). It is convenient that we use our
 
 Since our app requires a specific configuration (install dependencies, scripts, create migrations, among others) we have our own Dockerfile image for the Render service.
 
-#### **Basic Settings**
+#### Basic Settings
 
 - In the top menu, click on `Dashboard` -> `New` -> `Web Service`.
 - In Git Provider, we paste the path to the Git repository we want to deploy. Click on `Connect`.
@@ -62,7 +62,7 @@ Since our app requires a specific configuration (install dependencies, scripts, 
 - In `Dockerfile Path` we make sure to put `docker/images/Dockerfile.render`
 - In `Instance Type`, we choose `Free`.
 
-#### **Environment Variables Configuration**.
+#### Environment Variables Configuration.
 
 In `Environment Variables`, to avoid defining each environment variable one by one, click on `Add from .env` and copy and paste this:
 
@@ -80,6 +80,8 @@ MARIADB_PASSWORD=<CHANGE_THIS>
 MARIADB_ROOT_PASSWORD=<CHANGE_THIS>
 WORKING_DIR=/app/
 ```
+
+Click on the `Deploy` button.
 
 > {: .highlight }
 > <i class="fa-solid fa-seedling"></i> It is very important to replace the `<CHANGE_THIS>` values with the data provided by our database management panel in Filess.io.

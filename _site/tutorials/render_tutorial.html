@@ -292,15 +292,124 @@
 </h1>
     
 
-<p class="fs-6 fw-300">Coming soon</p>
-<h2 class="no_toc text-delta" id="table-of-contents">
+<p><a href="https://render.com">Render.com</a> is a modern hosting and deployment platform that simplifies the deployment of web applications and services. It provides a managed infrastructure that allows developers to focus on code instead of worrying about server configuration and maintenance. With Render, web applications, APIs, databases and static services can be deployed with ease. The platform supports multiple programming languages and frameworks, and provides advanced features such as integrated CI/CD, automatic scaling, and free SSL. In addition, Render offers an intuitive interface and extensive documentation, making the deployment process fast and accessible for beginners and experienced developers alike.</p>
+<h2 class="fs-6 fw-300 no_toc text-delta" id="table-of-contents">
   
   
     <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
   
   
 </h2>
-    <hr />
+    
+
+<ol id="markdown-toc">
+  <li><a href="#get-token-from-render" id="markdown-toc-get-token-from-render">Get token from Render</a></li>
+  <li><a href="#disable-auto-deploy" id="markdown-toc-disable-auto-deploy">Disable auto-deploy</a></li>
+  <li><a href="#register-the-secret-in-your-repository" id="markdown-toc-register-the-secret-in-your-repository">Register the secret in your repository</a></li>
+  <li><a href="#render-continuous-deployment-workflow" id="markdown-toc-render-continuous-deployment-workflow">Render continuous deployment workflow</a></li>
+  <li><a href="#try-it" id="markdown-toc-try-it">Try it!</a></li>
+</ol><hr />
+
+<blockquote class="important-title">
+  <p><i class="fa-solid fa-boxes-packing"></i> Have you deployed your application in Render?</p>
+
+  <p>For this tutorial it is necessary to have previously deployed the project in Render.com.
+If this is not the case, please look at <a href="/deployment/render">the Render deployment guide</a> first.</p>
+</blockquote>
+<h2 id="get-token-from-render">
+  
+  
+    <a href="#get-token-from-render" class="anchor-heading" aria-labelledby="get-token-from-render"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Get token from Render
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Login to Render.com</li>
+  <li>Go to <a href="https://dashboard.render.com/">Dashboard</a>. Select the project where you have deployed the app.</li>
+  <li>Click on the name of the service.</li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">Settings</code>. Under <code class="language-plaintext highlighter-rouge">Deploy hook</code> the token you need appears.</li>
+</ul>
+<h2 id="disable-auto-deploy">
+  
+  
+    <a href="#disable-auto-deploy" class="anchor-heading" aria-labelledby="disable-auto-deploy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Disable auto-deploy
+  
+  
+</h2>
+    
+
+<p>By default, any new changes detected in the <code class="language-plaintext highlighter-rouge">main</code> branch (if you have not chosen another one) will cause the app to
+will be deployed again. If we don’t want this and we want the deployment to be done under certain conditions in a workflow
+of GitHub actions, it is convenient to disable the auto-deployment.</p>
+
+<p>For it, from the same <code class="language-plaintext highlighter-rouge">Settings</code> tab, in <code class="language-plaintext highlighter-rouge">Auto-Deploy</code>, we give to <code class="language-plaintext highlighter-rouge">Edit</code> and select <code class="language-plaintext highlighter-rouge">No</code>.</p>
+<h2 id="register-the-secret-in-your-repository">
+  
+  
+    <a href="#register-the-secret-in-your-repository" class="anchor-heading" aria-labelledby="register-the-secret-in-your-repository"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Register the secret in your repository
+  
+  
+</h2>
+    
+
+<ul>
+  <li>In GitHub, in your repository, go to <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Secrets and variables</code> -&gt; <code class="language-plaintext highlighter-rouge">Actions</code>.</li>
+  <li>Click the green <code class="language-plaintext highlighter-rouge">New repository secret</code> button.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Name</code> type <code class="language-plaintext highlighter-rouge">RENDER_DEPLOY_HOOK_URL</code>.</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Secret</code>, add the token you got from Render’s <code class="language-plaintext highlighter-rouge">Deploy hook</code> field.</li>
+</ul>
+<h2 id="render-continuous-deployment-workflow">
+  
+  
+    <a href="#render-continuous-deployment-workflow" class="anchor-heading" aria-labelledby="render-continuous-deployment-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Render continuous deployment workflow
+  
+  
+</h2>
+    
+
+<p>In the <code class="language-plaintext highlighter-rouge">.github/workflows</code> folder you have to add the following <code class="language-plaintext highlighter-rouge">render.yml</code>.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Render</span>
+
+<span class="na">on</span><span class="pi">:</span>
+    <span class="na">push</span><span class="pi">:</span>
+      <span class="na">branches</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">main</span>
+    <span class="na">pull_request</span><span class="pi">:</span>
+      <span class="na">branches</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">main</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+
+  <span class="na">deploy</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Render</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Check out the repo</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to Render</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">deploy_url</span><span class="pi">:</span> <span class="s">${{ secrets.RENDER_DEPLOY_HOOK_URL }}</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">curl "$deploy_url"</span>
+</code></pre></div></div>
+<h2 id="try-it">
+  
+  
+    <a href="#try-it" class="anchor-heading" aria-labelledby="try-it"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Try it!
+  
+  
+</h2>
+    
+
+<ul>
+  <li>Make some changes to your code and upload it to GitHub (to the synchronized branch in Render)</li>
+  <li>Check that the application is deployed again.</li>
+  <li>You’ve got it!</li>
+</ul>
           
 
           

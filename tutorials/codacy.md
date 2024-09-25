@@ -36,7 +36,6 @@ Codacy is a static code analysis tool used to review code quality and ensure tha
 - In `Name` type `CODACY_PROJECT_TOKEN`.
 - In `Secret`, add the token you got from Codacy's `Repository API tokens` field.
 
-
 ## Codacy workflow
 
 In the `.github/workflows` folder you have to add the following `codacy.yml`.
