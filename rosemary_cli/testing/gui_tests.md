@@ -50,7 +50,7 @@ rosemary selenium <module_name>
 It is recommended to use the virtual environment. 
 
 ```
-python -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 ```
 

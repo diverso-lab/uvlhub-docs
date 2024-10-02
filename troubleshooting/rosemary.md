@@ -35,7 +35,7 @@ If you installed {% include uvlhub.html %} from a Docker or Vagrant environment,
 If you have decided to move to a local environment, the `venv` directory is no longer valid, you will have to create another one. To do this, run:
 
 ```
-python -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 source .env
 ```

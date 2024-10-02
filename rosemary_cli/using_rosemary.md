@@ -15,12 +15,12 @@ nav_order: 2
 1. TOC
 {:toc}
 
-## Using Rosemary in manual environment
+## Using Rosemary in local environment
 
-To use Rosemary CLI in a manual environment, we must activate the Python virtual environment:
+To use Rosemary CLI in a local environment, we must activate the Python virtual environment:
 
 ```
-python -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 ```
 
@@ -37,10 +37,10 @@ To use the Rosemary CLI in Docker environment, you need to be inside the `web_ap
 First, make sure your Docker environment is running. Then, access the `web_app_container` using the following command:
 
 ```
-docker exec -it web_app_container /bin/sh
+docker exec -it web_app_container /bin/bash
 ```
 
-In the terminal, you should see the prefix `/app #`. You are now ready to use Rosemary's commands.
+You are now ready to use Rosemary's commands.
 
 ## Using Rosemary in Vagrant environment
 
