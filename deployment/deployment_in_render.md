@@ -53,7 +53,8 @@ Since our app requires a specific configuration (install dependencies, scripts, 
 #### Basic Settings
 
 - In the top menu, click on `Dashboard` -> `New` -> `Web Service`.
-- In Git Provider, we paste the path to the Git repository we want to deploy. Click on `Connect`.
+- In Git Provider, we paste the path to the Git repository we want to deploy. If it doesn't appear, hit the `Credentials` -> `Configure GitHub` -> select your GitHub user and give it permission with `Install`. You can choose whether you want access to all repositories or only to the `uvlhub_practicas` repository. It is up to you.
+- Click on `Connect`.
 - As `Name` we put `uvlhub_<uvus>`. For example, for the UVUS `drorganvidez`, the service name would be `uvlhub_drorganvidez`.
 - In `Project` we can create a new project named `uvlhub` (this step is not very relevant).
 - In `Language`, we will use `Docker` as the deployment system.
@@ -77,7 +78,7 @@ MARIADB_DATABASE=<CHANGE_THIS>
 MARIADB_USER=<CHANGE_THIS>
 MARIADB_PORT=<CHANGE_THIS>
 MARIADB_PASSWORD=<CHANGE_THIS>
-MARIADB_ROOT_PASSWORD=<CHANGE_THIS>
+MARIADB_ROOT_PASSWORD=<SAME_PASSWORD_OF_MARIADB_PASSWORD>
 WORKING_DIR=/app/
 ```
 

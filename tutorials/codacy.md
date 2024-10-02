@@ -23,7 +23,7 @@ Codacy is a static code analysis tool used to review code quality and ensure tha
 ## Get token from Codacy
 
 - Go to [Codacy.com](https://www.codacy.com). Click the `Start free` button and then the `GitHub` button.
-- Add your GitHub account. You must add permission to either all your repositories or the uvlhub repository. We recommend you choose the second option.
+- Add your GitHub account. You must add permission to either all your repositories or the uvlhub repository. We recommend you choose the second option. 
 - Go to [Organizations](https://app.codacy.com/organizations) and choose your GitHub username.
 - Go to `Repositories` and click on the repository you want to apply Codacy to.
 - Go to `Settings` (the cogwheel) and go to `Integrations`.

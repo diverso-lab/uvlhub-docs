@@ -316,7 +316,7 @@
   },"45": {
     "doc": "Deployment in Render",
     "title": "Part two: deploy application in Render",
-    "content": "We are going to use Render as a cloud deployment service. Sign in to Render . Click Sign in. It is convenient that we use our GitHub account because it will be easier to link the repository where we are working. Create app instance . Since our app requires a specific configuration (install dependencies, scripts, create migrations, among others) we have our own Dockerfile image for the Render service. Basic Settings . | In the top menu, click on Dashboard -&gt; New -&gt; Web Service. | In Git Provider, we paste the path to the Git repository we want to deploy. Click on Connect. | As Name we put uvlhub_&lt;uvus&gt;. For example, for the UVUS drorganvidez, the service name would be uvlhub_drorganvidez. | In Project we can create a new project named uvlhub (this step is not very relevant). | In Language, we will use Docker as the deployment system. | In Region we choose Frankfurt (central EU). | Under Branch, unless we have a reason to do so, it should be main. | In Dockerfile Path we make sure to put docker/images/Dockerfile.render | In Instance Type, we choose Free. | . Environment Variables Configuration. In Environment Variables, to avoid defining each environment variable one by one, click on Add from .env and copy and paste this: . FLASK_APP_NAME=\"UVLHUB.IO\" FLASK_ENV=production FLASK_APP=app SECRET_KEY=dev_test_key_1234567890abcdefghijklmnopqrstu DOMAIN=uvlhub_&lt;uvus&gt;.onrender.com MARIADB_HOSTNAME=&lt;CHANGE_THIS&gt; MARIADB_DATABASE=&lt;CHANGE_THIS&gt; MARIADB_USER=&lt;CHANGE_THIS&gt; MARIADB_PORT=&lt;CHANGE_THIS&gt; MARIADB_PASSWORD=&lt;CHANGE_THIS&gt; MARIADB_ROOT_PASSWORD=&lt;CHANGE_THIS&gt; WORKING_DIR=/app/ . Click on the Deploy button. It is very important to replace the &lt;CHANGE_THIS&gt; values with the data provided by our database management panel in Filess.io. It is very important to replace the &lt;uvus&gt; values with your UVUS (University of Seville) . Don’t forget your own variables! . If you have been using modules that included their own .env file, please note that in production environment neither the Rosemary CLI nor the rosemary compose:env command is available for security reasons. That means that you have to add to the Add from .env option the variables defined by your modules. Verify deployment process . Once you have done the above steps, you should see a log. It is important to keep an eye out for any errors that may occur. If everything went well, you should see our project deployed at https://uvlhub_&lt;uvus&gt;.onrender.com The deployment process can take up to 5 minutes. ",
+    "content": "We are going to use Render as a cloud deployment service. Sign in to Render . Click Sign in. It is convenient that we use our GitHub account because it will be easier to link the repository where we are working. Create app instance . Since our app requires a specific configuration (install dependencies, scripts, create migrations, among others) we have our own Dockerfile image for the Render service. Basic Settings . | In the top menu, click on Dashboard -&gt; New -&gt; Web Service. | In Git Provider, we paste the path to the Git repository we want to deploy. If it doesn’t appear, hit the Credentials -&gt; Configure GitHub -&gt; select your GitHub user and give it permission with Install. You can choose whether you want access to all repositories or only to the uvlhub_practicas repository. It is up to you. | Click on Connect. | As Name we put uvlhub_&lt;uvus&gt;. For example, for the UVUS drorganvidez, the service name would be uvlhub_drorganvidez. | In Project we can create a new project named uvlhub (this step is not very relevant). | In Language, we will use Docker as the deployment system. | In Region we choose Frankfurt (central EU). | Under Branch, unless we have a reason to do so, it should be main. | In Dockerfile Path we make sure to put docker/images/Dockerfile.render | In Instance Type, we choose Free. | . Environment Variables Configuration. In Environment Variables, to avoid defining each environment variable one by one, click on Add from .env and copy and paste this: . FLASK_APP_NAME=\"UVLHUB.IO\" FLASK_ENV=production FLASK_APP=app SECRET_KEY=dev_test_key_1234567890abcdefghijklmnopqrstu DOMAIN=uvlhub_&lt;uvus&gt;.onrender.com MARIADB_HOSTNAME=&lt;CHANGE_THIS&gt; MARIADB_DATABASE=&lt;CHANGE_THIS&gt; MARIADB_USER=&lt;CHANGE_THIS&gt; MARIADB_PORT=&lt;CHANGE_THIS&gt; MARIADB_PASSWORD=&lt;CHANGE_THIS&gt; MARIADB_ROOT_PASSWORD=&lt;SAME_PASSWORD_OF_MARIADB_PASSWORD&gt; WORKING_DIR=/app/ . Click on the Deploy button. It is very important to replace the &lt;CHANGE_THIS&gt; values with the data provided by our database management panel in Filess.io. It is very important to replace the &lt;uvus&gt; values with your UVUS (University of Seville) . Don’t forget your own variables! . If you have been using modules that included their own .env file, please note that in production environment neither the Rosemary CLI nor the rosemary compose:env command is available for security reasons. That means that you have to add to the Add from .env option the variables defined by your modules. Verify deployment process . Once you have done the above steps, you should see a log. It is important to keep an eye out for any errors that may occur. If everything went well, you should see our project deployed at https://uvlhub_&lt;uvus&gt;.onrender.com The deployment process can take up to 5 minutes. ",
     "url": "/deployment/render#part-two-deploy-application-in-render",
     
     "relUrl": "/deployment/render#part-two-deploy-application-in-render"
@@ -986,75 +986,75 @@
     
     "relUrl": "/architecture/project_structure#setuppy"
   },"141": {
-    "doc": "CD: Render tutorial",
-    "title": "CD: Render tutorial",
-    "content": "Render.com is a modern hosting and deployment platform that simplifies the deployment of web applications and services. It provides a managed infrastructure that allows developers to focus on code instead of worrying about server configuration and maintenance. With Render, web applications, APIs, databases and static services can be deployed with ease. The platform supports multiple programming languages and frameworks, and provides advanced features such as integrated CI/CD, automatic scaling, and free SSL. In addition, Render offers an intuitive interface and extensive documentation, making the deployment process fast and accessible for beginners and experienced developers alike. ",
-    "url": "/tutorials/render_tutorial",
-    
-    "relUrl": "/tutorials/render_tutorial"
-  },"142": {
-    "doc": "CD: Render tutorial",
-    "title": "Table of contents",
-    "content": ". | Get token from Render | Disable auto-deploy | Register the secret in your repository | Render continuous deployment workflow | Try it! | . Have you deployed your application in Render? . For this tutorial it is necessary to have previously deployed the project in Render.com. If this is not the case, please look at the Render deployment guide first. ",
-    "url": "/tutorials/render_tutorial#table-of-contents",
-    
-    "relUrl": "/tutorials/render_tutorial#table-of-contents"
-  },"143": {
-    "doc": "CD: Render tutorial",
-    "title": "Get token from Render",
-    "content": ". | Login to Render.com | Go to Dashboard. Select the project where you have deployed the app. | Click on the name of the service. | Go to Settings. Under Deploy hook the token you need appears. | . ",
-    "url": "/tutorials/render_tutorial#get-token-from-render",
-    
-    "relUrl": "/tutorials/render_tutorial#get-token-from-render"
-  },"144": {
-    "doc": "CD: Render tutorial",
-    "title": "Disable auto-deploy",
-    "content": "By default, any new changes detected in the main branch (if you have not chosen another one) will cause the app to will be deployed again. If we don’t want this and we want the deployment to be done under certain conditions in a workflow of GitHub actions, it is convenient to disable the auto-deployment. For it, from the same Settings tab, in Auto-Deploy, we give to Edit and select No. ",
-    "url": "/tutorials/render_tutorial#disable-auto-deploy",
-    
-    "relUrl": "/tutorials/render_tutorial#disable-auto-deploy"
-  },"145": {
-    "doc": "CD: Render tutorial",
-    "title": "Register the secret in your repository",
-    "content": ". | In GitHub, in your repository, go to Settings -&gt; Secrets and variables -&gt; Actions. | Click the green New repository secret button. | In Name type RENDER_DEPLOY_HOOK_URL. | In Secret, add the token you got from Render’s Deploy hook field. | . ",
-    "url": "/tutorials/render_tutorial#register-the-secret-in-your-repository",
-    
-    "relUrl": "/tutorials/render_tutorial#register-the-secret-in-your-repository"
-  },"146": {
-    "doc": "CD: Render tutorial",
-    "title": "Render continuous deployment workflow",
-    "content": "In the .github/workflows folder you have to add the following render.yml. name: Deploy to Render on: push: branches: - main pull_request: branches: - main jobs: deploy: name: Deploy to Render runs-on: ubuntu-latest steps: - name: Check out the repo uses: actions/checkout@v4 - name: Deploy to Render env: deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }} run: | curl \"$deploy_url\" . ",
-    "url": "/tutorials/render_tutorial#render-continuous-deployment-workflow",
-    
-    "relUrl": "/tutorials/render_tutorial#render-continuous-deployment-workflow"
-  },"147": {
-    "doc": "CD: Render tutorial",
-    "title": "Try it!",
-    "content": ". | Make some changes to your code and upload it to GitHub (to the synchronized branch in Render) | Check that the application is deployed again. | You’ve got it! | . ",
-    "url": "/tutorials/render_tutorial#try-it",
-    
-    "relUrl": "/tutorials/render_tutorial#try-it"
-  },"148": {
     "doc": "Render",
     "title": "Render",
     "content": " ",
     "url": "/troubleshooting/render",
     
     "relUrl": "/troubleshooting/render"
-  },"149": {
+  },"142": {
     "doc": "Render",
     "title": "Table of contents",
     "content": ". | ERROR [flask_migrate] Error: Can’t locate revision identified by . | Delete migration in Filess.io database | Check that migrations are in a consistent state | . | . ",
     "url": "/troubleshooting/render#table-of-contents",
     
     "relUrl": "/troubleshooting/render#table-of-contents"
-  },"150": {
+  },"143": {
     "doc": "Render",
     "title": "ERROR [flask_migrate] Error: Can’t locate revision identified by",
     "content": "This is due to a cache problem or a problem with the migration checking system. Delete migration in Filess.io database . A common error is often migrations. If you encounter the error ERROR [flask_migrate] Error: Can't locate revision identified by... it means that there has been a conflict with the Flask cache. It is very easy to solve it: . | We go to the management panel of our Filess.io database. | Click on Web Client. | Click on the table alembic_version. | Identify the conflicting migration on the right, right click, Delete rows (s). | To apply the changes, click on Save in the bottom menu. | This should now allow the normal deployment process. Render makes several attempts, but if it doesn’t, click Manual Deploy and Clear build cache &amp; deploy. | . Check that migrations are in a consistent state . If, after several continuous deployments, you still encounter the problem of migrations, perform these steps in your development environment: . | Check current migration state: Use the Flask-Migrate command to show the current state of migrations. Run the following command in your terminal: . flask db current . This will show you the current migration version applied to your database. | Compare migration deads: Ensure that the migration head in your database matches the head of your migration scripts. Run the following command to show the head of your migrations: . flask db heads . If the heads do not match, there might be pending migrations that need to be applied. | Apply pending migrations: If there are pending migrations, apply them by running: . flask db upgrade . This command will apply any new migrations to bring your database schema up to date. | Verify migration history: To see the history of migrations applied, you can use the following command: . flask db history . This will display the list of all migrations applied in chronological order. | Check for inconsistencies: If you suspect inconsistencies, you can verify the integrity of your migrations by comparing the actual database schema with your migration scripts. Use the flask db stamp command to stamp the database with the correct version if necessary: . flask db stamp head . This command ensures that the migration version in your database matches the latest migration script. | . ",
     "url": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by",
     
     "relUrl": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by"
+  },"144": {
+    "doc": "CD: Render tutorial",
+    "title": "CD: Render tutorial",
+    "content": "Render.com is a modern hosting and deployment platform that simplifies the deployment of web applications and services. It provides a managed infrastructure that allows developers to focus on code instead of worrying about server configuration and maintenance. With Render, web applications, APIs, databases and static services can be deployed with ease. The platform supports multiple programming languages and frameworks, and provides advanced features such as integrated CI/CD, automatic scaling, and free SSL. In addition, Render offers an intuitive interface and extensive documentation, making the deployment process fast and accessible for beginners and experienced developers alike. ",
+    "url": "/tutorials/render_tutorial",
+    
+    "relUrl": "/tutorials/render_tutorial"
+  },"145": {
+    "doc": "CD: Render tutorial",
+    "title": "Table of contents",
+    "content": ". | Get token from Render | Disable auto-deploy | Register the secret in your repository | Render continuous deployment workflow | Try it! | . Have you deployed your application in Render? . For this tutorial it is necessary to have previously deployed the project in Render.com. If this is not the case, please look at the Render deployment guide first. ",
+    "url": "/tutorials/render_tutorial#table-of-contents",
+    
+    "relUrl": "/tutorials/render_tutorial#table-of-contents"
+  },"146": {
+    "doc": "CD: Render tutorial",
+    "title": "Get token from Render",
+    "content": ". | Login to Render.com | Go to Dashboard. Select the project where you have deployed the app. | Click on the name of the service. | Go to Settings. Under Deploy hook the token you need appears. | . ",
+    "url": "/tutorials/render_tutorial#get-token-from-render",
+    
+    "relUrl": "/tutorials/render_tutorial#get-token-from-render"
+  },"147": {
+    "doc": "CD: Render tutorial",
+    "title": "Disable auto-deploy",
+    "content": "By default, any new changes detected in the main branch (if you have not chosen another one) will cause the app to will be deployed again. If we don’t want this and we want the deployment to be done under certain conditions in a workflow of GitHub actions, it is convenient to disable the auto-deployment. For it, from the same Settings tab, in Auto-Deploy, we give to Edit and select No. ",
+    "url": "/tutorials/render_tutorial#disable-auto-deploy",
+    
+    "relUrl": "/tutorials/render_tutorial#disable-auto-deploy"
+  },"148": {
+    "doc": "CD: Render tutorial",
+    "title": "Register the secret in your repository",
+    "content": ". | In GitHub, in your repository, go to Settings -&gt; Secrets and variables -&gt; Actions. | Click the green New repository secret button. | In Name type RENDER_DEPLOY_HOOK_URL. | In Secret, add the token you got from Render’s Deploy hook field. | . ",
+    "url": "/tutorials/render_tutorial#register-the-secret-in-your-repository",
+    
+    "relUrl": "/tutorials/render_tutorial#register-the-secret-in-your-repository"
+  },"149": {
+    "doc": "CD: Render tutorial",
+    "title": "Render continuous deployment workflow",
+    "content": "In the .github/workflows folder you have to add the following render.yml. name: Deploy to Render on: push: branches: - main pull_request: branches: - main jobs: deploy: name: Deploy to Render runs-on: ubuntu-latest steps: - name: Check out the repo uses: actions/checkout@v4 - name: Deploy to Render env: deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }} run: | curl \"$deploy_url\" . ",
+    "url": "/tutorials/render_tutorial#render-continuous-deployment-workflow",
+    
+    "relUrl": "/tutorials/render_tutorial#render-continuous-deployment-workflow"
+  },"150": {
+    "doc": "CD: Render tutorial",
+    "title": "Try it!",
+    "content": ". | Make some changes to your code and upload it to GitHub (to the synchronized branch in Render) | Check that the application is deployed again. | You’ve got it! | . ",
+    "url": "/tutorials/render_tutorial#try-it",
+    
+    "relUrl": "/tutorials/render_tutorial#try-it"
   },"151": {
     "doc": "Reset database",
     "title": "Reset database",
