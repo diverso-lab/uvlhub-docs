@@ -5,7 +5,7 @@ parent: Troubleshooting
 permalink: /troubleshooting/python
 ---
 
-# Docker
+# Python
 {: .no_toc }
 
 ## Table of contents
