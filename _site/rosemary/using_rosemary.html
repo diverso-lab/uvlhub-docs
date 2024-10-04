@@ -301,22 +301,22 @@
     
 
 <ol id="markdown-toc">
-  <li><a href="#using-rosemary-in-manual-environment" id="markdown-toc-using-rosemary-in-manual-environment">Using Rosemary in manual environment</a></li>
+  <li><a href="#using-rosemary-in-local-environment" id="markdown-toc-using-rosemary-in-local-environment">Using Rosemary in local environment</a></li>
   <li><a href="#using-rosemary-in-docker-environment" id="markdown-toc-using-rosemary-in-docker-environment">Using Rosemary in Docker environment</a></li>
   <li><a href="#using-rosemary-in-vagrant-environment" id="markdown-toc-using-rosemary-in-vagrant-environment">Using Rosemary in Vagrant environment</a></li>
 </ol>
-<h2 id="using-rosemary-in-manual-environment">
+<h2 id="using-rosemary-in-local-environment">
   
   
-    <a href="#using-rosemary-in-manual-environment" class="anchor-heading" aria-labelledby="using-rosemary-in-manual-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Rosemary in manual environment
+    <a href="#using-rosemary-in-local-environment" class="anchor-heading" aria-labelledby="using-rosemary-in-local-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Rosemary in local environment
   
   
 </h2>
     
 
-<p>To use Rosemary CLI in a manual environment, we must activate the Python virtual environment:</p>
+<p>To use Rosemary CLI in a local environment, we must activate the Python virtual environment:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m venv venv
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3.12 -m venv venv
 source venv/bin/activate
 </code></pre></div></div>
 
@@ -337,10 +337,10 @@ source venv/bin/activate
 
 <p>First, make sure your Docker environment is running. Then, access the <code class="language-plaintext highlighter-rouge">web_app_container</code> using the following command:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker exec -it web_app_container /bin/sh
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker exec -it web_app_container /bin/bash
 </code></pre></div></div>
 
-<p>In the terminal, you should see the prefix <code class="language-plaintext highlighter-rouge">/app #</code>. You are now ready to use Rosemary’s commands.</p>
+<p>You are now ready to use Rosemary’s commands.</p>
 <h2 id="using-rosemary-in-vagrant-environment">
   
   

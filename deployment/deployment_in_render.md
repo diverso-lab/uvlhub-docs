@@ -72,7 +72,7 @@ FLASK_APP_NAME="UVLHUB.IO"
 FLASK_ENV=production
 FLASK_APP=app
 SECRET_KEY=dev_test_key_1234567890abcdefghijklmnopqrstu
-DOMAIN=uvlhub_<uvus>.onrender.com
+DOMAIN=uvlhub-<uvus>.onrender.com
 MARIADB_HOSTNAME=<CHANGE_THIS>
 MARIADB_DATABASE=<CHANGE_THIS>
 MARIADB_USER=<CHANGE_THIS>
@@ -102,5 +102,5 @@ Click on the `Deploy` button.
 Once you have done the above steps, you should see a log. It is important to keep an eye out for any errors that may occur.
 
 > {: .highlight }
-> <i class="fa-solid fa-globe"></i> If everything went well, you should see our project deployed at `https://uvlhub_<uvus>.onrender.com`
+> <i class="fa-solid fa-globe"></i> You should see our project deployed at `https://uvlhub-<uvus>.onrender.com`
 > The deployment process can take up to 5 minutes.
