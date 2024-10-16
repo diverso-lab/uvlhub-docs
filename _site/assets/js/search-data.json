@@ -505,7 +505,7 @@
   },"72": {
     "doc": "GUI tests",
     "title": "Introduction to Selenium",
-    "content": "Selenium is a suite of web browser automation tools. It provides an easy-to-use interface for interacting with browsers such as Chrome, Firefox and Safari, enabling automated testing, data scraping and other repetitive tasks in web applications. ",
+    "content": "Selenium is a suite of web browser automation tools. It provides an easy-to-use interface for interacting with browsers such as Chrome, Firefox and Safari, enabling automated testing, data scraping and other repetitive tasks in web applications. VERY IMPORTANT! . The application must be started before running Selenium tests. ",
     "url": "/rosemary/testing/gui_tests#introduction-to-selenium",
     
     "relUrl": "/rosemary/testing/gui_tests#introduction-to-selenium"
@@ -1007,75 +1007,75 @@
     
     "relUrl": "/troubleshooting/python#no-module-named-_ctypes"
   },"144": {
-    "doc": "Render",
-    "title": "Render",
-    "content": " ",
-    "url": "/troubleshooting/render",
-    
-    "relUrl": "/troubleshooting/render"
-  },"145": {
-    "doc": "Render",
-    "title": "Table of contents",
-    "content": ". | ERROR [flask_migrate] Error: Can’t locate revision identified by . | Delete migration in Filess.io database | Check that migrations are in a consistent state | . | . ",
-    "url": "/troubleshooting/render#table-of-contents",
-    
-    "relUrl": "/troubleshooting/render#table-of-contents"
-  },"146": {
-    "doc": "Render",
-    "title": "ERROR [flask_migrate] Error: Can’t locate revision identified by",
-    "content": "This is due to a cache problem or a problem with the migration checking system. Delete migration in Filess.io database . A common error is often migrations. If you encounter the error ERROR [flask_migrate] Error: Can't locate revision identified by... it means that there has been a conflict with the Flask cache. It is very easy to solve it: . | We go to the management panel of our Filess.io database. | Click on Web Client. | Click on the table alembic_version. | Identify the conflicting migration on the right, right click, Delete rows (s). | To apply the changes, click on Save in the bottom menu. | This should now allow the normal deployment process. Render makes several attempts, but if it doesn’t, click Manual Deploy and Clear build cache &amp; deploy. | . Check that migrations are in a consistent state . If, after several continuous deployments, you still encounter the problem of migrations, perform these steps in your development environment: . | Check current migration state: Use the Flask-Migrate command to show the current state of migrations. Run the following command in your terminal: . flask db current . This will show you the current migration version applied to your database. | Compare migration deads: Ensure that the migration head in your database matches the head of your migration scripts. Run the following command to show the head of your migrations: . flask db heads . If the heads do not match, there might be pending migrations that need to be applied. | Apply pending migrations: If there are pending migrations, apply them by running: . flask db upgrade . This command will apply any new migrations to bring your database schema up to date. | Verify migration history: To see the history of migrations applied, you can use the following command: . flask db history . This will display the list of all migrations applied in chronological order. | Check for inconsistencies: If you suspect inconsistencies, you can verify the integrity of your migrations by comparing the actual database schema with your migration scripts. Use the flask db stamp command to stamp the database with the correct version if necessary: . flask db stamp head . This command ensures that the migration version in your database matches the latest migration script. | . ",
-    "url": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by",
-    
-    "relUrl": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by"
-  },"147": {
     "doc": "CD: Render tutorial",
     "title": "CD: Render tutorial",
     "content": "Render.com is a modern hosting and deployment platform that simplifies the deployment of web applications and services. It provides a managed infrastructure that allows developers to focus on code instead of worrying about server configuration and maintenance. With Render, web applications, APIs, databases and static services can be deployed with ease. The platform supports multiple programming languages and frameworks, and provides advanced features such as integrated CI/CD, automatic scaling, and free SSL. In addition, Render offers an intuitive interface and extensive documentation, making the deployment process fast and accessible for beginners and experienced developers alike. ",
     "url": "/tutorials/render_tutorial",
     
     "relUrl": "/tutorials/render_tutorial"
-  },"148": {
+  },"145": {
     "doc": "CD: Render tutorial",
     "title": "Table of contents",
     "content": ". | Get token from Render | Disable auto-deploy | Register the secret in your repository | Render continuous deployment workflow | Try it! | . Have you deployed your application in Render? . For this tutorial it is necessary to have previously deployed the project in Render.com. If this is not the case, please look at the Render deployment guide first. ",
     "url": "/tutorials/render_tutorial#table-of-contents",
     
     "relUrl": "/tutorials/render_tutorial#table-of-contents"
-  },"149": {
+  },"146": {
     "doc": "CD: Render tutorial",
     "title": "Get token from Render",
     "content": ". | Login to Render.com | Go to Dashboard. Select the project where you have deployed the app. | Click on the name of the service. | Go to Settings. Under Deploy hook the token you need appears. | . ",
     "url": "/tutorials/render_tutorial#get-token-from-render",
     
     "relUrl": "/tutorials/render_tutorial#get-token-from-render"
-  },"150": {
+  },"147": {
     "doc": "CD: Render tutorial",
     "title": "Disable auto-deploy",
     "content": "By default, any new changes detected in the main branch (if you have not chosen another one) will cause the app to will be deployed again. If we don’t want this and we want the deployment to be done under certain conditions in a workflow of GitHub actions, it is convenient to disable the auto-deployment. For it, from the same Settings tab, in Auto-Deploy, we give to Edit and select No. ",
     "url": "/tutorials/render_tutorial#disable-auto-deploy",
     
     "relUrl": "/tutorials/render_tutorial#disable-auto-deploy"
-  },"151": {
+  },"148": {
     "doc": "CD: Render tutorial",
     "title": "Register the secret in your repository",
     "content": ". | In GitHub, in your repository, go to Settings -&gt; Secrets and variables -&gt; Actions. | Click the green New repository secret button. | In Name type RENDER_DEPLOY_HOOK_URL. | In Secret, add the token you got from Render’s Deploy hook field. | . ",
     "url": "/tutorials/render_tutorial#register-the-secret-in-your-repository",
     
     "relUrl": "/tutorials/render_tutorial#register-the-secret-in-your-repository"
-  },"152": {
+  },"149": {
     "doc": "CD: Render tutorial",
     "title": "Render continuous deployment workflow",
     "content": "In the .github/workflows folder you have to add the following render.yml. name: Deploy to Render on: push: branches: - main pull_request: branches: - main jobs: deploy: name: Deploy to Render runs-on: ubuntu-latest steps: - name: Check out the repo uses: actions/checkout@v4 - name: Deploy to Render env: deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }} run: | curl \"$deploy_url\" . ",
     "url": "/tutorials/render_tutorial#render-continuous-deployment-workflow",
     
     "relUrl": "/tutorials/render_tutorial#render-continuous-deployment-workflow"
-  },"153": {
+  },"150": {
     "doc": "CD: Render tutorial",
     "title": "Try it!",
     "content": ". | Make some changes to your code and upload it to GitHub (to the synchronized branch in Render) | Check that the application is deployed again. | You’ve got it! | . ",
     "url": "/tutorials/render_tutorial#try-it",
     
     "relUrl": "/tutorials/render_tutorial#try-it"
+  },"151": {
+    "doc": "Render",
+    "title": "Render",
+    "content": " ",
+    "url": "/troubleshooting/render",
+    
+    "relUrl": "/troubleshooting/render"
+  },"152": {
+    "doc": "Render",
+    "title": "Table of contents",
+    "content": ". | ERROR [flask_migrate] Error: Can’t locate revision identified by . | Delete migration in Filess.io database | Check that migrations are in a consistent state | . | . ",
+    "url": "/troubleshooting/render#table-of-contents",
+    
+    "relUrl": "/troubleshooting/render#table-of-contents"
+  },"153": {
+    "doc": "Render",
+    "title": "ERROR [flask_migrate] Error: Can’t locate revision identified by",
+    "content": "This is due to a cache problem or a problem with the migration checking system. Delete migration in Filess.io database . A common error is often migrations. If you encounter the error ERROR [flask_migrate] Error: Can't locate revision identified by... it means that there has been a conflict with the Flask cache. It is very easy to solve it: . | We go to the management panel of our Filess.io database. | Click on Web Client. | Click on the table alembic_version. | Identify the conflicting migration on the right, right click, Delete rows (s). | To apply the changes, click on Save in the bottom menu. | This should now allow the normal deployment process. Render makes several attempts, but if it doesn’t, click Manual Deploy and Clear build cache &amp; deploy. | . Check that migrations are in a consistent state . If, after several continuous deployments, you still encounter the problem of migrations, perform these steps in your development environment: . | Check current migration state: Use the Flask-Migrate command to show the current state of migrations. Run the following command in your terminal: . flask db current . This will show you the current migration version applied to your database. | Compare migration deads: Ensure that the migration head in your database matches the head of your migration scripts. Run the following command to show the head of your migrations: . flask db heads . If the heads do not match, there might be pending migrations that need to be applied. | Apply pending migrations: If there are pending migrations, apply them by running: . flask db upgrade . This command will apply any new migrations to bring your database schema up to date. | Verify migration history: To see the history of migrations applied, you can use the following command: . flask db history . This will display the list of all migrations applied in chronological order. | Check for inconsistencies: If you suspect inconsistencies, you can verify the integrity of your migrations by comparing the actual database schema with your migration scripts. Use the flask db stamp command to stamp the database with the correct version if necessary: . flask db stamp head . This command ensures that the migration version in your database matches the latest migration script. | . ",
+    "url": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by",
+    
+    "relUrl": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by"
   },"154": {
     "doc": "Reset database",
     "title": "Reset database",
