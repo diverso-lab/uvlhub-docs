@@ -27,6 +27,19 @@ nav_order: 3
 >
 > This manual is intended for a development environment. For a production environment, visit [Deployment]({{site.baseurl}}/deployment).
 
+{: .warning-title }
+> <i class="fa-solid fa-eye"></i> Be very careful!
+>
+>  Vagrant deployment is sensitive to permissions on previously set files and folders. To avoid problems
+> when starting up the machine, it is recommended to delete the following files and folders (if they exist) in the root of the project:
+>
+> ```
+> rm -r uploads
+> rm -r rosemary.egg-info
+> rm app.log*
+> ```
+
+
 ## Set environment files
 
 First, copy the `.env.vagrant.example` file to the `.env` file that will be used to set the environment variables.
@@ -74,11 +87,17 @@ exit
 ```
 
 ### Provision the VM
+To rerun the provisioning scripts (e.g., after changes), use:
 
-If you need to run the provisioning scripts again (`*.yml`) (e.g., after making changes to them), use the following command:
-
+#### If the VM is off:
 ```
 vagrant up --provision
+```
+
+#### If the VM needs a restart:
+
+```
+vagrant reload --provision
 ```
 
 ### See VM status
@@ -103,6 +122,12 @@ To destroy the virtual machine (removing all data), use the following command:
 
 ```
 vagrant destroy
+```
+
+The `.vagrant` folder is a directory automatically created by Vagrant at the same level as the Vagrantfile. It contains metadata and configurations necessary for Vagrant to manage the virtual machines associated with that project. It is convenient to delete this folder as well if we do not want to have previous configurations that conflict:
+
+```
+rm -r .vagrant
 ```
 
 Following these steps, you should be able to set up, run, and manage your Vagrant virtual machine efficiently.

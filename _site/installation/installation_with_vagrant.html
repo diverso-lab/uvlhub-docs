@@ -305,7 +305,11 @@
   <li><a href="#working-with-vagrant" id="markdown-toc-working-with-vagrant">Working with Vagrant</a>    <ol>
       <li><a href="#run-the-vm" id="markdown-toc-run-the-vm">Run the VM</a></li>
       <li><a href="#accessing-the-vm" id="markdown-toc-accessing-the-vm">Accessing the VM</a></li>
-      <li><a href="#provision-the-vm" id="markdown-toc-provision-the-vm">Provision the VM</a></li>
+      <li><a href="#provision-the-vm" id="markdown-toc-provision-the-vm">Provision the VM</a>        <ol>
+          <li><a href="#if-the-vm-is-off" id="markdown-toc-if-the-vm-is-off">If the VM is off:</a></li>
+          <li><a href="#if-the-vm-needs-a-restart" id="markdown-toc-if-the-vm-needs-a-restart">If the VM needs a restart:</a></li>
+        </ol>
+      </li>
       <li><a href="#see-vm-status" id="markdown-toc-see-vm-status">See VM status</a></li>
       <li><a href="#halt-the-vm" id="markdown-toc-halt-the-vm">Halt the VM</a></li>
       <li><a href="#destroy-the-vm" id="markdown-toc-destroy-the-vm">Destroy the VM</a></li>
@@ -324,6 +328,18 @@
   <p><i class="fa-solid fa-code"></i> Only for a development environment</p>
 
   <p>This manual is intended for a development environment. For a production environment, visit <a href="/deployment">Deployment</a>.</p>
+</blockquote>
+
+<blockquote class="warning-title">
+  <p><i class="fa-solid fa-eye"></i> Be very careful!</p>
+
+  <p>Vagrant deployment is sensitive to permissions on previously set files and folders. To avoid problems
+when starting up the machine, it is recommended to delete the following files and folders (if they exist) in the root of the project:</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -r uploads
+rm -r rosemary.egg-info
+rm app.log*
+</code></pre></div>  </div>
 </blockquote>
 <h2 id="set-environment-files">
   
@@ -398,10 +414,27 @@
   
 </h3>
     
-
-<p>If you need to run the provisioning scripts again (<code class="language-plaintext highlighter-rouge">*.yml</code>) (e.g., after making changes to them), use the following command:</p>
-
+<p>To rerun the provisioning scripts (e.g., after changes), use:</p>
+<h4 id="if-the-vm-is-off">
+  
+  
+    <a href="#if-the-vm-is-off" class="anchor-heading" aria-labelledby="if-the-vm-is-off"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> If the VM is off:
+  
+  
+</h4>
+    
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant up --provision
+</code></pre></div></div>
+<h4 id="if-the-vm-needs-a-restart">
+  
+  
+    <a href="#if-the-vm-needs-a-restart" class="anchor-heading" aria-labelledby="if-the-vm-needs-a-restart"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> If the VM needs a restart:
+  
+  
+</h4>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant reload --provision
 </code></pre></div></div>
 <h3 id="see-vm-status">
   
@@ -441,6 +474,11 @@
 <p>To destroy the virtual machine (removing all data), use the following command:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant destroy
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">.vagrant</code> folder is a directory automatically created by Vagrant at the same level as the Vagrantfile. It contains metadata and configurations necessary for Vagrant to manage the virtual machines associated with that project. It is convenient to delete this folder as well if we do not want to have previous configurations that conflict:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -r .vagrant
 </code></pre></div></div>
 
 <p>Following these steps, you should be able to set up, run, and manage your Vagrant virtual machine efficiently.</p>
