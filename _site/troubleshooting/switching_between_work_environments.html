@@ -19,8 +19,8 @@
   
 
 .site-nav > ul.nav-list:first-child > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > a,
-.site-nav > ul.nav-list:first-child > li > ul > li > ul > li:not(:nth-child(2)) > a {
+.site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(6)) > a,
+.site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a {
   background-image: none;
 }
 
@@ -29,14 +29,14 @@
   background-image: none;
 }
 
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(2) > ul > li:nth-child(2) > a {
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(6) > a {
   font-weight: 600;
   text-decoration: none;
-}.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg,
-.site-nav > ul.nav-list:first-child > li:nth-child(6) > ul > li:nth-child(2) > button svg {
+}.site-nav > ul.nav-list:first-child > li:nth-child(9) > button svg,
+.site-nav > ul.nav-list:first-child > li:nth-child(9) > ul > li:nth-child(6) > button svg {
   transform: rotate(-90deg);
-}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list,
-.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
+}.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list,
+.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(9) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list {
   display: block;
 }
   </style>
@@ -58,20 +58,20 @@
 
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Composing environment | UVLHub docs</title>
+<title>Switching between work environments | UVLHub docs</title>
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="Composing environment" />
+<meta property="og:title" content="Switching between work environments" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
 <meta property="og:description" content="Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab" />
-<link rel="canonical" href="http://0.0.0.0:4000/rosemary/extending_uvlhub/composing_environment" />
-<meta property="og:url" content="http://0.0.0.0:4000/rosemary/extending_uvlhub/composing_environment" />
+<link rel="canonical" href="http://0.0.0.0:4000/troubleshooting/switching_between_work_environments" />
+<meta property="og:url" content="http://0.0.0.0:4000/troubleshooting/switching_between_work_environments" />
 <meta property="og:site_name" content="UVLHub docs" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Composing environment" />
+<meta property="twitter:title" content="Switching between work environments" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Composing environment","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/rosemary/extending_uvlhub/composing_environment"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Repository of feature models in UVL format integrated with Zenodo and FlamaPy - Developed by DiversoLab","headline":"Switching between work environments","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://0.0.0.0:4000/assets/images/docs.uvlhub.io.svg"}},"url":"http://0.0.0.0:4000/troubleshooting/switching_between_work_environments"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -276,38 +276,79 @@
     <div class="main-content-wrap">
       <nav aria-label="Breadcrumb" class="breadcrumb-nav">
   <ol class="breadcrumb-nav-list">
-    <li class="breadcrumb-nav-list-item"><a href="/rosemary">Rosemary CLI</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="/rosemary/extending_uvlhub">Extending uvlhub</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Composing environment</span></li>
+    <li class="breadcrumb-nav-list-item"><a href="/troubleshooting">Troubleshooting</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Switching between work environments</span></li>
   </ol>
 </nav>
       <div id="main-content" class="main-content">
         <main>
           
-            <h1 class="no_toc" id="composing-environment">
+            <h1 class="no_toc" id="switching-between-work-environments">
   
   
-    <a href="#composing-environment" class="anchor-heading" aria-labelledby="composing-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Composing environment
+    <a href="#switching-between-work-environments" class="anchor-heading" aria-labelledby="switching-between-work-environments"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Switching between work environments
   
   
 </h1>
     
+<h2 class="no_toc text-delta" id="table-of-contents">
+  
+  
+    <a href="#table-of-contents" class="anchor-heading" aria-labelledby="table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Table of contents
+  
+  
+</h2>
+    
 
-<p>It is possible to make a final composition of the <code class="language-plaintext highlighter-rouge">.env</code> file based on the individual <code class="language-plaintext highlighter-rouge">.env</code> files of each module.</p>
+<ol id="markdown-toc">
+  <li><a href="#bash-venvbinflask-vagrantvenvbinpython312-intérprete-erróneo-no-existe-el-archivo-o-el-directorio" id="markdown-toc-bash-venvbinflask-vagrantvenvbinpython312-intérprete-erróneo-no-existe-el-archivo-o-el-directorio"><em>bash: …/venv/bin/flask: /vagrant/venv/bin/python3.12: intérprete erróneo: No existe el archivo o el directorio</em></a>    <ol>
+      <li><a href="#solution-1-recreate-the-venv-folder-in-local-environment" id="markdown-toc-solution-1-recreate-the-venv-folder-in-local-environment">Solution 1: recreate the <code class="language-plaintext highlighter-rouge">venv</code> folder in local environment</a></li>
+      <li><a href="#solution-2-use-a-name-for-the-local-environment-different-from-the-conventional-one" id="markdown-toc-solution-2-use-a-name-for-the-local-environment-different-from-the-conventional-one">Solution 2: use a name for the local environment different from the conventional one</a></li>
+    </ol>
+  </li>
+</ol>
+<h2 id="bash-venvbinflask-vagrantvenvbinpython312-intérprete-erróneo-no-existe-el-archivo-o-el-directorio">
+  
+  
+    <a href="#bash-venvbinflask-vagrantvenvbinpython312-intérprete-erróneo-no-existe-el-archivo-o-el-directorio" class="anchor-heading" aria-labelledby="bash-venvbinflask-vagrantvenvbinpython312-intérprete-erróneo-no-existe-el-archivo-o-el-directorio"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <em>bash: …/venv/bin/flask: /vagrant/venv/bin/python3.12: intérprete erróneo: No existe el archivo o el directorio</em>
+  
+  
+</h2>
+    
 
-<p>To execute this command and automatically combine the environment variables:</p>
+<p>When you switch working environment, for example, from local to Docker or Vagrant, you have to take into account that <code class="language-plaintext highlighter-rouge">venv</code> can be “hijacked” by the new environment. That is, it is Docker or Vagrant that creates its own <code class="language-plaintext highlighter-rouge">venv</code> folder. Given that there are bind mounts in these environments with respect to the host machine, it could be the case that when returning to the local environment, the <code class="language-plaintext highlighter-rouge">venv</code> folder is not originally ours.</p>
+<h3 id="solution-1-recreate-the-venv-folder-in-local-environment">
+  
+  
+    <a href="#solution-1-recreate-the-venv-folder-in-local-environment" class="anchor-heading" aria-labelledby="solution-1-recreate-the-venv-folder-in-local-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 1: recreate the <code class="language-plaintext highlighter-rouge">venv</code> folder in local environment
+  
+  
+</h3>
+    
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary compose:env
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rm -r venv
+python3.12 -m venv venv
+source venv/bin/activate
+cp .env.local.example .env
+pip install --upgrade pip
+pip install -r requirements.txt
+</code></pre></div></div>
+<h3 id="solution-2-use-a-name-for-the-local-environment-different-from-the-conventional-one">
+  
+  
+    <a href="#solution-2-use-a-name-for-the-local-environment-different-from-the-conventional-one" class="anchor-heading" aria-labelledby="solution-2-use-a-name-for-the-local-environment-different-from-the-conventional-one"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Solution 2: use a name for the local environment different from the conventional one
+  
+  
+</h3>
+    
+
+<p>When we are in local, we create a virtual environment named <code class="language-plaintext highlighter-rouge">myenv</code> for example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3.12 -m venv myenv
+(other operations)
 </code></pre></div></div>
 
-<blockquote class="important-title">
-  <p>Reboot required!</p>
-
-  <p>It is necessary to restart the application’s Docker container for the changes to take effect:</p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker restart web_app_container
-</code></pre></div>  </div>
-</blockquote>
+<p>When returning to the local environment from Docker or Vagrant, the <code class="language-plaintext highlighter-rouge">myenv</code> folder will remain unchanged. This will avoid having to reinstall all the dependencies each time you return to the local environment.</p>
           
 
           
