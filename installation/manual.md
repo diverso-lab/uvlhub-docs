@@ -54,6 +54,11 @@ cd uvlhub
 
 ## Install MariaDB
 
+{: .important-title }
+> <i class="fa-solid fa-desktop"></i> Are you a student of Configuration Evolution and Management (EGC)?
+>
+> If you use the VM for the EGC course, you can skip this step.
+
 We need a relational database for our application. We will use MariaDB ([more information](https://mariadb.org/ "Title")) 
 
 ### Install official package

@@ -302,6 +302,7 @@
 
 <ol id="markdown-toc">
   <li><a href="#check-python-syntax" id="markdown-toc-check-python-syntax">Check Python syntax</a></li>
+  <li><a href="#auto-fix-python-code-style" id="markdown-toc-auto-fix-python-code-style">Auto-fix Python code style</a></li>
   <li><a href="#using-flake8-directly" id="markdown-toc-using-flake8-directly">Using flake8 directly</a></li>
 </ol>
 <h2 id="check-python-syntax">
@@ -317,6 +318,19 @@
 </code></pre></div></div>
 
 <p>This command is designed to run the linter <a href="https://flake8.pycqa.org/en/latest/">Flake8</a> in the <code class="language-plaintext highlighter-rouge">app</code>, <code class="language-plaintext highlighter-rouge">rosemary</code> and <code class="language-plaintext highlighter-rouge">core</code> directories to check the quality of the code.</p>
+<h2 id="auto-fix-python-code-style">
+  
+  
+    <a href="#auto-fix-python-code-style" class="anchor-heading" aria-labelledby="auto-fix-python-code-style"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Auto-fix Python code style
+  
+  
+</h2>
+    
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary linter:fix
+</code></pre></div></div>
+
+<p>This command automatically formats and cleans the code in the  <code class="language-plaintext highlighter-rouge">app</code>, <code class="language-plaintext highlighter-rouge">rosemary</code> and <code class="language-plaintext highlighter-rouge">core</code> directories, applying tools like Black and Autoflake to fix style issues detected by the linter.</p>
 <h2 id="using-flake8-directly">
   
   
