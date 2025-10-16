@@ -318,13 +318,6 @@
       <li><a href="#using-the-test-in-the-project" id="markdown-toc-using-the-test-in-the-project">Using the test in the project</a></li>
     </ol>
   </li>
-  <li><a href="#using-wsl2-windows-subsystem-for-linux-and-webdriver" id="markdown-toc-using-wsl2-windows-subsystem-for-linux-and-webdriver">Using WSL2 (Windows Subsystem for Linux) and WebDriver</a>    <ol>
-      <li><a href="#install-google-chrome-version-114" id="markdown-toc-install-google-chrome-version-114">Install Google Chrome version 114</a></li>
-      <li><a href="#install-chromedriver" id="markdown-toc-install-chromedriver">Install ChromeDriver</a></li>
-      <li><a href="#unzip-and-make-chromedriver-executable" id="markdown-toc-unzip-and-make-chromedriver-executable">Unzip and make ChromeDriver executable</a></li>
-      <li><a href="#move-the-chromedriver-executable-to-the-wsl2-path" id="markdown-toc-move-the-chromedriver-executable-to-the-wsl2-path">Move the ChromeDriver executable to the WSL2 path</a></li>
-    </ol>
-  </li>
 </ol>
 <h2 id="introduction-to-selenium">
   
@@ -558,62 +551,6 @@ pip install -e ./
 </code></pre></div></div>
 
 <p>Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation.</p>
-<h2 id="using-wsl2-windows-subsystem-for-linux-and-webdriver">
-  
-  
-    <a href="#using-wsl2-windows-subsystem-for-linux-and-webdriver" class="anchor-heading" aria-labelledby="using-wsl2-windows-subsystem-for-linux-and-webdriver"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using WSL2 (Windows Subsystem for Linux) and WebDriver
-  
-  
-</h2>
-    
-<h3 id="install-google-chrome-version-114">
-  
-  
-    <a href="#install-google-chrome-version-114" class="anchor-heading" aria-labelledby="install-google-chrome-version-114"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install Google Chrome version 114
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd $HOME
-wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.198-1_amd64.deb &amp;&amp; sudo apt install -y /tmp/chrome.deb &amp;&amp; rm /tmp/chrome.deb
-</code></pre></div></div>
-<h3 id="install-chromedriver">
-  
-  
-    <a href="#install-chromedriver" class="anchor-heading" aria-labelledby="install-chromedriver"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install ChromeDriver
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chrome_driver="114.0.5735.90"
-curl -Lo chromedriver_linux64.zip "https://chromedriver.storage.googleapis.com/${chrome_driver}/chromedriver_linux64.zip"
-</code></pre></div></div>
-<h3 id="unzip-and-make-chromedriver-executable">
-  
-  
-    <a href="#unzip-and-make-chromedriver-executable" class="anchor-heading" aria-labelledby="unzip-and-make-chromedriver-executable"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Unzip and make ChromeDriver executable
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p "chromedriver/stable" &amp;&amp; \
-unzip -q "chromedriver_linux64.zip" -d "chromedriver/stable" &amp;&amp; \
-chmod +x "chromedriver/stable/chromedriver"
-</code></pre></div></div>
-<h3 id="move-the-chromedriver-executable-to-the-wsl2-path">
-  
-  
-    <a href="#move-the-chromedriver-executable-to-the-wsl2-path" class="anchor-heading" aria-labelledby="move-the-chromedriver-executable-to-the-wsl2-path"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Move the ChromeDriver executable to the WSL2 path
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo cp ~/chromedriver/stable/chromedriver /usr/bin/
-</code></pre></div></div>
           
 
           

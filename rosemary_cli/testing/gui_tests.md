@@ -152,34 +152,3 @@ pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py
 ```
 
 Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation.
-
-
-## Using WSL2 (Windows Subsystem for Linux) and WebDriver
-
-### Install Google Chrome version 114
-
-```
-cd $HOME
-wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_114.0.5735.198-1_amd64.deb && sudo apt install -y /tmp/chrome.deb && rm /tmp/chrome.deb
-```
-
-### Install ChromeDriver
-
-```
-chrome_driver="114.0.5735.90"
-curl -Lo chromedriver_linux64.zip "https://chromedriver.storage.googleapis.com/${chrome_driver}/chromedriver_linux64.zip"
-```
-
-### Unzip and make ChromeDriver executable
-
-```
-mkdir -p "chromedriver/stable" && \
-unzip -q "chromedriver_linux64.zip" -d "chromedriver/stable" && \
-chmod +x "chromedriver/stable/chromedriver"
-```
-
-### Move the ChromeDriver executable to the WSL2 path
-
-```
-sudo cp ~/chromedriver/stable/chromedriver /usr/bin/
-```
