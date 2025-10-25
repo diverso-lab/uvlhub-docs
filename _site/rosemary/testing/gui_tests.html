@@ -303,22 +303,25 @@
 
 <ol id="markdown-toc">
   <li><a href="#introduction-to-selenium" id="markdown-toc-introduction-to-selenium">Introduction to Selenium</a></li>
-  <li><a href="#interface-testing-in-local-environment" id="markdown-toc-interface-testing-in-local-environment">Interface testing in local environment</a></li>
-  <li><a href="#interface-testing-in-docker-and-vagrant-environment" id="markdown-toc-interface-testing-in-docker-and-vagrant-environment">Interface testing in Docker and Vagrant environment</a>    <ol>
-      <li><a href="#activate-the-virtual-environment" id="markdown-toc-activate-the-virtual-environment">Activate the virtual environment</a></li>
-      <li><a href="#install-dependencies" id="markdown-toc-install-dependencies">Install dependencies</a></li>
-      <li><a href="#run-test" id="markdown-toc-run-test">Run test</a></li>
+  <li><a href="#interface-testing-with-rosemary" id="markdown-toc-interface-testing-with-rosemary">Interface testing with Rosemary</a></li>
+  <li><a href="#local-environment" id="markdown-toc-local-environment">Local environment</a></li>
+  <li><a href="#docker-environment-selenium-grid" id="markdown-toc-docker-environment-selenium-grid">Docker environment (Selenium Grid)</a>    <ol>
+      <li><a href="#viewing-the-browser-in-docker-vnc" id="markdown-toc-viewing-the-browser-in-docker-vnc">Viewing the browser in Docker (VNC)</a></li>
+      <li><a href="#connect-via-vnc" id="markdown-toc-connect-via-vnc">Connect via VNC</a>        <ol>
+          <li><a href="#examples" id="markdown-toc-examples">Examples</a></li>
+        </ol>
+      </li>
     </ol>
   </li>
+  <li><a href="#vagrant-environment" id="markdown-toc-vagrant-environment">Vagrant environment</a></li>
   <li><a href="#selenium-ide" id="markdown-toc-selenium-ide">Selenium IDE</a>    <ol>
       <li><a href="#installation" id="markdown-toc-installation">Installation</a></li>
       <li><a href="#recording-a-test" id="markdown-toc-recording-a-test">Recording a test</a></li>
-      <li><a href="#playback-the-recorded-test" id="markdown-toc-playback-the-recorded-test">Playback the recorded test</a></li>
-      <li><a href="#exporting-the-test-script" id="markdown-toc-exporting-the-test-script">Exporting the test script</a></li>
-      <li><a href="#using-the-test-in-the-project" id="markdown-toc-using-the-test-in-the-project">Using the test in the project</a></li>
+      <li><a href="#exporting-to-python" id="markdown-toc-exporting-to-python">Exporting to Python</a></li>
     </ol>
   </li>
-</ol>
+  <li><a href="#summary" id="markdown-toc-summary">Summary</a></li>
+</ol><hr />
 <h2 id="introduction-to-selenium">
   
   
@@ -328,91 +331,225 @@
 </h2>
     
 
-<p>Selenium is a suite of web browser automation tools. It provides an easy-to-use interface for interacting with browsers such as Chrome, Firefox and Safari, enabling automated testing, data scraping and other repetitive tasks in web applications.</p>
+<p>Selenium is a suite of web browser automation tools.<br />
+It provides an easy-to-use interface for interacting with browsers such as Chrome and Firefox, enabling automated testing, data scraping, and other repetitive tasks in web applications.</p>
 
 <blockquote class="warning-title">
   <p><i class="fa-solid fa-triangle-exclamation"></i> VERY IMPORTANT!</p>
 
   <p>The application must be started before running Selenium tests.</p>
-</blockquote>
-<h2 id="interface-testing-in-local-environment">
+</blockquote><hr />
+<h2 id="interface-testing-with-rosemary">
   
   
-    <a href="#interface-testing-in-local-environment" class="anchor-heading" aria-labelledby="interface-testing-in-local-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interface testing in local environment
+    <a href="#interface-testing-with-rosemary" class="anchor-heading" aria-labelledby="interface-testing-with-rosemary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interface testing with Rosemary
+  
+  
+</h2>
+    
+
+<p>Rosemary provides a unified command for running Selenium tests both <strong>locally</strong> and <strong>inside Docker</strong> (using Selenium Grid).</p>
+
+<p>To execute <strong>all</strong> interface tests:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium
+</code></pre></div></div>
+
+<p>To run a specific module’s test:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium &lt;module_name&gt;
+</code></pre></div></div>
+
+<p>You can choose the browser driver (default is firefox):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium &lt;module_name&gt; <span class="nt">--driver</span> firefox
+</code></pre></div></div>
+<h2 id="local-environment">
+  
+  
+    <a href="#local-environment" class="anchor-heading" aria-labelledby="local-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Local environment
   
   
 </h2>
     
 
-<p>To perform all interface tests in local environment, use:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium
-</code></pre></div></div>
-
-<p>You can run an interface test of a specific module:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium &lt;module_name&gt;
-</code></pre></div></div>
-<h2 id="interface-testing-in-docker-and-vagrant-environment">
-  
-  
-    <a href="#interface-testing-in-docker-and-vagrant-environment" class="anchor-heading" aria-labelledby="interface-testing-in-docker-and-vagrant-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interface testing in Docker and Vagrant environment
-  
-  
-</h2>
-    
+<p>If you run Rosemary outside Docker, Selenium will use your local browser drivers (geckodriver or chromedriver).</p>
 
 <blockquote class="note-title">
-  <p><i class="fa-solid fa-terminal"></i> Rosemary CLI not available</p>
+  <p><i class="fa-solid fa-circle-info"></i> <strong>Note for Ubuntu users</strong></p>
 
-  <p>Currently it is not possible to use Rosemary CLI to run Selenium in Docker and/or Vagrant environment. This is a feature that will be added in the future.</p>
+  <p>If you are using <strong>Ubuntu 22.04 or newer</strong>, you <strong>don’t need to install anything</strong> — both <strong>Firefox</strong> and <strong>GeckoDriver</strong> come preinstalled and ready for Selenium.</p>
 </blockquote>
+
+<p>Make sure they are installed:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>firefox geckodriver
+<span class="c"># or</span>
+<span class="nb">sudo </span>apt <span class="nb">install </span>google-chrome-stable chromedriver
+</code></pre></div></div>
+
+<p>Then simply run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium auth <span class="nt">--driver</span> firefox
+</code></pre></div></div>
+
+<p>Your local browser window will open and execute the test automatically.</p>
+<h2 id="docker-environment-selenium-grid">
+  
+  
+    <a href="#docker-environment-selenium-grid" class="anchor-heading" aria-labelledby="docker-environment-selenium-grid"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Docker environment (Selenium Grid)
+  
+  
+</h2>
+    
+
+<p>When executed inside Docker (<code class="language-plaintext highlighter-rouge">WORKING_DIR=/app/</code>), Rosemary connects automatically to a Selenium Grid defined in <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>, using these services:</p>
+
+<ul>
+  <li>selenium-hub</li>
+  <li>selenium-chrome</li>
+  <li>selenium-firefox</li>
+</ul>
+
+<p>Launching the grid:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up <span class="nt">-d</span> selenium-hub selenium-chrome selenium-firefox
+</code></pre></div></div>
+
+<p>Check that it’s running:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://localhost:4444/status | jq <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>You should see:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "value": { "ready": true, "message": "Selenium Grid ready." }
+}
+</code></pre></div></div>
+
+<p>Then run the test inside <code class="language-plaintext highlighter-rouge">web_app_container</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary selenium auth <span class="nt">--driver</span> chrome
+</code></pre></div></div>
+
+<p>The test will execute inside the Chrome or Firefox container automatically.</p>
+<h3 id="viewing-the-browser-in-docker-vnc">
+  
+  
+    <a href="#viewing-the-browser-in-docker-vnc" class="anchor-heading" aria-labelledby="viewing-the-browser-in-docker-vnc"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Viewing the browser in Docker (VNC)
+  
+  
+</h3>
+    
+
+<p><strong>VNC</strong> (Virtual Network Computing) is a remote-desktop protocol that lets you <strong>see and control</strong> a graphical session running on another machine (or container) over the network.</p>
+
+<p>In our setup, each Selenium browser node (Chrome/Firefox) runs its own virtual display <strong>inside Docker</strong> and exposes it via VNC, so you can <strong>watch the test in real time</strong> even though the browser window isn’t on your host desktop.</p>
+<h3 id="connect-via-vnc">
+  
+  
+    <a href="#connect-via-vnc" class="anchor-heading" aria-labelledby="connect-via-vnc"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Connect via VNC
+  
+  
+</h3>
+    
+
+<p>You can connect to the running browsers using any <strong>VNC viewer</strong>.<br />
+Each Selenium node exposes its own VNC port so you can watch the test sessions live.</p>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th><strong>Browser</strong></th>
+      <th><strong>VNC URL</strong></th>
+      <th><strong>Default password</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Chrome</td>
+      <td><code class="language-plaintext highlighter-rouge">vnc://localhost:5900</code></td>
+      <td>none (<code class="language-plaintext highlighter-rouge">VNC_NO_PASSWORD=1</code>)</td>
+    </tr>
+    <tr>
+      <td>Firefox</td>
+      <td><code class="language-plaintext highlighter-rouge">vnc://localhost:5901</code></td>
+      <td>none</td>
+    </tr>
+  </tbody>
+</table></div>
+<h4 id="examples">
+  
+  
+    <a href="#examples" class="anchor-heading" aria-labelledby="examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Examples
+  
+  
+</h4>
+    
+
+<p><strong>macOS</strong></p>
+
+<ol>
+  <li>Open <strong>Finder</strong> → <strong>Go</strong> → <strong>Connect to Server</strong>.</li>
+  <li>Enter the address <code class="language-plaintext highlighter-rouge">vnc://localhost:5900</code> (or <code class="language-plaintext highlighter-rouge">vnc://localhost:5901</code> for Firefox).</li>
+  <li>Click <strong>Connect</strong> and you’ll see the browser window executing the test inside the container.</li>
+</ol>
+
+<p><strong>Linux</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>remmina
+remmina
+</code></pre></div></div>
+
+<p>This will open the <strong>Remmina Remote Desktop Client</strong> interface.<br />
+In the connection window:</p>
+
+<ol>
+  <li>Click <strong>+</strong> to create a new connection.</li>
+  <li>Set <strong>Protocol</strong> → <code class="language-plaintext highlighter-rouge">VNC - Virtual Network Computing</code>.</li>
+  <li>Enter the server address:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">localhost:5900</code> → Chrome</li>
+      <li><code class="language-plaintext highlighter-rouge">localhost:5901</code> → Firefox</li>
+    </ul>
+  </li>
+  <li>Leave the password field empty (since <code class="language-plaintext highlighter-rouge">VNC_NO_PASSWORD=1</code>).</li>
+  <li>Click <strong>Connect</strong>.</li>
+</ol>
+
+<p>You’ll then see a remote desktop window displaying the virtual browser inside the Docker container as Selenium runs the test.</p>
+
+<p><strong>Windows</strong></p>
+
+<ol>
+  <li>Download and install <a href="https://www.realvnc.com/en/connect/download/viewer/">RealVNC Viewer</a>.</li>
+  <li>Open RealVNC Viewer and enter one of the following addresses:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">localhost:5900</code> → Chrome</li>
+      <li><code class="language-plaintext highlighter-rouge">localhost:5901</code> → Firefox</li>
+    </ul>
+  </li>
+  <li>Click <strong>Connect</strong>.</li>
+  <li>The remote desktop window will open, showing the live browser session running inside the Docker container as Selenium performs each step of the test.</li>
+</ol>
+<h2 id="vagrant-environment">
+  
+  
+    <a href="#vagrant-environment" class="anchor-heading" aria-labelledby="vagrant-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Vagrant environment
+  
+  
+</h2>
+    
 
 <blockquote class="important">
+  <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>Note on Vagrant environment</strong></p>
 
-  <p>You have to do this in the local environment.</p>
+  <p>The <code class="language-plaintext highlighter-rouge">rosemary selenium</code> command is <strong>not yet available in Vagrant environments</strong>.<br />
+GUI testing with Selenium is currently supported <strong>only in local</strong> and <strong>Docker</strong> environments.</p>
+
+  <p>Future versions of Rosemary will include native Vagrant integration for Selenium testing.</p>
 </blockquote>
-<h3 id="activate-the-virtual-environment">
-  
-  
-    <a href="#activate-the-virtual-environment" class="anchor-heading" aria-labelledby="activate-the-virtual-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Activate the virtual environment
-  
-  
-</h3>
-    
-
-<p>It is recommended to use the virtual environment.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3.12 -m venv venv
-source venv/bin/activate
-</code></pre></div></div>
-<h3 id="install-dependencies">
-  
-  
-    <a href="#install-dependencies" class="anchor-heading" aria-labelledby="install-dependencies"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Install dependencies
-  
-  
-</h3>
-    
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install -r requirements.txt
-pip install -e ./
-</code></pre></div></div>
-<h3 id="run-test">
-  
-  
-    <a href="#run-test" class="anchor-heading" aria-labelledby="run-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run test
-  
-  
-</h3>
-    
-
-<p>To run the interface test of a module in this environment, run:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python app/modules/&lt;module_name&gt;/tests/test_selenium.py 
-</code></pre></div></div>
-
-<p>Remember to replace <code class="language-plaintext highlighter-rouge">&lt;module_name&gt;</code> with the name of the module you want to test.</p><hr />
 <h2 id="selenium-ide">
   
   
@@ -422,7 +559,9 @@ pip install -e ./
 </h2>
     
 
-<p>Selenium IDE (Integrated Development Environment) is a tool for recording, editing, and debugging web application tests. It is a browser extension available for both Chrome and Firefox that allows users to create test cases quickly without any programming knowledge. Selenium IDE is particularly useful for creating simple and quick tests, making it an excellent choice for beginners.</p>
+<p><strong>Selenium IDE</strong> (Integrated Development Environment) is a browser extension for Chrome and Firefox that allows you to <strong>record, edit, and debug</strong> web application tests without writing code.</p>
+
+<p>It’s ideal for quickly generating interface tests that can later be exported to Python and integrated into your project.</p>
 <h3 id="installation">
   
   
@@ -432,10 +571,12 @@ pip install -e ./
 </h3>
     
 
-<ol>
-  <li><strong>Chrome</strong>: Install the Selenium IDE extension from the <a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd">Chrome Web Store</a>.</li>
-  <li><strong>Firefox</strong>: Install the Selenium IDE extension from the <a href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/">Firefox Add-ons</a>.</li>
-</ol>
+<ul>
+  <li><strong>Chrome</strong>: Install the extension from the <a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd">Chrome Web Store</a>.</li>
+  <li><strong>Firefox</strong>: Install the extension from the <a href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/">Firefox Add-ons</a>.</li>
+</ul>
+
+<p>Once installed, you’ll see the Selenium IDE icon in your browser’s toolbar.</p>
 <h3 id="recording-a-test">
   
   
@@ -446,111 +587,90 @@ pip install -e ./
     
 
 <ol>
-  <li>
-    <p><strong>Open Selenium IDE</strong>: After installation, click on the Selenium IDE icon in the browser toolbar to open it.</p>
-  </li>
-  <li><strong>Create a new project</strong>:
+  <li><strong>Open Selenium IDE</strong> from your browser toolbar.</li>
+  <li><strong>Create a new project</strong> and specify the base URL — for example:
     <ul>
-      <li>Click on <code class="language-plaintext highlighter-rouge">Create a new project</code>.</li>
-      <li>Name your project and click <code class="language-plaintext highlighter-rouge">OK</code>.</li>
+      <li><code class="language-plaintext highlighter-rouge">http://localhost</code> if running locally</li>
+      <li><code class="language-plaintext highlighter-rouge">http://web:5000</code> if running inside Docker</li>
     </ul>
   </li>
-  <li><strong>Start recording</strong>:
-    <ul>
-      <li>Click on the <code class="language-plaintext highlighter-rouge">Record a new test in a new project</code> button.</li>
-      <li>Enter the base URL of your application, e.g., <code class="language-plaintext highlighter-rouge">http://localhost</code>, and click <code class="language-plaintext highlighter-rouge">Start Recording</code>.</li>
-    </ul>
-  </li>
-  <li><strong>Navigate to the desired page</strong>:
-    <ul>
-      <li>In the browser, go to the page you want to test.</li>
-      <li>Selenium IDE will record your navigation to this page.</li>
-    </ul>
-  </li>
-  <li><strong>Perform actions</strong>:
-    <ul>
-      <li>Perform the actions you want to test. Selenium IDE will record each of these actions.</li>
-    </ul>
-  </li>
-  <li><strong>Stop recording</strong>:
-    <ul>
-      <li>Once you have performed all the necessary actions, click on the <code class="language-plaintext highlighter-rouge">Stop recording</code> button in Selenium IDE.</li>
-    </ul>
-  </li>
-  <li><strong>Save the test</strong>:
-    <ul>
-      <li>Name your test case and save it.</li>
-    </ul>
-  </li>
+  <li><strong>Start recording</strong> your interactions with the application (clicks, inputs, navigations, etc.).</li>
+  <li><strong>Stop</strong> the recording once you’ve finished.</li>
+  <li><strong>Save</strong> your test case to reuse or export later.</li>
 </ol>
-<h3 id="playback-the-recorded-test">
+<h3 id="exporting-to-python">
   
   
-    <a href="#playback-the-recorded-test" class="anchor-heading" aria-labelledby="playback-the-recorded-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Playback the recorded test
+    <a href="#exporting-to-python" class="anchor-heading" aria-labelledby="exporting-to-python"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exporting to Python
   
   
 </h3>
     
 
-<ol>
-  <li>
-    <p><strong>Select the test case</strong>: In Selenium IDE, select the test case you want to playback.</p>
-  </li>
-  <li>
-    <p><strong>Run the Test</strong>: Click on the <code class="language-plaintext highlighter-rouge">Run current test</code> button. Selenium IDE will execute the recorded actions.</p>
-  </li>
-</ol>
-<h3 id="exporting-the-test-script">
-  
-  
-    <a href="#exporting-the-test-script" class="anchor-heading" aria-labelledby="exporting-the-test-script"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Exporting the test script
-  
-  
-</h3>
-    
+<p>You can export your recorded tests to <strong>Python pytest</strong> format and include them in your project under:</p>
 
-<p>If you want to export the test script for use with Selenium WebDriver, follow these steps:</p>
-
-<ul>
-  <li>Click on the <code class="language-plaintext highlighter-rouge">Export</code> button.</li>
-  <li>Choose <code class="language-plaintext highlighter-rouge">Python pytest</code> and location to save the file in <code class="language-plaintext highlighter-rouge">app/modules/&lt;module_name&gt;/tests/test_selenium/</code></li>
-</ul>
-<h3 id="using-the-test-in-the-project">
-  
-  
-    <a href="#using-the-test-in-the-project" class="anchor-heading" aria-labelledby="using-the-test-in-the-project"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using the test in the project
-  
-  
-</h3>
-    
-
-<blockquote class="important">
-
-  <p>You have to do this in the local environment.</p>
-</blockquote>
-
-<ol>
-  <li><strong>Adjust the generated test</strong></li>
-</ol>
-
-<p>Remember to adjust the generated test to the project.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  def setup_method(self, method):
-    self.driver = initialize_driver()
-    self.vars = {}
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="o">/</span><span class="n">modules</span><span class="o">/&lt;</span><span class="n">module_name</span><span class="o">&gt;/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_selenium</span><span class="o">/</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>self.driver.get(get_host_for_selenium_testing())
-</code></pre></div></div>
+<p>Then, adjust the generated code to match your project’s driver initialization:</p>
 
-<ol>
-  <li><strong>Run the test with pytest</strong>.</li>
-</ol>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">setup_method</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">driver</span> <span class="o">=</span> <span class="nf">initialize_driver</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="nb">vars</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">self</span><span class="p">.</span><span class="n">driver</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nf">get_host_for_selenium_testing</span><span class="p">())</span>
+</code></pre></div></div>
+<p>Finally, run the test with:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py
-</code></pre></div></div>
+</code></pre></div></div><hr />
+<h2 id="summary">
+  
+  
+    <a href="#summary" class="anchor-heading" aria-labelledby="summary"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Summary
+  
+  
+</h2>
+    
 
-<p>Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation.</p>
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th><strong>Environment</strong></th>
+      <th><strong>How to run</strong></th>
+      <th><strong>Browser</strong></th>
+      <th><strong>Notes</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Local</td>
+      <td><code class="language-plaintext highlighter-rouge">rosemary selenium auth --driver chrome</code></td>
+      <td>Chrome / Firefox (on host)</td>
+      <td>Opens the real browser window</td>
+    </tr>
+    <tr>
+      <td>Docker (Grid)</td>
+      <td><code class="language-plaintext highlighter-rouge">rosemary selenium auth --driver firefox</code></td>
+      <td>Chrome / Firefox (in containers)</td>
+      <td>Runs inside Selenium Grid</td>
+    </tr>
+    <tr>
+      <td>VNC view</td>
+      <td><code class="language-plaintext highlighter-rouge">vnc://localhost:5900</code> / <code class="language-plaintext highlighter-rouge">vnc://localhost:5901</code></td>
+      <td>Remote viewer</td>
+      <td>Watch tests live</td>
+    </tr>
+    <tr>
+      <td>Selenium IDE</td>
+      <td>Export to Python pytest</td>
+      <td>Chrome / Firefox</td>
+      <td>Record, edit and run tests visually</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+
+<p>With Selenium Grid integrated into Docker, you can now run, visualize, and debug GUI tests entirely within containers — or locally when needed — using the same <code class="language-plaintext highlighter-rouge">rosemary selenium</code> command.</p>
           
 
           

@@ -505,1012 +505,1033 @@
   },"72": {
     "doc": "GUI tests",
     "title": "Table of contents",
-    "content": ". | Introduction to Selenium | Interface testing in local environment | Interface testing in Docker and Vagrant environment . | Activate the virtual environment | Install dependencies | Run test | . | Selenium IDE . | Installation | Recording a test | Playback the recorded test | Exporting the test script | Using the test in the project | . | . ",
+    "content": ". | Introduction to Selenium | Interface testing with Rosemary | Local environment | Docker environment (Selenium Grid) . | Viewing the browser in Docker (VNC) | Connect via VNC . | Examples | . | . | Vagrant environment | Selenium IDE . | Installation | Recording a test | Exporting to Python | . | Summary | . ",
     "url": "/rosemary/testing/gui_tests#table-of-contents",
     
     "relUrl": "/rosemary/testing/gui_tests#table-of-contents"
   },"73": {
     "doc": "GUI tests",
     "title": "Introduction to Selenium",
-    "content": "Selenium is a suite of web browser automation tools. It provides an easy-to-use interface for interacting with browsers such as Chrome, Firefox and Safari, enabling automated testing, data scraping and other repetitive tasks in web applications. VERY IMPORTANT! . The application must be started before running Selenium tests. ",
+    "content": "Selenium is a suite of web browser automation tools. It provides an easy-to-use interface for interacting with browsers such as Chrome and Firefox, enabling automated testing, data scraping, and other repetitive tasks in web applications. VERY IMPORTANT! . The application must be started before running Selenium tests. ",
     "url": "/rosemary/testing/gui_tests#introduction-to-selenium",
     
     "relUrl": "/rosemary/testing/gui_tests#introduction-to-selenium"
   },"74": {
     "doc": "GUI tests",
-    "title": "Interface testing in local environment",
-    "content": "To perform all interface tests in local environment, use: . rosemary selenium . You can run an interface test of a specific module: . rosemary selenium &lt;module_name&gt; . ",
-    "url": "/rosemary/testing/gui_tests#interface-testing-in-local-environment",
+    "title": "Interface testing with Rosemary",
+    "content": "Rosemary provides a unified command for running Selenium tests both locally and inside Docker (using Selenium Grid). To execute all interface tests: . rosemary selenium . To run a specific module’s test: . rosemary selenium &lt;module_name&gt; . You can choose the browser driver (default is firefox): . rosemary selenium &lt;module_name&gt; --driver firefox . ",
+    "url": "/rosemary/testing/gui_tests#interface-testing-with-rosemary",
     
-    "relUrl": "/rosemary/testing/gui_tests#interface-testing-in-local-environment"
+    "relUrl": "/rosemary/testing/gui_tests#interface-testing-with-rosemary"
   },"75": {
     "doc": "GUI tests",
-    "title": "Interface testing in Docker and Vagrant environment",
-    "content": "Rosemary CLI not available . Currently it is not possible to use Rosemary CLI to run Selenium in Docker and/or Vagrant environment. This is a feature that will be added in the future. You have to do this in the local environment. Activate the virtual environment . It is recommended to use the virtual environment. python3.12 -m venv venv source venv/bin/activate . Install dependencies . pip install -r requirements.txt pip install -e ./ . Run test . To run the interface test of a module in this environment, run: . python app/modules/&lt;module_name&gt;/tests/test_selenium.py . Remember to replace &lt;module_name&gt; with the name of the module you want to test. ",
-    "url": "/rosemary/testing/gui_tests#interface-testing-in-docker-and-vagrant-environment",
+    "title": "Local environment",
+    "content": "If you run Rosemary outside Docker, Selenium will use your local browser drivers (geckodriver or chromedriver). Note for Ubuntu users . If you are using Ubuntu 22.04 or newer, you don’t need to install anything — both Firefox and GeckoDriver come preinstalled and ready for Selenium. Make sure they are installed: . sudo apt install firefox geckodriver # or sudo apt install google-chrome-stable chromedriver . Then simply run: . rosemary selenium auth --driver firefox . Your local browser window will open and execute the test automatically. ",
+    "url": "/rosemary/testing/gui_tests#local-environment",
     
-    "relUrl": "/rosemary/testing/gui_tests#interface-testing-in-docker-and-vagrant-environment"
+    "relUrl": "/rosemary/testing/gui_tests#local-environment"
   },"76": {
     "doc": "GUI tests",
+    "title": "Docker environment (Selenium Grid)",
+    "content": "When executed inside Docker (WORKING_DIR=/app/), Rosemary connects automatically to a Selenium Grid defined in docker-compose.yml, using these services: . | selenium-hub | selenium-chrome | selenium-firefox | . Launching the grid: . docker compose up -d selenium-hub selenium-chrome selenium-firefox . Check that it’s running: . curl http://localhost:4444/status | jq . You should see: . { \"value\": { \"ready\": true, \"message\": \"Selenium Grid ready.\" } } . Then run the test inside web_app_container: . rosemary selenium auth --driver chrome . The test will execute inside the Chrome or Firefox container automatically. Viewing the browser in Docker (VNC) . VNC (Virtual Network Computing) is a remote-desktop protocol that lets you see and control a graphical session running on another machine (or container) over the network. In our setup, each Selenium browser node (Chrome/Firefox) runs its own virtual display inside Docker and exposes it via VNC, so you can watch the test in real time even though the browser window isn’t on your host desktop. Connect via VNC . You can connect to the running browsers using any VNC viewer. Each Selenium node exposes its own VNC port so you can watch the test sessions live. | Browser | VNC URL | Default password | . | Chrome | vnc://localhost:5900 | none (VNC_NO_PASSWORD=1) | . | Firefox | vnc://localhost:5901 | none | . Examples . macOS . | Open Finder → Go → Connect to Server. | Enter the address vnc://localhost:5900 (or vnc://localhost:5901 for Firefox). | Click Connect and you’ll see the browser window executing the test inside the container. | . Linux . sudo apt install remmina remmina . This will open the Remmina Remote Desktop Client interface. In the connection window: . | Click + to create a new connection. | Set Protocol → VNC - Virtual Network Computing. | Enter the server address: . | localhost:5900 → Chrome | localhost:5901 → Firefox | . | Leave the password field empty (since VNC_NO_PASSWORD=1). | Click Connect. | . You’ll then see a remote desktop window displaying the virtual browser inside the Docker container as Selenium runs the test. Windows . | Download and install RealVNC Viewer. | Open RealVNC Viewer and enter one of the following addresses: . | localhost:5900 → Chrome | localhost:5901 → Firefox | . | Click Connect. | The remote desktop window will open, showing the live browser session running inside the Docker container as Selenium performs each step of the test. | . ",
+    "url": "/rosemary/testing/gui_tests#docker-environment-selenium-grid",
+    
+    "relUrl": "/rosemary/testing/gui_tests#docker-environment-selenium-grid"
+  },"77": {
+    "doc": "GUI tests",
+    "title": "Vagrant environment",
+    "content": "Note on Vagrant environment . The rosemary selenium command is not yet available in Vagrant environments. GUI testing with Selenium is currently supported only in local and Docker environments. Future versions of Rosemary will include native Vagrant integration for Selenium testing. ",
+    "url": "/rosemary/testing/gui_tests#vagrant-environment",
+    
+    "relUrl": "/rosemary/testing/gui_tests#vagrant-environment"
+  },"78": {
+    "doc": "GUI tests",
     "title": "Selenium IDE",
-    "content": "Selenium IDE (Integrated Development Environment) is a tool for recording, editing, and debugging web application tests. It is a browser extension available for both Chrome and Firefox that allows users to create test cases quickly without any programming knowledge. Selenium IDE is particularly useful for creating simple and quick tests, making it an excellent choice for beginners. Installation . | Chrome: Install the Selenium IDE extension from the Chrome Web Store. | Firefox: Install the Selenium IDE extension from the Firefox Add-ons. | . Recording a test . | Open Selenium IDE: After installation, click on the Selenium IDE icon in the browser toolbar to open it. | Create a new project: . | Click on Create a new project. | Name your project and click OK. | . | Start recording: . | Click on the Record a new test in a new project button. | Enter the base URL of your application, e.g., http://localhost, and click Start Recording. | . | Navigate to the desired page: . | In the browser, go to the page you want to test. | Selenium IDE will record your navigation to this page. | . | Perform actions: . | Perform the actions you want to test. Selenium IDE will record each of these actions. | . | Stop recording: . | Once you have performed all the necessary actions, click on the Stop recording button in Selenium IDE. | . | Save the test: . | Name your test case and save it. | . | . Playback the recorded test . | Select the test case: In Selenium IDE, select the test case you want to playback. | Run the Test: Click on the Run current test button. Selenium IDE will execute the recorded actions. | . Exporting the test script . If you want to export the test script for use with Selenium WebDriver, follow these steps: . | Click on the Export button. | Choose Python pytest and location to save the file in app/modules/&lt;module_name&gt;/tests/test_selenium/ | . Using the test in the project . You have to do this in the local environment. | Adjust the generated test | . Remember to adjust the generated test to the project. def setup_method(self, method): self.driver = initialize_driver() self.vars = {} . self.driver.get(get_host_for_selenium_testing()) . | Run the test with pytest. | . pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py . Selenium IDE makes it easy to create, edit, and run automated tests for web applications, providing a great starting point for anyone new to test automation. ",
+    "content": "Selenium IDE (Integrated Development Environment) is a browser extension for Chrome and Firefox that allows you to record, edit, and debug web application tests without writing code. It’s ideal for quickly generating interface tests that can later be exported to Python and integrated into your project. Installation . | Chrome: Install the extension from the Chrome Web Store. | Firefox: Install the extension from the Firefox Add-ons. | . Once installed, you’ll see the Selenium IDE icon in your browser’s toolbar. Recording a test . | Open Selenium IDE from your browser toolbar. | Create a new project and specify the base URL — for example: . | http://localhost if running locally | http://web:5000 if running inside Docker | . | Start recording your interactions with the application (clicks, inputs, navigations, etc.). | Stop the recording once you’ve finished. | Save your test case to reuse or export later. | . Exporting to Python . You can export your recorded tests to Python pytest format and include them in your project under: . app/modules/&lt;module_name&gt;/tests/test_selenium/ . Then, adjust the generated code to match your project’s driver initialization: . def setup_method(self, method): self.driver = initialize_driver() self.vars = {} self.driver.get(get_host_for_selenium_testing()) . Finally, run the test with: . pytest --noconftest app/modules/auth/tests/test_selenium_ide/test_signup.py . ",
     "url": "/rosemary/testing/gui_tests#selenium-ide",
     
     "relUrl": "/rosemary/testing/gui_tests#selenium-ide"
-  },"77": {
+  },"79": {
+    "doc": "GUI tests",
+    "title": "Summary",
+    "content": "| Environment | How to run | Browser | Notes | . | Local | rosemary selenium auth --driver chrome | Chrome / Firefox (on host) | Opens the real browser window | . | Docker (Grid) | rosemary selenium auth --driver firefox | Chrome / Firefox (in containers) | Runs inside Selenium Grid | . | VNC view | vnc://localhost:5900 / vnc://localhost:5901 | Remote viewer | Watch tests live | . | Selenium IDE | Export to Python pytest | Chrome / Firefox | Record, edit and run tests visually | . With Selenium Grid integrated into Docker, you can now run, visualize, and debug GUI tests entirely within containers — or locally when needed — using the same rosemary selenium command. ",
+    "url": "/rosemary/testing/gui_tests#summary",
+    
+    "relUrl": "/rosemary/testing/gui_tests#summary"
+  },"80": {
     "doc": "HTTP Request",
     "title": "HTTP Request",
     "content": " ",
     "url": "/architecture/http_request",
     
     "relUrl": "/architecture/http_request"
-  },"78": {
+  },"81": {
     "doc": "HTTP Request",
     "title": "Table of contents",
     "content": ". | Internet | Server | Model-View-Controller (MVC) | Interaction and Data Flow | Database | . Figure 1: HTTP Request. The Figure 1 shows an HTTP request in uvlhub using the Flask framework, organizing the code in a Model-View-Controller (MVC) pattern. ",
     "url": "/architecture/http_request#table-of-contents",
     
     "relUrl": "/architecture/http_request#table-of-contents"
-  },"79": {
+  },"82": {
     "doc": "HTTP Request",
     "title": "Internet",
     "content": "The application is accessible through the internet. ",
     "url": "/architecture/http_request#internet",
     
     "relUrl": "/architecture/http_request#internet"
-  },"80": {
+  },"83": {
     "doc": "HTTP Request",
     "title": "Server",
     "content": "A Flask server handles web requests and responses. ",
     "url": "/architecture/http_request#server",
     
     "relUrl": "/architecture/http_request#server"
-  },"81": {
+  },"84": {
     "doc": "HTTP Request",
     "title": "Model-View-Controller (MVC)",
     "content": "Each module in uvlhub has a series of folders and files to handle HTTP requests separating responsibility as indicated: . | Model. Represents the data and business logic of the application. | models.py: Defines the data structures and database interactions. | repositories.py: Implements functions to access and manipulate the data stored in the models. | forms.py: Defines forms and data validations that users can submit. | . | View. Represents the user interface. | templates: Contains the Jinja templates to generate the user interface. | . | Controller. Handles the application logic and the communication between the model and the view. | routes.py: Defines the application routes, handling HTTP requests and determining which view should be rendered. | services.py: Implements the business logic and operations that belong neither to the model nor to the view. | . | . ",
     "url": "/architecture/http_request#model-view-controller-mvc",
     
     "relUrl": "/architecture/http_request#model-view-controller-mvc"
-  },"82": {
+  },"85": {
     "doc": "HTTP Request",
     "title": "Interaction and Data Flow",
     "content": ". | Requests come to the Flask server from the Internet. | The server redirects these requests to routes.py. | routes.py can call services.py to perform business operations. | services.py interacts with repositories.py to access data from models.py and the database. | forms.py and templates are used to handle user input and generate the visual response that is sent back to the user through the Flask server. | . ",
     "url": "/architecture/http_request#interaction-and-data-flow",
     
     "relUrl": "/architecture/http_request#interaction-and-data-flow"
-  },"83": {
+  },"86": {
     "doc": "HTTP Request",
     "title": "Database",
     "content": ". | The database stores the persistent information of the application. | models.py defines how this information is structured and accessed. | . This architecture facilitates the separation of concerns, making the code more modular and easier to maintain. Each component has a clear and distinct responsibility, which improves the organization and scalability of the application. ",
     "url": "/architecture/http_request#database",
     
     "relUrl": "/architecture/http_request#database"
-  },"84": {
+  },"87": {
     "doc": "Home",
     "title": "Welcome to uvlhub docs!",
     "content": "Welcome to the official documentation for uvlhub , your comprehensive repository for feature models in UVL format. Integrated seamlessly with Zenodo for robust data storage and flamapy from DiversoLab for advanced model analysis, uvlhub empowers researchers and developers with tools that adhere to Open Science principles. Dive in to explore how uvlhub can streamline your workflow, enhance collaboration, and drive innovation in feature model management. Get started now View it on GitHub . Changelog . Detailed changes for each release are documented in the release notes. ",
     "url": "/#welcome-to-uvlhub-docs",
     
     "relUrl": "/#welcome-to-uvlhub-docs"
-  },"85": {
+  },"88": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "/",
     
     "relUrl": "/"
-  },"86": {
+  },"89": {
     "doc": "Installation",
     "title": "Installation",
     "content": "Understanding how to install uvlhub is an essential skill that will enhance your technical proficiency and broaden your knowledge base. Whether you are setting up a local environment manually, using Docker, or deploying with Vagrant, mastering these installation methods brings several benefits. Hands-On Installation . Learning to install uvlhub manually helps you: . | Gain In-Depth Understanding: By installing uvlhub step-by-step, you get a deep understanding of its underlying components and dependencies. | Troubleshoot Effectively: When you know how each part fits together, you can troubleshoot issues more effectively and keep your environment running smoothly. | Customize Configurations: Manual installation allows you to tailor the setup to meet your specific needs and preferences. | . Using Docker . Installing uvlhub with Docker provides: . | Simplified Setup: Docker encapsulates all dependencies and configurations, simplifying the installation process. | Consistency Across Environments: Docker ensures that your development, testing, and production environments are identical, reducing the “it works on my machine” problem. | Scalability and Portability: Easily scale your applications and move them across different environments without worrying about compatibility issues. | . Deploying with Vagrant . Learning to deploy uvlhub with Vagrant offers: . | Automated Environment Provisioning: Vagrant automates the setup of your virtual environments, saving time and reducing human error. | Reproducibility: Vagrant allows you to create reproducible and portable work environments, ensuring that everyone on your team works in the same environment. | Ease of Use: With Vagrant, you can manage and switch between different project environments effortlessly, making your development workflow more efficient. | . By becoming proficient in these installation methods, you not only enhance your technical skills but also prepare yourself to tackle a wide range of challenges in various development and deployment scenarios. Embrace the opportunity to learn and master these installation techniques to stay ahead in the ever-evolving tech landscape. ",
     "url": "/installation",
     
     "relUrl": "/installation"
-  },"87": {
+  },"90": {
     "doc": "Installation with Docker",
     "title": "Installation with Docker",
     "content": " ",
     "url": "/installation/installation_with_docker",
     
     "relUrl": "/installation/installation_with_docker"
-  },"88": {
+  },"91": {
     "doc": "Installation with Docker",
     "title": "Table of contents",
     "content": ". | Set environment files | Run the containers | See containers in execution | Down the containers | Down the containers (removing also volumes) | Reload configuration | . Required Docker installation . You need to have Docker and Docker Compose installed on the machine where you want to deploy uvlhub . Only for a development environment . This manual is intended for a development environment. For a production environment, visit Deployment. ",
     "url": "/installation/installation_with_docker#table-of-contents",
     
     "relUrl": "/installation/installation_with_docker#table-of-contents"
-  },"89": {
+  },"92": {
     "doc": "Installation with Docker",
     "title": "Set environment files",
     "content": "First, copy the .env.docker.example file to the .env file that will be used to set the environment variables. cp .env.docker.example .env . ",
     "url": "/installation/installation_with_docker#set-environment-files",
     
     "relUrl": "/installation/installation_with_docker#set-environment-files"
-  },"90": {
+  },"93": {
     "doc": "Installation with Docker",
     "title": "Run the containers",
     "content": "To start containers in development mode, use the docker-compose.dev.yml file located in the docker directory. The command will run in the background (-d). docker compose -f docker/docker-compose.dev.yml up -d . ",
     "url": "/installation/installation_with_docker#run-the-containers",
     
     "relUrl": "/installation/installation_with_docker#run-the-containers"
-  },"91": {
+  },"94": {
     "doc": "Installation with Docker",
     "title": "See containers in execution",
     "content": "To verify that the containers are running correctly, use the following command: . docker ps . If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost . ",
     "url": "/installation/installation_with_docker#see-containers-in-execution",
     
     "relUrl": "/installation/installation_with_docker#see-containers-in-execution"
-  },"92": {
+  },"95": {
     "doc": "Installation with Docker",
     "title": "Down the containers",
     "content": "To download (stop) the containers, use the same docker-compose.dev.yml file with the following command: . docker compose -f docker/docker-compose.dev.yml down . ",
     "url": "/installation/installation_with_docker#down-the-containers",
     
     "relUrl": "/installation/installation_with_docker#down-the-containers"
-  },"93": {
+  },"96": {
     "doc": "Installation with Docker",
     "title": "Down the containers (removing also volumes)",
     "content": "The above command removes the containers but not the volumes. This can be problematic in the case of MariaDB, which continues saving the previous configuration and will give problems if we want to load a different configuration. To stop the containers and remove the volumes, we will use the -v flag: . docker compose -f docker/docker-compose.dev.yml down -v . ",
     "url": "/installation/installation_with_docker#down-the-containers-removing-also-volumes",
     
     "relUrl": "/installation/installation_with_docker#down-the-containers-removing-also-volumes"
-  },"94": {
+  },"97": {
     "doc": "Installation with Docker",
     "title": "Reload configuration",
     "content": "If any Dockerfile or docker-compose.*.yml file has been modified, it is necessary to rebuild the images with the --build flag. To do this, execute: . docker compose -f docker/docker-compose.dev.yml up -d --build . ",
     "url": "/installation/installation_with_docker#reload-configuration",
     
     "relUrl": "/installation/installation_with_docker#reload-configuration"
-  },"95": {
+  },"98": {
     "doc": "Installation with Vagrant",
     "title": "Installation with Vagrant",
     "content": " ",
     "url": "/installation/installation_with_vagrant",
     
     "relUrl": "/installation/installation_with_vagrant"
-  },"96": {
+  },"99": {
     "doc": "Installation with Vagrant",
     "title": "Table of contents",
     "content": ". | Set environment files | Working with Vagrant . | Run the VM | Accessing the VM | Provision the VM . | If the VM is off: | If the VM needs a restart: | . | See VM status | Halt the VM | Destroy the VM | . | . Required Vagrant, Ansible and VirtualBox installation . You need to have Vagrant, Ansible and VirtualBox installed on the machine where you want to deploy uvlhub . Only for a development environment . This manual is intended for a development environment. For a production environment, visit Deployment. Be very careful! . Vagrant deployment is sensitive to permissions on previously set files and folders. To avoid problems when starting up the machine, it is recommended to delete the following files and folders (if they exist) in the root of the project: . rm -r uploads rm -r rosemary.egg-info rm app.log* . ",
     "url": "/installation/installation_with_vagrant#table-of-contents",
     
     "relUrl": "/installation/installation_with_vagrant#table-of-contents"
-  },"97": {
+  },"100": {
     "doc": "Installation with Vagrant",
     "title": "Set environment files",
     "content": "First, copy the .env.vagrant.example file to the .env file that will be used to set the environment variables. cp .env.vagrant.example .env . ",
     "url": "/installation/installation_with_vagrant#set-environment-files",
     
     "relUrl": "/installation/installation_with_vagrant#set-environment-files"
-  },"98": {
+  },"101": {
     "doc": "Installation with Vagrant",
     "title": "Working with Vagrant",
     "content": "vagrant folder . All Vagrant commands must be executed inside the vagrant folder located in the root of the project. cd vagrant . Run the VM . To start the virtual machine in development mode, use the Vagrantfile located in vagrant folder. The command will set up and run the VM. vagrant up . If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost:5000 . Accessing the VM . To access the VM and execute operations from within (such as rosemary), run: . vagrant ssh . This will switch to the internal MV console. To exit, run: . exit . Provision the VM . To rerun the provisioning scripts (e.g., after changes), use: . If the VM is off: . vagrant up --provision . If the VM needs a restart: . vagrant reload --provision . See VM status . To verify that the virtual machine is running correctly, use the following command: . vagrant status . Halt the VM . To halt (stop) the virtual machine, use the following command: . vagrant halt . Destroy the VM . To destroy the virtual machine (removing all data), use the following command: . vagrant destroy . The .vagrant folder is a directory automatically created by Vagrant at the same level as the Vagrantfile. It contains metadata and configurations necessary for Vagrant to manage the virtual machines associated with that project. It is convenient to delete this folder as well if we do not want to have previous configurations that conflict: . rm -r .vagrant . Following these steps, you should be able to set up, run, and manage your Vagrant virtual machine efficiently. ",
     "url": "/installation/installation_with_vagrant#working-with-vagrant",
     
     "relUrl": "/installation/installation_with_vagrant#working-with-vagrant"
-  },"99": {
+  },"102": {
     "doc": "Linter workflow",
     "title": "Linter workflow",
     "content": "Path to file (view file on GitHub) . The original file is located at the following path: .github / workflows / lint.yml . This GitHub Actions workflow is designed to automate the linting process for a Python application using flake8. It triggers on both pushes and pull requests. The essential elements of this workflow are as follows: . ",
     "url": "/ci_cd/continuous_integration/linter_workflow",
     
     "relUrl": "/ci_cd/continuous_integration/linter_workflow"
-  },"100": {
+  },"103": {
     "doc": "Linter workflow",
     "title": "Workflow Name",
     "content": ". | name: Python Lint | . ",
     "url": "/ci_cd/continuous_integration/linter_workflow#workflow-name",
     
     "relUrl": "/ci_cd/continuous_integration/linter_workflow#workflow-name"
-  },"101": {
+  },"104": {
     "doc": "Linter workflow",
     "title": "Triggers",
     "content": ". | on: . | push: Triggers on any push to the repository. | pull_request: Triggers on any pull request to the repository. | . | . ",
     "url": "/ci_cd/continuous_integration/linter_workflow#triggers",
     
     "relUrl": "/ci_cd/continuous_integration/linter_workflow#triggers"
-  },"102": {
+  },"105": {
     "doc": "Linter workflow",
     "title": "Jobs",
     "content": ". | build: This job runs on the latest Ubuntu environment (ubuntu-latest). | . Steps . | Checkout Repository . | Uses the actions/checkout@v2 action to checkout the repository. | . | Set up Python . | Uses the actions/setup-python@v2 action to set up Python 3.x. | . | Install Dependencies . | Upgrades pip and installs flake8 using the following commands: python -m pip install --upgrade pip pip install flake8 . | . | Lint with flake8 . | Runs flake8 on the app directory to lint the Python code: flake8 app . | . | . ",
     "url": "/ci_cd/continuous_integration/linter_workflow#jobs",
     
     "relUrl": "/ci_cd/continuous_integration/linter_workflow#jobs"
-  },"103": {
+  },"106": {
     "doc": "Load tests",
     "title": "Load tests",
     "content": " ",
     "url": "/rosemary/testing/load_tests",
     
     "relUrl": "/rosemary/testing/load_tests"
-  },"104": {
+  },"107": {
     "doc": "Load tests",
     "title": "Table of contents",
     "content": ". | Introduction to Locust . | Key Features: | Ramp-Up in Locust | . | Run all load tests | Run load tests from specific module | Stop Locust | Official documentation | . ",
     "url": "/rosemary/testing/load_tests#table-of-contents",
     
     "relUrl": "/rosemary/testing/load_tests#table-of-contents"
-  },"105": {
+  },"108": {
     "doc": "Load tests",
     "title": "Introduction to Locust",
     "content": "Locust is an open-source load testing tool that allows you to define user behavior with Python code and swarm your system with millions of simultaneous users. It’s useful for testing the performance of web applications and identifying potential bottlenecks. Key Features: . | Scalability: Capable of simulating millions of users. | Flexibility: User behavior can be defined with simple Python code. | Real-time Monitoring: Provides real-time statistics and metrics during the test. | . Ramp-Up in Locust . Ramp-up refers to the gradual increase in the number of simulated users over a specified period. This approach helps in observing how the system behaves as the load increases incrementally, rather than being hit with the maximum load all at once. Using Locust with your development environment . Load tests can be executed from any environment. To use the appropriate environment with Rosemary CLI, visit Using Rosemary. ",
     "url": "/rosemary/testing/load_tests#introduction-to-locust",
     
     "relUrl": "/rosemary/testing/load_tests#introduction-to-locust"
-  },"106": {
+  },"109": {
     "doc": "Load tests",
     "title": "Run all load tests",
     "content": "To execute all load tests for all modules, run the following command: . rosemary locust . If everything worked correctly, you should see a Locust interface at http://localhost:8089 . ",
     "url": "/rosemary/testing/load_tests#run-all-load-tests",
     
     "relUrl": "/rosemary/testing/load_tests#run-all-load-tests"
-  },"107": {
+  },"110": {
     "doc": "Load tests",
     "title": "Run load tests from specific module",
     "content": "It’s possible to run the load tests for a specific module. For this, the module must have a locustfile.py file defined within it. To execute the load tests for that module, run: . rosemary locust &lt;module_name&gt; . Replace &lt;module_name&gt; with the name of the module. ",
     "url": "/rosemary/testing/load_tests#run-load-tests-from-specific-module",
     
     "relUrl": "/rosemary/testing/load_tests#run-load-tests-from-specific-module"
-  },"108": {
+  },"111": {
     "doc": "Load tests",
     "title": "Stop Locust",
     "content": "You need to stop Locust if you want to run tests for a particular module or if you have modified the locustfile.py for a module. To stop Locust, run: . rosemary locust:stop . ",
     "url": "/rosemary/testing/load_tests#stop-locust",
     
     "relUrl": "/rosemary/testing/load_tests#stop-locust"
-  },"109": {
+  },"112": {
     "doc": "Load tests",
     "title": "Official documentation",
     "content": "We recommend visiting Locust’s official documentation for further test design to check the performance of uvlhub . ",
     "url": "/rosemary/testing/load_tests#official-documentation",
     
     "relUrl": "/rosemary/testing/load_tests#official-documentation"
-  },"110": {
+  },"113": {
     "doc": "Managing database",
     "title": "Managing database",
     "content": " ",
     "url": "/rosemary/managing_database",
     
     "relUrl": "/rosemary/managing_database"
-  },"111": {
+  },"114": {
     "doc": "Manual installation",
     "title": "Manual installation",
     "content": " ",
     "url": "/installation/manual_installation",
     
     "relUrl": "/installation/manual_installation"
-  },"112": {
+  },"115": {
     "doc": "Manual installation",
     "title": "Table of contents",
     "content": ". | Update the system | Clone the repo | Install MariaDB . | Install official package | Start the MariaDB service | Configure MariaDB | Configure databases and users | . | Configure app environment . | Environment variables | Ignore webhook module | . | Install dependencies . | Creates and activate a virtual environment | Install Python dependencies | Install Python dependencies in editable mode (Rosemary) | . | Run app . | Apply migrations | Populate database | Run development Flask server | . | . Python version . Python version 3.12 or higher is recommended. Ubuntu-only support . This tutorial is intended for use on Ubuntu 22.04 LTS or higher. ",
     "url": "/installation/manual_installation#table-of-contents",
     
     "relUrl": "/installation/manual_installation#table-of-contents"
-  },"113": {
+  },"116": {
     "doc": "Manual installation",
     "title": "Update the system",
     "content": "sudo apt update -y sudo apt upgrade -y . ",
     "url": "/installation/manual_installation#update-the-system",
     
     "relUrl": "/installation/manual_installation#update-the-system"
-  },"114": {
+  },"117": {
     "doc": "Manual installation",
     "title": "Clone the repo",
     "content": "Are you a student of Configuration Evolution and Management (EGC)? . Remember that you have to clone your fork from the subject fork instead of the official one. git clone git@github.com:&lt;YOUR_GITHUB_USER&gt;/uvlhub_practicas.git cd uvlhub_practicas . You can clone the original repo with the HTTPS method: . git clone https://github.com/diverso-lab/uvlhub.git cd uvlhub . ",
     "url": "/installation/manual_installation#clone-the-repo",
     
     "relUrl": "/installation/manual_installation#clone-the-repo"
-  },"115": {
+  },"118": {
     "doc": "Manual installation",
     "title": "Install MariaDB",
     "content": "Are you a student of Configuration Evolution and Management (EGC)? . If you use the VM for the EGC course, you can skip this step. We need a relational database for our application. We will use MariaDB (more information) . Install official package . MariaDB is available in the official Ubuntu repositories, so you can easily install it with apt: . sudo apt install mariadb-server -y . Start the MariaDB service . We need to start the MariaDB service to work with the database. sudo systemctl start mariadb . Configure MariaDB . After installing MariaDB, it is recommended to run the security script to perform some initial configurations: . sudo mysql_secure_installation . Here we detail the default values that must be entered for a successful installation: . - Enter current password for root (enter for none): (enter) - Switch to unix_socket authentication [Y/n]: `y` - Change the root password? [Y/n]: `y` - New password: `uvlhubdb_root_password` - Re-enter new password: `uvlhubdb_root_password` - Remove anonymous users? [Y/n]: `y` - Disallow root login remotely? [Y/n]: `y` - Remove test database and access to it? [Y/n]: `y` - Reload privilege tables now? [Y/n] : `y` . Configure databases and users . To configure the database, we are going to use the MariaDB command console: . sudo mysql -u root -p . Use uvlhubdb_root_password as root password. CREATE DATABASE uvlhubdb; CREATE DATABASE uvlhubdb_test; CREATE USER 'uvlhubdb_user'@'localhost' IDENTIFIED BY 'uvlhubdb_password'; GRANT ALL PRIVILEGES ON uvlhubdb.* TO 'uvlhubdb_user'@'localhost'; GRANT ALL PRIVILEGES ON uvlhubdb_test.* TO 'uvlhubdb_user'@'localhost'; FLUSH PRIVILEGES; EXIT; . ",
     "url": "/installation/manual_installation#install-mariadb",
     
     "relUrl": "/installation/manual_installation#install-mariadb"
-  },"116": {
+  },"119": {
     "doc": "Manual installation",
     "title": "Configure app environment",
     "content": "Environment variables . We need some environment variables for the connection to the database and the other elements to work properly. To do this, we can either write a .env file in the root or use a base template: . cp .env.local.example .env . Ignore webhook module . The webhook module only makes sense in a deployment using Docker and in a pre-production environment. To avoid problems, we indicate that this module should be ignored in the initial loading of modules by appending the name to the .moduleignore file: . echo \"webhook\" &gt; .moduleignore . ",
     "url": "/installation/manual_installation#configure-app-environment",
     
     "relUrl": "/installation/manual_installation#configure-app-environment"
-  },"117": {
+  },"120": {
     "doc": "Manual installation",
     "title": "Install dependencies",
     "content": "Creates and activate a virtual environment . sudo apt install python3.12-venv python3.12 -m venv venv source venv/bin/activate . Install Python dependencies . Pip is the package manager for Python. Its main function is to facilitate the installation, upgrade and uninstallation of Python packages (libraries or modules). It is important to update pip because some newer versions of packages require an updated version of pip in order to be installed correctly. pip install --upgrade pip pip install -r requirements.txt . Install Python dependencies in editable mode (Rosemary) . Rosemary is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks (more information) . It’s a development package and it’s not available in the pypi package manager, we have to install it manually using the setup.py file in the root. Since we are developers, it would be a pain to reinstall Rosemary every time we make a change. Therefore, we use the -e flag to install it in editable mode so that any changes to the Rosemary code will be detected by the system and the configuration will be reloaded in real time. pip install -e ./ . To check that Rosemary has been installed correctly, try running this command. It should list all available CLI commands: . rosemary . ",
     "url": "/installation/manual_installation#install-dependencies",
     
     "relUrl": "/installation/manual_installation#install-dependencies"
-  },"118": {
+  },"121": {
     "doc": "Manual installation",
     "title": "Run app",
     "content": "Apply migrations . We have already created the database, but it is empty! We need to create the tables and their relationships. We can make use of migrations: . flask db upgrade . Populate database . It is possible to create test data so that the system deployed in development has a minimum of navigability without the need to create the entities ourselves. rosemary db:seed . Run development Flask server . We run our application using a Flask developer server. By default, this server starts the app on port 5000. flask run --host=0.0.0.0 --reload --debug . What is this? . Each of the flags (--host, --reload, --debug) has a specific function when running a Flask application. --host=0.0.0.0.0: This flag specifies the IP address on which Flask will listen for requests. By default, Flask listens on 127.0.0.1 (localhost), which means it is only accessible from the machine it is running on. If you specify 0.0.0.0, Flask will be available to any external connection, allowing the application to be accessible from any device on the network. --reload: Enables automatic reload mode. Flask will automatically restart the server if it detects changes to your application files. This is especially useful in development, as it allows you to see the changes &gt; without having to stop and restart the server every time you update the code. --debug: Enables debug mode. When debug mode is enabled, Flask will display detailed error information in the browser if an exception occurs. If everything worked correctly, you should see the deployed version of uvlhub in development at http://localhost:5000 . ",
     "url": "/installation/manual_installation#run-app",
     
     "relUrl": "/installation/manual_installation#run-app"
-  },"119": {
+  },"122": {
     "doc": "Modules",
     "title": "Modules",
     "content": "Coming soon… . ",
     "url": "/modules",
     
     "relUrl": "/modules"
-  },"120": {
+  },"123": {
     "doc": "Overview",
     "title": "Overview",
     "content": "The architecture of uvlhub consists of five main components. | Web application | Local Storage | Zenodo | Automated Analysis of Feature Models (AAFM) | REST API | . Figure 1: Overview of UVLHUB architecture. ",
     "url": "/architecture/overview",
     
     "relUrl": "/architecture/overview"
-  },"121": {
+  },"124": {
     "doc": "Overview",
     "title": "Web application",
     "content": "The primary access point for the web application is through a web browser. Users navigate to a domain that redirects them to the Flask-developed application1. uvlhub integrates four distinct services: (2) local storage for UVL models and pertinent information, (3) Zenodo for permanent data persistence, (4) automatic feature model analysis, and (5) a RESTful service to extend functionality to other domains. ",
     "url": "/architecture/overview#web-application",
     
     "relUrl": "/architecture/overview#web-application"
-  },"122": {
+  },"125": {
     "doc": "Overview",
     "title": "Local Storage",
     "content": "Users upload their models in the UVL format. All uploaded models must be syntactically valid, conforming to UVL grammar. However, models might still contain semantic errors such as dead features or conflicting constraints2. UVL files are stored locally, while related information like title, description, authors, and tags are stored in a relational database. ",
     "url": "/architecture/overview#local-storage",
     
     "relUrl": "/architecture/overview#local-storage"
-  },"123": {
+  },"126": {
     "doc": "Overview",
     "title": "Zenodo",
     "content": "Although some model data is stored locally, it is backed up in the Zenodo general repository. This provides the UVL datasets with a DOI, facilitating the process of obtaining the identifier. If uvlhub becomes unavailable, the datasets remain on Zenodo, allowing local storage to be rebuilt without data loss. ",
     "url": "/architecture/overview#zenodo",
     
     "relUrl": "/architecture/overview#zenodo"
-  },"124": {
+  },"127": {
     "doc": "Overview",
     "title": "Automated Analysis of Feature Models (AAFM)",
     "content": "Users can analyze2 the models within their datasets uploaded to uvlhub . This analysis, supported by the flamapy tool suite3, can determine model validity, feature count, or the number of different products derivable from the model. This component ensures each model’s syntactic correctness, delegating syntax verification responsibility to uvlhub , thus sparing users from performing this check. ",
     "url": "/architecture/overview#automated-analysis-of-feature-models-aafm",
     
     "relUrl": "/architecture/overview#automated-analysis-of-feature-models-aafm"
-  },"125": {
+  },"128": {
     "doc": "Overview",
     "title": "REST API",
     "content": "Open Science advocates for open access to research data, making data generated in scientific research freely available and accessible to other researchers, practitioners, and the public. To support this, uvlhub offers a REST API accessible to any registered user with a developer role. This API allows free integration of validated and analyzed models (from component 4) into other domains. | Flask: Flask Project &#8617; . | AAFM: “Feature Models 20 Years Later: A Systematic Literature Review” &#8617; &#8617;2 . | Galindo, J. A., et al. (2023). “FLAMA: Feature Model Analysis Tool Suite” &#8617; . | . ",
     "url": "/architecture/overview#rest-api",
     
     "relUrl": "/architecture/overview#rest-api"
-  },"126": {
+  },"129": {
     "doc": "Project structure",
     "title": "Project structure",
     "content": "This section provides an overview of the directory and file structure of the project. Each subsection describes the purpose and contents of specific directories and files, highlighting their roles within the overall architecture. Understanding this structure is crucial for effective development, maintenance, and deployment of the application. Below is a detailed explanation of each component in the project. ",
     "url": "/architecture/project_structure",
     
     "relUrl": "/architecture/project_structure"
-  },"127": {
+  },"130": {
     "doc": "Project structure",
     "title": "Table of contents",
     "content": ". | .github/workflows | app | core | docker . | entrypoints | development_entrypoints.sh | production_entrypoints.sh | render_entrypoints.sh | images . | Dockerfile.dev | Dockerfile.locust | Dockerfile.mariadb | Dockerfile.prod | Dockerfile.render | . | letsencrypt | nginx | public | docker-compose.dev.yml | docker-compose.prod.ssl.yml | docker-compose.prod.yml | . | vagrant . | Vagrantfile | *.yml | . | migrations | rosemary | scripts | .env.&lt;deployment_environment&gt;.example | .flake8 | .gitignore | requirements.txt | setup.py | . ",
     "url": "/architecture/project_structure#table-of-contents",
     
     "relUrl": "/architecture/project_structure#table-of-contents"
-  },"128": {
+  },"131": {
     "doc": "Project structure",
     "title": ".github/workflows",
     "content": "This directory contains GitHub Actions workflows. These YAML files define automated actions that run on specific repository events, such as pushes or pull requests. ",
     "url": "/architecture/project_structure#githubworkflows",
     
     "relUrl": "/architecture/project_structure#githubworkflows"
-  },"129": {
+  },"132": {
     "doc": "Project structure",
     "title": "app",
     "content": "This directory likely contains the main application code. It includes modules, views, controllers, and other fundamental components of the application’s business logic. ",
     "url": "/architecture/project_structure#app",
     
     "relUrl": "/architecture/project_structure#app"
-  },"130": {
+  },"133": {
     "doc": "Project structure",
     "title": "core",
     "content": "This directory usually contains core components and services used throughout the application. It can include utilities, global configurations, and base classes. ",
     "url": "/architecture/project_structure#core",
     
     "relUrl": "/architecture/project_structure#core"
-  },"131": {
+  },"134": {
     "doc": "Project structure",
     "title": "docker",
     "content": "entrypoints . development_entrypoints.sh . Entrypoint script that is launched when running the web app container in development environment. production_entrypoints.sh . Entrypoint script that is launched when running the web app container in production environment. render_entrypoints.sh . Entrypoint script that is launched when running the web app container in Render environment. images . Dockerfile.dev . Docker file for building the application’s development image. It includes all dependencies and configurations needed for a development environment. Dockerfile.locust . Docker file for running load and stress tests using Locust package . Dockerfile.mariadb . Docker file for building a MariaDB image, a SQL database. It is used to integrate the database into the development or production environment. Dockerfile.prod . Docker file for building the application’s production image. It is optimized for performance and security. Dockerfile.render . Docker file for deploying the application on Render.com service . letsencrypt . This directory is related to Let’s Encrypt, a free certificate authority. It contains scripts and configurations for the automatic generation of SSL certificates. nginx . This directory contains configurations for the NGINX web server, which is used to serve the application, handle HTTP traffic, and perform other network-related tasks. public . This directory is for generating SSL certificates, it acts as a temporary public folder. docker-compose.dev.yml . Docker Compose configuration file for the development environment. It defines how development containers should be orchestrated. docker-compose.prod.ssl.yml . Docker Compose configuration file for the production environment (with SSL). It defines how containers should be orchestrated in production. docker-compose.prod.yml . Docker Compose configuration file for the production environment. It defines how containers should be orchestrated in production. ",
     "url": "/architecture/project_structure#docker",
     
     "relUrl": "/architecture/project_structure#docker"
-  },"132": {
+  },"135": {
     "doc": "Project structure",
     "title": "vagrant",
     "content": "Vagrantfile . This file is a specification that describes how to create a virtual machine (VM) under specific characteristics. It defines the necessary configurations for the development environment, such as the base box, network, shared folders, and provisioning scripts. *.yml . These files, known as playbooks, are used by Ansible to automate system configuration and management. A playbook is a YAML file that contains a series of instructions and tasks that Ansible will execute on the target machines. Playbooks are used to automate complex and repetitive tasks, ensuring that the development or production environment is configured in a consistent manner. ",
     "url": "/architecture/project_structure#vagrant",
     
     "relUrl": "/architecture/project_structure#vagrant"
-  },"133": {
+  },"136": {
     "doc": "Project structure",
     "title": "migrations",
     "content": "This directory contains database migration files, which allow incremental changes to the database schema in a controlled and reproducible manner. ",
     "url": "/architecture/project_structure#migrations",
     
     "relUrl": "/architecture/project_structure#migrations"
-  },"134": {
+  },"137": {
     "doc": "Project structure",
     "title": "rosemary",
     "content": "This directory contains the code for the Rosemary CLI package. It is a version still under development and is not available in pypi at the moment. ",
     "url": "/architecture/project_structure#rosemary",
     
     "relUrl": "/architecture/project_structure#rosemary"
-  },"135": {
+  },"138": {
     "doc": "Project structure",
     "title": "scripts",
     "content": "Contains auxiliary scripts that automate various tasks such as dependency installation, deployment, maintenance, and more. ",
     "url": "/architecture/project_structure#scripts",
     
     "relUrl": "/architecture/project_structure#scripts"
-  },"136": {
+  },"139": {
     "doc": "Project structure",
     "title": ".env.&lt;deployment_environment&gt;.example",
     "content": "These files provide an example of the environment variables needed to run the application. They are used as a reference for setting up the development environment. ",
     "url": "/architecture/project_structure#envdeployment_environmentexample",
     
     "relUrl": "/architecture/project_structure#envdeployment_environmentexample"
-  },"137": {
+  },"140": {
     "doc": "Project structure",
     "title": ".flake8",
     "content": "Contains configurations for Flake8, a code style and checking tool for Python. It helps maintain code consistency and find common errors. ",
     "url": "/architecture/project_structure#flake8",
     
     "relUrl": "/architecture/project_structure#flake8"
-  },"138": {
+  },"141": {
     "doc": "Project structure",
     "title": ".gitignore",
     "content": "A list of files and directories that Git should ignore. This prevents certain files (like local configurations and temporary files) from being included in version control. ",
     "url": "/architecture/project_structure#gitignore",
     
     "relUrl": "/architecture/project_structure#gitignore"
-  },"139": {
+  },"142": {
     "doc": "Project structure",
     "title": "requirements.txt",
     "content": "A list of Python dependencies needed for the project. Used by pip to install all required libraries. ",
     "url": "/architecture/project_structure#requirementstxt",
     
     "relUrl": "/architecture/project_structure#requirementstxt"
-  },"140": {
+  },"143": {
     "doc": "Project structure",
     "title": "setup.py",
     "content": "A setup script used for distributing Python packages. It defines package properties such as name, version, and dependencies. In this case, it is used to use the rosemary package. ",
     "url": "/architecture/project_structure#setuppy",
     
     "relUrl": "/architecture/project_structure#setuppy"
-  },"141": {
+  },"144": {
     "doc": "Python",
     "title": "Python",
     "content": " ",
     "url": "/troubleshooting/python",
     
     "relUrl": "/troubleshooting/python"
-  },"142": {
+  },"145": {
     "doc": "Python",
     "title": "Table of contents",
     "content": ". | No module named ‘_ctypes’ . | Remove the current version of Python 3.12 (if already installed) | Install necessary dependencies | Download Python 3.12 from source | Compile and install Python | Verify the installation | . | . ",
     "url": "/troubleshooting/python#table-of-contents",
     
     "relUrl": "/troubleshooting/python#table-of-contents"
-  },"143": {
+  },"146": {
     "doc": "Python",
     "title": "No module named ‘_ctypes’",
     "content": "This is caused by an incorrect installation of Python. The best thing to do is to delete the current Python 3.12 version from the system, purge and reinstall Python 3.12 from source, going through the build. Compiling takes a few minutes, but it is effective. Remove the current version of Python 3.12 (if already installed) . It is important not to remove the default versions of Python that come with Ubuntu, as they are necessary for the system to function properly. Be sure not to remove critical versions such as Python 3.10, which may be part of the system. If you already installed Python 3.12 from external sources or a PPA and want to reinstall it, you can remove it like this: . sudo apt remove --purge python3.12 sudo apt autoremove . Install necessary dependencies . Before installing Python 3.12, make sure you have the necessary tools to compile Python from source: . sudo apt update sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git . Download Python 3.12 from source . Download Python 3.12 from the official Python archives: . wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tgz tar -xvf Python-3.12.0.tgz . Compile and install Python . cd Python-3.12.0 ./configure --enable-optimizations make -j$(nproc) sudo make altinstall . Note: Use altinstall instead of install to avoid overwriting the default version of Python on your system. Verify the installation . After installation, verify that Python 3.12 is correctly installed by running: . python3.12 --version . ",
     "url": "/troubleshooting/python#no-module-named-_ctypes",
     
     "relUrl": "/troubleshooting/python#no-module-named-_ctypes"
-  },"144": {
+  },"147": {
     "doc": "CD: Render tutorial",
     "title": "CD: Render tutorial",
     "content": "Render.com is a modern hosting and deployment platform that simplifies the deployment of web applications and services. It provides a managed infrastructure that allows developers to focus on code instead of worrying about server configuration and maintenance. With Render, web applications, APIs, databases and static services can be deployed with ease. The platform supports multiple programming languages and frameworks, and provides advanced features such as integrated CI/CD, automatic scaling, and free SSL. In addition, Render offers an intuitive interface and extensive documentation, making the deployment process fast and accessible for beginners and experienced developers alike. ",
     "url": "/tutorials/render_tutorial",
     
     "relUrl": "/tutorials/render_tutorial"
-  },"145": {
+  },"148": {
     "doc": "CD: Render tutorial",
     "title": "Table of contents",
     "content": ". | Get token from Render | Disable auto-deploy | Register the secret in your repository | Render continuous deployment workflow | Try it! | . Have you deployed your application in Render? . For this tutorial it is necessary to have previously deployed the project in Render.com. If this is not the case, please look at the Render deployment guide first. ",
     "url": "/tutorials/render_tutorial#table-of-contents",
     
     "relUrl": "/tutorials/render_tutorial#table-of-contents"
-  },"146": {
+  },"149": {
     "doc": "CD: Render tutorial",
     "title": "Get token from Render",
     "content": ". | Login to Render.com | Go to Dashboard. Select the project where you have deployed the app. | Click on the name of the service. | Go to Settings. Under Deploy hook the token you need appears. | . ",
     "url": "/tutorials/render_tutorial#get-token-from-render",
     
     "relUrl": "/tutorials/render_tutorial#get-token-from-render"
-  },"147": {
+  },"150": {
     "doc": "CD: Render tutorial",
     "title": "Disable auto-deploy",
     "content": "By default, any new changes detected in the main branch (if you have not chosen another one) will cause the app to will be deployed again. If we don’t want this and we want the deployment to be done under certain conditions in a workflow of GitHub actions, it is convenient to disable the auto-deployment. For it, from the same Settings tab, in Auto-Deploy, we give to Edit and select No. ",
     "url": "/tutorials/render_tutorial#disable-auto-deploy",
     
     "relUrl": "/tutorials/render_tutorial#disable-auto-deploy"
-  },"148": {
+  },"151": {
     "doc": "CD: Render tutorial",
     "title": "Register the secret in your repository",
     "content": ". | In GitHub, in your repository, go to Settings -&gt; Secrets and variables -&gt; Actions. | Click the green New repository secret button. | In Name type RENDER_DEPLOY_HOOK_URL. | In Secret, add the token you got from Render’s Deploy hook field. | . ",
     "url": "/tutorials/render_tutorial#register-the-secret-in-your-repository",
     
     "relUrl": "/tutorials/render_tutorial#register-the-secret-in-your-repository"
-  },"149": {
+  },"152": {
     "doc": "CD: Render tutorial",
     "title": "Render continuous deployment workflow",
     "content": "In the .github/workflows folder you have to add the following render.yml. name: Deploy to Render on: push: branches: - main pull_request: branches: - main jobs: deploy: name: Deploy to Render runs-on: ubuntu-latest steps: - name: Check out the repo uses: actions/checkout@v4 - name: Deploy to Render env: deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }} run: | curl \"$deploy_url\" . ",
     "url": "/tutorials/render_tutorial#render-continuous-deployment-workflow",
     
     "relUrl": "/tutorials/render_tutorial#render-continuous-deployment-workflow"
-  },"150": {
+  },"153": {
     "doc": "CD: Render tutorial",
     "title": "Try it!",
     "content": ". | Make some changes to your code and upload it to GitHub (to the synchronized branch in Render) | Check that the application is deployed again. | You’ve got it! | . ",
     "url": "/tutorials/render_tutorial#try-it",
     
     "relUrl": "/tutorials/render_tutorial#try-it"
-  },"151": {
+  },"154": {
     "doc": "Render",
     "title": "Render",
     "content": " ",
     "url": "/troubleshooting/render",
     
     "relUrl": "/troubleshooting/render"
-  },"152": {
+  },"155": {
     "doc": "Render",
     "title": "Table of contents",
     "content": ". | ERROR [flask_migrate] Error: Can’t locate revision identified by . | Delete migration in Filess.io database | Check that migrations are in a consistent state | . | . ",
     "url": "/troubleshooting/render#table-of-contents",
     
     "relUrl": "/troubleshooting/render#table-of-contents"
-  },"153": {
+  },"156": {
     "doc": "Render",
     "title": "ERROR [flask_migrate] Error: Can’t locate revision identified by",
     "content": "This is due to a cache problem or a problem with the migration checking system. Delete migration in Filess.io database . A common error is often migrations. If you encounter the error ERROR [flask_migrate] Error: Can't locate revision identified by... it means that there has been a conflict with the Flask cache. It is very easy to solve it: . | We go to the management panel of our Filess.io database. | Click on Web Client. | Click on the table alembic_version. | Identify the conflicting migration on the right, right click, Delete rows (s). | To apply the changes, click on Save in the bottom menu. | This should now allow the normal deployment process. Render makes several attempts, but if it doesn’t, click Manual Deploy and Clear build cache &amp; deploy. | . Check that migrations are in a consistent state . If, after several continuous deployments, you still encounter the problem of migrations, perform these steps in your development environment: . | Check current migration state: Use the Flask-Migrate command to show the current state of migrations. Run the following command in your terminal: . flask db current . This will show you the current migration version applied to your database. | Compare migration deads: Ensure that the migration head in your database matches the head of your migration scripts. Run the following command to show the head of your migrations: . flask db heads . If the heads do not match, there might be pending migrations that need to be applied. | Apply pending migrations: If there are pending migrations, apply them by running: . flask db upgrade . This command will apply any new migrations to bring your database schema up to date. | Verify migration history: To see the history of migrations applied, you can use the following command: . flask db history . This will display the list of all migrations applied in chronological order. | Check for inconsistencies: If you suspect inconsistencies, you can verify the integrity of your migrations by comparing the actual database schema with your migration scripts. Use the flask db stamp command to stamp the database with the correct version if necessary: . flask db stamp head . This command ensures that the migration version in your database matches the latest migration script. | . ",
     "url": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by",
     
     "relUrl": "/troubleshooting/render#error-flask_migrate-error-cant-locate-revision-identified-by"
-  },"154": {
+  },"157": {
     "doc": "Reset database",
     "title": "Reset database",
     "content": "The rosemary db:reset command is a powerful tool for resetting your project’s database to its initial state. This command deletes all the data in your database, making it ideal for fixing any inconsistencies we may have created during development. ",
     "url": "/rosemary/managing_database/reset_database",
     
     "relUrl": "/rosemary/managing_database/reset_database"
-  },"155": {
+  },"158": {
     "doc": "Reset database",
     "title": "Table of contents",
     "content": ". | Basic Usage | Clear migrations | . ",
     "url": "/rosemary/managing_database/reset_database#table-of-contents",
     
     "relUrl": "/rosemary/managing_database/reset_database#table-of-contents"
-  },"156": {
+  },"159": {
     "doc": "Reset database",
     "title": "Basic Usage",
     "content": "To reset your database and clear all table data except for migration records, run: . rosemary db:reset . The rosemary db:reset command also clears the uploads directory as part of the reset process, ensuring that any files uploaded during development or testing are removed. ",
     "url": "/rosemary/managing_database/reset_database#basic-usage",
     
     "relUrl": "/rosemary/managing_database/reset_database#basic-usage"
-  },"157": {
+  },"160": {
     "doc": "Reset database",
     "title": "Clear migrations",
     "content": "If you need to completely rebuild your database from scratch, including removing all migration history and starting fresh, you can use the --clear-migrations option: . rosemary db:reset --clear-migrations . Be careful! This command will… . | Delete all data from the database, including the migration history. | Clear the migrations directory. | Initialize a new set of migrations. | Apply the migrations to rebuild the database schema. | . ",
     "url": "/rosemary/managing_database/reset_database#clear-migrations",
     
     "relUrl": "/rosemary/managing_database/reset_database#clear-migrations"
-  },"158": {
+  },"161": {
     "doc": "Rosemary",
     "title": "Rosemary",
     "content": " ",
     "url": "/troubleshooting/rosemary",
     
     "relUrl": "/troubleshooting/rosemary"
-  },"159": {
+  },"162": {
     "doc": "Rosemary",
     "title": "Table of contents",
     "content": ". | rosemary: order not found | no se encontró la orden | bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido . | Solution 1: Run Rosemary from the original environment. | Solution 2: Run Rosemary from local environment | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/modules’ . | Solution 1: run Rosemary in the correct environment | Solution 2: technological limitations | . | FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’ | error: Cannot update time stamp of directory ‘rosemary.egg-info’ | . ",
     "url": "/troubleshooting/rosemary#table-of-contents",
     
     "relUrl": "/troubleshooting/rosemary#table-of-contents"
-  },"160": {
+  },"163": {
     "doc": "Rosemary",
     "title": "rosemary: order not found | no se encontró la orden",
     "content": "The most likely cause is that Rosemary is not installed in the development environment you are using. To do this, run: . pip install -e ./ . ",
     "url": "/troubleshooting/rosemary#rosemary-order-not-found--no-se-encontr%C3%B3-la-orden",
     
     "relUrl": "/troubleshooting/rosemary#rosemary-order-not-found--no-se-encontró-la-orden"
-  },"161": {
+  },"164": {
     "doc": "Rosemary",
     "title": "bash: …/venv/bin/rosemary: cannot be executed: the required file could not be found | no se puede ejecutar: no se ha encontrado el fichero requerido",
     "content": "This problem occurs because the venv environment is installed by Docker or Vagrant and you are running rosemary in a different environment than the one it was created in: . Solution 1: Run Rosemary from the original environment. If you installed uvlhub from a Docker or Vagrant environment, make sure you are using it correctly from that environment. Visit Using Rosemary for more info. Solution 2: Run Rosemary from local environment . If you have decided to move to a local environment, the venv directory is no longer valid, you will have to create another one. To do this, run: . python3.12 -m venv venv source venv/bin/activate source .env . ",
     "url": "/troubleshooting/rosemary#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido",
     
     "relUrl": "/troubleshooting/rosemary#bash-venvbinrosemary-cannot-be-executed-the-required-file-could-not-be-found--no-se-puede-ejecutar-no-se-ha-encontrado-el-fichero-requerido"
-  },"162": {
+  },"165": {
     "doc": "Rosemary",
     "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/app/app/modules’",
     "content": "This error occurs when you are running Rosemary locally but the development environment is configured in Docker. Solution 1: run Rosemary in the correct environment . You must use Rosemary inside the web application container. Visit Using Rosemary for more info. Solution 2: technological limitations . If you are intentionally switching from a Docker environment to a local environment (for example, to run tests with Selenium), you must change the environment variable settings. While in a terminal in the local environment, run: . cp .env.local.example .env source .env . Beware of custom variables . Be careful, this command will cause the modules own variables to be lost. Remember to run rosemary compose:env to generate the final env file. ",
     "url": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappmodules",
     
     "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-appappmodules"
-  },"163": {
+  },"166": {
     "doc": "Rosemary",
     "title": "FileNotFoundError: [Errno 2] No such file or directory: ‘/vagrant/app/modules’",
     "content": "This error occurs when you are running Rosemary locally but the development environment is configured in Vagrant. You must use Rosemary inside the Vagrant virtual machine. Visit Using Rosemary for more info. ",
     "url": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules",
     
     "relUrl": "/troubleshooting/rosemary#filenotfounderror-errno-2-no-such-file-or-directory-vagrantappmodules"
-  },"164": {
+  },"167": {
     "doc": "Rosemary",
     "title": "error: Cannot update time stamp of directory ‘rosemary.egg-info’",
     "content": "This is due to a previous installation of Rosemary from a different working environment than the current one. To fix this: . sudo rm -r rosemary.egg-info/ . ",
     "url": "/troubleshooting/rosemary#error-cannot-update-time-stamp-of-directory-rosemaryegg-info",
     
     "relUrl": "/troubleshooting/rosemary#error-cannot-update-time-stamp-of-directory-rosemaryegg-info"
-  },"165": {
+  },"168": {
     "doc": "Rosemary CLI",
     "title": "Rosemary CLI",
     "content": "Rosemary is a CLI (Command Line Interface) tool developed to facilitate project management and development tasks. ",
     "url": "/rosemary",
     
     "relUrl": "/rosemary"
-  },"166": {
+  },"169": {
     "doc": "Rosemary CLI",
     "title": "Advantages of Using a CLI",
     "content": "Common usage point . A CLI provides a standardized interface for executing commands, making it easier for users to perform a wide range of tasks from a single point. Command unification . With a CLI, commands are unified under a single tool, reducing the need to remember different commands for different environments or tools. This unification streamlines workflows and enhances productivity. Environment problem resolution . Rosemary detects the environment in which it is running, whether local, Docker, or Vagrant. This capability acts as a layer that simplifies environment management, automatically adjusting its behavior to suit the detected environment and minimizing the potential for environment-specific issues. Efficiency and speed . CLIs are typically faster than graphical user interfaces (GUIs) because they require fewer resources and can execute commands more quickly without the overhead of graphical elements. Automation . A CLI can be easily scripted, allowing for the automation of repetitive tasks. This feature is particularly beneficial in development and project management, where certain tasks need to be performed frequently and consistently. By incorporating these advantages, Rosemary enhances the efficiency and effectiveness of project management and development processes, providing a robust tool for developers and project managers alike. ",
     "url": "/rosemary#advantages-of-using-a-cli",
     
     "relUrl": "/rosemary#advantages-of-using-a-cli"
-  },"167": {
+  },"170": {
     "doc": "Routing",
     "title": "Routing",
     "content": "The rosemary command route:list allows you to list all the routes available in the project. This command is useful for getting a quick overview of available endpoints and their corresponding HTTP methods. ",
     "url": "/rosemary/routing",
     
     "relUrl": "/rosemary/routing"
-  },"168": {
+  },"171": {
     "doc": "Routing",
     "title": "Table of contents",
     "content": ". | List all routes | Group routes by module | List routes of a specific module | . ",
     "url": "/rosemary/routing#table-of-contents",
     
     "relUrl": "/rosemary/routing#table-of-contents"
-  },"169": {
+  },"172": {
     "doc": "Routing",
     "title": "List all routes",
     "content": "To list all the routes of all the modules, run: . rosemary route:list . ",
     "url": "/rosemary/routing#list-all-routes",
     
     "relUrl": "/rosemary/routing#list-all-routes"
-  },"170": {
+  },"173": {
     "doc": "Routing",
     "title": "Group routes by module",
     "content": "To get a grouped view of the routes by module, you can use the --group option. This is especially useful for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application. rosemary route:list --group . ",
     "url": "/rosemary/routing#group-routes-by-module",
     
     "relUrl": "/rosemary/routing#group-routes-by-module"
-  },"171": {
+  },"174": {
     "doc": "Routing",
     "title": "List routes of a specific module",
     "content": "It may be useful to see the routes associated with a specific module. To do this, simply provide the module name as an argument: . rosemary route:list &lt;module_name&gt; . Replace &lt;module_name&gt; with the actual name of the module for which you want to see the routes. ",
     "url": "/rosemary/routing#list-routes-of-a-specific-module",
     
     "relUrl": "/rosemary/routing#list-routes-of-a-specific-module"
-  },"172": {
+  },"175": {
     "doc": "Seeders",
     "title": "Seeders",
     "content": " ",
     "url": "/rosemary/managing_database/seeders",
     
     "relUrl": "/rosemary/managing_database/seeders"
-  },"173": {
+  },"176": {
     "doc": "Seeders",
     "title": "Table of contents",
     "content": ". | Basic Usage . | Populate from all modules | Populate from specific module | . | Reset database before populating . | Reset all modules test data | Reset test data of specific module | . | . ",
     "url": "/rosemary/managing_database/seeders#table-of-contents",
     
     "relUrl": "/rosemary/managing_database/seeders#table-of-contents"
-  },"174": {
+  },"177": {
     "doc": "Seeders",
     "title": "Basic Usage",
     "content": "It is possible to populate the database with predefined test data. It is very useful for testing certain that require existing data. Populate from all modules . To populate all test data of all modules, run: . rosemary db:seed . Populate from specific module . If we only want to popularize the test data of a specific module, run: . rosemary db:seed &lt;module_name&gt; . Replace &lt;module_name&gt; with the name of the module you want to populate (for example, auth for the authentication module). ",
     "url": "/rosemary/managing_database/seeders#basic-usage",
     
     "relUrl": "/rosemary/managing_database/seeders#basic-usage"
-  },"175": {
+  },"178": {
     "doc": "Seeders",
     "title": "Reset database before populating",
     "content": "If you want to make sure that the database is in a clean state before populating it with test data, you can use the --reset flag. This will reset the database to its initial state before running the seeders: . Reset all modules test data . rosemary db:seed --reset . Reset test data of specific module . You can also combine the --reset flag with a module specification if you want to reset the database before populating only the test data of a specific module: . rosemary db:seed &lt;module_name&gt; --reset . ",
     "url": "/rosemary/managing_database/seeders#reset-database-before-populating",
     
     "relUrl": "/rosemary/managing_database/seeders#reset-database-before-populating"
-  },"176": {
+  },"179": {
     "doc": "SSL certificate",
     "title": "SSL certificate",
     "content": "An SSL certificate (https) is essential for securing the communication between a website and its users. It encrypts transmitted data, protecting sensitive information from interception. Additionally, it authenticates the website’s identity, ensuring users they are interacting with the legitimate site. SSL certificates also improve search engine rankings, enhancing the website’s visibility and credibility. ",
     "url": "/deployment/ssl_certificate",
     
     "relUrl": "/deployment/ssl_certificate"
-  },"177": {
+  },"180": {
     "doc": "SSL certificate",
     "title": "Table of contents",
     "content": ". | Scripts folder | Generate certificate | Renew certificate | . The use of SSL certificates is configured for Docker deployment only. Visit ‘Installation with Docker. ",
     "url": "/deployment/ssl_certificate#table-of-contents",
     
     "relUrl": "/deployment/ssl_certificate#table-of-contents"
-  },"178": {
+  },"181": {
     "doc": "SSL certificate",
     "title": "Scripts folder",
     "content": "To begin with, we must go to the scripts folder: . cd scripts . ",
     "url": "/deployment/ssl_certificate#scripts-folder",
     
     "relUrl": "/deployment/ssl_certificate#scripts-folder"
-  },"179": {
+  },"182": {
     "doc": "SSL certificate",
     "title": "Generate certificate",
     "content": "To generate a new certificate, run: . chmod +x ssl_setup.sh ./ssl_setup.sh . ",
     "url": "/deployment/ssl_certificate#generate-certificate",
     
     "relUrl": "/deployment/ssl_certificate#generate-certificate"
-  },"180": {
+  },"183": {
     "doc": "SSL certificate",
     "title": "Renew certificate",
     "content": "To renew a certificate that is less than 60 days from expiry, execute: . chmod +x ssl_renew.sh ./ssl_renew.sh . ",
     "url": "/deployment/ssl_certificate#renew-certificate",
     
     "relUrl": "/deployment/ssl_certificate#renew-certificate"
-  },"181": {
+  },"184": {
     "doc": "Switching between work environments",
     "title": "Switching between work environments",
     "content": " ",
     "url": "/troubleshooting/switching_between_work_environments",
     
     "relUrl": "/troubleshooting/switching_between_work_environments"
-  },"182": {
+  },"185": {
     "doc": "Switching between work environments",
     "title": "Table of contents",
     "content": ". | bash: …/venv/bin/flask: /vagrant/venv/bin/python3.12: intérprete erróneo: No existe el archivo o el directorio . | Solution 1: recreate the venv folder in local environment | Solution 2: use a name for the local environment different from the conventional one | . | . ",
     "url": "/troubleshooting/switching_between_work_environments#table-of-contents",
     
     "relUrl": "/troubleshooting/switching_between_work_environments#table-of-contents"
-  },"183": {
+  },"186": {
     "doc": "Switching between work environments",
     "title": "bash: …/venv/bin/flask: /vagrant/venv/bin/python3.12: intérprete erróneo: No existe el archivo o el directorio",
     "content": "When you switch working environment, for example, from local to Docker or Vagrant, you have to take into account that venv can be “hijacked” by the new environment. That is, it is Docker or Vagrant that creates its own venv folder. Given that there are bind mounts in these environments with respect to the host machine, it could be the case that when returning to the local environment, the venv folder is not originally ours. Solution 1: recreate the venv folder in local environment . rm -r venv python3.12 -m venv venv source venv/bin/activate cp .env.local.example .env pip install --upgrade pip pip install -r requirements.txt . Solution 2: use a name for the local environment different from the conventional one . When we are in local, we create a virtual environment named myenv for example: . python3.12 -m venv myenv (other operations) . When returning to the local environment from Docker or Vagrant, the myenv folder will remain unchanged. This will avoid having to reinstall all the dependencies each time you return to the local environment. ",
     "url": "/troubleshooting/switching_between_work_environments#bash-venvbinflask-vagrantvenvbinpython312-int%C3%A9rprete-err%C3%B3neo-no-existe-el-archivo-o-el-directorio",
     
     "relUrl": "/troubleshooting/switching_between_work_environments#bash-venvbinflask-vagrantvenvbinpython312-intérprete-erróneo-no-existe-el-archivo-o-el-directorio"
-  },"184": {
+  },"187": {
     "doc": "Test users",
     "title": "Test users",
     "content": "Test users are already available when the system is installed, regardless of the configuration environment. This is possible thanks to the rosemary db:seed command that is launched. User: user1@example.com Pass: 1234 . User: user2@example.com Pass: 1234 . Repopulate the database . You can change these test users and popular more modules. Visit Seeders. ",
     "url": "/installation/test_users",
     
     "relUrl": "/installation/test_users"
-  },"185": {
+  },"188": {
     "doc": "Test coverage",
     "title": "Test coverage",
     "content": "The rosemary coverage command facilitates running code coverage analysis for your Flask project using pytest-cov. This command simplifies the process of assessing test coverage. ",
     "url": "/rosemary/testing/test_coverage",
     
     "relUrl": "/rosemary/testing/test_coverage"
-  },"186": {
+  },"189": {
     "doc": "Test coverage",
     "title": "Table of contents",
     "content": ". | Test coverage of all modules | Test coverage of a specific module | Command Options . | --html | . | . ",
     "url": "/rosemary/testing/test_coverage#table-of-contents",
     
     "relUrl": "/rosemary/testing/test_coverage#table-of-contents"
-  },"187": {
+  },"190": {
     "doc": "Test coverage",
     "title": "Test coverage of all modules",
     "content": "To run coverage analysis for all modules within the app/modules directory and generate an HTML report, use: . rosemary coverage . ",
     "url": "/rosemary/testing/test_coverage#test-coverage-of-all-modules",
     
     "relUrl": "/rosemary/testing/test_coverage#test-coverage-of-all-modules"
-  },"188": {
+  },"191": {
     "doc": "Test coverage",
     "title": "Test coverage of a specific module",
     "content": "If you wish to run coverage analysis for a specific module, include the module name: . rosemary coverage &lt;module_name&gt; . ",
     "url": "/rosemary/testing/test_coverage#test-coverage-of-a-specific-module",
     
     "relUrl": "/rosemary/testing/test_coverage#test-coverage-of-a-specific-module"
-  },"189": {
+  },"192": {
     "doc": "Test coverage",
     "title": "Command Options",
     "content": "--html . This option generates an HTML coverage report. The report is saved in the htmlcov directory at the root of your project. rosemary coverage --html . ",
     "url": "/rosemary/testing/test_coverage#command-options",
     
     "relUrl": "/rosemary/testing/test_coverage#command-options"
-  },"190": {
+  },"193": {
     "doc": "Testing",
     "title": "Testing",
     "content": " ",
     "url": "/rosemary/testing",
     
     "relUrl": "/rosemary/testing"
-  },"191": {
+  },"194": {
     "doc": "Testing workflow",
     "title": "Testing workflow",
     "content": "Path to file (view file on GitHub) . The original file is located at the following path: .github / workflows / test.yml . This GitHub Actions workflow is designed to automate the Continuous Integration (CI) process for a Flask application. It triggers on pushes and pull requests to the main and develop branches. The essential elements of this workflow are as follows: . | Workflow Name | Triggers | Jobs . | Services | Steps | Environment Variables for Tests | . | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow"
-  },"192": {
+  },"195": {
     "doc": "Testing workflow",
     "title": "Workflow Name",
     "content": ". | name: Run tests | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow#workflow-name",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow#workflow-name"
-  },"193": {
+  },"196": {
     "doc": "Testing workflow",
     "title": "Triggers",
     "content": ". | on: . | push: Triggers on pushes to main and develop branches. | pull_request: Triggers on pull requests to main and develop branches. | . | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow#triggers",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow#triggers"
-  },"194": {
+  },"197": {
     "doc": "Testing workflow",
     "title": "Jobs",
     "content": ". | pytest: This job runs on the latest Ubuntu environment (ubuntu-latest). | . Services . | mysql: Sets up a MySQL 5.7 service with the following environment variables and options for health checks: . | MYSQL_ROOT_PASSWORD: uvlhub_root_password | MYSQL_DATABASE: uvlhubdb_test | MYSQL_USER: uvlhub_user | MYSQL_PASSWORD: uvlhub_password | Ports: 3306:3306 | Health check options: --health-cmd=\"mysqladmin ping\" --health-interval=10s --health-timeout=5s --health-retries=3 | . | . Steps . | Checkout Repository . | Uses the actions/checkout@v4 action to checkout the repository. | . | Setup Python . | Uses the actions/setup-python@v5 action to set up Python 3.12. | . | Prepare Environment . | Runs a command to modify the requirements.txt file, removing a specific line. | . | Install Dependencies . | Upgrades pip and installs dependencies from requirements.txt. | . | Run Tests . | Sets environment variables for testing and runs pytest on the Flask application. | . | . Environment Variables for Tests . | FLASK_ENV: testing | MARIADB_HOSTNAME: 127.0.0.1 | MARIADB_PORT: 3306 | MARIADB_TEST_DATABASE: uvlhubdb_test | MARIADB_USER: uvlhub_user | MARIADB_PASSWORD: uvlhub_password | . ",
     "url": "/ci_cd/continuous_integration/testing_workflow#jobs",
     
     "relUrl": "/ci_cd/continuous_integration/testing_workflow#jobs"
-  },"195": {
+  },"198": {
     "doc": "Troubleshooting",
     "title": "Troubleshooting",
     "content": "This section provides users with valuable guidance on identifying, diagnosing, and resolving common issues that may arise. This section is intended to help users troubleshoot various problems efficiently, ensuring a smoother and more productive experience. It includes step-by-step instructions, common error messages, and practical solutions to address a wide range of technical difficulties. ",
     "url": "/troubleshooting",
     
     "relUrl": "/troubleshooting"
-  },"196": {
+  },"199": {
     "doc": "Tutorials",
     "title": "Tutorials",
     "content": "The intention of these tutorials is to improve the onboarding of new people to the project. Specifically, we aim to provide some quick guides to familiarise and understand the development environment. ",
     "url": "/tutorials",
     
     "relUrl": "/tutorials"
-  },"197": {
+  },"200": {
     "doc": "Unit tests",
     "title": "Unit tests",
     "content": " ",
     "url": "/rosemary/testing/unit_tests",
     
     "relUrl": "/rosemary/testing/unit_tests"
-  },"198": {
+  },"201": {
     "doc": "Unit tests",
     "title": "Table of contents",
     "content": ". | Testing all modules | Testing a specific module | Testing with an expression | . ",
     "url": "/rosemary/testing/unit_tests#table-of-contents",
     
     "relUrl": "/rosemary/testing/unit_tests#table-of-contents"
-  },"199": {
+  },"202": {
     "doc": "Unit tests",
     "title": "Testing all modules",
     "content": "To run tests across all modules in the project, you can use the following command: . rosemary test . This command will execute all tests found within the app/modules directory, covering all the modules of the project. ",
     "url": "/rosemary/testing/unit_tests#testing-all-modules",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-all-modules"
-  },"200": {
+  },"203": {
     "doc": "Unit tests",
     "title": "Testing a specific module",
     "content": "If you’re focusing on a particular module and want to run tests only for that module, you can specify the module name as an argument: . rosemary test &lt;module_name&gt; . ",
     "url": "/rosemary/testing/unit_tests#testing-a-specific-module",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-a-specific-module"
-  },"201": {
+  },"204": {
     "doc": "Unit tests",
     "title": "Testing with an expression",
     "content": "To run tests that match a specific expression: . rosemary test -k &lt;expression&gt; . To run tests for a specific module that match a specific expression: . rosemary test &lt;module_name&gt; -k &lt;expression&gt; . ",
     "url": "/rosemary/testing/unit_tests#testing-with-an-expression",
     
     "relUrl": "/rosemary/testing/unit_tests#testing-with-an-expression"
-  },"202": {
+  },"205": {
     "doc": "Updating dependencies",
     "title": "Updating dependencies",
     "content": "To update all project dependencies, run: . rosemary update . It is the responsibility of the developer to check that the update of the dependencies has not broken any functionality and each dependency maintains backwards compatibility. Use the script with care! . ",
     "url": "/rosemary/updating_dependencies",
     
     "relUrl": "/rosemary/updating_dependencies"
-  },"203": {
+  },"206": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary",
     "content": " ",
     "url": "/rosemary/using_rosemary",
     
     "relUrl": "/rosemary/using_rosemary"
-  },"204": {
+  },"207": {
     "doc": "Using Rosemary",
     "title": "Table of contents",
     "content": ". | Using Rosemary in local environment | Using Rosemary in Docker environment | Using Rosemary in Vagrant environment | . ",
     "url": "/rosemary/using_rosemary#table-of-contents",
     
     "relUrl": "/rosemary/using_rosemary#table-of-contents"
-  },"205": {
+  },"208": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in local environment",
     "content": "To use Rosemary CLI in a local environment, we must activate the Python virtual environment: . python3.12 -m venv venv source venv/bin/activate . This will create a venv folder. Rosemary is a development package, so we must install packages in editable mode: . pip install -e ./ . ",
     "url": "/rosemary/using_rosemary#using-rosemary-in-local-environment",
     
     "relUrl": "/rosemary/using_rosemary#using-rosemary-in-local-environment"
-  },"206": {
+  },"209": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Docker environment",
     "content": "To use the Rosemary CLI in Docker environment, you need to be inside the web_app_container Docker container. This ensures that Rosemary operates in the correct environment and has access to all necessary files and settings. First, make sure your Docker environment is running. Then, access the web_app_container using the following command: . docker exec -it web_app_container /bin/bash . You are now ready to use Rosemary’s commands. ",
     "url": "/rosemary/using_rosemary#using-rosemary-in-docker-environment",
     
     "relUrl": "/rosemary/using_rosemary#using-rosemary-in-docker-environment"
-  },"207": {
+  },"210": {
     "doc": "Using Rosemary",
     "title": "Using Rosemary in Vagrant environment",
     "content": "To use Rosemary CLI in Vagrant rosemary, you need to be inside the virtual machine. First, make sure the machine is booted: . cd vagrant vagrant up . Second, you must access the machine . vagrant ssh . Provisioning the machine already activates the Python virtual environment needed to run Rosemary. You should see the line (venv) vagrant@ubuntu-mantic:/vagrant$. That means you can now use Rosemary along with all its commands. ",
     "url": "/rosemary/using_rosemary#using-rosemary-in-vagrant-environment",
     
     "relUrl": "/rosemary/using_rosemary#using-rosemary-in-vagrant-environment"
-  },"208": {
+  },"211": {
     "doc": "Vagrant",
     "title": "Vagrant",
     "content": " ",
     "url": "/troubleshooting/vagrant",
     
     "relUrl": "/troubleshooting/vagrant"
-  },"209": {
+  },"212": {
     "doc": "Vagrant",
     "title": "Table of contents",
     "content": ". | A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again | Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine. | . ",
     "url": "/troubleshooting/vagrant#table-of-contents",
     
     "relUrl": "/troubleshooting/vagrant#table-of-contents"
-  },"210": {
+  },"213": {
     "doc": "Vagrant",
     "title": "A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again",
     "content": "You are not in the vagrant folder. cd vagrant . ",
     "url": "/troubleshooting/vagrant#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again",
     
     "relUrl": "/troubleshooting/vagrant#a-vagrant-environment-or-target-machine-is-required-to-run-this-command-run-vagrant-init-to-create-a-new-vagrant-environment-orget-an-id-of-a-target-machine-from-vagrant-global-status-to-run-this-command-on-a-final-option-is-to-change-to-a-directory-with-a-vagrantfile-and-to-try-again"
-  },"211": {
+  },"214": {
     "doc": "Vagrant",
     "title": "Vagrant cannot forward the specified ports on this VM, since they would collide with some other application that is already listening on these ports. The forwarded port to 8089 is already in use on the host machine.",
     "content": "Locust is most likely running locally and you need to shut it down. To do this, run it from the local environment: . rosemary locust:stop . ",
     "url": "/troubleshooting/vagrant#vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine",
     
     "relUrl": "/troubleshooting/vagrant#vagrant-cannot-forward-the-specified-ports-on-this-vm-since-they-would-collide-with-some-other-application-that-is-already-listening-on-these-ports-the-forwarded-port-to-8089-is-already-in-use-on-the-host-machine"
-  },"212": {
+  },"215": {
     "doc": "Zenodo",
     "title": "Zenodo",
     "content": "Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data. ",
     "url": "/modules/zenodo",
     
     "relUrl": "/modules/zenodo"
-  },"213": {
+  },"216": {
     "doc": "Zenodo",
     "title": "Table of contents",
     "content": ". | Obtain a token | Generate .env file | Include your access token | . ",
     "url": "/modules/zenodo#table-of-contents",
     
     "relUrl": "/modules/zenodo#table-of-contents"
-  },"214": {
+  },"217": {
     "doc": "Zenodo",
     "title": "Obtain a token",
     "content": "To use Zenodo module, it is important to obtain a token in Zenodo first. We recommend creating the token in the Sandbox version of Zenodo (https://sandbox.zenodo.org/), in order to generate fictitious DOIs and not make intensive use of the real Zenodo SLA. | Create an Account on Zenodo . | Go to Zenodo. | Click on Sign up and complete the registration. | . | Log in to Zenodo . | Go to Zenodo. | Click on Log in and log in with your account. | . | Access the Tokens Section . | Click on your username in the top right corner. | Select Applications. | . | Create a New Access Token . | Under Personal access tokens, click on New token. | Assign a name for your token. | Select all permissions to grant full access. | Read: Allows read-only access. | Write: Allows creating and modifying records. | Delete: Allows deleting records. | . | Click Create. | . | Save the Access Token . | Copy and save the generated token in a secure place. | . | . ",
     "url": "/modules/zenodo#obtain-a-token",
     
     "relUrl": "/modules/zenodo#obtain-a-token"
-  },"215": {
+  },"218": {
     "doc": "Zenodo",
     "title": "Generate .env file",
     "content": "To generate the Zenodo .env file in app/modules/zenodo, run in root project: . cp app/modules/zenodo/.env.example app/modules/zenodo/.env . ",
     "url": "/modules/zenodo#generate-env-file",
     
     "relUrl": "/modules/zenodo#generate-env-file"
-  },"216": {
+  },"219": {
     "doc": "Zenodo",
     "title": "Include your access token",
     "content": "In the generated .envfile, you must include the access token obtained in Zenodo: . ZENODO_ACCESS_TOKEN=&lt;GET_ACCESS_TOKEN_IN_ZENODO&gt; . A composition of variables is necessary! . To perform the composition of all environment variables, refer to section Composing environment. ",
