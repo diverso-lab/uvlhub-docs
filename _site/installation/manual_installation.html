@@ -576,6 +576,16 @@ Since we are developers, it would be a pain to reinstall <code class="language-p
 
 <p>We have already created the database, but it is empty! We need to create the tables and their relationships. We can make use of migrations:</p>
 
+<blockquote class="note-title">
+  <p><i class="fa-solid fa-database"></i> Already have migrations applied?</p>
+
+  <p>If you have previously run this project, there may be migrations already applied to the database. Just in case, you can reset the database and clear the migration history before applying them again:</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rosemary db:reset --clear-migrations
+</code></pre></div>  </div>
+
+  <p>Note that <code class="language-plaintext highlighter-rouge">rosemary db:reset</code> on its own only drops the internal data from the tables, but it does <strong>not</strong> remove the migration structure. To also clear the migration history, you need the <code class="language-plaintext highlighter-rouge">--clear-migrations</code> flag.</p>
+</blockquote>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flask db upgrade
 </code></pre></div></div>
 <h3 id="populate-database">

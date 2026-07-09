@@ -181,6 +181,16 @@ rosemary
 
 We have already created the database, but it is empty! We need to create the tables and their relationships. We can make use of migrations:
 
+{: .note-title }
+> <i class="fa-solid fa-database"></i> Already have migrations applied?
+>
+> If you have previously run this project, there may be migrations already applied to the database. Just in case, you can reset the database and clear the migration history before applying them again:
+> ```
+> rosemary db:reset --clear-migrations
+> ```
+>
+> Note that `rosemary db:reset` on its own only drops the internal data from the tables, but it does **not** remove the migration structure. To also clear the migration history, you need the `--clear-migrations` flag.
+
 ```
 flask db upgrade
 ```
