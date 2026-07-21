@@ -10,8 +10,9 @@ nav_order: 2
 # Test coverage
 {: .no_toc }
 
-The `rosemary coverage` command facilitates running code coverage analysis for your Flask project using `pytest-cov`. 
-This command simplifies the process of assessing test coverage.
+`rosemary coverage` runs the suite under `pytest-cov`. It takes the same feature argument, the same
+`-k` filter and the same marker flags as [`rosemary test`]({{site.baseurl}}/rosemary/testing/running_tests),
+so the coverage figure always reflects exactly the levels you asked for.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -19,30 +20,109 @@ This command simplifies the process of assessing test coverage.
 1. TOC
 {:toc}
 
-## Test coverage of all modules
+---
 
-To run coverage analysis for all modules within the `app/modules` directory and generate an HTML report, use:
+## Coverage of every feature
 
 ```
 rosemary coverage
 ```
 
-## Test coverage of a specific module
+This measures `app/features/` while running the four default levels: `unit`, `repository`,
+`service` and `integration`. The report is printed to the terminal as `term-missing`, which lists
+each file with its uncovered line numbers.
 
-If you wish to run coverage analysis for a specific module, include the 
-module name:
+{: .warning-title }
+> <i class="fa-solid fa-triangle-exclamation"></i> No HTML by default
+>
+> The bare command writes a terminal report only. If you expect to find an `htmlcov/` directory
+> afterwards, you need `--html`.
+
+## Coverage of one feature
 
 ```
-rosemary coverage <module_name> 
+rosemary coverage auth
 ```
 
-## Command Options
+The target becomes `app/features/auth/`, and so does the `--cov` source, so the percentage is
+scoped to that feature rather than diluted across the whole tree. The name must be a directory
+under `app/features/`. If it is not, the command stops with the name you typed echoed back:
 
-### **\--html**
+```
+Feature 'auht' does not exist.
+```
 
-This option generates an HTML coverage report. The report is saved in the `htmlcov` directory
-at the root of your project.
+## Choosing levels
+
+The marker flags match `rosemary test` one for one:
+
+| Flag | Marker |
+|---|---|
+| `--unit` | `unit` |
+| `--repository` | `repository` |
+| `--service` | `service` |
+| `--integration` | `integration` |
+| `--e2e` | `e2e` |
+| `--all` | `unit`, `repository`, `service`, `integration` and `e2e` |
+
+As with `rosemary test`, flags OR together, and omitting all of them gives you
+`unit or repository or service or integration`.
+
+Coverage from the unit layer alone, which is the fastest signal:
+
+```
+rosemary coverage auth --unit
+```
+
+Coverage from the two database-backed layers:
+
+```
+rosemary coverage auth --repository --service
+```
+
+Coverage across everything pytest can drive, browser tests included. The Selenium Grid must be up
+for this to mean anything:
+
+```
+rosemary coverage --all
+```
+
+## Filtering by expression
+
+`-k` is forwarded to pytest exactly as it is for `rosemary test`:
+
+```
+rosemary coverage auth --unit -k password
+```
+
+## Command options
+
+### `--html`
+
+Adds an HTML report on top of the terminal one. It is written to `htmlcov/` in the directory you ran
+the command from, so run it from the project root to get `htmlcov/` there:
 
 ```
 rosemary coverage --html
+```
+
+Open `htmlcov/index.html` in a browser to click through the annotated sources.
+
+`--html` combines with everything else:
+
+```
+rosemary coverage auth --repository --service --html
+```
+
+## What the command actually runs
+
+```
+pytest <target> --cov=<target> --cov-report=term-missing -m "<markers>" [--cov-report=html] [-k <expression>]
+```
+
+`<target>` is `app/features` or `app/features/<feature>`, prefixed with `$WORKING_DIR` inside a
+container. The equivalent raw invocation is:
+
+```
+pytest app/features/auth --cov=app/features/auth --cov-report=term-missing -m "unit or service"
 ```
