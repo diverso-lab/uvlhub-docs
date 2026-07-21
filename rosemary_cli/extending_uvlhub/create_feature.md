@@ -73,7 +73,7 @@ app/features/notepad/
 ├── seeders.py
 ├── services.py
 ├── assets/
-│   └── scripts/
+│   └── js/
 │       └── scripts.js
 ├── templates/
 │   └── notepad/
@@ -90,13 +90,29 @@ app/features/notepad/
 
 ### The feature package
 
-`__init__.py` declares the blueprint. `BaseBlueprint` comes from the `splent_framework` package and
-adds the asset route on top of a plain Flask `Blueprint`:
+`__init__.py` declares the blueprint and the feature's `init_feature` hook. `BaseBlueprint` comes
+from `splent_framework` and adds the asset route on top of a plain Flask `Blueprint`:
 
 ```python
+from flask import Flask
+from splent_framework.assets.asset_registry import register_asset
 from splent_framework.blueprints.base_blueprint import BaseBlueprint
 
 notepad_bp = BaseBlueprint('notepad', __name__, template_folder='templates')
+
+
+def init_feature(app: Flask) -> None:
+    register_asset("js", "notepad.assets", subfolder="js", filename="scripts.js")
+```
+
+`init_feature` is the lifecycle hook the loader calls once the feature's modules are imported. It is
+where a feature contributes to the shell: its script here, and its navigation entry if it has one.
+To put the feature in the sidebar, add:
+
+```python
+from splent_framework.nav.nav_registry import register_nav_item
+
+register_nav_item("notepad", "Notepad", "/notepad", order=100, icon="book")
 ```
 
 `routes.py` has one route already wired to the template:
@@ -241,32 +257,29 @@ The generated `templates/notepad/index.html` extends the global base template:
 
 {% block content %}
 
-{% endblock %}
-
-{% block scripts %}
-    <script src="{{ url_for('notepad.assets', subfolder='scripts', filename='scripts.js') }}"></script>
 {% endblock %}{% endraw %}
 ```
 
-`BaseBlueprint` registers an `assets` endpoint for every feature that has an `assets/` directory,
-serving `/<feature>/<subfolder>/<filename>`.
+There is deliberately no `<script>` tag. `BaseBlueprint` registers an `assets` endpoint serving
+`/<feature>/<subfolder>/<filename>`, and the script is declared once with `register_asset` in
+`init_feature`. `base_template.html` renders every declared asset from a single place, deduplicated
+and ordered.
 
 {: .warning-title }
-> Move `scripts.js` into `assets/js/`
+> A registered script loads on every page
 >
-> The asset route only serves three subfolders: `js`, `css` and `dist`. Anything else returns a 404.
-> The generator writes `assets/scripts/scripts.js`, so the generated `<script>` tag 404s until you fix
-> it. Move the file and update the tag:
+> The asset registry is global: once declared, your `scripts.js` is served on every page of the
+> application, not only on your feature's. Anything that touches the DOM has to check first that it
+> is on the right page, or it will throw everywhere else:
 >
+> ```javascript
+> document.addEventListener('DOMContentLoaded', () => {
+>     if (!document.getElementById('notepad-list')) return;
+>     // safe to wire the notepad page from here
+> });
 > ```
-> docker exec -it web_app_container mv /workspace/app/features/notepad/assets/scripts /workspace/app/features/notepad/assets/js
-> ```
 >
-> ```jinja
-> {% raw %}<script src="{{ url_for('notepad.assets', subfolder='js', filename='scripts.js') }}"></script>{% endraw %}
-> ```
->
-> Every existing feature in uvlhub uses `assets/js/`.
+> `explore` and `dataset` in this repository are worked examples of that guard.
 
 ## Register the feature
 

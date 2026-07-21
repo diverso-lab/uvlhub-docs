@@ -217,7 +217,7 @@ A list of files and directories that Git should ignore. This prevents certain fi
 The pinned list of Python dependencies, installed with `pip`. Every version is pinned exactly. The entry that matters most to the architecture is the framework the product is built on:
 
 ```
-splent_framework==1.6.1
+splent_framework==1.7.0
 ```
 
 See [splent_framework]({{site.baseurl}}/architecture/splent_framework) for what that package provides.
@@ -237,7 +237,7 @@ requires-python = ">=3.13"
 
 ### The feature contract
 
-`[tool.splent]` declares which features get loaded, and in which environment. This is the declarative replacement for the old `.moduleignore` file, which no longer exists and is no longer read by anything. [Feature selection]({{site.baseurl}}/architecture/feature_selection) documents the resolution rules in full:
+`[tool.splent]` declares which features get loaded, and in which environment. It is the single source of truth for feature selection. [Feature selection]({{site.baseurl}}/architecture/feature_selection) documents the resolution rules in full:
 
 ```toml
 [tool.splent]

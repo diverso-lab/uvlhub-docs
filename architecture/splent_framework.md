@@ -23,7 +23,7 @@ nav_order: 4
 The framework is a normal pinned dependency in `requirements.txt`:
 
 ```
-splent_framework==1.6.1
+splent_framework==1.7.0
 ```
 
 Installing the project's dependencies installs it:
@@ -64,6 +64,11 @@ These are the framework modules {% include uvlhub.html %} actually imports, and 
 | `splent_framework.locust.common` | `get_csrf_token` and `fake`, used by the load tests |
 | `splent_framework.bootstraps.locustfile_bootstrap` | The Locust bootstrap file, located by `rosemary locust` and by the Locust container entrypoint |
 | `splent_framework.resources.generic_resource` | `create_resource`, used by `app/features/dataset/api.py` |
+| `splent_framework.managers.jinja_manager` | `JinjaManager`, which installs the Jinja globals and the product context in the app factory |
+| `splent_framework.assets.asset_registry` | `register_asset` / `get_assets`, how a feature declares its javascript and stylesheets |
+| `splent_framework.nav.nav_registry` | `register_nav_item` / `get_nav_items`, how a feature declares its main-navigation entry |
+| `splent_framework.settings.settings_schema` | `register_settings`, per-feature settings schemas. Not used by this product |
+| `splent_framework.admin.registry` | `register_admin_resource`, the admin surface. Not used by this product |
 | `splent_framework.serialisers.serializer` | `Serializer`, used to shape REST API responses |
 | `splent_framework.utils.form_helpers` | `form_error` and `form_success` |
 
@@ -223,6 +228,49 @@ Both differences are recorded in the docstring of `tests/selenium_support.py`. I
 The asset route `BaseBlueprint` registers serves only three subfolders: `js`, `css` and `dist`. Any other value of `subfolder` returns a 404 before the file is even looked up, so an `assets/img/logo.png` is not reachable through it. Resolved paths are also checked to stay inside the feature's asset directory, and anything escaping it returns a 403.
 
 Today every feature under `app/features/` ships only an `assets/js/` folder, so the limit has not bitten yet. It will the first time a feature wants to serve something that is not a script, a stylesheet or a build output. Put those files under the application's shared static directory rather than the feature's `assets/`.
+
+### The composition registries
+
+1.7.0 introduced four process-global registries that let a feature contribute to the shell without
+the shell knowing the feature exists. {% include uvlhub.html %} uses two of them.
+
+**The asset registry.** A feature declares its script in `init_feature()`:
+
+```python
+def init_feature(app: Flask) -> None:
+    register_asset("js", "team.assets", subfolder="js", filename="scripts.js")
+```
+
+`base_template.html` then emits every declared asset in one place, deduplicated and ordered:
+
+```jinja
+{% raw %}{% for asset in get_assets("js") %}
+<script src="{{ asset }}"></script>
+{% endfor %}{% endraw %}
+```
+
+Feature templates carry no `<script>` tags. There is a consequence worth knowing: **every feature's
+script is served on every page**, so a script must be inert outside its own page. `explore` and
+`dataset` check for an element of their own before wiring anything; the rest are placeholders.
+
+**The nav registry.** A feature declares its main-navigation entry the same way:
+
+```python
+register_nav_item("explore", "Explore", "/explore", order=20, icon="search")
+```
+
+The sidebar iterates `get_nav_items()`, so removing a feature from `[tool.splent]` removes its link
+rather than leaving a `url_for()` pointing at a blueprint that was never registered.
+
+Only the unconditional public entries are registered. `register_nav_item` carries no visibility
+condition, so the parts of the sidebar that depend on whether anyone is logged in stay in the
+template.
+
+`get_assets` reaches Jinja through `JinjaManager`; `get_nav_items` is registered as a global by
+`app/__init__.py`, because the framework leaves the nav to whatever acts as the theme.
+
+The other two registries, **settings** and **admin**, are unused here: this product has no per-feature
+settings schema and no admin surface.
 
 ### Feature discovery
 

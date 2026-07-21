@@ -160,7 +160,7 @@ them.
 > Why Rosemary resolves the list itself
 >
 > It would be natural to defer to the default bootstrap that ships with `splent_framework`, and
-> Rosemary used to. That bootstrap has not followed the `app/features/` rename: version 1.6.1 globs
+> Rosemary used to. That bootstrap has not followed the `app/features/` rename: version 1.7.0 still globs
 > `app/modules/*/tests/locustfile.py`, a directory this repository no longer has, so it collected zero
 > `HttpUser` classes and raised `ValueError: No User class found!` at import time, before Locust
 > started. You can still see it fail on its own:
