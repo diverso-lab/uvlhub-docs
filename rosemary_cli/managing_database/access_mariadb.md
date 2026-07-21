@@ -4,7 +4,7 @@ parent: Managing database
 grand_parent: Rosemary CLI
 title: Access MariaDB
 permalink: /rosemary/managing_database/access_mariadb
-nav_order: 4
+nav_order: 3
 ---
 
 # Access MariaDB

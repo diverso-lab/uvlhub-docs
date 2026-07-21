@@ -3,7 +3,7 @@ layout: default
 parent: Rosemary CLI
 title: Updating dependencies
 permalink: /rosemary/updating_dependencies
-nav_order: 7
+nav_order: 6
 ---
 
 # Updating dependencies

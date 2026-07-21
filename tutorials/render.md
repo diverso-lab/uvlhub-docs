@@ -3,7 +3,7 @@ layout: default
 title: "CD: Render tutorial"
 parent: Tutorials
 permalink: /tutorials/render_tutorial
-nav_order: 1
+nav_order: 3
 ---
 
 # CD: Render tutorial
@@ -25,7 +25,7 @@ nav_order: 1
 > <i class="fa-solid fa-boxes-packing"></i> Have you deployed your application in Render?
 >
 > For this tutorial it is necessary to have previously deployed the project in Render.com.
-> If this is not the case, please look at [the Render deployment guide](/deployment/render) first.
+> If this is not the case, please look at [the Render deployment guide]({{site.baseurl}}/deployment/render) first.
 
 ## Get token from Render
 

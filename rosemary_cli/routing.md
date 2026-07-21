@@ -3,7 +3,7 @@ layout: default
 parent: Rosemary CLI
 title: Routing
 permalink: /rosemary/routing
-nav_order: 6
+nav_order: 5
 ---
 
 # Routing
@@ -17,32 +17,47 @@ The rosemary command `route:list` allows you to list all the routes available in
 1. TOC
 {:toc}
 
-
-
 ## List all routes
 
-To list all the routes of all the modules, run:
+To list the routes of every feature, run:
 
 ```
 rosemary route:list
 ```
 
-## Group routes by module
+The output has three columns: the endpoint, the HTTP methods (with `HEAD` and `OPTIONS` filtered out) and the URL
+rule.
 
-To get a grouped view of the routes by module, you can use the `--group` option. This is especially useful 
-for applications with a complex modular structure, as it allows you to quickly see how the routes are organized within different parts of your application.
+## Group routes by feature
+
+To get a grouped view, use the `--group` option. It splits the endpoints on the dot and groups them by the blueprint
+name, which for a conventional feature is the feature name:
 
 ```
 rosemary route:list --group
 ```
 
-## List routes of a specific module
+## List routes of a specific feature
 
-It may be useful to see the routes associated with a specific module. To do this, simply provide the module 
-name as an argument:
+It may be useful to see the routes associated with a single feature. To do this, provide the feature name as an
+argument:
 
 ```
-rosemary route:list <module_name>
+rosemary route:list <feature_name>
 ```
 
-Replace `<module_name>` with the actual name of the module for which you want to see the routes.
+Replace `<feature_name>` with the name of the directory under `app/features/` whose routes you want to see, for
+example:
+
+```
+rosemary route:list dataset
+```
+
+The command checks that `app/features/<feature_name>` exists before filtering, and then keeps only the endpoints
+that start with `<feature_name>.`.
+
+{: .note-title }
+> The output still says "Module"
+>
+> `route:list` predates the rename from modules to features, and its grouped output still labels each group as
+> `Module: <name>`. It is reading `app/features/` all the same.

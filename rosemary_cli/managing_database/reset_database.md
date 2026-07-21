@@ -4,7 +4,7 @@ parent: Managing database
 grand_parent: Rosemary CLI
 title: Reset database
 permalink: /rosemary/managing_database/reset_database
-nav_order: 3
+nav_order: 2
 ---
 
 # Reset database

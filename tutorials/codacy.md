@@ -3,7 +3,7 @@ layout: default
 title: "CI: Codacy tutorial"
 parent: Tutorials
 permalink: /tutorials/codacy_tutorial
-nav_order: 1
+nav_order: 2
 ---
 
 # CI: Codacy tutorial
@@ -55,35 +55,40 @@ jobs:
   build:
     runs-on: ubuntu-latest
     services:
-      mysql:
-        image: mysql:5.7
+      mariadb:
+        image: mariadb:12.0.2
         env:
-          MYSQL_ROOT_PASSWORD: uvlhub_root_password
-          MYSQL_DATABASE: uvlhubdb_test
-          MYSQL_USER: uvlhub_user
-          MYSQL_PASSWORD: uvlhub_password
+          MARIADB_ROOT_PASSWORD: uvlhub_root_password
+          MARIADB_DATABASE: uvlhubdb_test
+          MARIADB_USER: uvlhub_user
+          MARIADB_PASSWORD: uvlhub_password
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: >-
+          --health-cmd="mariadb-admin ping -u root -p$MARIADB_ROOT_PASSWORD"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
-        python-version: '3.12'
+        python-version: '3.13'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install -e ./rosemary
 
     - name: Upload coverage to Codacy
       run: |
         pip install codacy-coverage
-        coverage run -m pytest app/modules/ --ignore-glob='*selenium*'
+        coverage run -m pytest app/features/ --ignore-glob='*selenium*'
         coverage xml 
         python-codacy-coverage -r coverage.xml
       env:
