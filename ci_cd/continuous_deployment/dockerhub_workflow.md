@@ -4,20 +4,20 @@ grand_parent: CI/CD
 parent: Continuous deployment
 title: Docker Hub workflow
 permalink: /ci_cd/continuous_deployment/dockerHub_workflow
-nav_order: 3
+nav_order: 1
 ---
 
 # Docker Hub workflow
 {: .no_toc }
 
-{: .note-title }
+{: .important-title }
 >
-> Path to file [(view file on GitHub)](https://github.com/diverso-lab/uvlhub/blob/main/.github/workflows/deployment.yml)
+> Path to file [(view file on GitHub)](https://github.com/diverso-lab/uvlhub/blob/main/.github/workflows/CD_dockerhub.yml)
 > 
 > The original file is located at the following path:
 >
 > ```
-> .github / workflows / deployment_on_dockerhub.yml 
+> .github / workflows / CD_dockerhub.yml 
 > ```
 
 {: .important-title }
@@ -32,46 +32,96 @@ nav_order: 3
 > 
 > Repeat these steps for  `DOCKER_PASSWORD` secret.
 
-This GitHub Actions workflow is designed to automate the process of building and publishing Docker images to Docker Hub whenever a new release is published. The essential elements of this workflow are as follows:
+This GitHub Actions workflow builds the production Docker image and publishes it to Docker Hub whenever a new release is published on GitHub.
 
-## Workflow Name
-- **name**: Publish image in Docker Hub
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+## Workflow name
+
+- **name**: `Publish image in Docker Hub`
 
 ## Triggers
-- **on**: 
-  - **release**: Triggers when a release is published.
 
-## Jobs
-- **push_to_registry**: This job runs on the latest Ubuntu environment (`ubuntu-latest`).
+```yaml
+on:
+  release:
+    types: [published]
+```
 
-### Steps
-1. **Check out the Repository**
-   - Uses the `actions/checkout@v3` action to checkout the repository.
+The workflow runs only when a release is *published*. Creating a tag is not enough, and neither is saving a draft release. The release tag name is what ends up as the image tag, so tag your releases the way you want your images named.
 
-2. **Log in to Docker Hub**
-   - Uses the `docker/login-action` pinned to a specific commit (`f4ef78c080cd8ba55a85445d5b36e214a81df20a`) to log in to Docker Hub with credentials stored in GitHub Secrets:
-     ```yaml
-     username: ${{ secrets.DOCKER_USER }}
-     password: ${{ secrets.DOCKER_PASSWORD }}
-     ```
+## Job
 
-3. **Build and Push Docker Image**
-   - Builds the Docker image using the `Dockerfile.prod` file and tags it with the release tag name:
-     ```bash
-     docker build -t drorganvidez/uvlhub:${{ github.event.release.tag_name }} -f Dockerfile.prod .
-     ```
-   - Pushes the tagged Docker image to Docker Hub:
-     ```bash
-     docker push drorganvidez/uvlhub:${{ github.event.release.tag_name }}
-     ```
+- **push_to_registry**: runs on `ubuntu-24.04`.
 
-4. **Tag and Push Latest**
-   - Tags the built Docker image with `latest` and pushes it to Docker Hub:
-     ```bash
-     docker tag drorganvidez/uvlhub:${{ github.event.release.tag_name }} drorganvidez/uvlhub:latest
-     docker push drorganvidez/uvlhub:latest
-     ```
+## Steps
 
-### Notes
-- **Third-Party Actions**: This workflow uses third-party actions that are not certified by GitHub. They are governed by separate terms of service, privacy policy, and support documentation.
-- **Pinning Actions**: GitHub recommends pinning actions to a commit SHA to ensure stability and predictability. The workflow uses a pinned commit SHA for the Docker login action.
+### 1. Checkout
+
+```yaml
+- uses: actions/checkout@v5
+```
+
+The build needs the working copy, because the image is built from the repository contents.
+
+### 2. Log in to Docker Hub
+
+```yaml
+- name: Log in to Docker Hub
+  uses: docker/login-action@v3.6.0
+  with:
+    username: ${{ secrets.DOCKER_USER }}
+    password: ${{ secrets.DOCKER_PASSWORD }}
+```
+
+Both credentials come from repository secrets. Use a Docker Hub access token as `DOCKER_PASSWORD` rather than your account password, so you can revoke it without changing your account.
+
+### 3. Build and push
+
+```yaml
+- name: Build and push Docker image
+  run: |
+    TAG=${{ github.event.release.tag_name }}
+    IMAGE=${{ secrets.DOCKER_USER }}/uvlhub
+
+    docker build --build-arg VERSION_TAG=$TAG -t $IMAGE:$TAG -f docker/images/Dockerfile.prod .
+    docker push $IMAGE:$TAG
+
+    docker tag $IMAGE:$TAG $IMAGE:latest
+    docker push $IMAGE:latest
+```
+
+Three things are worth noticing here.
+
+**The image name is not hardcoded.** It is built from the `DOCKER_USER` secret, so the repository publishes to whatever account owns the credentials. If you fork {% include uvlhub.html %} and set your own secrets, the workflow publishes to `<your-user>/uvlhub` without any change to the YAML.
+
+**The Dockerfile lives under `docker/images/`.** The build file is `docker/images/Dockerfile.prod` and the build context is the repository root (`.`). The context matters: the Dockerfile copies `app/`, `migrations/`, `requirements.txt` and `scripts/wait-for-db.sh` from the root.
+
+**`VERSION_TAG` is passed into the build.** `Dockerfile.prod` declares `ARG VERSION_TAG` and writes it into a file inside the image:
+
+```dockerfile
+ARG VERSION_TAG
+RUN echo $VERSION_TAG > /workspace/.version
+```
+
+That is how a running container knows which release it came from. Note that the working directory inside the image is `/workspace`, not `/app`.
+
+Every release therefore produces two pushes: the immutable `:<tag>` image, and a moving `:latest` pointer.
+
+### Verifying the published image
+
+Once the workflow has finished, you can pull the image and read the version file back out:
+
+```bash
+docker pull <your-user>/uvlhub:latest
+docker run --rm <your-user>/uvlhub:latest cat /workspace/.version
+```
+
+## Notes
+
+- **Third-party actions**: this workflow uses `docker/login-action`, which is not certified by GitHub. It is governed by separate terms of service, privacy policy and support documentation.
+- **Action pinning**: `docker/login-action` is pinned to the release tag `v3.6.0`, not to a commit SHA. A version tag is mutable, so pinning to a full commit SHA is stricter and is what GitHub recommends for supply-chain hardening. Pinning to a tag is the trade-off this repository has chosen: it stays readable and still prevents an unreviewed major version from being pulled in.
