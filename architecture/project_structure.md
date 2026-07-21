@@ -260,7 +260,9 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 `features` is the base list, always loaded. `features_dev` and `features_prod` add entries for one environment only. `app/feature_loader.py` loads the union of `features` and `features_<env>`, where `env` is `prod` when the app is created with the `production` config and `dev` otherwise. To stop a feature from loading, remove it from these lists.

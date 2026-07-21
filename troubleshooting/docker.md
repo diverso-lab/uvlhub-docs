@@ -73,19 +73,21 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 `app/feature_loader.py` walks `app/features/`, and loads a feature only if it appears in `features` or in the list
-for the current environment (`features_dev` or `features_prod`). `webhook` is deliberately a development-only entry.
+for the current environment (`features_dev` or `features_prod`). `webhook` is declared in both environment lists: its test suite needs it in development, and the CD pipeline posts to it in production.
 
-{: .warning-title }
-> <i class="fa-solid fa-triangle-exclamation"></i> The filter needs `pyproject.toml` to be present
+{: .note-title }
+> <i class="fa-solid fa-circle-info"></i> The filter needs `pyproject.toml` to be present
 >
 > `app/feature_loader.py` reads `pyproject.toml` from the directory above `app/`. If the file is not there, it falls
 > back to loading **every** package it finds under `app/features/`. The production images
-> (`Dockerfile.prod`, `Dockerfile.render`) copy `app/`, `migrations/` and `requirements.txt`, but not
-> `pyproject.toml` — so inside those images the declarative filter is inactive and `webhook` is imported.
+> (`Dockerfile.prod`, `Dockerfile.render`) copy it for exactly this reason; if you maintain a custom image, copy it
+> too or the declarative filter is silently inactive.
 
 ### Solution 1: deploy with the webhook compose file
 
@@ -101,9 +103,9 @@ succeeds. This is the only production compose file with a `build:` section, whic
 
 ### Solution 2: drop the feature from your deployment
 
-If you do not need continuous deployment through the webhook, remove `"webhook"` from `features_dev` in
-`pyproject.toml` *and* delete `app/features/webhook/` from your fork. Removing it from `pyproject.toml` alone is not
-enough for the prebuilt production image, for the reason explained in the warning above.
+If you do not need continuous deployment through the webhook, remove `"webhook"` from both `features_dev` and
+`features_prod` in `pyproject.toml`. Images that carry `pyproject.toml` honour the lists; if yours does not, copy
+it in or delete `app/features/webhook/` from your fork.
 
 After that, bring the containers back up. These compose files pull the image instead of building it, so there is no
 `--build`:

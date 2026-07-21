@@ -153,22 +153,26 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 `features` is the base list and is loaded in every environment. `features_dev` adds entries only when the app
 runs in the development environment (which also covers testing), and `features_prod` only in production.
 `app/feature_loader.py` reads these lists on start-up and registers the blueprints of each selected feature.
 
-Because `webhook` sits in `features_dev`, production never loads it. You do not need to do anything to exclude
-it there.
+`webhook` is declared in both environment lists: development needs it for its test suite and
+production serves it for the continuous-deployment pipeline, guarded by `WEBHOOK_TOKEN`. A feature
+declared in only one list is loaded only there — that is the mechanism to reach for when you add a
+genuinely environment-specific feature.
 
 {: .warning-title }
 > <i class="fa-solid fa-plug"></i> `webhook` on a machine without Docker
 >
 > `app/features/webhook/services.py` calls `docker.from_env()` at import time, so the feature needs a reachable
 > Docker daemon. If you are installing manually on a machine that does not run Docker, remove `"webhook"` from
-> `features_dev` in the root `pyproject.toml` before starting the app.
+> both `features_dev` and `features_prod` in the root `pyproject.toml` before starting the app.
 
 ## Install dependencies
 

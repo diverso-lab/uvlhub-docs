@@ -325,7 +325,9 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 `features` is the base list. `features_dev` adds entries when the app runs in development or testing,

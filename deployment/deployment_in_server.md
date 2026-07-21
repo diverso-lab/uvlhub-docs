@@ -107,7 +107,9 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 `features` is the base list, always loaded. `features_dev` adds entries for development and testing, `features_prod`
@@ -116,21 +118,18 @@ resulting set. To take a feature out of a deployment, remove its name from these
 
 ### The `webhook` feature
 
-`webhook` is a development-only entry. `app/features/webhook/services.py` calls `docker.from_env()` at import time,
+`webhook` is declared in both environment lists so production can serve the deployment endpoint. `app/features/webhook/services.py` calls `docker.from_env()` at import time,
 which requires the Docker CLI and the Docker socket. Only `docker/images/Dockerfile.dev` and
 `docker/images/Dockerfile.webhook` install the CLI, and only the corresponding compose files mount
 `/var/run/docker.sock`.
 
-{: .warning-title }
-> <i class="fa-solid fa-triangle-exclamation"></i> The feature filter needs `pyproject.toml` inside the image
+{: .note-title }
+> <i class="fa-solid fa-circle-info"></i> The feature filter needs `pyproject.toml` inside the image
 >
 > `app/feature_loader.py` reads `pyproject.toml` from the directory above `app/`, and when it cannot find the file it
-> falls back to loading **every** package under `app/features/`. `docker/images/Dockerfile.prod` copies `app/`,
-> `migrations/` and `requirements.txt`, but not `pyproject.toml`.
->
-> So if you are deploying the prebuilt production image and you do not want the `webhook` feature, delete the
-> `app/features/webhook/` directory from your fork as well. Editing `pyproject.toml` alone will not keep it out of
-> that image, and the application will refuse to boot with
+> falls back to loading **every** package under `app/features/`. `docker/images/Dockerfile.prod` copies the file so
+> the declarative lists hold inside the image. If you maintain a custom image, copy it too: without it, a feature you
+> removed from the lists still loads, and on a host without a Docker socket the webhook import fails the boot with
 > `docker.errors.DockerException: Error while fetching server API version`.
 
 ## Deploy containers

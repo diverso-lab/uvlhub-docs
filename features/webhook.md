@@ -14,10 +14,11 @@ one endpoint, `POST /webhook/deploy`, and answering that request performs a **re
 redeployment** of the running application: pull the latest code, reinstall dependencies, run the
 database migrations, log the deployment and restart the web container through the Docker socket.
 
-It is a development-only feature: it is declared under `features_dev` in `[tool.splent]`, so a
-production app never registers it. And together with [team]({{site.baseurl}}/features/team) it is one
-of only two features that import nothing from any other feature and that no other feature imports —
-fully decoupled in both directions.
+It is declared in both `features_dev` and `features_prod` in `[tool.splent]`: development and
+testing need it for its own suite, and production needs it because the continuous-deployment
+pipeline posts to it after every green test run. And together with
+[team]({{site.baseurl}}/features/team) it is one of only two features that import nothing from any
+other feature and that no other feature imports — fully decoupled in both directions.
 
 {: .warning }
 **Never call `/webhook/deploy` by hand against a stack you care about.** A successful POST is not a
@@ -49,10 +50,11 @@ The feature itself is one route plus one service. The route authenticates the re
 carries out the deployment against the Docker daemon, whose socket is mounted into the web container
 by the deployment compose file.
 
-Because `webhook` sits in `features_dev` and nowhere else, the app factory's environment mapping
-(`prod` for `config_name="production"`, `dev` for everything else, with `FLASK_ENV` supplying the
-config name) keeps it out of production: the blueprint is never registered, so `/webhook/deploy`
-answers 404 there — the endpoint does not exist, it is not merely protected. See
+`webhook` sits in both environment lists, so the app factory's environment mapping (`prod` for
+`config_name="production"`, `dev` for everything else, with `FLASK_ENV` supplying the config name)
+registers it everywhere. In production the endpoint exists for the deployment pipeline and relies on
+its token guard: without a configured `WEBHOOK_TOKEN` it answers 503 for every request, so enabling
+the feature does not open an unauthenticated surface. See
 [Feature selection]({{site.baseurl}}/architecture/feature_selection) for the full mechanism.
 
 ## Routes
@@ -234,11 +236,14 @@ WEBHOOK_TOKEN=<CHANGE_THIS>
 
 Without it, the endpoint answers 503 for every request — the feature fails closed, never open.
 
-Feature selection is the other half of its configuration. `webhook` is declared in exactly one list
-of the root `pyproject.toml`:
+Feature selection is the other half of its configuration. `webhook` is declared in both environment
+lists of the root `pyproject.toml`, so the endpoint exists in development and in production alike:
 
 ```toml
 features_dev = [
+    "webhook",
+]
+features_prod = [
     "webhook",
 ]
 ```

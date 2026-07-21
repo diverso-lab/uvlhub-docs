@@ -39,7 +39,9 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 Each entry is a directory name under `app/features/`. The three lists mean:
@@ -97,7 +99,7 @@ Swap `features_dev` for `features_prod` to see the production set.
 
 Two different empty cases behave differently, and the distinction matters.
 
-An empty environment list is unremarkable. `features_prod = []` simply contributes nothing to the union, so the `prod` environment gets the base set and no more. Removing the key entirely has the same effect, because `splent.get(...) or []` treats a missing key and an empty list identically.
+An empty environment list is unremarkable: it simply contributes nothing to the union, so that environment gets the base set and no more. Removing the key entirely has the same effect, because `splent.get(...) or []` treats a missing key and an empty list identically.
 
 An empty *result* turns the filter off completely. The loader only filters when it has something to filter with:
 
@@ -198,13 +200,21 @@ so the identical `Blueprint` shows up as an attribute of both modules. Deduplica
 
 ## What this means in practice: the webhook feature
 
-`webhook` is listed under `features_dev` and nowhere else. That single line of TOML is the entire configuration:
+`webhook` is listed in both environment lists, which is itself a statement: the feature is wanted
+everywhere, but for different reasons — its test suite in development, the continuous-deployment
+endpoint in production:
 
 ```toml
 features_dev = [
     "webhook",
 ]
+features_prod = [
+    "webhook",
+]
 ```
+
+A feature listed in only one of them is the environment-split case: declared once, resolved per
+environment, no per-machine configuration anywhere.
 
 Because the application factory maps both `development` and `testing` to `dev`, the feature is registered when you run the app locally and when the test suite builds an app through `create_app("testing")`. Its routes exist, its tests run, and it behaves like any other feature.
 

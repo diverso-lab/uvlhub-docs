@@ -46,7 +46,9 @@ features = [
 features_dev = [
     "webhook",
 ]
-features_prod = []
+features_prod = [
+    "webhook",
+]
 ```
 
 At startup, `app/feature_loader.py` reads these lists and loads the union of `features` and
@@ -90,7 +92,8 @@ the answer cannot drift from what actually loads. Pass `--env prod` to see the p
 rosemary feature:list --env prod
 ```
 
-The two lists differ by `webhook`, which is declared under `features_dev`. The command also flags
+Both environments resolve the same eleven features today, since `webhook` is declared in both env
+lists so production can serve the deployment endpoint. The command also flags
 features declared in `pyproject.toml` but missing from disk, and features sitting in
 `app/features/` that no list declares, so neither mistake stays invisible.
 
@@ -111,11 +114,11 @@ features declared in `pyproject.toml` but missing from disk, and features sittin
 | [`team`]({{site.baseurl}}/features/team) | The static team page at `/team`. |
 | [`zenodo`]({{site.baseurl}}/features/zenodo) | Deposition, upload and publication against the Zenodo REST API. |
 
-### Development-only features
+### Deployment features
 
 | Feature | What it does |
 |:--------|:-------------|
-| [`webhook`]({{site.baseurl}}/features/webhook) | Receives a deploy POST at `/webhook/deploy`. Listed in `features_dev`, so it is not registered in production. |
+| [`webhook`]({{site.baseurl}}/features/webhook) | Receives a deploy POST at `/webhook/deploy`. Declared in both `features_dev` and `features_prod`: development needs it for its test suite, production for the CD pipeline. Refuses every request with a 503 until `WEBHOOK_TOKEN` is configured. |
 
 ## How coupled are they
 

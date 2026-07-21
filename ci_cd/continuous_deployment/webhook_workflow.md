@@ -130,11 +130,14 @@ with a `503` instead of comparing against an empty value.
 4. Append a timestamped entry to `/workspace/deployments.log`.
 5. Restart the container through `scripts/restart_container.sh`.
 
-Note that the service needs the Docker CLI and the Docker socket, which is why the `webhook` feature belongs to a Docker based deployment and is declared under `features_dev` in the root `pyproject.toml`:
+Note that the service needs the Docker CLI and the Docker socket, which is why the `webhook` feature belongs to a Docker based deployment. It is declared in both environment lists of the root `pyproject.toml` — production must serve the endpoint this workflow posts to, and development needs it for the feature's own tests:
 
 ```toml
 [tool.splent]
 features_dev = [
+    "webhook",
+]
+features_prod = [
     "webhook",
 ]
 ```
