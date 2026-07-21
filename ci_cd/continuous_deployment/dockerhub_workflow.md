@@ -70,6 +70,7 @@ The build needs the working copy, because the image is built from the repository
 
 ### 2. Log in to Docker Hub
 
+{% raw %}
 ```yaml
 - name: Log in to Docker Hub
   uses: docker/login-action@v3.6.0
@@ -77,11 +78,13 @@ The build needs the working copy, because the image is built from the repository
     username: ${{ secrets.DOCKER_USER }}
     password: ${{ secrets.DOCKER_PASSWORD }}
 ```
+{% endraw %}
 
 Both credentials come from repository secrets. Use a Docker Hub access token as `DOCKER_PASSWORD` rather than your account password, so you can revoke it without changing your account.
 
 ### 3. Build and push
 
+{% raw %}
 ```yaml
 - name: Build and push Docker image
   run: |
@@ -94,6 +97,7 @@ Both credentials come from repository secrets. Use a Docker Hub access token as 
     docker tag $IMAGE:$TAG $IMAGE:latest
     docker push $IMAGE:latest
 ```
+{% endraw %}
 
 Three things are worth noticing here.
 

@@ -149,7 +149,7 @@ dataset_bp = BaseBlueprint("dataset", __name__, template_folder="templates")
 `BaseBlueprint` is a Flask `Blueprint` that resolves the feature's package directory from its import name. If the feature has an `assets/` folder, it registers an asset route for it automatically, which is what makes this work from a template:
 
 ```
-<script src="{{ url_for('dataset.assets', subfolder='js', filename='scripts.js') }}"></script>
+{% raw %}<script src="{{ url_for('dataset.assets', subfolder='js', filename='scripts.js') }}"></script>{% endraw %}
 ```
 
 If you pass no `template_folder`, it falls back to the feature's own `templates/` directory.

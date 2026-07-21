@@ -68,7 +68,7 @@ The runner image is pinned to an explicit Ubuntu version rather than `ubuntu-lat
 
 ## Environment variables
 
-The job declares the database configuration once at job level, and the service container reuses it through `${{ env.* }}`:
+The job declares the database configuration once at job level, and the service container reuses it through `{% raw %}${{ env.* }}{% endraw %}`:
 
 | Variable | Value |
 |:---|:---|
@@ -87,6 +87,7 @@ The job declares the database configuration once at job level, and the service c
 
 A MariaDB container is started alongside the job:
 
+{% raw %}
 ```yaml
 services:
   mariadb:
@@ -104,6 +105,7 @@ services:
       --health-timeout=5s
       --health-retries=3
 ```
+{% endraw %}
 
 The health check uses `mariadb-admin`, which is the MariaDB client binary. The job does not start running steps until the health check passes, so the database is ready before the first test connects.
 

@@ -67,7 +67,7 @@ dataset_bp = BaseBlueprint("dataset", __name__, template_folder="templates")
 `BaseBlueprint` resolves the feature's package directory and, if the feature has an `assets/` folder, automatically adds a route that serves files from it. That is what makes this work in a template:
 
 ```
-<script src="{{ url_for('dataset.assets', subfolder='js', filename='scripts.js') }}"></script>
+{% raw %}<script src="{{ url_for('dataset.assets', subfolder='js', filename='scripts.js') }}"></script>{% endraw %}
 ```
 
 Only the `js`, `css` and `dist` subfolders are served.

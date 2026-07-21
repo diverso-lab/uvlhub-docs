@@ -72,6 +72,7 @@ If either condition fails, the job is skipped. A skipped job is not a failed job
 
 ## Step
 
+{% raw %}
 ```yaml
 - name: Trigger Deployment Webhook
   env:
@@ -82,6 +83,7 @@ If either condition fails, the job is skipped. A skipped job is not a failed job
       https://${{ secrets.WEBHOOK_DOMAIN }}/webhook/deploy \
       -H "Authorization: Bearer ${{ secrets.WEBHOOK_TOKEN }}"
 ```
+{% endraw %}
 
 GitHub does not have access to the server. It only sends a signed request and the server does the work.
 
