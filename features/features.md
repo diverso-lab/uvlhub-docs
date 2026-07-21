@@ -64,11 +64,10 @@ A package sitting in `app/features/` that is not named in either list is simply 
 list is declared at all, every package found on disk is loaded.
 
 {: .important-title }
-> No more `.moduleignore`
+> Where features are selected
 >
-> Feature selection used to be driven by a `.moduleignore` file. That file no longer exists and nothing
-> reads it. The `[tool.splent]` lists above are the only place features are selected. The canonical
-> reference is [Feature selection]({{site.baseurl}}/architecture/feature_selection).
+> The `[tool.splent]` lists above are the only place features are selected. The canonical reference is
+> [Feature selection]({{site.baseurl}}/architecture/feature_selection).
 
 The `[tool.splent]` lists are the declarative source. To see what the running app actually registered,
 list its routes:

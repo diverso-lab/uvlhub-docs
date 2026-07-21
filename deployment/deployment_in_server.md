@@ -69,7 +69,7 @@ path the application and the Rosemary CLI resolve is built from it. Do not chang
 
 ## Choose the features you deploy
 
-There is no `.moduleignore` file. The set of features that the application loads is declared in the root
+The set of features that the application loads is declared in the root
 `pyproject.toml` (see [Feature selection]({{site.baseurl}}/architecture/feature_selection), which also
 records why `features_prod` is not reached by the shipped production entrypoint):
 

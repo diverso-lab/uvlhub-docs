@@ -53,8 +53,8 @@ That call needs two things the plain production container does not have: the Doc
 
 ### How features are selected
 
-There is no `.moduleignore` file any more, and nothing reads one. Which features get loaded is declared in the root
-`pyproject.toml` (see [Feature selection]({{site.baseurl}}/architecture/feature_selection)):
+Which features get loaded is declared in the root `pyproject.toml`
+(see [Feature selection]({{site.baseurl}}/architecture/feature_selection)):
 
 ```toml
 [tool.splent]

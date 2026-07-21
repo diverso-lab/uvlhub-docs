@@ -53,9 +53,9 @@ Each entry is a directory name under `app/features/`. The three lists mean:
 The lists are additive. There is no "exclude" list: a feature is absent from an environment because it was never added to it, not because something removed it.
 
 {: .important-title }
-> This replaced `.moduleignore`
+> The lists are the only selection mechanism
 >
-> Feature selection used to be driven by a `.moduleignore` file listing the modules to skip. That file no longer exists and nothing in the codebase reads it. The three lists above are the only place features are selected. If a guide tells you to edit `.moduleignore`, it is describing a version of the project that is gone.
+> The three lists above are the only place features are selected. There is no per-machine file to edit and no runtime switch: if a feature is not named in a list that applies to the environment, it is not loaded.
 
 ## How the loader resolves the lists
 
@@ -202,7 +202,7 @@ Because the application factory maps both `development` and `testing` to `dev`, 
 
 Under an app created with `config_name="production"`, `env` is `prod`, the loader reads `features_prod`, and `webhook` is not in the resolved set. The directory is still present in the image, but the loader walks past it: no config injection, no `routes` import, no blueprint. The endpoint is not merely protected, it does not exist, so requests to it get a 404 from the routing layer.
 
-Nobody edits a file to make that happen at deploy time. The environment split is a property of the contract, which is the concrete improvement over `.moduleignore`: the old file described one machine's opinion about what to skip and had to be kept correct by hand, while the lists describe every environment at once and travel with the source.
+Nobody edits a file to make that happen at deploy time. The environment split is a property of the contract itself: the lists describe every environment at once and travel with the source, so the same checkout behaves correctly wherever it is deployed.
 
 {: .warning-title }
 > The shipped production entrypoint does not select the `prod` set
