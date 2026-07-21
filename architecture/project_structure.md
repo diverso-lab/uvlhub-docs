@@ -101,11 +101,11 @@ Fixtures that only concern one feature belong in `app/features/<feature>/tests/c
 
 ## tests
 
-Cross-feature test support that does not belong to any single feature. It currently holds `selenium_support.py`, the helper that resolves the WebDriver and the target host for the end-to-end layer.
+Cross-feature test support that does not belong to any single feature. It currently holds `selenium_support.py`, the e2e layer's single import point for the WebDriver and the target host.
 
-Both helpers branch on `WORKING_DIR`. Inside Docker (`WORKING_DIR=/workspace/`), `selenium_support.initialize_driver()` returns a `webdriver.Remote` attached to the Selenium Grid started by `docker/docker-compose.dev.yml`, and `get_host_for_selenium_testing()` returns the URL of the app *as the browser sees it* — the nginx container, not `localhost`, because `localhost` inside the browser container resolves to the browser itself. Run outside Docker, `initialize_driver()` falls back to a local `webdriver.Chrome()` or `webdriver.Firefox()` and the host becomes `http://localhost:5000`.
+Since `splent_framework` 1.7.1 the driver itself comes from the framework, which attaches to the Selenium Grid named by `SELENIUM_GRID_URL` and honours `SELENIUM_TARGET_URL` for the URL the browser opens — the nginx container, not `localhost`, because `localhost` inside the browser container resolves to the browser itself. The wrapper defaults both variables to this stack's container names when running under Docker, and pins a 1920x1080 window so both grid browsers see the same responsive layout. Run outside Docker, neither variable is defaulted and the framework launches a local browser against `http://localhost:5000`.
 
-This module exists because the framework's own Selenium helper builds a local Chrome through `webdriver_manager`, and no browser is installed inside `web_app_container`. Every `test_selenium.py` in the project imports from here:
+Every `test_selenium.py` in the project imports from here:
 
 ```python
 from tests.selenium_support import close_driver, get_host_for_selenium_testing, initialize_driver
@@ -217,7 +217,7 @@ A list of files and directories that Git should ignore. This prevents certain fi
 The pinned list of Python dependencies, installed with `pip`. Every version is pinned exactly. The entry that matters most to the architecture is the framework the product is built on:
 
 ```
-splent_framework==1.7.0
+splent_framework==1.7.1
 ```
 
 See [splent_framework]({{site.baseurl}}/architecture/splent_framework) for what that package provides.

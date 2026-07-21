@@ -151,25 +151,16 @@ and picks up `WORKING_DIR` from the environment already there.
 rosemary locust
 ```
 
-With no argument, every feature that has a `locustfile.py` is loaded at once. Locust accepts a
-comma-separated list, so Rosemary collects the files under `app/features/*/tests/locustfile.py` and
-passes them together. The web interface then lets you pick which user classes to run, or swarm all of
-them.
+With no argument, every feature that has a `locustfile.py` is loaded at once. Discovery is done by
+`splent_framework`'s locustfile bootstrap, which since 1.7.1 finds
+`app/features/*/tests/locustfile.py` on its own: in Docker, Rosemary simply omits `-f` and the
+locust entrypoint resolves the bootstrap from site-packages; outside Docker, Rosemary points locust
+at the bootstrap module directly. The web interface then lets you pick which user classes to run, or
+swarm all of them. Loaded class names carry a per-feature suffix, `AuthUser_splent_locustfile_auth`
+for example, so two features' classes can never shadow each other.
 
-{: .note-title }
-> Why Rosemary resolves the list itself
->
-> It would be natural to defer to the default bootstrap that ships with `splent_framework`, and
-> Rosemary used to. That bootstrap has not followed the `app/features/` rename: version 1.7.0 still globs
-> `app/modules/*/tests/locustfile.py`, a directory this repository no longer has, so it collected zero
-> `HttpUser` classes and raised `ValueError: No User class found!` at import time, before Locust
-> started. You can still see it fail on its own:
->
-> ```bash
-> docker exec web_app_container python -c "from splent_framework.bootstraps import locustfile_bootstrap"
-> ```
->
-> Resolving the paths in Rosemary sidesteps it until the framework catches up.
+To load from somewhere else entirely, set `SPLENT_LOCUSTFILES` to a comma-separated list of glob
+patterns, relative to `WORKING_DIR` unless absolute.
 
 ## How it runs per environment
 

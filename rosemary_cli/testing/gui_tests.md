@@ -62,30 +62,29 @@ run and what makes `--e2e` able to select them.
 
 ## The driver helpers
 
-The imports come from `tests/selenium_support.py`, a repo-local module, not from
-`splent_framework`. Read that file's docstring for the full reasoning; the short version is that
-the framework's `selenium.common` cannot drive the grid:
+The imports come from `tests/selenium_support.py`, which since `splent_framework` 1.7.1 is a thin
+wrapper over the framework's own helpers. The framework drives the grid natively: when
+`SELENIUM_GRID_URL` is set, `initialize_driver` attaches to that hub through `webdriver.Remote`, so
+the browser runs in the `selenium-chrome` or `selenium-firefox` container; without it, a local
+browser is launched through `webdriver_manager`. `get_host_for_selenium_testing` honours
+`SELENIUM_TARGET_URL`, which matters because the URL is resolved **by the browser**, and inside a
+grid node `localhost` is the node itself.
 
-- its `initialize_driver` builds a **local** Chrome through `webdriver_manager`, and there is no
-  browser installed inside `web_app_container`, so every test raises before it reaches the app;
-- its `get_host_for_selenium_testing` returns `localhost`, but the host is resolved **by the
-  browser**, and inside the browser container `localhost` is the browser itself.
-
-`tests/selenium_support.py` fixes both. It builds a `webdriver.Remote` pointed at the grid so the
-browser runs in the `selenium-chrome` or `selenium-firefox` container, and it targets the nginx
-container rather than `localhost`:
+What the wrapper adds on top:
 
 ```python
-GRID_URL = os.getenv("SELENIUM_GRID_URL", "http://selenium_hub_container:4444")
-DOCKER_HOST_URL = os.getenv("SELENIUM_TARGET_URL", "http://nginx_web_server_container")
-LOCAL_HOST_URL = "http://localhost:5000"
+if os.getenv("WORKING_DIR", "") == "/workspace/":
+    os.environ.setdefault("SELENIUM_GRID_URL", "http://selenium_hub_container:4444")
+    os.environ.setdefault("SELENIUM_TARGET_URL", "http://nginx_web_server_container")
 ```
 
-Outside Docker the same helper falls back to a local `webdriver.Firefox()` or `webdriver.Chrome()`
-and to `http://localhost:5000`, so the identical test file works in both environments.
+so the grid and the target default to this stack's container names under Docker, plus a pinned
+1920x1080 window. Browser defaults differ (chrome nodes open at about 945px, firefox at about
+1280px), and below the responsive breakpoint the sidebar collapses off-canvas, so an unpinned
+viewport makes the same test pass on one browser and fail on the other.
 
-This module is meant to be temporary. Drop it and go back to the framework helpers once
-`splent_framework` grows grid support.
+Outside Docker neither variable is defaulted, so the framework launches a local browser against
+`http://localhost:5000` and the identical test file works in both environments.
 
 ---
 

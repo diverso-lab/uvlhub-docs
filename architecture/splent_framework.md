@@ -23,7 +23,7 @@ nav_order: 4
 The framework is a normal pinned dependency in `requirements.txt`:
 
 ```
-splent_framework==1.7.0
+splent_framework==1.7.1
 ```
 
 Installing the project's dependencies installs it:
@@ -205,23 +205,21 @@ The four fixtures differ in how aggressively they reset the database. `test_clie
 
 ## Things to know
 
-Two parts of the framework do not cover what {% include uvlhub.html %} needs, and the repository works around both. Reaching for the framework helper in these places will not work, so it is worth knowing where the seams are.
+A few framework behaviours are worth knowing before you reach for them, because they shape how this repository is wired.
 
 ### Selenium
 
-The end-to-end layer is driven by the repository-local helper `tests/selenium_support.py`, not by `splent_framework.selenium.common`:
+Since 1.7.1 the framework itself can drive a Selenium Grid. `initialize_driver` attaches to the hub named by `SELENIUM_GRID_URL` through `webdriver.Remote`, so the browser runs in a grid node container; without that variable it launches a local browser through `webdriver_manager`, as before. It accepts chrome (the default) and firefox, chosen per call or through `SELENIUM_BROWSER`, and `get_host_for_selenium_testing` honours `SELENIUM_TARGET_URL` — needed because the URL a test opens is resolved *by the browser*, and inside a grid node `localhost` is the node itself.
+
+The e2e layer still imports from the repository-local `tests/selenium_support.py`:
 
 ```python
 from tests.selenium_support import close_driver, get_host_for_selenium_testing, initialize_driver
 ```
 
-The framework's `initialize_driver` builds a *local* Chrome through `webdriver_manager`, and no browser is installed inside `web_app_container`, so every e2e test would fail before reaching the app. It also takes no arguments, so there is no way to ask it for Firefox. When `WORKING_DIR` is `/workspace/`, the local helper instead returns a `webdriver.Remote` attached to the Selenium Grid that `docker/docker-compose.dev.yml` starts, so the browser runs in the `selenium_chrome_container` or `selenium_firefox_container`. Outside Docker it builds a local browser, as the framework does.
+but that module is now a thin wrapper over the framework helpers. It defaults `SELENIUM_GRID_URL` and `SELENIUM_TARGET_URL` to this stack's container names when running under Docker, and pins a 1920x1080 window so the responsive layout is identical whichever browser the grid hands out. The driver itself comes from the framework.
 
-The browser choice travels by environment variable. `rosemary selenium --driver firefox` sets `SELENIUM_BROWSER`, which `initialize_driver` reads. Earlier versions of that command tried to call a `set_service_driver` helper on `splent_framework.selenium.common`; no such function exists, so do not reintroduce that call.
-
-The host differs too. The framework's `get_host_for_selenium_testing` returns `http://localhost` under `/workspace/`, but the host name is resolved *by the browser*, and inside the browser container `localhost` is the browser itself. The local helper returns the nginx container URL instead. `get_host_for_locust_testing` already gets this right, which is why the load tests do import it from the framework.
-
-Both differences are recorded in the docstring of `tests/selenium_support.py`. If the framework grows grid support, the local helper can be dropped.
+The browser choice travels by environment variable: `rosemary selenium --driver firefox` sets `SELENIUM_BROWSER`, which the framework reads.
 
 ### Feature assets
 
