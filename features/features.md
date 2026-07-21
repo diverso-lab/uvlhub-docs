@@ -100,27 +100,76 @@ features declared in `pyproject.toml` but missing from disk, and features sittin
 
 | Feature | What it does |
 |:--------|:-------------|
-| `auth` | Signup, login and logout. Owns the `User` model and the login manager wiring. |
-| `dataset` | Dataset upload, listing, download and DOI resolution (`/doi/<doi>/`). Also defines the REST resources at `/api/v1/datasets/` in `api.py`. |
-| `explore` | Dataset search at `/explore`, filtering by query, sorting, publication type and tags. |
-| `featuremodel` | The `FeatureModel`, `FMMetaData` and `FMMetrics` models, linking a dataset to its UVL files. |
-| `flamapy` | UVL validation and format conversion through {% include flamapy.html %}: `check_uvl`, `valid`, `to_glencoe`, `to_splot`, `to_cnf`. |
-| `hubfile` | Individual file download and view, at `/file/download/<id>` and `/file/view/<id>`. |
-| `profile` | Profile editing at `/profile/edit` and the signed-in user's own summary at `/profile/summary`. |
-| `public` | The landing page at `/`. |
-| `team` | The static team page at `/team`. |
-| `zenodo` | Deposition, upload and publication against the Zenodo REST API. See [Zenodo]({{site.baseurl}}/features/zenodo). |
+| [`auth`]({{site.baseurl}}/features/auth) | Signup, login and logout. Owns the `User` model and the login manager wiring. |
+| [`dataset`]({{site.baseurl}}/features/dataset) | Dataset upload, listing, download and DOI resolution (`/doi/<doi>/`). Also defines the REST resources at `/api/v1/datasets/` in `api.py`. |
+| [`explore`]({{site.baseurl}}/features/explore) | Dataset search at `/explore`, filtering by query, sorting, publication type and tags. |
+| [`featuremodel`]({{site.baseurl}}/features/featuremodel) | The `FeatureModel`, `FMMetaData` and `FMMetrics` models, linking a dataset to its UVL files. |
+| [`flamapy`]({{site.baseurl}}/features/flamapy) | UVL validation and format conversion through {% include flamapy.html %}: `check_uvl`, `valid`, `to_glencoe`, `to_splot`, `to_cnf`. |
+| [`hubfile`]({{site.baseurl}}/features/hubfile) | Individual file download and view, at `/file/download/<id>` and `/file/view/<id>`. |
+| [`profile`]({{site.baseurl}}/features/profile) | Profile editing at `/profile/edit` and the signed-in user's own summary at `/profile/summary`. |
+| [`public`]({{site.baseurl}}/features/public) | The landing page at `/`. |
+| [`team`]({{site.baseurl}}/features/team) | The static team page at `/team`. |
+| [`zenodo`]({{site.baseurl}}/features/zenodo) | Deposition, upload and publication against the Zenodo REST API. |
 
 ### Development-only features
 
 | Feature | What it does |
 |:--------|:-------------|
-| `webhook` | Receives a deploy POST at `/webhook/deploy`. Listed in `features_dev`, so it is not registered in production. |
+| [`webhook`]({{site.baseurl}}/features/webhook) | Receives a deploy POST at `/webhook/deploy`. Listed in `features_dev`, so it is not registered in production. |
+
+## How coupled are they
+
+Measured from the production code (imports excluding tests, schema foreign keys, and cross-feature
+`url_for` references in templates), the eleven features fall into three tiers.
+
+**Independent.** [`team`]({{site.baseurl}}/features/team) and
+[`webhook`]({{site.baseurl}}/features/webhook) import nothing from other features and nothing imports
+them. They can be removed from `[tool.splent]` without breaking anything else.
+
+**Clean consumers.** [`public`]({{site.baseurl}}/features/public) consumes only other features'
+services, which is the pattern the layering intends. [`explore`]({{site.baseurl}}/features/explore)
+imports dataset and featuremodel models to build its search query, an acceptable read-side
+dependency, and nothing imports it. [`flamapy`]({{site.baseurl}}/features/flamapy) is clean in
+Python (hubfile services only), but dataset's detail template links into five of its endpoints, so
+disabling it breaks that page. Python-decoupled, UI-coupled.
+
+**The core.** [`auth`]({{site.baseurl}}/features/auth) and
+[`profile`]({{site.baseurl}}/features/profile) import each other at module level and are one unit in
+practice. [`dataset`]({{site.baseurl}}/features/dataset),
+[`featuremodel`]({{site.baseurl}}/features/featuremodel) and
+[`hubfile`]({{site.baseurl}}/features/hubfile) form a module-level dependency triangle, tied at the
+schema too: `feature_model` references `data_set`, `author` references `fm_meta_data`, and hubfile's
+records reference `user`. [`zenodo`]({{site.baseurl}}/features/zenodo) imports dataset at module
+level, and dataset imports zenodo lazily inside the upload flow, so removing zenodo survives import
+but breaks uploads at call time. Together with auth these six deploy as a unit today.
+
+The dependency matrix, direction is "row imports column":
+
+| | auth | dataset | featuremodel | hubfile | profile | zenodo |
+|---|---|---|---|---|---|---|
+| **auth** | — | | | | models, repos, services | |
+| **dataset** | services | — | repos | repos | | services (lazy) |
+| **explore** | | models | models | | | |
+| **featuremodel** | | models | — | services | | |
+| **flamapy** | | | | services | | |
+| **hubfile** | models | models, services (lazy) | models | — | | |
+| **profile** | services | repos | | | — | |
+| **public** | | services | services | | | |
+| **zenodo** | | models | models | | | — |
+
+Five of those edges skip the target's service layer and reach a repository directly
+(auth to profile, dataset to featuremodel and to hubfile, profile to dataset), and one model imports
+another feature's service (hubfile's `Hubfile` uses dataset's `SizeService`). They work, but they are
+the edges to unwind first if the product ever needs to derive without part of the core: hold to a
+services-only rule across features, and guard the cross-feature `url_for` links in templates behind
+the feature's presence.
 
 ## What a feature looks like
 
-Not every feature has every file — a feature only carries what it needs. `public` and `team` are just a
-blueprint plus templates, while `dataset` has the full set:
+Not every feature has every file — a feature only carries what it needs. `public` and `team` are on the
+small end: a blueprint whose `init_feature` hook registers their script and nav item with the framework
+registries, a `routes.py`, a template, a script under `assets/js/`, and a `tests/` directory — but no
+models, repositories, services or forms, because they persist nothing. `dataset` has the full set:
 
 ```
 app/features/dataset/

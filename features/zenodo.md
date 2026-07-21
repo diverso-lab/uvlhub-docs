@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Zenodo
+title: zenodo
 parent: Features
 permalink: /features/zenodo
-nav_order: 1
+nav_order: 11
 ---
 
-# Zenodo
+# zenodo
 {: .no_toc }
 
 Zenodo is an open access repository that allows researchers, scientists, academics and anyone interested in sharing their research to upload and store research data, publications, software and other scientific results. It was created by OpenAIRE and CERN (European Organization for Nuclear Research) to support the open access movement and facilitate the sharing and preservation of scientific data.
@@ -109,13 +109,13 @@ Zenodo answered with, which usually means the token is missing, wrong, or does n
 delete scopes. The most common failure is the very first step, creating the deposition:
 
 ```json
-{"success": false, "messages": "Failed to create test deposition on Zenodo. Response code: 403"}
+{"success": false, "messages": ["Failed to create test deposition on Zenodo. Response code: 403"]}
 ```
 
-{: .warning }
-`messages` changes type between the two cases. When the deposition cannot be created, the service
-returns early and `messages` is a plain string. In every other case it is a list of per-step messages,
-empty on success. Parse it defensively.
+{: .note }
+`messages` is always a list: empty on success, one entry per failed step otherwise. When the deposition
+cannot be created, the service returns early with just that single entry — the upload and delete steps
+are never attempted, so nothing else can appear in the list.
 
 ## What the feature does
 
@@ -135,9 +135,12 @@ empty on success. Parse it defensively.
 
 The `dataset` feature drives all of this. In `DataSetService.upload_dataset`, the dataset is persisted
 locally first; only then does it create the deposition, upload each feature model, publish, and store
-the returned DOI. That second half is deliberately best-effort. If Zenodo fails, the upload is not
-lost: the dataset stays in the hub without a DOI and the call returns `{"status": "partial"}` instead
-of an error.
+the returned DOI. That second half is deliberately best-effort: if Zenodo fails, the upload is not
+lost and the dataset stays in the hub without a DOI. The reported status depends on where the failure
+happens, though. If `create_new_deposition` itself fails — the 403 above, for instance — the exception
+is logged and swallowed, the rest of the Zenodo steps are skipped, and the call still returns
+`{"status": "ok"}`. Only when the deposition was created but a later step fails — uploading a file,
+publishing, or fetching the DOI — does the call return `{"status": "partial"}`.
 
 ## Tests
 
