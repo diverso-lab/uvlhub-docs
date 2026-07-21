@@ -44,6 +44,22 @@ To start containers in development mode, use the `docker-compose.dev.yml` file l
 docker compose -f docker/docker-compose.dev.yml up -d 
 ```
 
+The dev stack brings up six containers:
+
+| Container | Service | What it is |
+|---|---|---|
+| `web_app_container` | `web` | The Flask application, built from `docker/images/Dockerfile.dev` |
+| `mariadb_container` | `db` | MariaDB, published on port `3306` |
+| `nginx_web_server_container` | `nginx` | The reverse proxy in front of the app, published on port `80` |
+| `selenium_hub_container` | `selenium-hub` | Selenium Grid hub, on port `4444` |
+| `selenium_chrome_container` | `selenium-chrome` | Chrome node for the end-to-end tests |
+| `selenium_firefox_container` | `selenium-firefox` | Firefox node for the end-to-end tests |
+
+The project root is bind-mounted into the `web` container at `/workspace`, which is also its working directory,
+so your edits are picked up without rebuilding. On start-up, the entrypoint installs `rosemary` in editable
+mode, waits for the database, applies the migrations and, if the database is empty, seeds it with test data
+before starting the Flask development server.
+
 ## See containers in execution
 
 To verify that the containers are running correctly, use the following command:

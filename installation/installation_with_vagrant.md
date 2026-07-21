@@ -34,9 +34,9 @@ nav_order: 3
 > when starting up the machine, it is recommended to delete the following files and folders (if they exist) in the root of the project:
 >
 > ```
-> rm -r uploads
-> rm -r rosemary.egg-info
-> rm app.log*
+> rm -rf uploads
+> rm -rf rosemary/src/*.egg-info
+> rm -f app.log*
 > ```
 
 
@@ -47,6 +47,10 @@ First, copy the `.env.vagrant.example` file to the `.env` file that will be used
 ```
 cp .env.vagrant.example .env
 ```
+
+The `Vagrantfile` reads this `.env` from the root of the project and passes every variable to Ansible as an
+extra var, so the file must exist before you run `vagrant up`. Note that the Vagrant template sets
+`WORKING_DIR=/vagrant/`, which is where the project root is mounted inside the VM.
 
 ## Working with Vagrant
 
@@ -69,6 +73,16 @@ To start the virtual machine in development mode, use the Vagrantfile located in
 vagrant up
 ```
 
+Provisioning is done with Ansible. The playbooks in the `vagrant` folder run in order and, between them, they:
+
+- update the system packages,
+- install and configure MariaDB, and create the `uvlhubdb` and `uvlhubdb_test` databases,
+- install Python 3.13 from the deadsnakes PPA, create the `vagrant_venv` virtual environment, and install
+  `requirements.txt` plus `rosemary` in editable mode with `pip install -e ./rosemary`,
+- apply the migrations, seed the database, and start the Flask development server on port `5000`.
+
+The VM forwards two ports to your host: `5000` for the application and `8089` for the Locust web interface.
+
 {: .highlight }
 If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost:5000`
 
@@ -80,7 +94,22 @@ To access the VM and execute operations from within (such as `rosemary`), run:
 vagrant ssh
 ```
 
-This will switch to the internal MV console. To exit, run:
+This will switch to the internal VM console. Provisioning appends the right lines to `.bashrc`, so the session
+starts with the `vagrant_venv` virtual environment already active and the working directory already set to the
+project root. You can run `flask` straight away.
+
+`rosemary` needs one more step. Its commands import the application package, and an installed console script
+runs without the current directory on `sys.path`, so it fails with `ModuleNotFoundError: No module named 'app'`
+until the project root is importable. Nothing in the provisioning sets this: `vagrant/06_utilities.yml` only
+adds the `source` and `cd` lines, and `/etc/profile.d/vagrant_env.sh` only exports the variables from `.env`,
+which contain no `PYTHONPATH`. Export it yourself in each new session:
+
+```
+export PYTHONPATH=$WORKING_DIR
+```
+
+`WORKING_DIR` is already set to `/vagrant/` inside the VM, because the Vagrantfile exports every `.env`
+variable into `/etc/profile.d/vagrant_env.sh`. To exit, run:
 
 ```
 exit

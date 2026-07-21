@@ -79,28 +79,48 @@ MARIADB_USER=<CHANGE_THIS>
 MARIADB_PORT=<CHANGE_THIS>
 MARIADB_PASSWORD=<CHANGE_THIS>
 MARIADB_ROOT_PASSWORD=<SAME_PASSWORD_OF_MARIADB_PASSWORD>
-WORKING_DIR=/app/
+WORKING_DIR=/workspace/
 ```
+
+{: .important-title }
+> <i class="fa-solid fa-folder-tree"></i> `WORKING_DIR` must be `/workspace/`
+>
+> `docker/images/Dockerfile.render` sets `WORKDIR /workspace`, and every path the application resolves is built from
+> `WORKING_DIR`. Setting it to anything else, `/app/` in particular, makes the application look for
+> `/app/app/features` and fail.
 
 Click on the `Deploy` button.
 
-> {: .highlight }
+{: .highlight }
 > <i class="fa-solid fa-seedling"></i> It is very important to replace the `<CHANGE_THIS>` values with the data provided by our database management panel in Filess.io.
 
-> {: .highlight }
+{: .highlight }
 > <i class="fa-solid fa-seedling"></i> It is very important to replace the `<uvus>` values with your UVUS (University of Seville)
 
 {: .important-title }
 > <i class="fa-solid fa-triangle-exclamation"></i> Don't forget your own variables!
 >
-> If you have been using modules that included their own `.env` file, please note that in production environment neither the Rosemary CLI nor the `rosemary compose:env` command is available for security reasons.
+> If you have been using features that included their own `.env` file, please note that in production environment neither the Rosemary CLI nor the `rosemary compose:env` command is available for security reasons.
 > 
-> That means that you have to add to the `Add from .env` option the variables defined by your modules.
+> That means that you have to add to the `Add from .env` option the variables defined by your features.
+
+{: .warning-title }
+> <i class="fa-solid fa-triangle-exclamation"></i> The `webhook` feature does not work on Render
+>
+> `docker/images/Dockerfile.render` copies `app/` but not `pyproject.toml`, and `app/feature_loader.py` falls back to
+> loading every package under `app/features/` when it cannot find that file. `app/features/webhook/services.py`
+> calls `docker.from_env()` at import time, and there is no Docker socket on Render, so the application will not
+> boot with `docker.errors.DockerException: Error while fetching server API version`.
+>
+> Delete `app/features/webhook/` from the fork you deploy to Render.
 
 ### Verify deployment process
 
 Once you have done the above steps, you should see a log. It is important to keep an eye out for any errors that may occur.
 
-> {: .highlight }
+The image runs `docker/entrypoints/render_entrypoint.sh`, which applies the Alembic migrations and then starts
+`gunicorn --bind 0.0.0.0:80 app:app`. The database is never seeded, so the deployed instance starts empty.
+
+{: .highlight }
 > <i class="fa-solid fa-globe"></i> You should see our project deployed at `https://uvlhub-<uvus>.onrender.com`
 > The deployment process can take up to 5 minutes.

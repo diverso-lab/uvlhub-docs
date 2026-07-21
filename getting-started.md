@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Getting started
+permalink: /getting-started
 nav_order: 2
 ---
 
@@ -41,7 +42,8 @@ To deploy the software under development environment, run:
 docker compose -f docker/docker-compose.dev.yml up -d 
 ```
 
-This will apply the migrations to the database and run the Flask application. 
+This will apply the migrations to the database, seed it with test data the first time it comes up empty, and
+run the Flask application. 
 
 > {: .highlight }
   **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost`**
