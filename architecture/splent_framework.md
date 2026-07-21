@@ -57,7 +57,7 @@ These are the framework modules {% include uvlhub.html %} actually imports, and 
 | `splent_framework.managers.config_manager` | `ConfigManager`, which loads configuration in the app factory |
 | `splent_framework.managers.logging_manager` | `LoggingManager`, which sets up application logging |
 | `splent_framework.managers.error_handler_manager` | `ErrorHandlerManager`, which registers the error pages |
-| `splent_framework.managers.feature_manager` | `FeatureManager`, which `rosemary feature:list` uses to list registered features |
+| `splent_framework.managers.feature_manager` | `FeatureManager`, the SPL feature resolver. Not used by this product, see below |
 | `splent_framework.configuration.configuration` | `get_app_version` and `uploads_folder_name` |
 | `splent_framework.fixtures.fixtures` | The pytest fixtures re-exported by the root `conftest.py` |
 | `splent_framework.environment.host` | `get_host_for_locust_testing`, used by every `locustfile.py` |
@@ -171,11 +171,13 @@ LoggingManager(app).setup_logging()
 ErrorHandlerManager(app).register_error_handlers()
 ```
 
-`FeatureManager` is the fourth, and it is not used by the app factory. It reads the feature list out of `pyproject.toml` and can resolve load order from a UVL model. {% include uvlhub.html %} only uses its read-only half, from `rosemary feature:list`:
+`FeatureManager` is the fourth, and {% include uvlhub.html %} does not use it at all. It reads the
+feature list from `<WORKING_DIR>/<SPLENT_APP>/pyproject.toml`, which assumes the SPL workspace layout
+where each product directory carries its own pyproject. This product keeps a single pyproject at the
+repository root, so that lookup can never resolve.
 
-```python
-FeatureManager(app, strict=False).get_features()
-```
+Feature loading therefore goes through `app/feature_loader.py` instead, and `rosemary feature:list`
+reads through the same module so the two cannot disagree.
 
 Registration itself is done by the repository's own loader instead. See [Feature discovery](#feature-discovery) below.
 

@@ -331,24 +331,25 @@ default config.` banner first. It is harmless, not an error.
 
 ## Listing features
 
-`rosemary feature:list` is meant to print the features registered for the current app:
+`rosemary feature:list` prints the features this product loads:
 
 ```
 rosemary feature:list
 ```
 
-{: .warning-title }
-> Not usable in uvlhub yet
->
-> The command delegates to `splent_framework`'s `FeatureManager`, which expects the SPL product layout
-> (`$WORKING_DIR/$SPLENT_APP/pyproject.toml`). uvlhub keeps its `pyproject.toml` at the workspace root
-> and loads features through its own `app/feature_loader.py`, so `feature:list` currently fails with
-> `FeatureError: SPLENT_APP not set`.
+It resolves them through `app/feature_loader.py`, the same code path the application uses at startup,
+so the listing cannot drift from what actually loads. Add `--env` to resolve a different environment's
+list:
 
-Until that is reconciled, use the two sources that are actually authoritative:
+```
+rosemary feature:list --env prod
+```
 
-- The declared set: the `[tool.splent]` lists in the root `pyproject.toml`.
-- The loaded set: what the running app really registered.
+Beyond the loaded set, it reports two mistakes that are otherwise easy to miss: a feature declared in
+`[tool.splent]` with no directory under `app/features/`, and a feature directory that no list
+declares, which therefore never loads.
+
+To see the result from the other end, the routes the running app actually registered:
 
 ```
 docker exec -it web_app_container rosemary route:list --group

@@ -16,8 +16,7 @@ tests. There is no shared "modules" layer to coordinate with — a feature is se
 {: .note }
 > This directory used to be `app/modules/`. The domain word is now *feature*, not *module*. The Rosemary
 > commands that operate on them were renamed too: `make:module` became `feature:create`, and
-> `module:list` became `feature:list`. The rename is real, but `feature:list` itself is broken against
-> this product — see [Which features are loaded](#which-features-are-loaded).
+> `module:list` became `feature:list`.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -81,13 +80,22 @@ rosemary route:list
 That prints every registered blueprint endpoint with its methods and URL rule, grouped by endpoint
 prefix, so a feature that failed to load shows up as a missing block of routes.
 
-{: .warning-title }
-> `feature:list` does not work here
->
-> `rosemary feature:list` delegates to `FeatureManager` in `splent_framework`, which expects the SPL
-> workspace layout that this product does not use. It fails with `FeatureError: SPLENT_APP not set`, and
-> setting `SPLENT_APP` only moves the failure to `pyproject.toml not found`. Use `rosemary route:list`
-> instead.
+Ask Rosemary directly which features load:
+
+```
+rosemary feature:list
+```
+
+It resolves them through `app/feature_loader.py`, the same code the application runs at startup, so
+the answer cannot drift from what actually loads. Pass `--env prod` to see the production set:
+
+```
+rosemary feature:list --env prod
+```
+
+The two lists differ by `webhook`, which is declared under `features_dev`. The command also flags
+features declared in `pyproject.toml` but missing from disk, and features sitting in
+`app/features/` that no list declares, so neither mistake stays invisible.
 
 ## The features
 

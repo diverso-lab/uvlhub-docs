@@ -151,39 +151,25 @@ and picks up `WORKING_DIR` from the environment already there.
 rosemary locust
 ```
 
-{: .warning-title }
-> <i class="fa-solid fa-triangle-exclamation"></i> This form does not work
+With no argument, every feature that has a `locustfile.py` is loaded at once. Locust accepts a
+comma-separated list, so Rosemary collects the files under `app/features/*/tests/locustfile.py` and
+passes them together. The web interface then lets you pick which user classes to run, or swarm all of
+them.
+
+{: .note-title }
+> Why Rosemary resolves the list itself
 >
-> With no argument Rosemary defers to the default bootstrap that ships with `splent_framework`, and
-> that bootstrap has not followed the `app/features/` rename. `splent_framework` 1.6.1 globs
-> `app/modules/*/tests/locustfile.py`, a directory this repository does not have, so it collects
-> zero `HttpUser` classes and raises at import time, before Locust starts:
->
-> ```
-> ValueError: No User class found!
-> ```
->
-> Reproduce it directly:
+> It would be natural to defer to the default bootstrap that ships with `splent_framework`, and
+> Rosemary used to. That bootstrap has not followed the `app/features/` rename: version 1.6.1 globs
+> `app/modules/*/tests/locustfile.py`, a directory this repository no longer has, so it collected zero
+> `HttpUser` classes and raised `ValueError: No User class found!` at import time, before Locust
+> started. You can still see it fail on its own:
 >
 > ```bash
 > docker exec web_app_container python -c "from splent_framework.bootstraps import locustfile_bootstrap"
 > ```
 >
-> Name the feature.
-
-The two environments reach that bootstrap by different routes. Locally and under Vagrant,
-`run_in_console` in `rosemary/src/rosemary/commands/locust.py` imports it in-process, and the import
-statement itself is what raises:
-
-```python
-from splent_framework.bootstraps import locustfile_bootstrap
-
-locustfile_path = locustfile_bootstrap.__file__
-```
-
-In Docker, Rosemary never imports the bootstrap. It just omits `-f`, and
-`docker/entrypoints/locust_entrypoint.sh` resolves the path with a shell `python -c`, which fails
-the same way.
+> Resolving the paths in Rosemary sidesteps it until the framework catches up.
 
 ## How it runs per environment
 
