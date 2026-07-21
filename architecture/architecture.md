@@ -3,7 +3,7 @@ layout: default
 title: Architecture
 has_children: true
 permalink: /architecture
-nav_order: 3
+nav_order: 4
 ---
 
 # Architecture
