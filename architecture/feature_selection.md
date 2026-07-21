@@ -204,12 +204,10 @@ Under an app created with `config_name="production"`, `env` is `prod`, the loade
 
 Nobody edits a file to make that happen at deploy time. The environment split is a property of the contract itself: the lists describe every environment at once and travel with the source, so the same checkout behaves correctly wherever it is deployed.
 
-{: .warning-title }
-> The shipped production entrypoint does not select the `prod` set
+{: .note-title }
+> How the deployment path selects the set
 >
-> The mechanism above is real, but nothing in the repository currently activates it. No call site anywhere passes `"production"` to `create_app`, and `docker/entrypoints/production_entrypoint.sh` serves the app with `gunicorn app:app`, which imports the module-level `app = create_app()` at the bottom of `app/__init__.py`. That uses the default `config_name="development"`, so `env` resolves to `dev` and `webhook` is registered in production too.
->
-> Setting `FLASK_ENV=production`, as `.env.docker.production.example` does, does not change this. `app/__init__.py` derives `env` from the `config_name` argument and never reads `FLASK_ENV`, and `ConfigManager.load_config` only falls back to `FLASK_ENV` when `config_name` is falsy, which a defaulted `"development"` never is. Treat `features_prod` as a contract that is declared and resolved correctly but not yet reached by the deployment path, and verify what a running instance actually registered rather than assuming.
+> The module-level `app = create_app(...)` that gunicorn imports passes `FLASK_ENV` as the config name, and the values in the env examples (`development`, `production`, `testing`) are exactly the names `ConfigManager` accepts. With `FLASK_ENV=production`, as `.env.docker.production.example` sets, `env` resolves to `prod` and the loader reads `features` plus `features_prod`, so `webhook` is not registered. Earlier revisions always built the development config here regardless of environment, which is worth knowing when comparing against an old checkout.
 
 ## Verifying what actually loaded
 

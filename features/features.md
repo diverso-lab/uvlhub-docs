@@ -51,14 +51,12 @@ features_prod = []
 
 At startup, `app/feature_loader.py` reads these lists and loads the union of `features` and
 `features_<env>`, where `env` is `prod` when the app is created with `config_name="production"` and
-`dev` otherwise. On paper that keeps `webhook` out of production.
+`dev` otherwise, which keeps `webhook` out of production.
 
-In practice it does not, because nothing in the repository passes `"production"` to `create_app`.
-`docker/entrypoints/production_entrypoint.sh` serves the app with `gunicorn app:app`, which imports
-the module-level `app = create_app()` at the bottom of `app/__init__.py`. That uses the default
-`config_name="development"`, so `env` resolves to `dev` and `webhook` is registered in production
-too. See [Feature selection]({{site.baseurl}}/architecture/feature_selection) for the full contract
-and the resolved per-environment table.
+The module-level `app = create_app(...)` that gunicorn imports passes `FLASK_ENV` as the config
+name, so with `FLASK_ENV=production` the loader resolves the `prod` set and `webhook` is not
+registered. See [Feature selection]({{site.baseurl}}/architecture/feature_selection) for the full
+contract and the resolved per-environment table.
 
 A package sitting in `app/features/` that is not named in either list is simply skipped. If neither
 list is declared at all, every package found on disk is loaded.
