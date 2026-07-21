@@ -168,7 +168,7 @@ That re-export is deliberate. Feature code can keep writing `from app import db`
 
 ## The managers
 
-The managers are the framework's app-factory building blocks. `create_app` in `app/__init__.py` wires three of them, each with a single entry point:
+The managers are the framework's app-factory building blocks. `create_app` in `app/__init__.py` wires four of them. Three are called directly, each with a single entry point:
 
 ```python
 ConfigManager(app).load_config(config_name=config_name)
@@ -176,8 +176,13 @@ LoggingManager(app).setup_logging()
 ErrorHandlerManager(app).register_error_handlers()
 ```
 
-`FeatureManager` is the fourth, and {% include uvlhub.html %} does not use it at all. It reads the
-feature list from `<WORKING_DIR>/<SPLENT_APP>/pyproject.toml`, which assumes the SPL workspace layout
+The fourth is `JinjaManager`, instantiated by `_setup_jinja_globals` at the end of the factory: it
+installs `get_assets` and `get_template_hooks` as Jinja globals and merges the product context
+(`FLASK_APP_NAME`, `APP_VERSION` and friends) into every render.
+
+The managers package holds more than these four. The one worth calling out is `FeatureManager`, the
+SPL feature resolver, which {% include uvlhub.html %} does not use at all. It reads the feature
+list from `<WORKING_DIR>/<SPLENT_APP>/pyproject.toml`, which assumes the SPL workspace layout
 where each product directory carries its own pyproject. This product keeps a single pyproject at the
 repository root, so that lookup can never resolve.
 
@@ -247,9 +252,13 @@ def init_feature(app: Flask) -> None:
 {% endfor %}{% endraw %}
 ```
 
-Feature templates carry no `<script>` tags. There is a consequence worth knowing: **every feature's
-script is served on every page**, so a script must be inert outside its own page. `explore` and
-`dataset` check for an element of their own before wiring anything; the rest are placeholders.
+The registered scripts replace per-feature `<script>` tags in most templates, though not in all of
+them: the `dataset` pages still carry their own — `view_dataset.html` pulls Pyodide from a CDN and
+adds an inline block, and `upload_dataset.html` embeds two inline blocks. For the registered
+scripts there is a consequence worth knowing: **every feature's script is served on every page**,
+so a script must be inert outside its own page. `explore` and `dataset` check for an element of
+their own before wiring anything, `zenodo` only defines a function that the Zenodo page calls, and
+the rest are one-line placeholders.
 
 **The nav registry.** A feature declares its main-navigation entry the same way:
 

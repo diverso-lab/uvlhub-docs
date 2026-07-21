@@ -14,5 +14,5 @@ Two workflows ship the application, and neither runs on a plain push. Deploying 
 
 | Workflow | File | Documented in |
 |:---|:---|:---|
-| `Publish image in Docker Hub` | `.github/workflows/CD_dockerhub.yml` | [Docker Hub workflow]({{site.baseurl}}/ci_cd/continuous_deployment/dockerHub_workflow) |
+| `Publish image in Docker Hub` | `.github/workflows/CD_dockerhub.yml` | [Docker Hub workflow]({{site.baseurl}}/ci_cd/continuous_deployment/dockerhub_workflow) |
 | `Deploy on Webhook` | `.github/workflows/CD_webhook.yml` | [Webhook workflow]({{site.baseurl}}/ci_cd/continuous_deployment/webhook_workflow) |

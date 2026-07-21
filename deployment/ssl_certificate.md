@@ -39,9 +39,13 @@ chmod +x ssl_setup.sh
 
 ## Renew certificate
 
-To renew a certificate that is less than 60 days from expiry, execute:
+To renew the certificate, execute:
 
 ```
 chmod +x ssl_renew.sh
 ./ssl_renew.sh
 ```
+
+The script runs `certbot renew`, which uses certbot's default renewal window: a certificate is only renewed
+when it is within 30 days of expiry. For Let's Encrypt's 90-day certificates that means renewal starts at
+about 60 days of age; running the script earlier does nothing.

@@ -52,8 +52,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  codacy:
+    runs-on: ubuntu-24.04
     services:
       mariadb:
         image: mariadb:12.0.2

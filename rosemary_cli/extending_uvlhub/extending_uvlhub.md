@@ -2,7 +2,7 @@
 layout: default
 parent: Rosemary CLI
 title: Extending uvlhub
-has_children: yes
+has_children: true
 permalink: /rosemary/extending_uvlhub
 nav_order: 2
 ---

@@ -85,7 +85,7 @@ If either condition fails, the job is skipped. A skipped job is not a failed job
 ```
 {% endraw %}
 
-GitHub does not have access to the server. It only sends a signed request and the server does the work.
+GitHub does not have access to the server. It only sends a plain `POST` with the bearer token in the `Authorization` header, and the server does the work.
 
 ## Required secrets
 
@@ -103,14 +103,24 @@ The endpoint is provided by the `webhook` feature, at `app/features/webhook/rout
 ```python
 @webhook_bp.route("/webhook/deploy", methods=["POST"])
 def deploy():
-    if request.headers.get("Authorization") != f"Bearer {WEBHOOK_TOKEN}":
+    # Read the token per request so configuration changes are picked up and an
+    # unset variable can never be matched by a crafted "Bearer None" header.
+    token = os.environ.get("WEBHOOK_TOKEN")
+    if not token:
+        return jsonify({"error": "Webhook token is not configured"}), 503
+
+    authorization = request.headers.get("Authorization", "")
+    if not hmac.compare_digest(authorization.encode("utf-8"), f"Bearer {token}".encode("utf-8")):
         abort(403, description="Unauthorized")
 
     webhook_service.deploy()
     return "Deployment successful", 200
 ```
 
-The token comparison is the only authentication, so treat `WEBHOOK_TOKEN` as a production credential.
+The token comparison is the only authentication, so treat `WEBHOOK_TOKEN` as a production credential. The
+token is read from the environment on every request, the comparison runs in constant time through
+`hmac.compare_digest`, and if the server has no `WEBHOOK_TOKEN` configured the endpoint refuses every request
+with a `503` instead of comparing against an empty value.
 
 `WebhookService.deploy()` then performs the deployment inside the running web container, in this order:
 
@@ -145,3 +155,5 @@ Expected responses:
 - `403`: the token does not match the server's `WEBHOOK_TOKEN`.
 - `404`: the container named `web_app_container` was not found on the host.
 - `405`: you sent a `GET`. The route only accepts `POST`.
+- `503` with `{"error": "Webhook token is not configured"}`: the server has no `WEBHOOK_TOKEN` set. Every
+  `POST` gets this response, whatever token you send, until the variable is configured.

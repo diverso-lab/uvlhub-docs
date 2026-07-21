@@ -55,6 +55,21 @@ WORKING_DIR=/workspace/
 Note that `WORKING_DIR` is `/workspace/`. That is the `WORKDIR` of every image under `docker/images/`, and every
 path the application and the Rosemary CLI resolve is built from it. Do not change it.
 
+{: .warning-title }
+> <i class="fa-solid fa-key"></i> Add a `SECRET_KEY` — the example file does not include one
+>
+> `.env.docker.production.example` has no `SECRET_KEY` line, but with `FLASK_ENV=production` the framework's
+> `ProductionConfig` raises `RuntimeError: SECRET_KEY environment variable must be set in production.` as soon
+> as the application is created. Both the entrypoint's `flask db upgrade` and Gunicorn's import of `app:app`
+> create the application, so without this variable the `web` container exits at boot. Append a line to `.env`:
+>
+> ```
+> SECRET_KEY=<CHANGE_THIS>
+> ```
+>
+> and set it to a long random value, for example the output of
+> `python -c "import secrets; print(secrets.token_hex(32))"`.
+
 {: .important-title }
 > <i class="fa-solid fa-triangle-exclamation"></i> Don't forget to define the variables!
 >
@@ -70,8 +85,10 @@ path the application and the Rosemary CLI resolve is built from it. Do not chang
 ## Choose the features you deploy
 
 The set of features that the application loads is declared in the root
-`pyproject.toml` (see [Feature selection]({{site.baseurl}}/architecture/feature_selection), which also
-records why `features_prod` is not reached by the shipped production entrypoint):
+`pyproject.toml` (see [Feature selection]({{site.baseurl}}/architecture/feature_selection), which explains
+how the environment picks the lists: Gunicorn's `app:app` is created with `FLASK_ENV` as the config name,
+so under `FLASK_ENV=production` the application loads `features` plus `features_prod`, and `features_dev`
+entries such as `webhook` never reach production):
 
 ```toml
 [tool.splent]

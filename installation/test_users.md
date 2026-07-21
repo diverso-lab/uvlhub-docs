@@ -8,8 +8,9 @@ nav_order: 4
 
 # Test users
 
-Test users are already available when the system is installed, regardless of the configuration environment.
-This is possible thanks to the `rosemary db:seed` command that is launched.
+Test users are already available in every development installation, whether it was done with Docker, with
+Vagrant or manually. This is possible thanks to the `rosemary db:seed` command that is launched. Production
+deployments are the exception: their entrypoints never seed, so these accounts do not exist there.
 
 ```
 User: user1@example.com

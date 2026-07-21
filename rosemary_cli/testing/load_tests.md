@@ -90,8 +90,9 @@ rosemary locust auth
 ```
 
 Rosemary checks that `app/features/auth/` exists and that
-`app/features/auth/tests/locustfile.py` exists. If either is missing it tells you the exact path it
-looked for and stops.
+`app/features/auth/tests/locustfile.py` exists. An unknown feature stops with
+`Feature 'auth' does not exist.`; a feature that exists but has no locustfile stops with an error
+naming the exact path it looked for.
 
 ### What happens inside Docker
 
@@ -107,7 +108,7 @@ things wired up for you:
   `http://localhost:5000`, and inside the Locust container that is the Locust container itself.
 
 > {: .highlight }
-  **Locust is now serving its web interface at `http://localhost:8089`**
+  **Locust is running at `http://localhost:8089`**
 
 Open that page, set the number of users and the spawn rate, and start the run.
 

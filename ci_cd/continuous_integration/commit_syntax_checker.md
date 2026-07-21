@@ -73,7 +73,7 @@ fix(auth): reject expired password reset tokens
 docs: document the pytest workflow
 refactor(dataset): extract rating logic into the service
 test(hubfile): add repository tests for file lookup
-chore: bump splent_framework to 1.6.1
+chore: bump splent_framework to 1.7.1
 ```
 
 Messages that fail the check:

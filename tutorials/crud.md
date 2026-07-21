@@ -50,7 +50,7 @@ app/features/notepad/
 ├── seeders.py
 ├── services.py
 ├── assets/
-│   └── scripts/
+│   └── js/
 │       └── scripts.js
 ├── templates/
 │   └── notepad/
@@ -68,20 +68,14 @@ app/features/notepad/
 Take some time to examine each file and understand how they are related. The full breakdown of the
 scaffold is on the [Create feature]({{site.baseurl}}/rosemary/extending_uvlhub/create_feature) page.
 
-### Fix the asset folder
-
-The generator writes the JavaScript to `assets/scripts/`, but the asset route only serves the `js`,
-`css` and `dist` subfolders. Move it before you go any further:
-
-```
-mv app/features/notepad/assets/scripts app/features/notepad/assets/js
-```
-
-and change the last line of `app/features/notepad/templates/notepad/index.html` to point at `js`:
-
-```jinja
-{% raw %}<script src="{{ url_for('notepad.assets', subfolder='js', filename='scripts.js') }}"></script>{% endraw %}
-```
+{: .note-title }
+> How the script reaches the browser
+>
+> Notice that `templates/notepad/index.html` has no `<script>` tag. The generated `__init__.py`
+> declares `assets/js/scripts.js` with `register_asset` in `init_feature`, and
+> `base_template.html` renders every registered script from one place. You never write a
+> per-feature `<script>` tag; the asset route only serves the `js`, `css` and `dist` subfolders
+> of `assets/`.
 
 ### Declare the feature
 
@@ -252,10 +246,6 @@ def index():
     <p>You have no notepads.</p>
 {% endif %}
 
-{% endblock %}
-
-{% block scripts %}
-    <script src="{{ url_for('notepad.assets', subfolder='js', filename='scripts.js') }}"></script>
 {% endblock %}{% endraw %}
 ```
 
@@ -433,10 +423,6 @@ def create_notepad():
     </div>
 </form>
 
-{% endblock %}
-
-{% block scripts %}
-    <script src="{{ url_for('notepad.assets', subfolder='js', filename='scripts.js') }}"></script>
 {% endblock %}{% endraw %}
 ```
 
@@ -475,10 +461,6 @@ unknown id aborts with a 404 before your ownership check ever runs.
 <h1>{{ notepad.title }}</h1>
 <p>{{ notepad.body }}</p>
 <a href="{{ url_for('notepad.index') }}">Back to Notepads</a>
-{% endblock %}
-
-{% block scripts %}
-    <script src="{{ url_for('notepad.assets', subfolder='js', filename='scripts.js') }}"></script>
 {% endblock %}{% endraw %}
 ```
 
@@ -535,10 +517,6 @@ def edit_notepad(notepad_id):
     </div>
 </form>
 
-{% endblock %}
-
-{% block scripts %}
-    <script src="{{ url_for('notepad.assets', subfolder='js', filename='scripts.js') }}"></script>
 {% endblock %}{% endraw %}
 ```
 

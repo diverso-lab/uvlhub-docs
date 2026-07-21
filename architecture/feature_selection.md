@@ -153,13 +153,21 @@ if callable(fn):
     fn(app)
 ```
 
-If the feature's `__init__.py` defines `init_feature(app)`, the loader calls it with the app instance. This is the hook for setup that needs a live app but does not belong in the central factory. In {% include uvlhub.html %}, `auth` is the feature that uses it, to wire up Flask-Login:
+If the feature's `__init__.py` defines `init_feature(app)`, the loader calls it with the app instance. This is the hook for setup that needs a live app but does not belong in the central factory. In {% include uvlhub.html %} every feature defines one: each registers its `assets/js/scripts.js` in the framework's asset registry, and `public`, `explore` and `team` additionally register their sidebar entries. `auth` goes furthest, using the hook to wire up Flask-Login as well:
 
 ```python
 def init_feature(app: Flask) -> None:
+    register_asset("js", "auth.assets", subfolder="js", filename="scripts.js")
+
     login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        from app.features.auth.models import User
+
+        return User.query.get(int(user_id))
 ```
 
 That code lives in `app/features/auth/__init__.py` rather than in `create_app`, which is what keeps the application factory free of any knowledge about individual features.

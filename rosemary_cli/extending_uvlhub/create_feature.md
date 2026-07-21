@@ -102,12 +102,25 @@ notepad_bp = BaseBlueprint('notepad', __name__, template_folder='templates')
 
 
 def init_feature(app: Flask) -> None:
+    """Declare this feature's javascript with the framework asset registry.
+
+    The shell renders every declared asset from one place, so do not add a
+    <script> tag to this feature's template. One consequence: the script is
+    then served on every page, so guard any DOM wiring with a check for an
+    element that only exists on this feature's page.
+
+    To add an entry to the main navigation, also call:
+
+        from splent_framework.nav.nav_registry import register_nav_item
+        register_nav_item("notepad", "notepad", "/notepad", order=100, icon="box")
+    """
     register_asset("js", "notepad.assets", subfolder="js", filename="scripts.js")
 ```
 
 `init_feature` is the lifecycle hook the loader calls once the feature's modules are imported. It is
 where a feature contributes to the shell: its script here, and its navigation entry if it has one.
-To put the feature in the sidebar, add:
+The generated docstring already carries the sidebar recipe; `public`, `explore` and `team` are the
+shipped features that use it, along the lines of:
 
 ```python
 from splent_framework.nav.nav_registry import register_nav_item
@@ -210,6 +223,11 @@ The markers themselves are declared in the root `pyproject.toml`, under
 The integration stub is already a real assertion, not a placeholder:
 
 ```python
+"""HTTP integration tests for the notepad feature.
+
+Drive the application through the Flask test client. The ``test_client``
+fixture from splent_framework rebuilds a clean DB per test for full isolation.
+"""
 import pytest
 
 pytestmark = pytest.mark.integration
@@ -232,19 +250,18 @@ rosemary test notepad
 That runs `unit`, `repository`, `service` and `integration`. Add `--e2e` for the browser tests, or
 `--all` for everything except load.
 
-{: .warning-title }
-> The generated Selenium stub does not run as written
+{: .note-title }
+> The Selenium stub knows it might not be loaded
 >
-> `tests/test_selenium.py` is generated with imports from `splent_framework.selenium.common`, whose
-> `initialize_driver` builds a *local* Chrome. There is no browser inside `web_app_container`, so the
-> test fails before it reaches the app. Every e2e test in uvlhub uses the repo-local helper instead,
-> which attaches to the Selenium grid over `webdriver.Remote`. Replace the two framework imports with:
->
-> ```python
-> from tests.selenium_support import close_driver, get_host_for_selenium_testing, initialize_driver
-> ```
->
-> See `app/features/team/tests/test_selenium.py` for a working example.
+> `tests/test_selenium.py` imports `close_driver`, `get_host_for_selenium_testing` and
+> `initialize_driver` from the repo-local `tests/selenium_support`, a thin wrapper that fills in
+> uvlhub's grid and target URLs under Docker and pins a 1920x1080 viewport on top of the
+> `splent_framework` helpers. The stub opens `/notepad` through the grid and asserts the answer is
+> not the 404 page, because scaffolding a feature does not load it: until you declare the feature,
+> the test fails with the fix spelled out in its message — add `notepad` to `[tool.splent]` in the
+> root `pyproject.toml` and restart the app. Its docstring also carries the run instructions and a
+> warning that e2e tests hit the live seeded database, so keep them read-only or clean up after
+> yourself. See `app/features/team/tests/test_selenium.py` for a fleshed-out example.
 
 ### Templates and assets
 
@@ -257,7 +274,10 @@ The generated `templates/notepad/index.html` extends the global base template:
 
 {% block content %}
 
-{% endblock %}{% endraw %}
+{% endblock %}
+
+{# This feature's script is declared with register_asset in __init__.py and
+   rendered by base_template.html, so there is no script tag here. #}{% endraw %}
 ```
 
 There is deliberately no `<script>` tag. `BaseBlueprint` registers an `assets` endpoint serving

@@ -73,7 +73,7 @@ docker ps
 
 ## Down the containers
 
-To download (stop) the containers, use the same `docker-compose.dev.yml` file with the following command:
+To bring down (stop) the containers, use the same `docker-compose.dev.yml` file with the following command:
 
 ```
 docker compose -f docker/docker-compose.dev.yml down

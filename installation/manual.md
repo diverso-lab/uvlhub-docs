@@ -223,7 +223,7 @@ pip install -e ./rosemary
 ### Put the project root on the import path
 
 Several `Rosemary` commands import the application package. `rosemary/src/rosemary/commands/db_reset.py`
-starts with `from app import create_app, db`, and `rosemary/src/rosemary/cli.py` imports every command module
+does `from app import create_app, db` among its top-level imports, and `rosemary/src/rosemary/cli.py` imports every command module
 when it builds the command group, so that import runs on every invocation. An installed console script is
 executed without the current directory on `sys.path`, so a bare `rosemary` fails with
 `ModuleNotFoundError: No module named 'app'` unless you make the project root importable:

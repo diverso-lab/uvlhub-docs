@@ -120,15 +120,17 @@ rosemary selenium auth --driver chrome
 The flag accepts only `firefox` and `chrome`, and it is exported as `SELENIUM_BROWSER`, which is
 what `initialize_driver` reads.
 
-`rosemary test --e2e` has no such flag and never sets `SELENIUM_BROWSER`. With the variable unset,
-`tests/selenium_support.py` falls back to chrome:
+`rosemary test --e2e` has no such flag and never sets `SELENIUM_BROWSER`. The wrapper in
+`tests/selenium_support.py` delegates browser selection to the framework, and the fallback lives in
+`splent_framework.selenium.common._resolve_browser`:
 
 ```python
-browser = (browser or os.getenv("SELENIUM_BROWSER") or "chrome").lower()
+name = (browser or os.getenv("SELENIUM_BROWSER") or DEFAULT_BROWSER).lower()
 ```
 
-So the two entry points differ: `rosemary selenium` gives you firefox, `rosemary test --e2e` gives
-you chrome. Export `SELENIUM_BROWSER=firefox` yourself if you want firefox from `rosemary test`.
+with `DEFAULT_BROWSER = "chrome"`. So the two entry points differ: `rosemary selenium` gives you
+firefox, `rosemary test --e2e` gives you chrome. Export `SELENIUM_BROWSER=firefox` yourself if you
+want firefox from `rosemary test`.
 
 Under the hood `rosemary selenium` runs pytest with the marker and the collected file paths:
 
@@ -144,30 +146,22 @@ looked for and stops.
 
 ## Local environment
 
-Outside Docker (`WORKING_DIR` unset), Selenium drives your own browser through your local drivers,
-and the tests target `http://localhost:5000`.
+Outside Docker (`WORKING_DIR` unset), Selenium launches a browser on your own desktop, and the
+tests target `http://localhost:5000`.
 
 {: .note-title }
-> <i class="fa-solid fa-circle-info"></i> **Note for Ubuntu users**
+> <i class="fa-solid fa-circle-info"></i> **No WebDriver to install**
 >
-> On Ubuntu 22.04 or newer you do not need to install anything. Firefox and GeckoDriver come
-> preinstalled and ready for Selenium.
+> You do not install GeckoDriver or ChromeDriver by hand. The framework's local mode resolves the
+> driver binary through `webdriver_manager`, which downloads a build matching your browser on first
+> use and caches it for later runs.
 
-Otherwise install a browser and a driver. On Ubuntu the default archive carries `firefox` and
-`chromium-chromedriver`:
+The only thing that has to be present is the browser itself, Firefox or Chrome/Chromium, installed
+through whatever channel your platform uses; on Ubuntu, for example:
 
 ```bash
 sudo apt install firefox
-# or, for the Chrome path
-sudo apt install chromium-chromedriver
 ```
-
-There is no `geckodriver` package and no `google-chrome-stable` package in the default archive, and
-`chromedriver` has no installation candidate; asking for any of those gives you
-`E: Unable to locate package`. If you need those specific builds, take them from the
-[geckodriver releases](https://github.com/mozilla/geckodriver/releases),
-[Chrome for Testing](https://googlechromelabs.github.io/chrome-for-testing/) and Google's own APT
-repository.
 
 Then run:
 
@@ -300,7 +294,7 @@ then clean up by hand.
 
 ### Installation
 
-- **Chrome**: install the extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd).
+- **Chrome**: install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd).
 - **Firefox**: install the extension from [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/).
 
 Once installed, the Selenium IDE icon appears in your browser toolbar.

@@ -2,7 +2,7 @@
 layout: default
 parent: Rosemary CLI
 title: Testing
-has_children: yes
+has_children: true
 permalink: /rosemary/testing
 nav_order: 4
 ---

@@ -28,8 +28,27 @@ To reset your database and clear all table data except for migration records, ru
 rosemary db:reset
 ```
 
+Before touching anything, the command asks for confirmation:
+
+```
+WARNING: This will delete all data and clear uploads. Are you sure? [y/N]:
+```
+
+Answering anything other than `y` aborts the command and leaves the database untouched.
+
 The `rosemary db:reset` command also clears the uploads directory as part of the reset process, ensuring that any files 
 uploaded during development or testing are removed.
+
+## Skipping the confirmation
+
+If you need to run the reset non-interactively, for example from a script, pass `-y` (or `--yes`) to confirm the
+operation without prompting:
+
+```
+rosemary db:reset -y
+```
+
+This is exactly what `rosemary db:seed` does internally when it resets the database before seeding.
 
 ## Clear migrations
 

@@ -3,7 +3,7 @@ layout: default
 grand_parent: CI/CD
 parent: Continuous deployment
 title: Docker Hub workflow
-permalink: /ci_cd/continuous_deployment/dockerHub_workflow
+permalink: /ci_cd/continuous_deployment/dockerhub_workflow
 nav_order: 1
 ---
 

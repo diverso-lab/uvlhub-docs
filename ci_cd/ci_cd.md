@@ -20,7 +20,7 @@ All workflows live in `.github/workflows/`. Continuous integration files are pre
 | `CI_pytest.yml` | `Pytest` | Push and pull request to `main` | [Testing workflow]({{site.baseurl}}/ci_cd/continuous_integration/testing_workflow) |
 | `CI_lint.yml` | `Python Lint` | Every push and pull request | [Linter workflow]({{site.baseurl}}/ci_cd/continuous_integration/linter_workflow) |
 | `CI_commits.yml` | `Commits Syntax Checker` | Every push and pull request | [Commit syntax checker workflow]({{site.baseurl}}/ci_cd/continuous_integration/commit_syntax_checker_workflow) |
-| `CD_dockerhub.yml` | `Publish image in Docker Hub` | A GitHub release is published | [Docker Hub workflow]({{site.baseurl}}/ci_cd/continuous_deployment/dockerHub_workflow) |
+| `CD_dockerhub.yml` | `Publish image in Docker Hub` | A GitHub release is published | [Docker Hub workflow]({{site.baseurl}}/ci_cd/continuous_deployment/dockerhub_workflow) |
 | `CD_webhook.yml` | `Deploy on Webhook` | The `Pytest` workflow succeeds on `main` | [Webhook workflow]({{site.baseurl}}/ci_cd/continuous_deployment/webhook_workflow) |
 
 Every job in every workflow pins its runner to `ubuntu-24.04` and, where Python is needed, to Python 3.13.

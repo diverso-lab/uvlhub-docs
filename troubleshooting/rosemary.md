@@ -14,7 +14,7 @@ permalink: /troubleshooting/rosemary
 1. TOC
 {:toc}
 
-## *rosemary: order not found*
+## *rosemary: command not found*
 
 The most likely cause is that Rosemary is not installed in the development environment you are using. Rosemary lives
 in its own subproject with its own `pyproject.toml`, so it is installed from `./rosemary`:
@@ -25,7 +25,7 @@ pip install -e ./rosemary
 
 If you run `pip install -e ./` instead, it will fail: the repository root is not an installable package.
 
-## *bash: .../venv/bin/rosemary: cannot be executed: the required file could not be found*
+## *bash: .../venv/bin/rosemary: cannot execute: required file not found*
 
 This problem occurs because the `venv` folder was created by a different environment than the one you are running
 `rosemary` from, so the interpreter the launcher script points at does not exist here.

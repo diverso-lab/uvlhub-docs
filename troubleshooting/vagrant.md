@@ -14,7 +14,7 @@ permalink: /troubleshooting/vagrant
 1. TOC
 {:toc}
 
-## *A Vagrant environment or target machine is required to run this command. Run ⁠ vagrant init ⁠ to create a new Vagrant environment. Or,get an ID of a target machine from ⁠ vagrant global-status ⁠ to run this command on. A final option is to change to a directory with a Vagrantfile and to try again*
+## *A Vagrant environment or target machine is required to run this command. Run `vagrant init` to create a new Vagrant environment. Or, get an ID of a target machine from `vagrant global-status` to run this command on. A final option is to change to a directory with a Vagrantfile and to try again*
 
 You are not in the `vagrant` folder.
 

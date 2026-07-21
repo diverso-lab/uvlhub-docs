@@ -48,9 +48,11 @@ First, copy the `.env.vagrant.example` file to the `.env` file that will be used
 cp .env.vagrant.example .env
 ```
 
-The `Vagrantfile` reads this `.env` from the root of the project and passes every variable to Ansible as an
-extra var, so the file must exist before you run `vagrant up`. Note that the Vagrant template sets
-`WORKING_DIR=/vagrant/`, which is where the project root is mounted inside the VM.
+The `Vagrantfile` reads this `.env` from the root of the project and passes a fixed list of extra vars to
+Ansible: the eleven variables defined in `.env.vagrant.example`, from `FLASK_APP_NAME` to `WORKING_DIR`. The
+file must exist before you run `vagrant up`. Any additional variable you add to `.env` is not forwarded to
+the playbook; it is only exported inside the VM through `/etc/profile.d/vagrant_env.sh`. Note that the
+Vagrant template sets `WORKING_DIR=/vagrant/`, which is where the project root is mounted inside the VM.
 
 ## Working with Vagrant
 

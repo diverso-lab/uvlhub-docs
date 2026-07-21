@@ -44,13 +44,12 @@ rosemary linter
 ```
 
 This runs [Flake8](https://flake8.pycqa.org/en/latest/) over the `app` and `rosemary` directories, one at a time, and
-reports whether each one is clean. It resolves both target directories against `WORKING_DIR`, but it passes
-`--config=pyproject.toml` as a path relative to your current directory, so run it from the project root. From
-anywhere else flake8 aborts with `The specified config file does not exist: pyproject.toml` and the command still
-reports `flake8 found issues`.
+reports whether each one is clean. Both target directories are resolved against `WORKING_DIR`, and the command passes
+no `--config` flag: Flake8-pyproject discovers the `[tool.flake8]` table in `pyproject.toml` on its own, so
+`rosemary linter` works from any directory.
 
-Note also that `rosemary linter` prints its findings but never propagates flake8's exit code: it always exits 0. If
-you need a check that can actually fail, in a script or a pre-commit hook, call `flake8 app rosemary` directly.
+If flake8 finds issues in either directory, `rosemary linter` reports them and exits with a non-zero status, so the
+command can be used as a gate in a script or a pre-commit hook. When both directories are clean it exits 0.
 
 ## Auto-fix Python code style
 

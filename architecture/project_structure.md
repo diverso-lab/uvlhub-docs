@@ -174,7 +174,7 @@ These files, known as playbooks, are used by Ansible to automate system configur
 
 ## migrations
 
-Alembic migration files, which allow incremental changes to the database schema in a controlled and reproducible manner. It contains `alembic.ini`, `env.py`, `script.py.mako` and the `versions/` directory with the individual revisions.
+Alembic migration files, which allow incremental changes to the database schema in a controlled and reproducible manner. It contains `alembic.ini`, `env.py`, `script.py.mako`, Alembic's default `README` and the `versions/` directory with the individual revisions.
 
 ## rosemary
 
@@ -185,6 +185,8 @@ rosemary/
 ├── pyproject.toml
 └── src/
     └── rosemary/
+        ├── __init__.py
+        ├── __main__.py
         ├── cli.py
         ├── commands/
         └── templates/
@@ -195,6 +197,8 @@ Install it in editable mode by pointing pip at the subdirectory, not at the repo
 ```
 pip install -e ./rosemary
 ```
+
+The editable install also drops a gitignored `rosemary.egg-info/` directory next to the package under `src/`. `__main__.py` makes the package runnable as `python -m rosemary`, invoking the same `cli` that the `rosemary` entry point calls.
 
 `commands/` holds one module per command and `templates/` holds the Jinja templates that `rosemary feature:create` renders when it scaffolds a new feature.
 
