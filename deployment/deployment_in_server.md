@@ -56,18 +56,14 @@ Note that `WORKING_DIR` is `/workspace/`. That is the `WORKDIR` of every image u
 path the application and the Rosemary CLI resolve is built from it. Do not change it.
 
 {: .warning-title }
-> <i class="fa-solid fa-key"></i> Add a `SECRET_KEY` — the example file does not include one
+> <i class="fa-solid fa-key"></i> `SECRET_KEY` is not optional here
 >
-> `.env.docker.production.example` has no `SECRET_KEY` line, but with `FLASK_ENV=production` the framework's
-> `ProductionConfig` raises `RuntimeError: SECRET_KEY environment variable must be set in production.` as soon
-> as the application is created. Both the entrypoint's `flask db upgrade` and Gunicorn's import of `app:app`
-> create the application, so without this variable the `web` container exits at boot. Append a line to `.env`:
+> With `FLASK_ENV=production` the framework's `ProductionConfig` raises
+> `RuntimeError: SECRET_KEY environment variable must be set in production.` as soon as the application is
+> created. Both the entrypoint's `flask db upgrade` and Gunicorn's import of `app:app` create the application,
+> so leaving it as `<CHANGE_THIS>`-and-forgotten makes the `web` container exit at boot with that traceback.
 >
-> ```
-> SECRET_KEY=<CHANGE_THIS>
-> ```
->
-> and set it to a long random value, for example the output of
+> Set it to a long random value, for example the output of
 > `python -c "import secrets; print(secrets.token_hex(32))"`.
 
 {: .important-title }
@@ -153,6 +149,12 @@ There is no `--build` here: the image is pulled, not built.
 
 This brings up four containers: `web_app_container` (the application, served by Gunicorn on port 5000),
 `mariadb_container`, `nginx_web_server_container` (listening on port 80) and `watchtower_container`.
+
+Only nginx publishes a port to the host. Gunicorn and MariaDB are reachable by service name on the
+compose network and nowhere else, so every request reaches the application through the proxy and the
+database is never exposed to the outside. If you need a database client during an incident, go
+through the container — `docker exec -it mariadb_container mariadb -u root -p` — rather than
+publishing 3306.
 
 If you want to serve over HTTPS, use the SSL variant instead, which adds Certbot and exposes port 443. Replace
 `<your_dockerhub_name>` in `docker/docker-compose.prod.ssl.yml` the same way:

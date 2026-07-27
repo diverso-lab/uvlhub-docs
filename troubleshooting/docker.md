@@ -18,6 +18,9 @@ permalink: /troubleshooting/docker
 
 This occurs because there is already a process on port 3306 (typically because MariaDB has been installed manually).
 
+It only affects the development stack, which publishes 3306 on the host so you can point a database client at it.
+The production compose files do not publish that port at all, so they cannot collide with a local MariaDB.
+
 ### Identify the process using port 3306
 
 ```
