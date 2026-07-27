@@ -104,15 +104,18 @@ Click on the `Deploy` button.
 > 
 > That means that you have to add to the `Add from .env` option the variables defined by your features.
 
-{: .warning-title }
-> <i class="fa-solid fa-triangle-exclamation"></i> The `webhook` feature does not work on Render
+{: .note-title }
+> <i class="fa-solid fa-circle-info"></i> The `webhook` feature cannot deploy on Render
 >
-> `docker/images/Dockerfile.render` copies `app/` but not `pyproject.toml`, and `app/feature_loader.py` falls back to
-> loading every package under `app/features/` when it cannot find that file. `app/features/webhook/services.py`
-> calls `docker.from_env()` at import time, and there is no Docker socket on Render, so the application will not
-> boot with `docker.errors.DockerException: Error while fetching server API version`.
+> The application boots without trouble: `docker/images/Dockerfile.render` ships `pyproject.toml`, so the feature
+> filter applies, and `app/features/webhook/services.py` resolves its Docker client on first use rather than at
+> import.
 >
-> Delete `app/features/webhook/` from the fork you deploy to Render.
+> What it cannot do is deploy. Render gives the container no Docker socket, so a call to `/webhook/deploy` fails
+> there — and it would refuse anyway until `WEBHOOK_TOKEN` is configured. Continuous deployment on Render is done
+> through the deploy hook described in the
+> [CD: Render tutorial]({{site.baseurl}}/tutorials/render_tutorial), not through this feature. If you want it out
+> of the image altogether, remove `"webhook"` from `features_prod` in `pyproject.toml`.
 
 ### Verify deployment process
 

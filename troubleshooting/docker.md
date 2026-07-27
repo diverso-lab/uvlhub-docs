@@ -43,11 +43,18 @@ sudo systemctl disable mariadb
 
 ## *docker.errors.DockerException: Error while fetching server API version: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))*
 
-This is the `webhook` feature failing to import. `app/features/webhook/services.py` calls `docker.from_env()` at
-module level, so the exception is raised while the feature is being registered and the application never finishes
-booting.
+This is the `webhook` feature reaching for a Docker daemon that is not there. The client is resolved on first use,
+not at import, so the application boots fine and the exception surfaces later — when something actually calls
+`/webhook/deploy`.
 
-That call needs two things the plain production container does not have: the Docker CLI, which is installed only in
+{: .note-title }
+> If it fails at boot, your image is old
+>
+> `app/features/webhook/services.py` used to call `docker.from_env()` at module level, and then the exception
+> aborted start-up instead. If you see this while the container is still booting, you are running an image built
+> before that fix; rebuild it.
+
+The call needs two things the plain production container does not have: the Docker CLI, which is installed only in
 `docker/images/Dockerfile.dev` and `docker/images/Dockerfile.webhook`, and the Docker socket bind-mounted at
 `/var/run/docker.sock`.
 

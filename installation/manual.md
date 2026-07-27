@@ -168,12 +168,14 @@ production serves it for the continuous-deployment pipeline, guarded by `WEBHOOK
 declared in only one list is loaded only there — that is the mechanism to reach for when you add a
 genuinely environment-specific feature.
 
-{: .warning-title }
+{: .note-title }
 > <i class="fa-solid fa-plug"></i> `webhook` on a machine without Docker
 >
-> `app/features/webhook/services.py` calls `docker.from_env()` at import time, so the feature needs a reachable
-> Docker daemon. If you are installing manually on a machine that does not run Docker, remove `"webhook"` from
-> both `features_dev` and `features_prod` in the root `pyproject.toml` before starting the app.
+> The feature loads fine without a Docker daemon: `app/features/webhook/services.py` resolves its
+> client on first use, not at import. Only an actual deploy through `/webhook/deploy` needs the
+> socket, and the endpoint refuses every request until `WEBHOOK_TOKEN` is set. You can still drop
+> `"webhook"` from `features_dev` and `features_prod` in the root `pyproject.toml` if you have no use
+> for it, but a manual installation no longer has to.
 
 ## Install dependencies
 

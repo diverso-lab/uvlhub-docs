@@ -118,10 +118,12 @@ resulting set. To take a feature out of a deployment, remove its name from these
 
 ### The `webhook` feature
 
-`webhook` is declared in both environment lists so production can serve the deployment endpoint. `app/features/webhook/services.py` calls `docker.from_env()` at import time,
-which requires the Docker CLI and the Docker socket. Only `docker/images/Dockerfile.dev` and
-`docker/images/Dockerfile.webhook` install the CLI, and only the corresponding compose files mount
-`/var/run/docker.sock`.
+`webhook` is declared in both environment lists so production can serve the deployment endpoint.
+`app/features/webhook/services.py` resolves its Docker client on first use, so the feature loads
+anywhere; what needs the Docker CLI and the socket is running an actual deploy. Only
+`docker/images/Dockerfile.dev` and `docker/images/Dockerfile.webhook` install the CLI, and only the
+corresponding compose files mount `/var/run/docker.sock` — so on any other stack the feature is
+present but its endpoint cannot complete a deployment.
 
 {: .note-title }
 > <i class="fa-solid fa-circle-info"></i> The feature filter needs `pyproject.toml` inside the image

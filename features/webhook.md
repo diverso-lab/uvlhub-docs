@@ -110,15 +110,27 @@ outside the database, in `/workspace/deployments.log`.
 
 ## Services
 
-`WebhookService` extends `BaseService` and holds the whole deployment procedure. At import time it
-opens a Docker client against the daemon socket:
+`WebhookService` extends `BaseService` and holds the whole deployment procedure. It opens a Docker
+client against the daemon socket **on first use**, not at import:
 
 ```python
-client = docker.from_env()
+client = None
+
+
+def _docker_client():
+    global client
+    if client is None:
+        client = docker.from_env()
+    return client
 ```
 
-This works because the deployment stack mounts `/var/run/docker.sock` into the web container — the
-Flask process controls its own sibling containers through the host's Docker daemon.
+That distinction is the whole reason the feature can sit in `features_prod`. Only the
+webhook deployment stack mounts `/var/run/docker.sock`; an import-time client would have made every
+deployment that loads this feature require a socket just to boot. Deferred, the daemon is needed only
+when a deploy actually runs — and then the Flask process controls its own sibling containers through
+the host's Docker daemon.
+
+Tests inject a fake by assigning the module attribute directly.
 
 `deploy()` is a five-step sequence, run in order:
 
