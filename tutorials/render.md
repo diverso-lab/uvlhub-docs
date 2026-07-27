@@ -68,10 +68,10 @@ jobs:
 
   deploy:
     name: Deploy to Render
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Deploy to Render
         env:
