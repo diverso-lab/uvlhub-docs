@@ -26,7 +26,8 @@ nav_order: 1
 {: .warning-title }
 > <i class="fa-brands fa-ubuntu"></i> Ubuntu-only support
 >
-> This tutorial is intended for use on Ubuntu 22.04 LTS or higher.
+> This tutorial is intended for use on Ubuntu 24.04 LTS or higher. That is the baseline the course
+> targets: the Vagrant box is `ubuntu/noble64` and every CI and CD workflow pins `ubuntu-24.04`.
 
 ## Update the system
 
@@ -178,7 +179,7 @@ genuinely environment-specific feature.
 
 ### Install Python 3.13
 
-Ubuntu 22.04 and 24.04 do not ship Python 3.13 in their default repositories, so add the deadsnakes PPA first.
+Ubuntu 24.04 does not ship Python 3.13 in its default repositories, so add the deadsnakes PPA first.
 This is exactly what the Vagrant provisioning does:
 
 ```

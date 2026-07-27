@@ -11,13 +11,19 @@ nav_order: 2
 
 This section provides an overview of the directory and file structure of the project. Each subsection describes the purpose and contents of specific directories and files, highlighting their roles within the overall architecture. Understanding this structure is crucial for effective development, maintenance, and deployment of the application. Below is a detailed explanation of each component in the project.
 
+Everything at the root falls into one of five groups: what configures the **repository**, the **application files** themselves, what defines a **working environment**, the **Rosemary CLI**, and the **configuration files** that tune the product.
+
 ## Table of contents
 {: .no_toc .text-delta }
 
 1. TOC
 {:toc}
 
-## .github/workflows
+---
+
+## Repository configuration
+
+### .github/workflows
 
 This directory contains GitHub Actions workflows. These YAML files define automated actions that run on specific repository events, such as pushes or pull requests.
 
@@ -29,17 +35,43 @@ This directory contains GitHub Actions workflows. These YAML files define automa
 | `CD_dockerhub.yml` | Publish image in Docker Hub |
 | `CD_webhook.yml` | Deploy on Webhook |
 
-## app
+### .gitignore
+
+A list of files and directories that Git should ignore. This prevents certain files, such as local configuration, uploads and temporary files, from being included in version control.
+
+### README.md
+
+The repository's front page: what the project is, and a pointer to this documentation site. It is deliberately short, because everything else lives here.
+
+---
+
+## Application files
+
+### requirements.txt
+
+The pinned list of Python dependencies, installed with `pip`. Every version is pinned exactly. The entry that matters most to the architecture is the framework the product is built on:
+
+```
+splent_framework==1.7.1
+```
+
+See [splent_framework]({{site.baseurl}}/architecture/splent_framework) for what that package provides.
+
+### scripts
+
+Auxiliary scripts that automate various tasks: `clean_docker.sh`, `git_update.sh`, `init-testing-db.sh`, `restart_container.sh`, `ssl_renew.sh`, `ssl_setup.sh` and `wait-for-db.sh`.
+
+### app
 
 The main application package. It holds the Flask app factory, the feature loader, the features themselves and the assets and templates that are shared across the whole product.
 
-### app/\_\_init\_\_.py
+#### app/\_\_init\_\_.py
 
 Defines `create_app(config_name)`, the Flask application factory. It loads configuration through `ConfigManager`, binds the database, registers features, sets up logging and error handlers, and injects the Jinja globals used by the base template.
 
 It also re-exports the framework's SQLAlchemy singleton, so a feature can keep writing `from app import db` and still end up bound to the same instance that `BaseRepository` and `BaseSeeder` operate on.
 
-### app/features
+#### app/features
 
 Every unit of functionality lives here as its own Python package, one directory per feature:
 
@@ -65,7 +97,7 @@ A feature is self-contained: its models, repositories, services, routes, forms, 
 >
 > This directory used to be `app/modules/`. The domain word is now *feature*, not *module*, and the same rename applies to the Rosemary commands that operate on them.
 
-### app/feature_loader.py
+#### app/feature_loader.py
 
 Discovers and registers features at application start. `register_features(app, env)` walks `app/features/`, keeps only the features declared in `pyproject.toml`, and for each one, in order:
 
@@ -76,30 +108,15 @@ Discovers and registers features at application start. `register_features(app, e
 
 If neither feature list is declared in `pyproject.toml`, every package found under `app/features/` is loaded.
 
-### app/static
+#### app/static
 
 Product-wide static assets: `css`, `js`, `img`, `fonts` and `gifs`. Assets that belong to a single feature live in that feature's own `assets/` directory instead.
 
-### app/templates
+#### app/templates
 
 Product-wide Jinja templates: `base_template.html` and the error pages `400.html`, `401.html`, `404.html` and `500.html`. Feature-specific templates live under `app/features/<feature>/templates/`.
 
-## conftest.py
-
-The top-level pytest configuration. It sets `SPLENT_APP=app` before importing anything else, so the framework's app loader can resolve `create_app("testing")` without depending on your shell environment, and it re-exports the fixtures shipped by `splent_framework` so every collected test picks them up:
-
-```python
-from splent_framework.fixtures.fixtures import (
-    clean_database,
-    test_app,
-    test_client,
-    test_client_module,
-)
-```
-
-Fixtures that only concern one feature belong in `app/features/<feature>/tests/conftest.py`.
-
-## tests
+### tests
 
 Cross-feature test support that does not belong to any single feature. It currently holds `selenium_support.py`, the e2e layer's single import point for the WebDriver and the target host.
 
@@ -111,9 +128,17 @@ Every `test_selenium.py` in the project imports from here:
 from tests.selenium_support import close_driver, get_host_for_selenium_testing, initialize_driver
 ```
 
-## docker
+### migrations
 
-### entrypoints
+Alembic migration files, which allow incremental changes to the database schema in a controlled and reproducible manner. It contains `alembic.ini`, `env.py`, `script.py.mako`, Alembic's default `README` and the `versions/` directory with the individual revisions.
+
+---
+
+## Working environment
+
+### docker
+
+#### entrypoints
 
 | Script | Purpose |
 |:--|:--|
@@ -122,7 +147,7 @@ from tests.selenium_support import close_driver, get_host_for_selenium_testing, 
 | `render_entrypoint.sh` | Entrypoint for the web app container in the Render environment. |
 | `locust_entrypoint.sh` | Entrypoint for the Locust load testing container. |
 
-### images
+#### images
 
 | Dockerfile | Purpose |
 |:--|:--|
@@ -135,19 +160,19 @@ from tests.selenium_support import close_driver, get_host_for_selenium_testing, 
 
 All application images set `WORKDIR /workspace`. Inside a container the project is at `/workspace/`, and `WORKING_DIR=/workspace/` in the environment file reflects that.
 
-### letsencrypt
+#### letsencrypt
 
 An empty directory whose contents are gitignored. `docker/docker-compose.prod.ssl.yml` bind-mounts it to `/etc/letsencrypt`, so it is where the certificates issued by Let's Encrypt land. The generation and renewal logic lives in `scripts/ssl_setup.sh` and `scripts/ssl_renew.sh`.
 
-### nginx
+#### nginx
 
 Configuration for the NGINX web server, which serves the application and handles HTTP traffic: `nginx.dev.conf`, `nginx.prod.conf`, the templates `nginx.prod.no-ssl.conf.template` and `nginx.prod.ssl.conf.template`, and the `html/` directory with the 502 error pages.
 
-### public
+#### public
 
 Another empty, gitignored directory. `docker/docker-compose.prod.ssl.yml` bind-mounts it to `/var/www` in both the nginx and the certbot containers, so it is the webroot Certbot writes the ACME challenge files to (`--webroot --webroot-path=/var/www`) while a certificate is being issued.
 
-### Compose files
+#### Compose files
 
 There is no compose file at the repository root. They all live in `docker/`, so every command has to point at one explicitly:
 
@@ -162,21 +187,27 @@ docker compose -f docker/docker-compose.dev.yml up -d
 | `docker-compose.prod.ssl.yml` | Production environment with SSL. |
 | `docker-compose.prod.webhook.yml` | Production environment built from `Dockerfile.webhook`, for webhook-driven deployment. |
 
-## vagrant
+### vagrant
 
-### Vagrantfile
+#### Vagrantfile
 
 A specification that describes how to create a virtual machine under specific characteristics. It defines the configuration needed for the development environment, such as the base box, network, shared folders and provisioning scripts.
 
-### *.yml
+#### *.yml
 
 These files, known as playbooks, are used by Ansible to automate system configuration and management. A playbook is a YAML file containing a series of instructions and tasks that Ansible executes on the target machines. Playbooks automate complex and repetitive tasks, ensuring the environment is configured consistently.
 
-## migrations
+### `.env.<deployment_environment>.example`
 
-Alembic migration files, which allow incremental changes to the database schema in a controlled and reproducible manner. It contains `alembic.ini`, `env.py`, `script.py.mako`, Alembic's default `README` and the `versions/` directory with the individual revisions.
+These files provide an example of the environment variables needed to run the application. They are used as a reference when setting up an environment: `.env.local.example`, `.env.docker.example`, `.env.docker.production.example` and `.env.vagrant.example`.
 
-## rosemary
+The value of `WORKING_DIR` is what tells the code which environment it is in. It is empty for a local install, `/workspace/` under Docker and `/vagrant/` under Vagrant.
+
+---
+
+## Rosemary CLI
+
+### rosemary
 
 The Rosemary CLI package. It is a standard `src`-layout Python package with its own `rosemary/pyproject.toml`, so the code sits at `rosemary/src/rosemary/`:
 
@@ -202,31 +233,11 @@ The editable install also drops a gitignored `rosemary.egg-info/` directory next
 
 `commands/` holds one module per command and `templates/` holds the Jinja templates that `rosemary feature:create` renders when it scaffolds a new feature.
 
-## scripts
+---
 
-Auxiliary scripts that automate various tasks: `clean_docker.sh`, `git_update.sh`, `init-testing-db.sh`, `restart_container.sh`, `ssl_renew.sh`, `ssl_setup.sh` and `wait-for-db.sh`.
+## Configuration files
 
-## `.env.<deployment_environment>.example`
-
-These files provide an example of the environment variables needed to run the application. They are used as a reference when setting up an environment: `.env.local.example`, `.env.docker.example`, `.env.docker.production.example` and `.env.vagrant.example`.
-
-The value of `WORKING_DIR` is what tells the code which environment it is in. It is empty for a local install, `/workspace/` under Docker and `/vagrant/` under Vagrant.
-
-## .gitignore
-
-A list of files and directories that Git should ignore. This prevents certain files, such as local configuration, uploads and temporary files, from being included in version control.
-
-## requirements.txt
-
-The pinned list of Python dependencies, installed with `pip`. Every version is pinned exactly. The entry that matters most to the architecture is the framework the product is built on:
-
-```
-splent_framework==1.7.1
-```
-
-See [splent_framework]({{site.baseurl}}/architecture/splent_framework) for what that package provides.
-
-## pyproject.toml
+### pyproject.toml
 
 The root `pyproject.toml` is the single configuration file for the product. There is no `setup.py` and no `.flake8`; both were removed and their settings moved here.
 
@@ -239,7 +250,7 @@ version = "1.0.0"
 requires-python = ">=3.13"
 ```
 
-### The feature contract
+#### The feature contract
 
 `[tool.splent]` declares which features get loaded, and in which environment. It is the single source of truth for feature selection. [Feature selection]({{site.baseurl}}/architecture/feature_selection) documents the resolution rules in full:
 
@@ -267,7 +278,7 @@ features_prod = [
 
 `features` is the base list, always loaded. `features_dev` and `features_prod` add entries for one environment only. `app/feature_loader.py` loads the union of `features` and `features_<env>`, where `env` is `prod` when the app is created with the `production` config and `dev` otherwise. To stop a feature from loading, remove it from these lists.
 
-### Formatting and linting
+#### Formatting and linting
 
 ```toml
 [tool.black]
@@ -285,7 +296,7 @@ extend-ignore = ["E203", "W503"]
 
 Flake8 does not natively read `pyproject.toml`; the `Flake8-pyproject` dependency in `requirements.txt` is what makes the `[tool.flake8]` table apply.
 
-### Testing
+#### Testing
 
 `[tool.pytest.ini_options]` sets the collection roots and declares the markers of the testing pyramid:
 
@@ -305,3 +316,37 @@ markers = [
 ```
 
 Because `python_files` is restricted to `test_*.py`, the per-feature `locustfile.py` is never collected by pytest. Load tests are driven by Locust instead.
+
+### .devcontainer
+
+`devcontainer.json` lets VS Code open the project *inside* the development container, so the editor uses the container's Python 3.13, its installed dependencies and its Rosemary rather than whatever the host happens to have.
+
+It does not define an image of its own. It attaches to the `web` service of `docker/docker-compose.dev.yml`, brings up `web`, `db` and `nginx`, forwards ports 5000, 3306 and 80, and stops the stack when the window closes:
+
+```json
+{
+  "dockerComposeFile": "../docker/docker-compose.dev.yml",
+  "service": "web",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose"
+}
+```
+
+`workspaceFolder` has to match the image's `WORKDIR`. Both are `/workspace`; the compose file bind-mounts the repository root there, so edits in the editor are edits on the host checkout. There is no separate mount for `uploads/` — it is already inside that bind.
+
+The file also pins the extensions and editor settings the course expects: the Python, Debugpy, Flake8 and Docker extensions, `black` as formatter and format-on-save.
+
+### conftest.py
+
+The top-level pytest configuration. It sets `SPLENT_APP=app` before importing anything else, so the framework's app loader can resolve `create_app("testing")` without depending on your shell environment, and it re-exports the fixtures shipped by `splent_framework` so every collected test picks them up:
+
+```python
+from splent_framework.fixtures.fixtures import (
+    clean_database,
+    test_app,
+    test_client,
+    test_client_module,
+)
+```
+
+Fixtures that only concern one feature belong in `app/features/<feature>/tests/conftest.py`.
