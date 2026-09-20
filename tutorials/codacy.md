@@ -85,12 +85,10 @@ jobs:
         pip install -r requirements.txt
         pip install -e ./rosemary
 
-    - name: Upload coverage to Codacy
+    - name: Run tests with coverage
       run: |
-        pip install codacy-coverage
         coverage run -m pytest app/features/ --ignore-glob='*selenium*'
-        coverage xml 
-        python-codacy-coverage -r coverage.xml
+        coverage xml
       env:
         FLASK_ENV: testing
         MARIADB_HOSTNAME: 127.0.0.1
@@ -98,8 +96,21 @@ jobs:
         MARIADB_TEST_DATABASE: uvlhubdb_test
         MARIADB_USER: uvlhub_user
         MARIADB_PASSWORD: uvlhub_password
+
+    - name: Upload coverage to Codacy
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
+      env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}{% endraw %}
 ```
+
+{: .warning-title }
+> <i class="fa-solid fa-triangle-exclamation"></i> Do not use `pip install codacy-coverage`
+>
+> Earlier versions of this tutorial uploaded the report with the `codacy-coverage` PyPI package
+> (`python-codacy-coverage -r coverage.xml`). Codacy archived that package in 2020 and the endpoint it posts to,
+> `api.codacy.com/2.0/coverage/...`, no longer exists, so the step fails whatever token you use. The supported
+> uploader is the `get.sh` script above, which reads `CODACY_PROJECT_TOKEN` from the environment. `coverage`
+> itself is already pinned in `requirements.txt`, so nothing else has to be installed.
 
 ## Try it!
 
