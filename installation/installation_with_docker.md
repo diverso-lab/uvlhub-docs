@@ -38,6 +38,18 @@ cp .env.docker.example .env
 
 ## Run the containers
 
+{: .warning-title }
+> <i class="fa-brands fa-docker"></i> Did you bring this stack up before September 2026?
+>
+> The development Compose project is now named `uvlhub`; it used to take the name `docker` from its folder. If you
+> still have containers from the old name, the first `up` fails with `Conflict. The container name
+> "/web_app_container" is already in use`. Remove the old stack first (this also leaves its database volume,
+> `docker_db_data`, unused; the new stack seeds a fresh one):
+>
+> ```
+> docker compose -f docker/docker-compose.dev.yml -p docker down
+> ```
+
 To start containers in development mode, use the `docker-compose.dev.yml` file located in the docker directory. The command will run in the background (`-d`).
 
 ```

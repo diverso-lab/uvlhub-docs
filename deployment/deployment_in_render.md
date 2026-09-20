@@ -83,14 +83,13 @@ WORKING_DIR=/workspace/
 ```
 
 {: .important-title }
-> <i class="fa-solid fa-database"></i> Copy `MARIADB_PORT` from the Filess.io panel, do not assume `3306`
+> <i class="fa-solid fa-database"></i> Copy `MARIADB_PORT` from the Filess.io panel; do not assume `3306`
 >
 > Filess.io assigns the port of each database, and every `MARIADB_*` value above must be the one shown in
-> the panel of your database: hostname, port, database name, user and password. The application builds its
-> connection string from these variables, port included, so a wrong or missing port fails on boot with
-> `Can't connect to MySQL server on '<hostname>' ([Errno 111] Connection refused)` right after
-> `wait-for-db.sh` reports that the database is up. `MARIADB_ROOT_PASSWORD` is only read by the helper scripts,
-> which is why the same password is repeated there.
+> the panel of your database: hostname, port, database name, user and password. With a wrong port the boot never
+> gets past `wait-for-db.sh`: the deploy log loops on `MariaDB is unavailable - sleeping`. The application builds
+> its connection string from the same variables, port included. Nothing on Render reads `MARIADB_ROOT_PASSWORD`;
+> it is kept so that the same block also works with the local scripts.
 
 {: .important-title }
 > <i class="fa-solid fa-folder-tree"></i> `WORKING_DIR` must be `/workspace/`

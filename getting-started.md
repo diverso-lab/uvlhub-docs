@@ -26,7 +26,7 @@ For development deployment, the use of [Docker](https://www.docker.com/) is reco
 > `uvlhub_practicas`. Clone your fork, not the repository below: the two have diverged and the practicals are
 > written against the course copy.
 > ```
-> git clone git@github.com:<YOUR_GITHUB_USER>/uvlhub_practicas.git
+> git clone https://github.com/<YOUR_GITHUB_USER>/uvlhub_practicas.git
 > cd uvlhub_practicas
 > ```
 

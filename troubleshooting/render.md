@@ -17,21 +17,20 @@ permalink: /troubleshooting/render
 ## *Can't connect to MySQL server on '...' ([Errno 111] Connection refused)*
 
 The deploy log shows `wait-for-db.sh` succeeding (`MariaDB is up - executing command`) and, a moment later,
-`flask db upgrade` dying with:
+`flask db upgrade` failing with:
 
 ```
 sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '<hostname>' ([Errno 111] Connection refused)")
 ```
 
-`wait-for-db.sh` and the entrypoint connect with `-P $MARIADB_PORT`, but the application builds its own connection
-string. Two things to check, in this order:
+`wait-for-db.sh` and the entrypoint connect with `-P $MARIADB_PORT`, so the database is reachable and the port is
+right. The application builds its own connection string, and older copies of the repository took it straight from
+`splent_framework`, which hardcodes port `3306` whatever `MARIADB_PORT` says: the application could never reach a
+database on another port even with the variable set correctly. Check that your `app/__init__.py` contains
+`_apply_database_port`; if it does not, bring it up to date with the course repository and redeploy.
 
-1. `MARIADB_PORT` in the Render environment variables is exactly the port shown in the Filess.io panel. Do not
-   assume `3306`: Filess.io assigns the port.
-2. Your `app/__init__.py` contains `_apply_database_port`. Older copies of the repository took the connection string
-   straight from `splent_framework`, which hardcodes port `3306` whatever `MARIADB_PORT` says, so the application
-   could never reach a database on another port even with the variable set correctly. Bring `app/__init__.py` up to
-   date with the course repository and redeploy.
+A wrong `MARIADB_PORT` looks different: the log never reaches `flask db upgrade` and loops on
+`MariaDB is unavailable - sleeping`. Copy the port from the Filess.io panel; it is not `3306` by default.
 
 ## *ERROR [flask_migrate] Error: Can't locate revision identified by*
 

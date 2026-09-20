@@ -135,13 +135,13 @@ features = [
 > flask run --host=0.0.0.0 --reload --debug
 > ```
 >
-> `--reload` does not spare you this restart: the reloader only watches the Python modules already imported, and
-> neither `pyproject.toml` nor the files of a feature that has not been loaded yet are among them. It is the only
-> restart the tutorial needs, though: from here on, every change to `models.py`, `routes.py` and the templates is
-> picked up on its own.
+> `--reload` does not spare you this restart: the reloader only watches `*.py` files, so editing `pyproject.toml`
+> never triggers one. The next edit to any `.py` file would, but do the restart now, so the routes exist before you
+> continue. It is the only restart the tutorial needs: from here on, every change to `models.py`, `routes.py` and
+> the templates is picked up on its own.
 
 The proof that the restart worked is the server, not the CLI: `http://localhost/notepad` (`http://localhost:5000/notepad`
-on a manual installation) answered `404` before and answers `200` now, an empty page. Then list the routes of the
+on a manual installation) answered `404` before and answers `200` now, the application shell with an empty content area. Then list the routes of the
 feature:
 
 ```
@@ -390,8 +390,8 @@ not executed it yet. To run new migrations:
 flask db upgrade
 ```
 
-We go to the `/notepad` route and see that the database error is gone. Excellent! What you get instead is a
-different `HTTP 500`, `werkzeug.routing.exceptions.BuildError: Could not build url for endpoint
+We go to the `/notepad` route and see that the database error is gone. Excellent! Unless you commented the links
+out, what you get instead is a different `HTTP 500`, `werkzeug.routing.exceptions.BuildError: Could not build url for endpoint
 'notepad.create_notepad'`: `index.html` links to the four routes that you write in the
 [Complete C.R.U.D.](#complete-crud) section, and Flask refuses to render a link to a route that does not exist
 yet. It disappears as soon as those routes are in place.
