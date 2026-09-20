@@ -20,13 +20,33 @@ In this tutorial we are going to add the concept of a notepad (title and body) t
 
 ---
 
-Every command below runs inside the application container. Either open a shell once:
+Every command below runs where the application runs.
+
+**Docker installation.** Inside the application container. Either open a shell once:
 
 ```
 docker exec -it web_app_container bash
 ```
 
 or prefix each command with `docker exec -it web_app_container`.
+
+**Manual installation.** From the root of the repository, with the virtual environment active and the project root
+on the import path, as the [manual installation]({{site.baseurl}}/installation/manual_installation) guide explains:
+
+```
+source venv/bin/activate
+export PYTHONPATH=$(pwd)
+```
+
+Without `PYTHONPATH` every `rosemary` command, starting with the first one below, stops with
+`ModuleNotFoundError: No module named 'app'`; the `flask db` commands work either way.
+
+{: .note-title }
+> The "No product config.py found" line
+>
+> Every `rosemary` and `flask db` command prints `No product config.py found for 'splent_app', using SPLENT default
+> config.` before its own output. It is a notice, not an error: the application has no product-level `config.py`
+> and runs on the framework defaults.
 
 ## Create a new feature
 
@@ -103,13 +123,26 @@ features = [
 > Reboot required!
 >
 > Flask registers blueprints once, at startup. Even with the feature declared, the routes do not exist
-> until the server restarts:
+> until the server restarts. With Docker:
 >
 > ```
 > docker restart web_app_container
 > ```
+>
+> With a manual installation, stop `flask run` with `Ctrl+C` and start it again:
+>
+> ```
+> flask run --host=0.0.0.0 --reload --debug
+> ```
+>
+> `--reload` does not spare you this restart: the reloader only watches the Python modules already imported, and
+> neither `pyproject.toml` nor the files of a feature that has not been loaded yet are among them. It is the only
+> restart the tutorial needs, though: from here on, every change to `models.py`, `routes.py` and the templates is
+> picked up on its own.
 
-Once the container is back up, list the routes of the feature:
+The proof that the restart worked is the server, not the CLI: `http://localhost/notepad` (`http://localhost:5000/notepad`
+on a manual installation) answered `404` before and answers `200` now, an empty page. Then list the routes of the
+feature:
 
 ```
 rosemary route:list notepad
@@ -118,9 +151,14 @@ rosemary route:list notepad
 You should see something like this:
 
 ```
-notepad.assets    GET    /notepad/<subfolder>/<filename>
-notepad.index     GET    /notepad
+Listing routes for the 'notepad' module...
+Endpoint          Methods    Route
+notepad.assets    GET        /notepad/<subfolder>/<filename>
+notepad.index     GET        /notepad
 ```
+
+`route:list` builds its own copy of the application in a new process, so it lists the routes even before the
+restart. That is why the `404` to `200` check above is the one to trust.
 
 ## Model design
 
@@ -159,8 +197,9 @@ Before you continue, make sure that **at the beginning of the `routes.py`** file
 following content:
 
 ```python
-from flask import render_template, redirect, url_for, flash
+from flask import abort, render_template, redirect, url_for, flash
 from flask_login import login_required, current_user
+from flask_wtf import FlaskForm
 from splent_framework.utils.form_helpers import form_error, form_success
 
 from app.features.notepad import notepad_bp
@@ -249,8 +288,9 @@ def index():
 {% endblock %}{% endraw %}
 ```
 
-The `get_flashed_messages` block matters: `base_template.html` does not render flash messages for you,
-so a template that never asks for them will silently swallow every success and error message.
+The `get_flashed_messages` block matters: `base_template.html` does not render flash messages for you. A
+template that never asks for them does not lose them either: they stay queued in the session and show up, out of
+context, on the next page that does render them. Every template of this feature therefore carries the block.
 
 {: .note-title }
 > This template links forward
@@ -309,7 +349,11 @@ User: user1@example.com
 Pass: 1234
 ```
 
-If we access `/notepad` we notice that it gives error. Why do you think it gives error?
+If we access `/notepad` we notice that it gives error: an `HTTP 500` whose page, because the server runs with
+`--debug`, is the Werkzeug debugger showing
+`sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'uvlhubdb.notepad' doesn't exist")`.
+The same traceback is printed by the server (the `docker logs` of the container, or the terminal running
+`flask run`). Why do you think it gives error?
 
 ## Migrations
 
@@ -346,7 +390,11 @@ not executed it yet. To run new migrations:
 flask db upgrade
 ```
 
-We go to the `/notepad` route and see that it no longer gives an error. Excellent!
+We go to the `/notepad` route and see that the database error is gone. Excellent! What you get instead is a
+different `HTTP 500`, `werkzeug.routing.exceptions.BuildError: Could not build url for endpoint
+'notepad.create_notepad'`: `index.html` links to the four routes that you write in the
+[Complete C.R.U.D.](#complete-crud) section, and Flask refuses to render a link to a route that does not exist
+yet. It disappears as soon as those routes are in place.
 
 ## Design form
 
@@ -407,6 +455,14 @@ def create_notepad():
 {% block title %}Create notepad{% endblock %}
 
 {% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 <form method="POST" action="{{ url_for('notepad.create_notepad') }}">
     {{ form.hidden_tag() }}
@@ -502,6 +558,14 @@ def edit_notepad(notepad_id):
 
 {% block content %}
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <form method="POST" action="{{ url_for('notepad.edit_notepad', notepad_id=notepad.id) }}">
     {{ form.hidden_tag() }}
     <div>
@@ -531,6 +595,8 @@ DELETE
 @notepad_bp.route('/notepad/delete/<int:notepad_id>', methods=['POST'])
 @login_required
 def delete_notepad(notepad_id):
+    if not FlaskForm().validate_on_submit():
+        abort(400)
     notepad = notepad_service.get_or_404(notepad_id)
     if notepad.user_id != current_user.id:
         flash('You are not authorized to delete this notepad', 'error')
@@ -544,6 +610,11 @@ def delete_notepad(notepad_id):
 
 `BaseRepository.delete` returns `True` when a row was removed and `False` when the id did not match
 anything, which is why the return value is worth branching on.
+
+The delete form in `index.html` carries `{% raw %}{{ form.hidden_tag() }}{% endraw %}`, but a token nobody checks protects nothing: the
+application has no global CSRF protection, so only `validate_on_submit()` verifies it. A bare `FlaskForm` has no
+fields, so validating it checks exactly the token, and a `POST` without one is refused with `400`. The `edit` and
+`create` routes get the same check for free from `form.validate_on_submit()`.
 
 Take the time to check that everything is working properly. Try creating a notepad in the
 `/notepad/create` route.

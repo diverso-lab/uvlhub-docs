@@ -330,3 +330,6 @@ flask run --host=0.0.0.0 --reload --debug
 
 > {: .highlight }
   **If everything worked correctly, you should see the deployed version of {% include uvlhub.html %} in development at `http://localhost:5000`**
+
+Next step: the [C.R.U.D. tutorial]({{site.baseurl}}/tutorials/crud_tutorial) adds a feature to the application you
+just installed. Keep this terminal, with the virtual environment active and `PYTHONPATH` exported, for it.
