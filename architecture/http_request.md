@@ -15,7 +15,7 @@ nav_order: 3
 1. TOC
 {:toc}
 
-![HTTP Request](/assets/images/http_request.svg)
+![HTTP Request](/assets/images/http_request.png)
 *Figure 1: HTTP Request.*
 
 

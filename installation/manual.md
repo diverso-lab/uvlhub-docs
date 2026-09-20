@@ -27,7 +27,7 @@ nav_order: 1
 > <i class="fa-brands fa-ubuntu"></i> Ubuntu-only support
 >
 > This tutorial is intended for use on Ubuntu 24.04 LTS or higher. That is the baseline the course
-> targets: the Vagrant box is `ubuntu/noble64` and every CI and CD workflow pins `ubuntu-24.04`.
+> targets: the Vagrant box is `bento/ubuntu-24.04` and every CI and CD workflow pins `ubuntu-24.04`.
 
 ## Update the system
 
@@ -46,6 +46,9 @@ sudo apt upgrade -y
 > git clone git@github.com:<YOUR_GITHUB_USER>/uvlhub_practicas.git
 > cd uvlhub_practicas
 > ```
+> Your fork must be named `uvlhub_practicas`. GitHub proposes `uvlhub` in the fork form, so change
+> "Repository name" before pressing "Create fork"; if you kept the default, rename it in your fork's
+> Settings, General, before cloning.
 
 You can clone the original repo with the HTTPS method:
 
@@ -191,6 +194,13 @@ sudo apt update -y
 sudo apt install -y python3.13 python3.13-venv python3.13-dev build-essential
 ```
 
+{: .note-title }
+> <i class="fa-brands fa-ubuntu"></i> The deadsnakes PPA only publishes for LTS releases
+>
+> On a non-LTS Ubuntu (25.04, 25.10, ...) do not add the PPA: `apt update` would fail with "does not have a
+> Release file" on every run, and Python 3.13 is already in the official repositories there, so the last line
+> alone is enough. If you already added it, remove it with `sudo add-apt-repository --remove ppa:deadsnakes/ppa`.
+
 {: .warning-title }
 > <i class="fa-solid fa-hammer"></i> `python3.13-dev` and `build-essential` are not optional
 >
@@ -261,6 +271,13 @@ To check that `Rosemary` has been installed correctly, try running this command.
 ```
 rosemary
 ```
+
+{: .note-title }
+> <i class="fa-solid fa-circle-info"></i> The "No product config.py found" line
+>
+> Every `rosemary` and `flask` command first prints `No product config.py found for 'splent_app', using SPLENT
+> default config.` It is a notice, not an error: the application has no product-level `config.py` and runs on the
+> framework defaults.
 
 ## Run app
 
