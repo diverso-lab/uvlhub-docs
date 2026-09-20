@@ -101,8 +101,9 @@ things wired up for you:
 
 - the repository mounted on `/workspace`, which is where the image sets `WORKDIR` and `PYTHONPATH`,
   so the `-f` path it passes resolves;
-- the same Docker network as the running stack, read off `web_app_container` rather than assumed,
-  so it keeps working whatever Compose project name you brought the stack up under;
+- the same Docker network as the running stack, read off the running `web_app_container` (that
+  container name is fixed by the compose file; the network name, which carries the project name, is
+  not), so it keeps working whatever Compose project name you brought the stack up under;
 - `WORKING_DIR=/workspace/`, which is what makes `get_host_for_locust_testing()` resolve to
   `http://nginx_web_server_container`. Without it the scenario would target
   `http://localhost:5000`, and inside the Locust container that is the Locust container itself.
@@ -144,7 +145,15 @@ docker exec web_app_container locust \
 ```
 
 This runs Locust inside the app container rather than a separate one, so it needs no image build
-and picks up `WORKING_DIR` from the environment already there.
+and picks up `WORKING_DIR` from the environment already there. If your containers do not carry the
+names of the compose file, pass the target explicitly with `-H http://<nginx container>`.
+
+{: .warning-title }
+> <i class="fa-solid fa-user-lock"></i> A route behind `@login_required` looks healthy while untested
+>
+> Such a route answers `302` to `/login`, and the client follows it, so a scenario that never logs in
+> reports `0 failures` without loading the page once. Log in from `on_start`, as
+> `app/features/dataset/tests/locustfile.py` does with `get_csrf_token`, before hitting it.
 
 ## Running without a feature name
 
@@ -169,8 +178,8 @@ patterns, relative to `WORKING_DIR` unless absolute.
 
 **Docker (`WORKING_DIR=/workspace/`)** — Rosemary builds `docker/images/Dockerfile.locust` into an
 image called `locust-image` and starts a detached `locust_container` on port 8089. It reads the
-volume and the network off the running `web_app_container` rather than assuming names, so it
-survives a non-default Compose project name.
+volume and the network off the running `web_app_container` (the one name the compose file fixes), so
+it survives a non-default Compose project name.
 
 **Local (`WORKING_DIR` unset)** — Rosemary starts `locust -f <path>` as a background process. If a
 `locust` process is already running it says so and does nothing.

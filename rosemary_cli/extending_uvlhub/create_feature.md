@@ -241,6 +241,11 @@ def test_notepad_index_responds(test_client):
 The `test_client` and `test_app` fixtures come from `splent_framework.fixtures.fixtures` and are
 re-exported for the whole project by the root `conftest.py`, so you do not import them yourself.
 
+Both this stub and the Selenium one assume the route is public. As soon as you add `@login_required`,
+as the C.R.U.D. tutorial does, `GET /notepad` answers `302`: rewrite the assertion (the tutorial shows
+`test_notepad_index_requires_login`) and log in first in the Selenium and Locust scenarios, the way
+`app/features/dataset/tests/` does.
+
 Run the fast layers for your new feature with:
 
 ```

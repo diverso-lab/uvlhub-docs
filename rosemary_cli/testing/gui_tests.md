@@ -218,6 +218,12 @@ rosemary selenium auth --driver chrome
 
 The browser runs inside the Chrome or Firefox container and drives the app through nginx.
 
+`tests/selenium_support.py` defaults to `http://selenium_hub_container:4444` for the grid and
+`http://nginx_web_server_container` for the application, and honours `SELENIUM_GRID_URL` and
+`SELENIUM_TARGET_URL` when your containers carry other names. The Chrome node has been seen to drop
+keystrokes and clicks in long sessions where Firefox, the default, does not: verify what you typed with
+`get_attribute("value")` and prefer `submit()` and `driver.get()` over clicking links.
+
 ### Viewing the browser in Docker (VNC)
 
 **VNC** (Virtual Network Computing) is a remote-desktop protocol that lets you see and control a
@@ -304,7 +310,8 @@ Once installed, the Selenium IDE icon appears in your browser toolbar.
 1. Open Selenium IDE from the toolbar.
 2. Create a new project and set the base URL:
    - `http://localhost:5000` when running locally
-   - `http://nginx_web_server_container` when running inside Docker
+   - `http://localhost` when the stack runs in Docker: nginx publishes port 80, and the browser on your
+     machine cannot resolve container names
 3. Start recording your interactions with the application.
 4. Stop the recording when you are done.
 5. Save the test case.

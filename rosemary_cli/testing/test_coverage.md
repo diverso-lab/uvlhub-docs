@@ -121,7 +121,9 @@ pytest <target> --cov=<target> --cov-report=term-missing -m "<markers>" [--cov-r
 ```
 
 `<target>` is `app/features` or `app/features/<feature>`, prefixed with `$WORKING_DIR` inside a
-container. The equivalent raw invocation is:
+container. `--cov=<target>` measures everything under it, `tests/` included, so `locustfile.py` and
+`test_selenium.py`, which pytest never executes here, show up at `0%` and pull the feature's total down.
+The equivalent raw invocation is:
 
 ```
 pytest app/features/auth --cov=app/features/auth --cov-report=term-missing -m "unit or service"
