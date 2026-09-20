@@ -182,14 +182,25 @@ genuinely environment-specific feature.
 ### Install Python 3.13
 
 Ubuntu 24.04 does not ship Python 3.13 in its default repositories, so add the deadsnakes PPA first.
-This is exactly what the Vagrant provisioning does:
+This is exactly what the Vagrant provisioning does in `vagrant/04_install_dependencies.yml`:
 
 ```
 sudo apt install -y software-properties-common
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt update -y
-sudo apt install -y python3.13 python3.13-venv
+sudo apt install -y python3.13 python3.13-venv python3.13-dev build-essential
 ```
+
+{: .warning-title }
+> <i class="fa-solid fa-hammer"></i> `python3.13-dev` and `build-essential` are not optional
+>
+> One dependency, `python-sat` (required by `flamapy-sat`), publishes no wheel for CPython 3.13, so
+> `pip install -r requirements.txt` compiles it from source and needs a C++ compiler and the Python headers.
+> Without these two packages the installation stops with
+> `error: [Errno 2] No such file or directory: 'x86_64-linux-gnu-g++'` (or `Python.h: No such file or directory`)
+> and pip reports `Failed to build installable wheels for some pyproject.toml based projects: python-sat`.
+> The Docker images and the Vagrant machine install the same toolchain. If you already hit the error, install the
+> two packages and run `pip install -r requirements.txt` again in the same virtual environment.
 
 ### Create and activate a virtual environment
 

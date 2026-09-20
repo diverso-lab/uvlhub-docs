@@ -21,6 +21,24 @@ permalink: /troubleshooting/python
 > `python:3.13-slim`, the Vagrant machine installs `python3.13`, and the CI workflows set up `3.13`. Anything older
 > will fail to install the dependencies.
 
+## *Failed to build installable wheels for some pyproject.toml based projects: python-sat*
+
+`pip install -r requirements.txt` stops while building `python-sat` with one of these two messages a few lines
+above the final error:
+
+```
+error: [Errno 2] No such file or directory: 'x86_64-linux-gnu-g++'
+fatal error: Python.h: No such file or directory
+```
+
+`python-sat` ships no wheel for CPython 3.13, so pip compiles it from source and needs a C++ compiler and the
+Python headers. Install them and run pip again; the virtual environment you already created is fine:
+
+```bash
+sudo apt install -y build-essential python3.13-dev
+pip install -r requirements.txt
+```
+
 ## *No module named '_ctypes'*
 
 This is caused by an incorrect installation of Python. The best thing to do is to delete the current Python 3.13
