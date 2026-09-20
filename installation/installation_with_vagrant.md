@@ -100,11 +100,9 @@ This will switch to the internal VM console. Provisioning appends the right line
 starts with the `vagrant_venv` virtual environment already active and the working directory already set to the
 project root. You can run `flask` straight away.
 
-`rosemary` needs one more step. Its commands import the application package, and an installed console script
-runs without the current directory on `sys.path`, so it fails with `ModuleNotFoundError: No module named 'app'`
-until the project root is importable. Nothing in the provisioning sets this: `vagrant/06_utilities.yml` only
-adds the `source` and `cd` lines, and `/etc/profile.d/vagrant_env.sh` only exports the variables from `.env`,
-which contain no `PYTHONPATH`. Export it yourself in each new session:
+`rosemary` works straight away as well: `vagrant/06_utilities.yml` also appends `export PYTHONPATH=/vagrant/` to
+`.bashrc`, which is what its commands need to import the application package. Only a shell that did not load
+`.bashrc` (a `vagrant ssh -c` one-liner, for instance) lacks it; there, export it yourself:
 
 ```
 export PYTHONPATH=$WORKING_DIR
