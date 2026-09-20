@@ -83,6 +83,16 @@ WORKING_DIR=/workspace/
 ```
 
 {: .important-title }
+> <i class="fa-solid fa-database"></i> Copy `MARIADB_PORT` from the Filess.io panel, do not assume `3306`
+>
+> Filess.io assigns the port of each database, and every `MARIADB_*` value above must be the one shown in
+> the panel of your database: hostname, port, database name, user and password. The application builds its
+> connection string from these variables, port included, so a wrong or missing port fails on boot with
+> `Can't connect to MySQL server on '<hostname>' ([Errno 111] Connection refused)` right after
+> `wait-for-db.sh` reports that the database is up. `MARIADB_ROOT_PASSWORD` is only read by the helper scripts,
+> which is why the same password is repeated there.
+
+{: .important-title }
 > <i class="fa-solid fa-folder-tree"></i> `WORKING_DIR` must be `/workspace/`
 >
 > `docker/images/Dockerfile.render` sets `WORKDIR /workspace`, and every path the application resolves is built from
