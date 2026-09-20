@@ -19,6 +19,17 @@ For development deployment, the use of [Docker](https://www.docker.com/) is reco
 
 ## Clone repo
 
+{: .important-title }
+> <i class="fa-solid fa-graduation-cap"></i> Are you a student of Configuration Evolution and Management (EGC)?
+>
+> The course works on its own copy of the project, `github.com/EGCETSII/uvlhub`, which you fork as
+> `uvlhub_practicas`. Clone your fork, not the repository below: the two have diverged and the practicals are
+> written against the course copy.
+> ```
+> git clone git@github.com:<YOUR_GITHUB_USER>/uvlhub_practicas.git
+> cd uvlhub_practicas
+> ```
+
 You can start your fantastic development with {% include uvlhub.html %} by cloning our official repository.
 
 ```
